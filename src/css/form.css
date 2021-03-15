@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(208, 182, 250);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.form{
+    background-color: #ffffff;
+    margin: 1rem;
+    margin-bottom: 2rem;
+}
+.reserve{
+    background-color: #fff;
+    position: absolute;
+    bottom: 1rem;
+}

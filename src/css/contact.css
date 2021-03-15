@@ -1,0 +1,260 @@
+/* ..........nav........... */
+
+.desktop-nav{
+    display: none;
+}
+.desktop-nav-buttons{
+    display: none;
+}
+nav img {
+    width: 30%;
+    height: 50%;
+}
+/* ..........nav.end.......... */
+
+.home{
+    background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/contactUs.png");  
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.5rem;
+    font-family: nexa-light;
+    color: white;
+}
+.home h1{
+    color: white;
+}
+.map{
+   background-color: blue;
+   height: 15rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+}
+.map .location-box{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.contact{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+}
+
+.contact .contact-number{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.contact .contact-number .email .logo{
+    margin-right: 0.5rem;
+}
+.contact .contact-number .email{
+    display: flex;
+    align-items: center;
+    font-family: nexa-light;
+    /* font-size: 0.8rem; */
+}
+.contact .contact-number .email .location{
+    font-size: 1rem;
+    font-family: nexa-bold;
+    margin-bottom: 0.3rem;
+}
+
+.contact .contact-form{
+    width: 75%;
+    padding: 1.5rem 2rem;
+    background-color: rgb(188, 188, 245);
+}
+.contact .contact-form .input-box{
+    /* display: flex;
+    height: 7.2rem; */
+    margin-bottom: 0.5rem;
+}
+input{
+    padding: 0.5rem 0rem;
+}
+.contact .contact-form .input-box .three-input {
+    margin-right: 0.7rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;   
+    justify-content: space-between;
+}
+.contact .contact-form .input-box .Enter-massage {
+    width: 50%;
+}
+.contact .contact-form .input-box .Enter-massage textarea{
+ height: 100%;
+ width: 100%;
+ padding: 0rem;
+ border: none;
+}
+::placeholder{
+    padding-top:3rem ; 
+}
+.contact .contact-form .send-button {
+    display: flex;
+    justify-content: flex-end;
+}
+.contact .contact-form .send-button input{
+    width: 8rem;
+    background-color: rgb(64, 64, 177);
+    color: white;
+}
+
+
+/* ....................................................*/
+/* ................................................... */
+/* ............tablet................................... */
+/* .................................................... */
+/* .................................................. */
+
+@media only screen and (min-width: 768px){
+
+
+    .home{
+        height: 10rem;
+    }
+.text{
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+.map{
+    height: 20rem;
+}
+.contact{
+    flex-direction: column;
+    padding: 0rem;
+}
+.contact .contact-number{
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    width: 91%;
+    padding: 0rem 2rem;
+}
+.contact .contact-form{
+    width: 91%;
+}
+
+
+
+}
+
+/* ....................................................*/
+/* ................................................... */
+/* ............mobile................................... */
+/* .................................................... */
+/* .................................................. */
+
+@media only screen and (min-width: 1023px) {
+
+ /* .................nav............ */
+
+ nav .nav-i{
+    display: none;
+}
+nav img{
+    width: 10rem;
+}
+.desktop-nav {
+    display: flex;
+}
+.desktop-nav  ul {
+    display: flex;
+    margin-top: 0rem;
+}
+.desktop-nav  ul li{
+    margin-right: 2rem;
+}
+.desktop-nav-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+}
+.desktop-nav-buttons .dnlogin{
+    font-size: 0.9rem;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    padding: 0rem 1.4rem;
+    border: 1px solid ;
+    border-radius: 0.21rem; 
+    margin-right: 0.3rem;
+}
+.quote-button{
+    font-size: 0.8rem;
+    padding: 0rem 1.5rem;
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 0.21rem;  
+    height: 92%;
+    font-size: 0.9rem;
+}
+
+/* ......................nav..end.......... */
+
+.home{
+    height: 10rem;
+}
+.text{
+        text-align: center;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+}
+.map{
+    height:12rem;
+}
+.contact{
+    flex-direction: column;
+    padding: 0px;
+}
+.contact .contact-number{
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 1rem;
+    padding: 0rem 1rem;
+}
+.contact .contact-number .email{
+    margin-bottom: 1rem;
+}
+.contact .contact-form {
+    width: 90%;
+    padding: 1.5rem 1rem;
+    background-color: rgb(188, 188, 245);
+}
+.contact .contact-form .input-box{
+    flex-direction: column;
+    margin-bottom: 0rem;
+}
+.contact .contact-form .input-box .three-input {
+    width: 100%;
+    margin-right: 0rem;
+}
+
+::placeholder{
+    padding-top:0.5rem ; 
+}
+input{
+    margin-bottom: 0.5rem;
+}
+.contact .contact-form .input-box {
+    height: 10.2rem;
+}
+.contact .contact-form .input-box .Enter-massage {
+    width: 100%;
+}
+
+
+
+}

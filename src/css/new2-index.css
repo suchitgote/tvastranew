@@ -1,0 +1,752 @@
+
+/* ..........nav........... */
+
+.desktop-nav{
+    display: none;
+}
+.desktop-nav-buttons{
+    display: none;
+}
+nav img {
+    width: 30%;
+    height: 50%;
+}
+/* ..........nav.end.......... */
+
+
+/* ........search............................. */
+p{
+    font-size: 1rem;
+}
+.search{
+    background-color: rgb(156, 174, 223);
+}
+
+.location{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: var(--white);
+    margin-bottom: 0.5rem;
+    margin-right: 0.1rem;
+    height: 2.52rem;
+}
+.search .searchbox form input{
+    height: 1.52rem;   
+}
+.search .searchbox form .location i{
+    margin: 0.5rem;
+}
+
+.location img{
+    width: 1rem;
+    margin: 0.5rem;
+
+}
+
+.primary-button{
+    width: 40%;
+    margin-top: 1rem;
+
+}
+/* ........search.end............................ */
+
+
+/* ........working............................. */
+
+.working-steps li{
+    width: 100%;
+    height: 3rem;
+    border: 0.1rem solid var(--black_light);
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem ;
+    background-color: var(--white_dark);
+    display: flex;
+    align-items: center;
+}
+
+.working-steps li span{
+    padding: 0.5rem;
+    margin-left: 0.2rem;
+}
+li:first-child span{
+    color: var(--sky_blue);
+ }
+ li:first-child h3{
+    color: var(--black);
+  }
+.working-steps ul .w-img {
+      display: flex;
+      flex-direction: column;
+}
+.working-steps img{
+    display: flex;
+    width: 75%;
+    padding-bottom: 1rem;
+    margin: 0rem auto;
+}
+.working-steps ul .w-img h3{
+    text-align:center;
+    margin-bottom: 0.5rem;
+}
+span{
+    color: rgba(7, 7, 7,0.5);
+}
+
+li h3{
+    color: rgba(7, 7, 7,0.5);
+}
+
+li:first-child {
+    border-color: var(--black);
+  } 
+
+/* ........working..end........................... */
+
+
+/* ........doctor............................. */
+
+
+.doctor{    
+    padding-bottom: 1rem;
+    background-color: rgb(18, 16, 37);
+    /* display: flex;
+    justify-content: center; */
+}
+
+.doctor h1{
+    color: white;
+}
+
+.doctor p{
+    color:white;
+}
+.doctor .mySlides{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.doctor  .mySlides .doctor-box{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    float: left;
+}
+
+.doctor .mySlides  .doctor-box .doctor-image{
+    width: 100%;
+    height: 22rem;
+}
+
+.doctor  .mySlides .doctor-box .doctor-name{
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem 0rem;
+}
+
+.sudo{
+    position: relative;
+}
+
+.sudo::before{
+    position: absolute;
+    top: 0.46rem;
+    content: "";
+    width: 1.5rem;
+    border-bottom: 2px solid var(--sky_blue);
+}
+
+.doctor-name h3{
+    color: rgb(97, 187, 247);
+    margin-left: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+.doctor-name .sudo li{
+    color: black;
+    margin-left: 1.75rem;
+    margin-bottom: 0.2rem;
+    text-align: start;
+} 
+.dots{
+    display: none;
+}    
+/* ........doctor end............................. */
+
+
+/* ........treatment............................. */
+
+.Treatment .doc-c .grid-box{
+    height: 18rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.linear-g{
+    background-image: linear-gradient(rgba(0,0,0,0)0%,rgba(17, 10, 26,0.9)57%);
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    bottom: 0%;
+}
+.grid-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.grid-box .name{
+    position: absolute;
+    font-size: 0.8rem;
+    color: var(--white);
+    bottom: 6%;
+    left: 6%;
+    text-align: left;
+}
+.grid-box .name h5{
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.01rem;
+    font-family: 'nexa-bold';
+    color: var(--white);
+}
+/* ........treatment..end........................... */
+
+
+/* ........service............................. */
+
+.services{
+    /* padding:  1rem; */
+    padding-bottom: 2rem;
+    background-color: rgb(227, 230, 231);
+    display: flex;
+    flex-wrap: wrap; 
+}
+.box{
+    background-color:rgba(248, 247, 247, 0.9);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+    margin: 0.2rem;
+}
+.box img{
+    width: 50%;
+}
+.box h3{
+    color: rgba(43, 7, 7,0.7);
+    font-size: 0.81rem;
+    margin-bottom: 1rem; 
+    padding-top: 0rem;
+}
+/* ........servic end............................ */
+
+
+/* ........help............................. */
+
+.helps{
+    background: rgb(108, 200, 236);
+}
+.help{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}   
+.help h1{
+    color: var(--white);
+}   
+
+.second-button{
+    background-color: var(--sky_blue);
+    border-radius: 0.3rem;
+    color: var(--white_dark);
+    font-family: nexa-light;
+    border-style: none ;
+    padding: 0.6rem 1rem;
+}
+/* ........help..end........................... */
+
+
+/* ........footer............................. */
+
+.footer-heading , .footer-sites-word{
+    display: none;
+}
+
+footer .follow-us{
+    display: none;
+}
+
+footer .footer-logo{
+    text-align: -webkit-center;
+    margin-bottom: 1rem;
+}
+footer .footer-logo .logoimg{
+    width: 50%;
+}
+
+footer .footer-nav ul li{
+    color: var(--white_dark);
+    margin-bottom: 1rem;
+}
+footer .footer-nav ul li a{
+    text-decoration: none;
+    color:var(--white_dark);
+}
+
+footer .footer-sites i{
+    width: 0.2rem;
+    padding: 1rem;
+    color:var(--white_dark);
+
+}
+footer .footer-reserve {
+    color: var(--white_dark);
+    letter-spacing: 0.1rem;
+    font-size: 0.9rem;
+}
+
+/* .............footer..end............................................... */
+
+
+/* .............................................................. */
+/* .............................................................. */
+/*                          tablate                                 */
+/* .............................................................. */
+/* .............................................................. */
+
+
+@media only screen and ( min-width:768px) {
+
+/* .............nav................................................. */
+
+    .desktop-nav{
+        display: none;
+    }
+    .desktop-nav-buttons{
+        display: none;
+    }
+
+  .search .searchbox form{
+    flex-direction: row;
+    }
+    .search .location{
+        width: 60%;
+        margin-bottom: 0rem;
+    }
+    .primary-button{
+        margin-top: 0rem;
+        height: 2.5rem;
+    }
+/* .............nav..end............................................... */
+
+
+
+/* .............working................................................. */
+p{
+    font-size: 1.1rem;
+}
+.working-steps .step ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+   
+}
+.working-steps .step ul li{
+width: 90%;
+}
+.working-steps .step ul li span{
+    padding: 1rem;
+}
+.w-img{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 8;
+}
+.working-steps .step ul .w-img .img{
+    margin-bottom: 1.5rem;
+}
+.working-steps .step ul .w-img h3{
+    margin-bottom: 1.5rem;
+}
+.working-steps img {
+   /* display: flex; */
+   /* justify-content: flex-end; */
+    padding: 0rem;
+}
+/* .............working..end............................................... */
+
+
+/* .............doctor................................................. */
+.doctor{
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* padding: 2rem; */
+}
+.doctor .mySlides {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.doctor .mySlides .doctor-box{
+    width: 47.5%;
+    background: rgb(248, 208, 208);
+    margin: 0.5rem;
+}
+.sudo::before {
+    top: 0.6rem;
+}
+.doctor .mySlides .doctor-box .doctor-name {
+    height: 5rem;
+}
+
+.doctor .mySlides .doctor-box .doctor-name h3{
+    margin-bottom: 0.5rem;
+}
+
+.doctor .mySlides .doctor-box .doctor-name p {
+    margin-top:0rem ;
+    margin-bottom: 0rem;
+}
+.dots{
+    display: none;
+}    
+/* .............doctor..end............................................... */
+
+
+/* .............treatment................................................. */
+
+
+.Treatment{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Treatment .doc .doc-c{
+    width: 47.5%;
+    margin: 0.5rem 0.5rem;
+    float: left;
+}
+
+.Treatment .doc .doc-c .grid-box{
+    margin: 0rem;
+} 
+/* .............treatment...end.............................................. */
+
+
+/* .............service................................................. */
+
+.services{
+    /* padding: 2rem; */
+    justify-content: center;
+}
+.services p{
+    margin: 1rem 3rem;
+}
+.services .box{
+    width: 28%;
+    margin: 0.5rem;
+}
+/* .............service...end.............................................. */
+
+
+/* .............footer................................................. */
+ /* footer nav */
+ footer .footer-nav{
+    grid-area: footer-nav;
+    height: 1rem;
+    flex-direction: row;
+    justify-content: start;
+}
+footer ul{
+    display: flex;
+}
+footer .footer-nav ul li{
+    margin-bottom: 0rem;
+    margin-right: 1rem;
+}
+footer .footer-nav ul li a {
+    text-decoration: none;
+    color: rgba(0, 0, 0,1);
+}
+
+ /* footer logo */
+footer .footer-logo{
+    grid-area: footer-logo;
+    text-align: -webkit-right;
+    margin-bottom: 0rem;
+}
+footer .footer-logo .logoimg {
+    width: 11rem;
+}
+
+ /* footer sites */
+footer .footer-sites{
+    grid-area: footer-sites;
+    text-align: end;
+}
+footer .footer-sites i{
+    color: var(--black); 
+} 
+
+ /* footer reserve */
+footer .footer-reserve {
+    color: var(--black);
+    padding-bottom: 0rem;
+    text-align: left;
+} 
+/* .............footer...end.............................................. */
+
+
+
+
+
+}
+
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................decstop...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+
+
+
+@media only screen and ( min-width:1024px){
+
+  
+ /* .................nav............ */
+ p{
+    font-size: 1.2rem;
+}
+nav .nav-i{
+    display: none;
+}
+nav img{
+    width: 10rem;
+}
+.desktop-nav {
+    display: flex;
+}
+.desktop-nav  ul {
+    display: flex;
+    margin-top: 0rem;
+}
+.desktop-nav  ul li{
+    margin-right: 2rem;
+}
+.desktop-nav-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+}
+.desktop-nav-buttons .dnlogin{
+    font-size: 0.9rem;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    padding: 0rem 1.4rem;
+    border: 1px solid ;
+    border-radius: 0.21rem; 
+    margin-right: 0.3rem;
+}
+.quote-button{
+    font-size: 0.8rem;
+    padding: 0rem 1.5rem;
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 0.21rem;  
+    height: 92%;
+    font-size: 0.9rem;
+}
+
+/* ......................nav..end.......... */
+
+
+/* ..........search.......................... */
+.search{
+    background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/img1.jpg");
+    background-image:no-repeat;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    height: 24rem;
+    display: flex;
+    align-items: center;
+}
+.search .searchbox form{
+    width: 80%;
+}
+.search .searchbox form button{
+    height: 4rem;
+}
+.search .searchbox p{
+    width: 65%;
+}
+.location{
+    height: 4rem;
+}
+.search .searchbox form input{
+    height: 3rem;   
+}
+
+/* ........search end............................................. */
+
+
+
+/* ........work............................................. */
+.working-steps ul li{
+    height: 6rem;
+}
+.working-steps ul .w-img .img img{
+    width: 90%;
+}
+ .working-steps .step .w-img p{
+    text-align: center;
+    margin: 0rem 3rem;
+}
+/* ........work..end........................................... */
+
+
+
+/* ............doctor........................... */
+
+.doctor .mySlides .doctor-box .doctor-name{
+    height: 6.5rem;
+}
+.doctor .mySlides .doctor-box{
+  width: 24.4%;
+  margin: 0.2rem;
+}
+.dots{
+    display: block;
+    margin-top: 1rem;
+}
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 20px 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.active, .dot:hover {
+    background-color: #717171;
+} 
+/* ............doctor..end......................... */
+  
+
+
+/*......treatment.......................  */
+
+.Treatment{
+    justify-content: flex-start;
+}
+.Treatment .doc-c .grid-box {
+    height: 100%;
+}
+.Treatment .doc .docs{
+    display: grid;
+    height: 50rem;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(10,1fr) ;
+}
+.Treatment .doc .doc-c {
+    margin: 0.3rem;
+    width: auto;
+}
+.Treatment .doc .docs #ta{
+    grid-area: 1 / 1 / span 3 / span 1;
+}
+.Treatment .doc .docs #tb{
+    grid-area: 1 / 2 / span 5 / span 1;
+}
+.Treatment .doc .docs #tc{
+    grid-area: 1 / 3 / span 4 / span 1;
+}
+.Treatment .doc .docs #td{
+    grid-area: 4 / 1 / span 8 / span 1;
+}
+.Treatment .doc .docs #te{
+    grid-area: 6 / 2 / span 5 /  3;
+}
+.Treatment .doc .docs #tf{
+    grid-area: 5 / 3 / span 6 / span 1;
+}
+
+/*......treatment.......................  */
+
+
+
+/* .......service.................. */
+.services .content{
+    margin-bottom: 2rem;
+}
+.services p {
+    margin:0rem;
+}
+.services .box{
+    height: 12rem;
+    width: 16%;
+    margin: 0rem;
+    margin-right: 8px;
+    border-radius: 0rem;
+}
+
+.box img {
+    width: 40%;
+    height: 40%;
+}
+/* .......service.end................. */
+
+
+
+/* ........help......................... */
+
+.helps{
+    display: flex;
+    align-items: center;
+    height: 7rem;
+}
+.help{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.helps .help p{
+    margin: 0rem;
+} 
+.second-button{
+    border-radius: 0.4rem;
+    padding: 0rem 3rem;
+    height: 5rem;
+}
+
+/* ........help..end....................... */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

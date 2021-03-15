@@ -1,0 +1,315 @@
+
+@import url(theme.css);
+
+@font-face{
+    font-family: 'nexa-light';
+    src: url('Nexa-Light.otf');
+}
+@font-face{
+    font-family: 'nexa-bold';
+    src: url('Nexa-Bold.otf');
+}
+/* ......................nav......................................................... */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    margin-top:0.5rem;
+    margin-bottom:0.5rem;
+}
+nav img {
+    height: 50%;
+    padding-left: 1.5rem;
+}
+nav i {
+    padding-right: 1.5rem;
+}
+
+/* .......................search.................................................................. */
+
+.search{
+    background-color: rgb(156, 174, 223);
+}
+
+input{
+    width: 18rem;
+    height: 2rem;
+}
+
+.search form i{
+    position: relative;
+    top: 1.7rem;
+    right:9.2rem;
+}
+
+.search form img{
+    position: relative;
+    top: 1.9rem;
+    left: 9.5rem;
+    width: 1rem;
+    }
+
+.search form button{
+    background-color:rgb(42, 11, 82);
+    padding: 0rem 0rem;
+    padding: 0.5rem 2rem;
+}
+
+.search form button{
+    color: rgba(255, 255, 255,0.7);
+
+}
+/* .......................working-steps 2.................................................................. */
+
+.working-steps button{
+    width: 20rem;
+    height: 3rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 0.5rem ;
+    border-color: rgba(0, 0, 0,0.2);
+    text-align: left;
+    color: rgba(0, 0, 0,0.3);
+}
+.working-steps img{
+    width: 75%;
+    padding-top: 1rem;
+}
+/* ......................section 3........................................................ */
+
+.doctor{
+    background-color:rgba(30, 30, 63, 0.952);
+}
+.doctor h1{
+    color: white;
+}
+.doctor p{
+    color:rgba(255, 255, 255,0.8);
+    padding-bottom: 1rem;
+}
+.doctor img{
+    width: 91%;
+}
+.doctor article{
+    width: 91%;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    text-align: left;
+    padding-bottom: 1rem;
+}
+.doctor article hr{
+    width: 2rem;
+    color: rgb(97, 187, 247);
+}
+.doctor article h3{
+    /* margin-left: 2rem; */
+    color: rgb(97, 187, 247);
+}
+.doctor article h4{
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    font-family: 'nexa-light';
+    line-height: 1.2rem;
+    letter-spacing: 0.05rem;
+
+}
+
+/* .....................section 4................................................................ */
+
+.container1{
+    /* margin: 0rem 1rem; */
+    width: 92%; 
+    height: 20rem;
+    margin-bottom: 1rem;
+background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--009.jpg');
+background-image: linear-gradient(
+rgba(0,0,0,0)50%,
+rgba(17, 10, 26,0.95)85%),
+url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--009.jpg');
+background-position: center center ;
+background-size: cover ;
+background-repeat: no-repeat;
+/* position: absolute; */
+}
+
+.container2{
+    /* margin: 0rem 1rem; */
+    width: 92%; 
+    height: 20rem;
+    margin-bottom: 1rem;
+background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--010.jpg');
+background-image: linear-gradient(
+rgba(0,0,0,0)50%,
+rgba(17, 10, 26,0.95)85%),
+url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--010.jpg');
+background-position: center center ;
+background-size: cover ;
+background-repeat: no-repeat;
+/* position: absolute; */
+}
+
+.container3{
+    /* margin: 0rem 1rem; */
+    width: 92%; 
+    height: 20rem;
+    margin-bottom: 1rem;
+background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--011.jpg');
+background-image: linear-gradient(
+rgba(0,0,0,0)50%,
+rgba(17, 10, 26,0.95)85%),
+url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--011.jpg');
+background-position: center center ;
+background-size: cover ;
+background-repeat: no-repeat;
+/* position: absolute; */
+}
+.container4{
+    /* margin: 0rem 1rem; */
+    width: 92%; 
+    height: 20rem;
+    margin-bottom: 1rem;
+background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--006.jpg');
+background-image: linear-gradient(
+rgba(0,0,0,0)50%,
+rgba(17, 10, 26,0.95)85%),
+url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--006.jpg');
+background-position: center center ;
+background-size: cover ;
+background-repeat: no-repeat;
+/* position: absolute; */
+}
+.container5{
+    /* margin: 0rem 1rem; */
+    width: 92%; 
+    height: 20rem;
+    margin-bottom: 1rem;
+background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--008.jpg');
+background-image: linear-gradient(
+rgba(0,0,0,0)50%,
+rgba(17, 10, 26,0.95)85%),
+url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--008.jpg');
+background-position: center center ;
+background-size: cover ;
+background-repeat: no-repeat;
+/* position: absolute; */
+}
+.container6{
+    /* margin: 0rem 1rem; */
+    width: 92%; 
+    height: 20rem;
+    /* margin-bottom: 1rem; */
+background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--007.jpg');
+background-image: linear-gradient(
+rgba(0,0,0,0)50%,
+rgba(17, 10, 26,0.95)85%),
+url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--007.jpg');
+background-position: center center ;
+background-size: cover ;
+background-repeat: no-repeat;
+/* position: absolute; */
+}
+.Treatment  .content {
+    color:white;
+    text-align:start ;
+    position: relative;
+    top: 17rem;
+    left: 1rem;
+}
+
+.Treatment  .content h5{
+font-size: 1.1rem;
+margin-bottom: 0.2rem;
+letter-spacing: 0.05rem;
+font-family: 'nexa-bold';
+}
+
+.Treatment  .content h4{
+    color:rgba(255, 255, 255,0.7);
+
+}
+/* ................services....section 5................................................................ */
+
+.services{
+    padding: 0.5rem 1rem;
+    padding-bottom: 1.5rem;
+    background-color: rgb(227, 230, 231);
+}
+.services p{
+    padding: 1rem 0rem;
+}
+.logo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr ;
+    grid-gap:0.5rem;
+    background-color: rgb(227, 230, 231);
+    width: 100%;
+}
+.logo .box{
+    display: flex;
+    flex-direction: column;
+    background-color:rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.logo .box img{
+    width: 55%;
+}
+.logo .box h3{
+    color: rgba(43, 7, 7,0.7);
+    font-size: 1rem;
+    margin-bottom: 1rem; 
+    padding-top: 0rem;
+}
+
+/* .................help....section 6................................................................ */
+.help{
+    background: rgb(108, 200, 236);
+    padding-bottom: 2rem;
+}   
+.help h1{
+    color: white;
+}   
+.help p{
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-top: 1rem;
+    color: rgba(0, 0, 0,0.9);
+}
+.help button{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.7rem;
+    border-radius: 0.5rem;
+    background-color: rgb(78, 108, 163);
+    color: rgba(255, 255, 255,0.5);
+    border-style: none ;
+}
+/* .....................footer................................................................ */
+footer{
+    background: rgb(23, 21, 34);
+}
+footer img{
+    width: 50%;
+    padding-top: 2rem;
+}
+footer h3{
+    color: rgba(204, 204, 204,0.5);
+    font-size: 15px;
+    font-family: 'nexa-light';
+    letter-spacing: 0.05rem;
+    padding: 0.6rem 0.5rem;
+}
+footer i{
+    padding: 1rem;
+    color: rgba(204, 204, 204,0.9);
+}
+footer h4{
+    color: rgba(204, 204, 204,0.9);
+    letter-spacing: 0.1rem;
+    /* font-family: 'Roboto Slab',serif; */
+    padding-bottom: 2rem;
+}
