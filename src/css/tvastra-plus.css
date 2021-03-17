@@ -1,3 +1,18 @@
+:root{
+  --button:rgb(50, 52, 170);
+  --plan-background:rgba(255, 255, 255, 1);
+  --sudo-line:rgba(0, 0, 0,0.1);
+  --price-p:rgb(50, 52, 170);
+  --popular:red;
+  --popular-font:white;
+  --ratebar:rgb(223, 223, 219);
+  --ratebar-value:rgb(50, 52, 170);
+  --user-plan:rgb(195, 213, 240);
+  --que-color:skyblue;
+}
+
+
+
 
 .plus{
   background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/task30-tvastra-plus/tvastraPlus_heroSection.webp");
@@ -12,7 +27,7 @@
 button{
   border-radius: 0.5rem;
   height: 2rem;
-  background-color: rgb(50, 52, 170);
+  background-color: var(--button);
   border: none;
 }
 h2{
@@ -24,7 +39,7 @@ h2{
     background-image: linear-gradient(rgba(59, 59, 243, 0.1)5% ,rgba(255, 255, 255)8%);
   }
 .info .buy-plans{
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--plan-background);
     margin-top: -9rem;
     text-align: center;
     padding: 0.5rem;
@@ -37,7 +52,7 @@ h2{
 .info .buy-plans h2::before{
     position: absolute;
     content: "";
-    border-bottom: 1px solid rgba(0, 0, 0,0.1) ;
+    border-bottom: 1px solid var(--sudo-line) ;
     width:93%;
     left: 0.5rem;
     top: 5.5rem;
@@ -70,7 +85,7 @@ margin-bottom: 1rem;
   .info .buy-plans .plan h3::before{
     position: absolute;
     content: "";
-    border-bottom: 1px solid rgba(0, 0, 0,0.1) ;
+    border-bottom: 1px solid var(--sudo-line) ;
     width: 100%;
     top: 2rem;
   }
@@ -84,18 +99,18 @@ margin-bottom: 1rem;
 }
 .info .buy-plans .plan .price p {
   margin-bottom: 1rem;
-  color: rgb(50, 52, 170);
+  color: var(--price-p);
 }
 .info .buy-plans .advanced{
   background-image: linear-gradient(rgba(59, 59, 243, 0.1)50% ,rgba(255, 255, 255)90%);
   /* margin-top: 1rem; */
 }
 .info .buy-plans .advanced .popular{
-  background-color: red;
+  background-color: var(--popular);
   padding: 0.2rem 0.5rem;
   border-radius: 1.1rem;
   font-size: 0.7rem;
-  color: white;
+  color: var(--popular-font);;
   margin-top: -0.6rem;
   font-family: nexa-light;
 }
@@ -130,12 +145,12 @@ margin-bottom: 1rem;
 }
 .info .rateing-box .star-box .by-number .num-box .ratebar{
   height: 1rem;
-  background-color: rgb(223, 223, 219);
+  background-color: var(--ratebar);
   width: 93%;
   border-radius: 0.5rem;
 }
 .info .rateing-box .star-box .by-number .num-box .ratebar .five,.four,.three,.two,.one{
-  background-color: rgb(50, 52, 170);
+  background-color: var(--ratebar-value);
   width: 70%;
   height: 100%;
   border-radius: 0.5rem;
@@ -286,7 +301,7 @@ margin-bottom: 1rem;
 }
 .info .why .why-heading h2{
   margin: 0rem;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 .info .why .why-box {
@@ -311,7 +326,7 @@ margin-bottom: 1rem;
 }
 .info .why .why-box .why-photo-box .why-content .user{
   padding: 0.5rem;
-  background-color: rgb(195, 213, 240);
+  background-color: var(--user-plan);
   border-radius: 0.3rem;
   margin-top: 0.3rem;
   font-size: 0.8rem;
@@ -333,7 +348,7 @@ input {
     display: none;
 }
 .questions-box .accordian-tab > label {
-    color: skyblue;
+    color: var(--que-color);
     display: block;
     font-size: 1.1rem;
     font-family: nexa-bold;
@@ -357,7 +372,7 @@ input {
 }
 .questions-box .accordian-tab > .accordian-toggle:checked ~ .accordian-content{
     max-height: 100vh;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     margin-top: 1rem;
 }
 
