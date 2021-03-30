@@ -1,500 +1,368 @@
-
-
-nav .nav-i{
-    display: none;
-}
-nav img{
-    width: 50%;
-}
-.desktop-nav {
-    grid-area: dn;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.desktop-nav  ul {
-    display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
-    margin-top: 0rem;
-}
-.desktop-nav  ul li{
-    margin-right: 2rem;
-}
-.desktop-nav-buttons{
-    grid-area: dnb;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 100%;
+:root {
+  --doctor-name: rgb(58, 188, 240);
+  --sudo-line: rgb(58, 188, 240);
+  --i: rgb(58, 188, 240);
+  --sort-by: rgb(241, 232, 232);
 }
 
-.desktop-nav-buttons .dnlogin{
-    font-size: 0.9rem;
-    height: 85%;
-    display: flex;
-    align-items: center;
-    padding: 0rem 1.4rem;
-    border: 1px solid ;
-    border-radius: 0.21rem; 
-    margin-right: 0.3rem;
-}
-.quote-button{
-    font-size: 0.8rem;
-    padding: 0rem 1.5rem;
-    background: var(--black);
-    color: var(--white);
-    border: 1px solid var(--black);
-    border-radius: 0.21rem;  
-    height: 92%;
-    font-size: 0.9rem;
+/* ..........delhi......... */
+#delhi {
+  display: none;
 }
 
-
-#delhi{
-    background-color: rgb(178, 225, 252);
-    /* background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png"); */
+/* ..........delhi.end.......... */
+/* .........sort.......... */
+.sort {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0rem 1rem;
 }
-    
-.delhi {
-    height: 8rem;
+
+.sort .sort-home {
+  font-family: 'nexa-light';
+}
+
+.sort select {
+  padding: 0.5rem 0.6rem;
+  font-size: 0.8rem;
+  background-color: var(--sort-by);
+  border: none;
+  font-weight: 600;
+  width: 5.5rem;
+}
+
+/* ........sort end........ */
+#main .main .filter {
+  display: none;
+}
+
+#main .main .doctor-boxs .doctor-box {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  padding: 1rem 0rem;
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-name::before {
+  position: absolute;
+  content: "";
+  width: 1.5rem;
+  border-top: 2px solid var(--sudo-line);
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-name h4 {
+  margin-left: 1.8rem;
+  color: var(--doctor-name);
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 1.1rem;
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul li .doctor-logo i {
+  margin: 0.5rem;
+  text-align: center;
+  color: var(--i);
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-button {
+  text-align: center;
+  margin: 0.5rem 0rem;
+}
+
+footer .footer-heading {
+  display: block;
+}
+
+footer .footer-sites-word {
+  display: block;
+}
+
+footer .footer-sites {
+  display: none;
+}
+
+footer .footer-reserve {
+  margin-top: 1rem;
+}
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................tablet...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+@media only screen and (min-width: 768px) {
+  #delhi {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(133, 178, 196, 0.9)), to(rgba(133, 178, 196, 0.9))), url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png");
+    background-image: linear-gradient(rgba(133, 178, 196, 0.9), rgba(133, 178, 196, 0.9)), url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 10rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     font-family: nexa-light;
     font-size: 1.4rem;
-}
-.delhi strong{
-    font-weight:900 ;
-}
-.sort{
+    background-color: #29bdeb;
+  }
+  #delhi strong {
+    font-weight: 900;
+  }
+  .sort {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
-    padding: 1.5rem 7rem;
-}
-.sort-home{
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 1.5rem 2rem;
+  }
+  .sort .sort-home {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     font-family: nexa-light;
-}
-.sort .sort-dropdown button{
-    background-color: rgb(217, 221, 223);
-    padding: 0.5rem 1rem;
-    border:1px solid white ;
-    display: flex;
-    font-size: 0.8rem;
-    color: black;
-}
-.sort .sort-dropdown button i{
-   margin-left: 1rem;
-}
-#main{
+    font-size: 1.2rem;
+  }
+  #main {
     padding-top: 0rem;
-}
-.main{
-    grid-template-columns: 1fr 3fr;
+  }
+  #main .main {
+    -ms-grid-columns: 1fr 3fr;
+        grid-template-columns: 1fr 3fr;
+    display: -ms-grid;
     display: grid;
-}
-.filter-bar {
+  }
+  #main .main .filter {
+    display: block;
+    margin-right: 1rem;
+  }
+  #main .main .filter .filter-bar {
     height: 2.5rem;
-    margin-right: 2rem;
-    background-color: rgb(217, 221, 223);
+    background-color: #d9dddf;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    padding-left: 1.5rem;
-}  
-
-.filter-buttons{
-    margin-right: 2rem;
-    margin-top: 1rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-left: 1rem;
+  }
+  #main .main .filter form .filter-buttons {
+    display: none;
+  }
+  #main .main .filter form .filter-search .filter-type {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    background-color: var(--white_dark);
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 1rem 0rem;
+  }
+  #main .main .filter form .filter-search .filter-type .heading {
+    font-family: 'nexa-light';
+    font-size: 1.4rem;
+  }
+  #main .main .filter form .filter-search .filter-type .logos {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    font-size: 0.7rem;
+  }
+  #main .main .filter form .filter-search .filter-type .logos .logo-search i {
+    color: #29bdeb;
+  }
+  #main .main .filter form .filter-search .filter-type .logos .logo-minus i {
+    color: rgba(0, 0, 0, 0.5);
+  }
+  #main .main .filter form .filter-search .filter-check-box {
+    margin-bottom: 1rem;
+  }
+  #main .main .filter form .filter-search .filter-check-box ul li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 0.2rem;
+  }
+  #main .main .filter form .filter-search .filter-check-box ul li input {
+    width: auto;
+    margin-right: 1rem;
+  }
+  #main .main .filter form .filter-search .filter-show-more {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  #main .main .filter form .filter-search .filter-show-more::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    top: 2rem;
+    left: 0rem;
+  }
+  #main .main .filter form .filter-search .filter-show-more a {
+    -webkit-text-decoration-line: none;
+            text-decoration-line: none;
+    font-family: nexa-light;
+    color: blue;
+  }
+  #main .main .doctor-boxs .doctor-box {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2fr 1fr;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: "doctor-content doctor-photo";
+    margin-bottom: 0.5rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-name {
+    grid-area: grid-name;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos {
+    grid-area: doctor-logos;
+    margin-left: 1.8rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul li {
+    margin-bottom: 0.2rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-button {
+    margin-bottom: 1rem;
+    margin-left: 2.3rem;
+    text-align: start;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-photo {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: doctor-photo;
+    background-color: #292424;
+  }
+  footer .footer-heading {
+    display: none;
+  }
+  footer .footer-sites-word {
+    display: none;
+  }
+  footer .footer-sites {
+    display: block;
+  }
 }
-.fil-button {
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................decstop...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+@media only screen and (min-width: 1024px) {
+  #delhi {
+    height: 12rem;
+    font-size: 2rem;
+  }
+  .sort {
+    padding: 1.5rem 7rem;
+  }
+  #main .main .filter {
+    margin-right: 2rem;
+  }
+  #main .main .filter form {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+  }
+  #main .main .filter form .filter-buttons {
+    display: block;
+    margin: 1rem 0rem;
+    margin-bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    border: 0.02rem solid black;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    background-color: var(--white_dark);
+  }
+  #main .main .filter form .filter-buttons .fil-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border: 0.02rem solid rgba(0, 0, 0, 0.2);
     margin: 0.1rem;
     padding: 0.5rem 0rem;
     padding-left: 0.5rem;
     border-radius: 1rem;
     font-size: 0.7rem;
     font-family: 'nexa-light';
-}
-.fil-button i{
-margin-left: 0.5rem;
-}
-.filter-search{
-    margin-right: 2rem;
-    margin-left: 1rem;
-}
-.filter-type{
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    padding-left: 0;
-}
-.filter-type .heading {
-    font-family: 'nexa-light';
-    font-size: 1rem;
-}
-
-.logos{
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.7rem;
-}
-.logo-search{
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-}
-.logo-minus{
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-.main .filter .filter-search .filter-check-box ul li input {
-    width: auto;
-    margin: 0rem;
-    margin-right: 1rem;
-}
-.filter .filter-check-box ul li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.2rem;
-    font-size: 0.8rem;
-}
-.main .filter .filter-search .filter-show-more a{
-    text-decoration-line: none;
-}
-hr{
-    margin-top: 1rem;
-}
-.doctor-box{
-    border: 1px solid;
-    display: grid;
-    grid-template-columns:  1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-areas: 
-    "grid-name grid-name doctor-photo"
-    "doctor-logos doctor-logos doctor-photo"
-    "doctor-logos doctor-logos doctor-photo"
-    "doctor-button doctor-button doctor-photo";
-    margin-bottom: 0.5rem;
-}
-
-.doctor-name{
-    grid-area: grid-name;
-}
-.doctor-name{
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin: 1rem 0rem;
-}
-.doctor-name h4{
-    padding-left: 2rem;
-    color: var(--sky_blue);
-}
-.doctor-name::before{
-    position: absolute;
-    content: "";
-    width: 1.5rem;
-    border-bottom: 2px solid var(--sky_blue);
-}
-
-.doctor-logos{
-    grid-area: doctor-logos;
-    
-}
-.doctor-box .doctor-logos ul{
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-.doctor-box .doctor-logos ul li{
-    display: flex;
-    align-items: center;
-    margin: 0rem;
-    margin-left: 2rem;
-    line-height: 1.1rem;
-}
-.doctor-box .doctor-logos ul li .doctor-logo i{
-    margin-right: 1rem;
-    color: var(--sky_blue);
-}
-.doctor-button{
-    grid-area: doctor-button;
-    display: flex;
-    align-items: center;
-}
-.doctor-button button{
-    margin-left: 2rem;
-    padding: 0.5rem 2rem;
-    font-size: 0.8rem;
-    /* background-color: rgb(5, 5, 59) */
-}
-p{
-    margin: 0rem;
-}
-.doctor-button button p{
-    color: var(--white_dark);
-}
-.doctor-photo{
-    grid-area: doctor-photo;
-    background-color: rgb(41, 36, 36);
-    height: 18rem;
-}
-
-
-
-
-
-nav .nav-i {
-    display: block;
-}
-.desktop-nav{
-    display: none;
-}
-.desktop-nav-buttons{
-    display: none;
-}
-
-p{
-text-align: start;
-}
-
-.sort .sort-dropdown button i {
-margin-left: 0.2rem;
-}
-.filter {
-    display: none;
-}
-#delhi{
-    display: none;
-}
-
-.sort{
-padding: 1rem;
-}
-.main{
-display: flex;
-padding: 0rem;
-}
-.doctor-box{
-display: flex;
-flex-direction: column;
-}
-.doctor-boxs .doctor-box .doctor-name h2 {
-margin: 1rem 0rem;
-color: blue;
-}
-.doctor-box .doctor-logos ul{
-display: flex;
-flex-direction: column;
-}
-.doctor-box .doctor-logos ul li{
-margin-left: 0rem;
-margin-bottom: 0.5rem;
-}
-ul li .doctor-logo {
-margin-left: 0.5rem;
-color: blue;
-text-align: center;
-}
-.doctor-button {
-justify-content: center;
-
-}
-.doctor-button button{
-margin-left: 0rem;
-margin-bottom: 0.5rem;
-padding: 0.5rem 1rem;
-}
-.doctor-photo{
-height: 22rem;
-}
-
-
-/* ............................................................ */
-/* ............................................................ */
-/* .....................tablet....................................... */
-/* ............................................................ */
-/* ............................................................ */
-/* ............................................................ */
-
-@media only screen and ( min-width:768px){
-
-    nav .nav-i {
-        display: block;
-    }
-    .desktop-nav{
-        display: none;
-    }
-    .desktop-nav-buttons{
-        display: none;
-    }
-
-  .search .searchbox form{
-    flex-direction: row;
-    }
-    .search .location{
-        width: 60%;
-        margin-bottom: 0rem;
-    }
-    .primary-button{
-        margin-top: 0rem;
-    }
-
-p{
-    text-align: start;
-    line-height: 1rem;
-}
-
-
-.main .filter .filter-buttons{
-            display: none;
-}
-.delhi , .sort , .main{
-     padding: 1.5rem 2rem;
-}
-.delhi u{
-    font-family: nexa-light;
-}
-.sort{
-    padding: 1.5rem 2rem;
-}
-.sort .sort-dropdown button {
-    padding: 0.7rem;
-    border:1px solid white ;
-}
-.main{
-    padding: 0rem ;
-}
-.filter-bar {
-    height: 2.5rem;
-    margin-right: 1rem;
-}
-.filter-search {
-    margin: 1rem;
-}
-.filter-type {
-    padding-right: 0rem;
-}
-.logo-search {
-    margin-right: 0.2rem;
-}
-.logo-minus {
-    margin-right: 0rem;
-}
-.filter .filter-check-box ul li {
-    display:flex;
-    align-items: center;
-    margin-bottom: 0.2rem;
-}
-.filter-show-more{
-    margin-top: 1rem;
-}
-
-.doctor-boxs .doctor-box .doctor-name h2 {
-    margin: 0rem 0rem;
-    color: blue;
-}
-
-
-
-
-
-
-
-}
-
-
-    
-/* ............................................................ */
-/* ............................................................ */
-/* .........................mobile................................... */
-/* ............................................................ */
-/* ............................................................ */
-/* ............................................................ */
-
-
-@media only screen and (max-width:767px){
-
-
-    nav .nav-i {
-        display: block;
-    }
-    .desktop-nav{
-        display: none;
-    }
-    .desktop-nav-buttons{
-        display: none;
-    }
-
-p{
-    text-align: start;
-}
-
-.sort .sort-dropdown button i {
-    margin-left: 0.2rem;
-}
-.filter {
-        display: none;
-    }
-#delhi{
-        display: none;
-    }
-    
-.sort{
-    padding: 1rem;
-}
-.main{
-    display: flex;
-    padding: 0rem;
-}
-.doctor-box{
-    display: flex;
-    flex-direction: column;
-}
-.doctor-boxs .doctor-box .doctor-name h2 {
-    margin: 1rem 0rem;
-    color: blue;
-}
-.doctor-box .doctor-logos ul{
-    display: flex;
-    flex-direction: column;
-}
-.doctor-box .doctor-logos ul li{
-    margin-left: 0rem;
-    margin-bottom: 0.5rem;
-}
-ul li .doctor-logo {
+  }
+  #main .main .filter form .filter-buttons .fil-button i {
     margin-left: 0.5rem;
-    color: blue;
-    text-align: center;
-}
-.doctor-button {
-    justify-content: center;
-
-}
-.doctor-button button{
-    margin-left: 0rem;
-    margin-bottom: 0.5rem;
+  }
+  #main .main .filter form .filter-search {
+    margin-left: 1rem;
+  }
+  #main .main .filter form .filter-search .filter-type .logos .logo-minus i {
+    margin-left: 1rem;
+  }
+  #main .main .doctor-boxs .doctor-box {
+    -ms-grid-columns: 3fr 1fr;
+        grid-template-columns: 3fr 1fr;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-name::before {
+    width: 2rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-name h4 {
+    margin-left: 2.5rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul {
+    grid-column-gap: 3rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-button {
+    margin-top: 3rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-button button {
     padding: 0.5rem 1rem;
+  }
 }
-.doctor-photo{
-    height: 22rem;
-}
-
-
-
-
-
-
-
-}
-    
-
-
+/*# sourceMappingURL=doctor.css.map */

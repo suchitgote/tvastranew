@@ -6,44 +6,47 @@
     <title>tvastra project</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="css/new-theme.css">
-    <link rel="stylesheet" href="css/new2-index.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
 <!--........nav .............-->
-    <nav class="nav">
+<nav class="nav">
         <div class="nav-img" >
-            <img  src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" alt="tvastra logo">
+            <a href="index.html"> 
+                <img  src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" alt="tvastra logo"> 
+            </a>
         </div>
+
         <div class="nav-i">
-            <i class="fa fa-bars fa-1x"  ></i>
+            <i class="fa fa-bars fa-1x"></i>
         </div>
+        
         <div class="desktop-nav">
         <ul>               
-            <li> <a href="#">  Doctor   </a></li>
-            <li> <a href="#">  Hospital  </a> </li>
-            <li> <a href="#">  Treatment  </a> </li>
+            <li> <a href="doctor.html">  Doctor   </a></li>
+            <li> <a href="hospital.html">  Hospital  </a> </li>
+            <li> <a href="dentistry.html">  Treatment  </a> </li>
             <li> <a href="#">  Other services  </a> </li>
-            <li> <a href="#">  About  </a> </li>
+            <li> <a href="about-us.html">  About  </a> </li>
         </ul>
         </div>
         <div class="desktop-nav-buttons">
                 <div class="dnlogin"> 
-                    <a href="#">  Login  </a>
+                    <a href="login.html">  Login  </a>
                     / 
-                    <a href="#">  Sign Up </a> 
+                    <a href="signup.html">  Sign Up </a> 
                 </div>
                 <button class="quote-button"> get a quote   </button>
         </div>
-    </nav> 
+</nav> 
 <!--.........nav end..........-->
 
 <!--.........main..........-->
 <main >
 
-<!--........search.....section 1...........-->
-  
+<!--........search.....1...........-->
 <section class="search">
     <div class="searchbox">
         <h1>Find Affordable Healthcare </h1>
@@ -61,9 +64,9 @@
         </form>
     </div>
 </section>
+<!--........search..end...1...........-->
 
-<!--.........working-steps.......section 2.....-->
-   
+<!--.........working-steps.......2.....-->
 <section class="working-steps" >
     <div class="step">
         <h1>How it works</h1>
@@ -72,11 +75,13 @@
             <ul class="work-ul">
                 <li> <h3><span>01 </span> Fix Consultation</h3>    </li>           
                 <div class="w-img"> 
+                    <div class="wcontent">  
                         <div class="img">
                             <img  src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/img1.png" alt="tvastra logo">
                         </div>              
                         <h3>Fix Consultation</h3>
                         <p> this depicts that use rwill have to fix appointment first when it selects a particular doctor. </p>                      
+                    </div>
                 </div>    
                 <li> <h3><span>02 </span> Upload Medical Report</h3>  </li>
                 <li> <h3><span>03 </span> Consult With Doctor</h3>  </li>
@@ -88,14 +93,13 @@
         
     </div>
 </section>
+<!--.........working-steps.end.....2.....-->
 
-<!--.........doctor....section 3....-->
-   
+<!--.........doctor....3....-->
 <section class="doctor">
         <h1>world class expert doctor!</h1>
         <p>The university of texas southastern medical center has been a long world-renowned research hospital. But untill the '80s, you couldn't go there.now with the addition of aston center and zale Lipsy Hospital. UT southastern is also a mecca for partients. </p> 
             
-
         <div class="mySlides">
 
             <div class="doctor-box">  
@@ -164,18 +168,151 @@
             </div>
 
         </div>
+        <div class="mySlides fade">
 
+            <div class="doctor-box">  
+                <div class="doctor-image">
+                    <img class="img" src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--004.jpg" alt="doc1">
+                </div> 
+                <div class="doctor-name">  
+                        <div class="sudo">
+                            <h3>Duke Sanson</h3>
+                            <ul>
+                               <li> Neuro sergeon </li>
+                               <li> chain department of neurological surgery</li>
+                               <li>  australia</li>        
+                            </ul>  
+                        </div>          
+                </div>
+            </div>
+
+            <div class="doctor-box">  
+                <div class="doctor-image">                
+                    <img class="img" src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg" alt="doc1">
+                </div> 
+                <div class="doctor-name"> 
+                    <div class="sudo">
+                        <h3>Georgea Peter</h3>
+                        <ul>
+                            <li> Breast cancer Surgeon </li>
+                            <li> Director .UT. Southwest  </li>
+                            <li> London </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-box">         
+                <div class="doctor-image">
+                    <img class="img" src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--003.jpg" alt="doc1">
+                </div>  
+                <div class="doctor-name">
+                    <div class="sudo">
+                        <h3>CHarlie Moon</h3>
+                         <ul>
+                            <li> Cardiac Surgeon  </li>
+                            <li> MBBS,MD. FRCP. MRCP. Fellowship </li>
+                            <li> New Delhi. india</li>
+                        </ul>
+                    </div>
+                </div>
+                    
+            </div>  
+
+            <div class="doctor-box">          
+                <div class="doctor-image">
+                    <img class="img" src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--005.jpg" alt="doc1">
+                </div>
+                <div class="doctor-name">
+                    <div class="sudo">
+                        <h3>Rose Moon </h3>
+                         <ul>
+                            <li> Cardiac Surgeon  </li>
+                            <li> MBBS,MD. FRCP. MRCP. Fellowship </li>
+                            <li> New Delhi. india</li>
+                        </ul>
+                    </div>
+                </div>    
+            </div>
+
+        </div>
+        <div class="mySlides fade">
+
+            <div class="doctor-box">  
+                <div class="doctor-image">
+                    <img class="img" src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg" alt="doc1">
+                </div> 
+                <div class="doctor-name">  
+                        <div class="sudo">
+                            <h3>Duke Sanson</h3>
+                            <ul>
+                               <li> Neuro sergeon </li>
+                               <li> chain department of neurological surgery</li>
+                               <li>  australia</li>        
+                            </ul>  
+                        </div>          
+                </div>
+            </div>
+
+            <div class="doctor-box">  
+                <div class="doctor-image">                
+                    <img class="img" src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg" alt="doc1">
+                </div> 
+                <div class="doctor-name"> 
+                    <div class="sudo">
+                        <h3>Georgea Peter</h3>
+                        <ul>
+                            <li> Breast cancer Surgeon </li>
+                            <li> Director .UT. Southwest  </li>
+                            <li> London </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-box">         
+                <div class="doctor-image">
+                    <img class="img" src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--005.jpg" alt="doc1">
+                </div>  
+                <div class="doctor-name">
+                    <div class="sudo">
+                        <h3>CHarlie Moon</h3>
+                         <ul>
+                            <li> Cardiac Surgeon  </li>
+                            <li> MBBS,MD. FRCP. MRCP. Fellowship </li>
+                            <li> New Delhi. india</li>
+                        </ul>
+                    </div>
+                </div>
+                    
+            </div>  
+
+            <div class="doctor-box">          
+                <div class="doctor-image">
+                    <img class="img" src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--003.jpg" alt="doc1">
+                </div>
+                <div class="doctor-name">
+                    <div class="sudo">
+                        <h3>Rose Moon </h3>
+                         <ul>
+                            <li> Cardiac Surgeon  </li>
+                            <li> MBBS,MD. FRCP. MRCP. Fellowship </li>
+                            <li> New Delhi. india</li>
+                        </ul>
+                    </div>
+                </div>    
+            </div>
+
+        </div>
         <div class="dots">
             <span class="dot" onclick="currentSlide(1)"></span> 
             <span class="dot" onclick="currentSlide(2)"></span> 
             <span class="dot" onclick="currentSlide(3)"></span> 
-            <span class="dot" onclick="currentSlide(4)"></span> 
         </div>
+</section>
+<!--.........doctor.end...section 3....-->
 
-   </section>
-
-   <!--.........Treatment....section 4....-->
-
+<!--.........Treatment....4....-->
 <section class="Treatment">
 
     <div class="demo-hp">
@@ -185,11 +322,10 @@
 
     <div class="doc">
             <div class="docs">
-
                 <div class="doc-c" id="ta">
                     <div class="grid-box">
                         <div class="linear-g"></div>
-                            <img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--009.jpg" alt="">
+                        <img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--009.jpg" alt="">
                         <div class="name">
                             <h5>Dentistry</h5>
                             50+ Specialists     
@@ -255,14 +391,14 @@
     
     </div>
 </section>
-<!--............services....section 5.-->
+<!--.........Treatment.ned...4....-->
 
-  <section class="services"> 
+<!--............services....5.-->
+<section class="services"> 
 
         <div class="content">
             <h1>Exclusive services</h1>
-            <p>we whan to be comfortable  and thus apsrd from things you illness loren45 and thus apsrd from things you illness loren45 and thus apsrd from things you illness loren45 and thus apsrd from things you illness loren45 and thus apsrd from things you illness loren45
-             we provide you with other servisec that you can see </p>
+            <p>we whan to be comfortable  and thus apsrd from things you illness loren45 and thus apsrd from things you illness </p>
         </div>
     
         <div class="box">
@@ -296,19 +432,19 @@
         </div>
   
 </section>
+<!--............services..end..5.-->
 
 <!--.......help.............-->
 <section class="helps">
     <div class="help">
-        <div>
+        <div class="content">
             <h1>Need Help?</h1>
             <p>Just let us know. We will happy to assist you</P>
         </div>
-        <button class="second-button"> Submit your enquiry </button>
+        <a href="submit-your-query.html"> <button class="second-button"> Submit your enquiry </button> </a>
     </div>
 </section>
 <!--.......help..end...........-->
-
 
 
 </main >
@@ -361,37 +497,34 @@
 </footer>
 <!--.........footer end.....-->
 
+
 <!--
-
-    <script>
-    var slideIndex = 1;
-    showSlides(slideIndex);
-
-    function currentSlide(n) {
-    showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    
-    
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-    }
-
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-
-    }
-    </script>
 -->
-    
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i <script dots.length; i++) {
+      dots[i].className = dots[i].className.replace("active","");
+  }
+  
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+             
 
 </body>
 </html>

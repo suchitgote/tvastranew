@@ -1,0 +1,377 @@
+
+:root {
+    --doctor-name: rgb(58, 188, 240);
+    --sudo-line: rgb(58, 188, 240);
+    --i: rgb(58, 188, 240);
+    --sort-by: rgb(241, 232, 232);
+}
+$fil-button-border:rgba(0,0,0,.2);
+$doctor-box-border:rgba(0,0,0,.2);
+$show-more:blue;
+
+
+
+/* ..........delhi......... */
+#delhi{ display: none; }
+/* ..........delhi.end.......... */
+
+/* .........sort.......... */
+.sort{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+    .sort-home{
+        font-family: 'nexa-light';
+    }
+    select{
+        padding: 0.5rem 0.6rem;
+        font-size: 0.8rem;
+        background-color: var(--sort-by);
+        border: none;
+        font-weight: 600;
+        width: 5.5rem;
+    }
+}
+/* ........sort end........ */
+
+// ...........main................................
+#main{
+    .main{
+        .filter{
+            display: none;
+        }
+        .doctor-boxs{
+            .doctor-box{
+                border: 1px solid $doctor-box-border;
+                margin-bottom:0.5rem;
+                .doctor-content{
+                    .doctor-name{
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+                        padding: 1rem 0rem;
+                        &::before{
+                            position: absolute;
+                            content: "";
+                            width: 1.5rem;
+                            border-top: 2px solid var(--sudo-line);
+                        }
+                        h4{
+                            margin-left: 1.8rem;
+                            color: var(--doctor-name);
+                        }
+                    }
+                    .doctor-logos{
+                        ul{
+                            li{
+                                display: flex;
+                                align-items: center;
+                                line-height: 1.1rem;
+                                .doctor-logo{
+                                    i{
+                                        margin: 0.5rem;
+                                        text-align: center;
+                                        color: var(--i);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .doctor-button{
+                        text-align: center;
+                        margin: 0.5rem 0rem;
+                    }
+                }
+            }
+        }
+    }
+}
+// ...........main..end..............................
+
+// ...............footer..............
+footer{
+    .footer-heading{
+        display: block;
+    }
+    .footer-sites-word{
+        display: block;
+    }
+    .footer-sites{
+        display: none;
+    }
+    .footer-reserve{
+        margin-top: 1rem;
+    }
+}
+
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................tablet...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+
+
+@media only screen and ( min-width:768px) {
+    
+//........delhi.................................... 
+#delhi {
+    background-image: linear-gradient(rgba(133,178,196,0.9) ,rgba(133,178,196,0.9)),url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    font-family: nexa-light;
+    font-size: 1.4rem;
+    background-color: rgb(41, 189, 235);
+    strong{
+        font-weight:900 ;
+    }
+}
+// .......delhi...end..................................
+
+// .........sort...................................
+.sort{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    .sort-home{
+        display: flex;
+        align-items: center;
+        font-family: nexa-light;
+        font-size: 1.2rem;
+    }
+}
+// ..........sort end..................................
+
+
+// ...........main................................
+#main{
+    padding-top: 0rem;
+    .main{
+        grid-template-columns: 1fr 3fr;
+        display: grid;
+        .filter{
+            display: block;
+            margin-right: 1rem;
+            .filter-bar{
+                height: 2.5rem;
+                background-color: rgb(217, 221, 223);
+                display: flex;
+                align-items: center;
+                padding-left: 1rem;
+            }
+            form{            
+                .filter-buttons{
+                    display: none;
+                }
+                .filter-search{
+                    .filter-type{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 1rem 0rem;
+                        .heading{
+                            font-family: 'nexa-light';
+                            font-size: 1.4rem;
+                        }
+                        .logos{
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 0.7rem;
+                            .logo-search{
+                                i{
+                                    color: rgb(41, 189, 235);
+                                }
+                            }
+                            .logo-minus{
+                                i{
+                                    color: rgba(0, 0, 0,0.5);
+                                }
+                            }
+                        }
+                    }
+                    .filter-check-box{
+                        margin-bottom: 1rem;
+                        ul{
+                            li{
+                                display: flex;
+                                align-items: center;
+                                margin-bottom: 0.2rem;
+                                // font-size: 0.8rem;
+                                input{
+                                    width: auto;
+                                    margin-right: 1rem;
+                                }
+                            }
+                        }
+                    }
+                    .filter-show-more{
+                        position: relative;
+                        margin-bottom: 2rem;
+                        &::after{
+                            position: absolute;
+                            content: "";
+                            width: 100%;
+                            border-bottom: 2px solid rgba(0, 0, 0,0.2);
+                            top:  2rem;
+                            left: 0rem;
+                        }
+                        a{
+                            text-decoration-line: none;
+                            font-family: nexa-light;
+                            color: $show-more;
+                        }
+                    }
+                }
+            }
+        }
+        .doctor-boxs{
+            .doctor-box{
+                border: 1px solid $doctor-box-border;
+                display: grid;
+                grid-template-columns:  2fr 1fr;
+                grid-template-areas: 
+                "doctor-content doctor-photo" ;
+                margin-bottom: 0.5rem;
+                .doctor-content{
+                    .doctor-name{
+                        grid-area: grid-name;
+                    }
+                    .doctor-logos{
+                        grid-area: doctor-logos;
+                        margin-left: 1.8rem;
+                        // height: 8.5rem;
+                        ul{
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            li{
+                                margin-bottom: 0.2rem;
+                            }
+                        }
+                    }
+                    .doctor-button{
+                        margin-bottom: 1rem;
+                        margin-left: 2.3rem;
+                        text-align: start;
+                    }
+                }
+                .doctor-photo{
+                    grid-area: doctor-photo;
+                    background-color: rgb(41, 36, 36);
+                }
+            }
+        }
+    }
+}
+
+// ...............footer..............
+footer{
+    .footer-heading{
+        display: none;
+    }
+    .footer-sites-word{
+        display: none;
+    }
+    .footer-sites{
+        display: block;
+    }
+}
+
+}
+
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................decstop...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+
+@media only screen and ( min-width:1024px){
+
+#delhi{
+    height: 12rem;
+    font-size: 2rem;
+}
+// ...........sort.........................................
+ .sort {
+       padding: 1.5rem 7rem;
+}
+// ..........sort end........................................
+
+// ...........main................................
+#main{
+    .main{
+        .filter{
+            margin-right: 2rem;
+            form{
+                align-items: start;
+                .filter-buttons{
+                    display: block;
+                    margin: 1rem 0rem;
+                    margin-bottom: 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    background-color: var(--white_dark);
+                    .fil-button{
+                        display: flex;
+                        border: 0.02rem solid $fil-button-border;
+                        margin: 0.1rem;
+                        padding: 0.5rem 0rem;
+                        padding-left: 0.5rem;
+                        border-radius: 1rem;
+                        font-size: 0.7rem;
+                        font-family: 'nexa-light';
+                        i{
+                            margin-left: 0.5rem;
+                        }
+                    }
+                }
+                .filter-search{
+                    margin-left: 1rem;
+                    .filter-type{
+                        .logos{
+                            .logo-minus{
+                                i{
+                                    margin-left: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .doctor-boxs{
+            .doctor-box{
+                grid-template-columns:  3fr 1fr;
+                .doctor-content{
+                    .doctor-name{
+                        &::before {
+                            width: 2rem;
+                        }
+                        h4{
+                            margin-left: 2.5rem;
+                        }
+                    }
+                    .doctor-logos{
+                        ul{
+                            grid-column-gap: 3rem;
+                        }
+                    }
+                    .doctor-button{
+                        margin-top: 3rem;
+                        button{
+                            padding: 0.5rem 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// ............main end........................................
+
+}
