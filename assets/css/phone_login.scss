@@ -1,0 +1,22 @@
+
+@import "login.scss"; 
+
+$login:rgb(81, 81, 175);
+
+.main{
+    .login-box{
+        .form{
+            form{
+                .forgot{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 1rem 0rem;
+                    h5{
+                        color: $login;
+                    }
+                }
+            }
+        }
+    }
+}

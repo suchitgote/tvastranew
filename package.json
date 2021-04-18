@@ -11,5 +11,18 @@
     "url": "git@workspace.konfinity.com:html-css-demo/tvastra.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@vonage/server-sdk": "^2.10.7",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3",
+    "morgan": "^1.10.0",
+    "nexmo": "^2.7.0-beta-1",
+    "nexmo-client": "^7.1.0",
+    "nodemon": "^2.0.7"
+  }
 }

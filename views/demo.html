@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+
+    <style>
+    *{
+        margin:0;
+        padding:0;
+
+    }
+    .doctor{
+        width: 900px;
+        height: 400px;
+        background: red; 
+          overflow: hidden;
+    }
+    #ms{
+        width: 900px;
+        display:flex;
+        transform: translateX(0);
+    }
+    #slider {
+        width: 300px;
+        height: 300px;
+        background: blue;
+        border:1px solid;
+    }
+    .slide-in { animation: slide-in 01s forwards; }     
+    @keyframes slide-in { 
+        100% { transform: translateX(-300px); }
+    }
+    .slide-2 { animation: slide-2 01s forwards; }     
+    @keyframes slide-2 { 
+        100% { transform: translateX(-600px); }
+    }
+
+ 
+    </style>
+</head>
+<body>
+
+<div class="doctor" >  
+<div id="ms">
+    <div id="slider" class="s1">
+        slider1
+    </div>
+    <div id="slider" class="s2" >
+        slider2
+    </div>
+    <div id="slider" class="s2" >
+        slider3
+    </div>
+</div>
+
+</div>
+<button id="toggle" >Toggle</button>
+<button id="toggle2" >Toggle</button>
+
+
+<script>
+    var $ms = document.getElementById('ms');
+    var $toggle = document.getElementById('toggle');
+    var $toggle2 = document.getElementById('toggle2');
+
+
+    $toggle.addEventListener('click', function() {
+        $ms.setAttribute('class', 'slide-in');
+    });
+    $toggle2.addEventListener('click', function() {
+        $ms.setAttribute('class', 'slide-2');
+
+    });
+
+
+</script>
+</body>
+</html>

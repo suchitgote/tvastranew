@@ -1,0 +1,8 @@
+@import "login.scss";
+$text:rgba(0, 0, 0,.2);
+
+textarea{
+    border:1px solid $text;
+    height: 10rem;
+    margin-bottom: 0.5rem;
+}

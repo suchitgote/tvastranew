@@ -1,0 +1,68 @@
+@import "doctors_profile.scss";
+$i:rgb(22, 125, 221);
+
+.all-about-doc{
+    .text-info{
+        .name-info{
+            .address{
+                ul{
+                    li{
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        margin-bottom: 0.5rem;
+                        i{
+                            padding-right: 0.5rem;
+                            color: $i;
+                            font-size: 01rem;
+                        }
+                        p{
+                            margin-bottom: 0;
+                            text-align: start;
+                        }
+                    }
+                }
+            }
+            p{
+                text-align: start;
+            }
+        }
+        .accordian{
+            .accordian-tab{
+                label{
+                    border-bottom: none;     
+               }
+            }
+        }
+    }
+    .photo-and-butn{
+        .photoone{
+            height: 12rem;
+        }
+    }
+}
+
+
+
+
+@media only screen and ( min-width:768px) {
+   
+
+
+    .all-about-doc{
+        .text-info{
+            .name-info{
+                .address{
+                    ul{
+                        display: flex;
+                        li{
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+}

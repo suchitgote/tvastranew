@@ -1,0 +1,51 @@
+@import "login.scss"; 
+
+
+// ........main.................................
+.main{
+    .login-box{
+        .form{
+            form{
+                select{
+                    margin-bottom: 0.5rem;
+                }
+                input[type="date"]{
+                    color: rgba(0, 0, 0,0.6);
+                    padding-right: 0;
+                }
+                .password_box{
+                     position: relative;
+                     width: -webkit-fill-available;
+                     i{
+                        color: $eye;
+                         position: absolute;
+                         right: 0.5rem;
+                         top: 0.5rem;
+                     }
+                }               
+                .city-button{
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    input{
+                        width: 50%;
+                    }
+                    .b{
+                        margin-right: 0.5rem;
+                    }
+                }
+                .isdoctor{
+                    display: flex;
+                    input{
+                        width: 1rem;
+                        margin-bottom: 0.5rem;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+
+    

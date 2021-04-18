@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+
+<!-- include nav-->
+<%- include('include/_nav') %>
+<!-- /include nav -->
+
+
+<div class="main">
+
+    <div class="login-box">
+
+        <div class="login">
+            <h2>demo_postdata</h2>
+        </div>
+
+        <div class="form">
+            <form action="/api/users" method="POST">
+                <input type="text" class="a"  placeholder="Enter Name" name="name">
+                <input type="email" class="a"  placeholder="Enter Email" name="email">
+
+                <div class="isdoctor">    
+                    <input type="checkbox" id="doctor" name="doctor" value="doctor">
+                    <span> <label for="doctor">is Doctor</label> </span> 
+                </div>
+
+                <button> SIGN UP <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+            </form>
+        </div>
+    
+        <div class="signup">
+             Not Registerd? <a href="login"> Login</a> 
+        </div>
+   
+    </div>
+
+    <div class="reserved">
+        <h6> All right reserved Tvastra 2020 </h6>
+    </div>
+
+</div>
+
+</body>
+</html>                                            

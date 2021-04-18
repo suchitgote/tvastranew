@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/signup.css">
+
+    <title>signup</title>
+</head>
+<body>
+
+
+<!-- include nav-->
+<%- include('include/_nav') %>
+<!-- /include nav -->
+
+
+<div class="main">
+
+    <div class="login-box">
+
+        <div class="login">
+            <h2>sign up</h2>
+        </div>
+
+        <div class="form">
+            <form action="/api/show_user" method="POST">
+                <input type="text" class="a" name="name" placeholder="Enter Name">
+                <input type="text" class="a"  name="email" placeholder="Enter Email">
+
+                <div class="password_box">
+                    <input type="password" class="a" id="myInput" placeholder="Enter Password"  name="password">
+                    <i class="fa fa-eye-slash" id="password_eye" aria-hidden="true" onclick="myFunction()" ></i> 
+                </div>
+                
+                <select id="gender" name="gender">
+                    <option value="volvo">select your gender</option>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                    <option value="other">other</option>
+                </select>
+
+                <input type="date" class="a"  placeholder=""  name="data">
+                <input type="tel" class="a"  placeholder="Enter phone number"  name="number">
+
+                <div class="city-button">
+                    <input type="text" class="a b"  placeholder="Enter city"  name="city">         
+                    <input type="text" class="a"  placeholder="Enter state"  name="state">
+                </div>
+
+                <select id="country" name="country">
+                    <option value="volvo">select your country</option>
+                    <option value="india">india</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+
+                <div class="isdoctor">    
+                    <input type="checkbox" id="doctor" name="doctor" value="doctor">
+                    <span> <label for="doctor">is Doctor</label> </span> 
+                </div>
+
+                <button> SIGN UP <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+            </form>
+        </div>
+    
+        <div class="signup">
+             Not Registerd? <a href="login"> Login</a> 
+        </div>
+   
+    </div>
+
+    <div class="reserved">
+        <h6> All right reserved Tvastra 2020 </h6>
+    </div>
+
+</div>
+
+    
+<script>
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      var password_eye = document.getElementById("password_eye");
+
+      if (x.type === "password") {
+        x.type = "text";
+        password_eye.style.color = "rgb(81, 81, 175)"
+      } else {
+        x.type = "password";
+        password_eye.style.color = "rgba(0,0,0,0.2)"
+      }
+    }    
+</script>
+
+</body>
+</html>
