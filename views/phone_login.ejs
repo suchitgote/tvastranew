@@ -31,14 +31,14 @@
         </div>
 
         <div class="form">
-            <form action="">
-                <input type="text" class="a"  placeholder="Enter phone number">
+            <form action="/api/phone_login" method="POST">
+                <input type="text" class="a"  placeholder="Enter phone number" name="number">
                 <div class="forgot">
-                    <a href="otp">
+                    <a href="/email_login">
                         <h5>Login with password</h5>  
                     </a>
                 </div>
-                <button> LOGIN <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+                <button type="submit"> LOGIN <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
             </form>
         </div>
     

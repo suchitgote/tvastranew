@@ -1,5 +1,5 @@
 @import "signup.scss"; 
-
+$red:red;
 .nav{
     .desktop-nav-buttons{
         .dnlogin{
@@ -7,6 +7,46 @@
         }
     }
 }
+
+.alert {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    top: 6rem;
+    z-index: 1;
+    align-items: center;
+    border-left: 0.2rem solid $red;
+    i{
+        font-size: 1.5rem;
+        color: $red;
+    }
+    .alert_content{
+        margin-left: 1rem;
+        h4{
+            color: $red;
+        }
+        p{
+            color: $red;
+            margin-bottom: 0;
+        }
+    }
+    .closebtn {
+      margin-left: 15px;
+      font-weight: bold;
+      float: right;
+      color: $red;
+      font-size: 2rem;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    &:hover {
+      color: black;
+    }
+  }
+  
 
 .main{
     .login-box{
@@ -18,6 +58,15 @@
                     justify-content: space-between;
                     align-items: center;
                     margin: 1rem 0rem;
+                    #forgot_password{
+                        padding: 0;
+                        width: auto;
+                        border: none;
+                        background: white;
+                        font-size: 1rem;
+                        font-weight: bold;
+                        color: var(--heading);
+                    }
                     h5{
                         color: var(--heading);
                     }

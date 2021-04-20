@@ -3,6 +3,9 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyparser = require("body-parser");
 const path = require('path');
+const session = require('express-session');
+const flush = require('connect-flash');
+
 
 const app = express();
 const port = 3000 ;
@@ -23,7 +26,13 @@ app.set("view engine", "ejs")
 
 // load css files
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
-
+app.use(session({
+    secret: 'secret',
+    cookie : { maxAge : 60000},
+    resave: false ,
+    saveUninitialized: false
+}));
+app.use(flush());
 // load routers
 app.use('/', require('./server/routes/router'))
 

@@ -1,8 +1,13 @@
 const axios = require('axios');
 
-
+var is_login = true ;
 exports.index = (req, res) => {
-        res.render('index');
+    if(is_login == false){
+        console.log("login first")
+        res.render('email_login')
+    }else{
+        res.render('index',{ password_correct : req.flash('password_correct') });
+    }
 }
 exports.doctor = (req, res) => {
     res.render('doctor');
@@ -13,6 +18,7 @@ exports.hospital = (req, res) => {
 exports.treatment = (req, res) => {
     res.render('treatment');
 }
+
 exports.about_hospital = (req, res) => {
     res.render('about_hospital');
 }
@@ -32,7 +38,7 @@ exports.doctor_profile = (req, res) => {
     res.render('doctor_profile');
 }
 exports.email_login = (req, res) => {
-    res.render('email_login');
+    res.render('email_login',{ messages : req.flash('password_wrong') } );
 }
 exports.faq = (req, res) => {
     res.render('faq');

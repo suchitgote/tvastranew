@@ -5,7 +5,8 @@ const services = require('../services/render');
 const controller = require('../controller/controller');
 
 
-  route.get('/', services.index);
+  route.get('/', services.email_login);
+  route.get('/index', services.index )
   route.get('/doctor',  services.doctor)
   route.get('/hospital',  services.hospital)
   route.get('/treatment', services.treatment )
@@ -17,7 +18,6 @@ const controller = require('../controller/controller');
   route.get('/create_password', services.create_password )
   route.get('/doctor_profile', services.doctor_profile )
 
-  route.get('/email_login', services.email_login )
   route.get('/faq', services.faq )
   route.get('/login', services.login )
   route.get('/signup', services.signup )
@@ -31,19 +31,20 @@ const controller = require('../controller/controller');
   route.get('/demo_postdata', services.demo_postdata )
 
   route.get('/show_user', services.show_user )
-  //delete_user  
 
-
-  
-// API
-route.post('/api/users', controller.create);
-route.get('/api/users', controller.find);
-
-route.post('/api/show_user', controller.create_user);
+// API .......................................................................
+route.post('/api/create_user', controller.create_user);
 route.get('/api/show_user', controller.show_user);
 
 route.post('/api/email_login', controller.email_login);
+route.post('/api/forgot_password', controller.forgot_password);
 
-///api/email_login
+route.post('/api/otp_send', controller.otp_send);
+route.post('/api/create_password', controller.create_password);
+
+route.post('/api/phone_login', controller.phone_login);
+
+///api/otp_send   /api/create_password  /api/phone_login
+ 
   
 module.exports = route ;

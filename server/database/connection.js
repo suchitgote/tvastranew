@@ -1,7 +1,7 @@
+// const uri = "mongodb+srv://Tvastra:sgoc.2030@cluster0.w2dnb.mongodb.net/Tvastra?retryWrites=true&w=majority";
 
 const mongoose = require('mongoose');
-
-const url = "mongodb+srv://admin:admin123@cluster0.rztbg.mongodb.net/userdb?retryWrites=true&w=majority"
+ const url = "mongodb+srv://admin:admin123@cluster0.rztbg.mongodb.net/userdb?retryWrites=true&w=majority"
 const connectDB = async () => {
     try{
         // mongodb connection string

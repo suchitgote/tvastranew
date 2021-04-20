@@ -19,7 +19,16 @@
 <%- include('include/_nav') %>
 <!-- /include nav -->
 
-
+<% if(messages.length > 0){ %>
+    <div class="alert">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+        <div class="alert_content">
+            <h4>failuar</h4>
+           <p> <strong> <%= messages %> </strong> </p>
+        </div>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    </div>
+<% } %>
 
 <div class="main">
 
@@ -30,20 +39,22 @@
         </div>
 
         <div class="form">
-            <form action="/api/email_login" method="POST">
-                <input type="text" class="a"  placeholder="Enter Email Address" name="email" >
+            <form action="/api/email_login" method="POST" id="email_login_form">
+
+                <input type="text" class="a"  placeholder="Enter Email Address" name="email" required>
+                
                 <div class="password_box">
                     <input type="password" class="a" id="myInput" placeholder="Enter Password" name="password">
                     <i class="fa fa-eye-slash" id="password_eye" aria-hidden="true" onclick="myFunction()" ></i> 
                 </div>
+
                 <div class="forgot">
-                    <a href="otp">
+                    <a href="/phone_login"  id="login_with_otp">
                         <h5>Login with OTP</h5>  
                     </a>
-                    <a href="otp">
-                        <h5>Forgot Password</h5>   
-                    </a>
+                    <input type="submit" value=" Forgot Password " formaction="/api/forgot_password" id="forgot_password" >                  
                 </div>
+
                 <button> LOGIN <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
             </form>
         </div>
@@ -62,19 +73,20 @@
     
     
 <script>
-    function myFunction() {
-      var x = document.getElementById("myInput");
-      var password_eye = document.getElementById("password_eye");
 
-      if (x.type === "password") {
-        x.type = "text";
+ function myFunction() {
+     var x = document.getElementById("myInput");
+     var password_eye = document.getElementById("password_eye");
+     
+     if (x.type === "password") {
+         x.type = "text";
         password_eye.style.color = "rgb(81, 81, 175)"
       } else {
-        x.type = "password";
-        password_eye.style.color = "rgba(0,0,0,0.2)"
-      }
+          x.type = "password";
+          password_eye.style.color = "rgba(0,0,0,0.2)"
+        }
     }    
+    
 </script>
-
 </body>
 </html>
