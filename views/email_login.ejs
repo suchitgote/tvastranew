@@ -15,20 +15,31 @@
 </head>
 <body>
 
-<!-- include nav-->
-<%- include('include/_nav') %>
-<!-- /include nav -->
-
-<% if(messages.length > 0){ %>
-    <div class="alert">
-        <i class="fa fa-check-circle" aria-hidden="true"></i>
-        <div class="alert_content">
-            <h4>failuar</h4>
-           <p> <strong> <%= messages %> </strong> </p>
-        </div>
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-    </div>
-<% } %>
+    <!-- /include nav -->
+    <%- include('include/_nav') %>
+    <!-- include nav-->
+        
+         <% if(data.err) { %>
+            <div class="alert">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <div class="alert_content">
+                    <h4>failuar</h4>
+                    <p> <strong> <%= data.err %> </strong> </p>
+                </div>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            </div>
+        <% } %>
+            
+        <% if(data.succ) { %>
+            <div class="alert">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <div class="alert_content">
+                    <h4>failuar</h4>
+                    <p> <strong> = messages </strong> </p>
+                </div>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            </div>
+        <% } %>
 
 <div class="main">
 
@@ -39,7 +50,7 @@
         </div>
 
         <div class="form">
-            <form action="/api/email_login" method="POST" id="email_login_form">
+            <form action="/emaillogin" method="POST" id="email_login_form">
 
                 <input type="text" class="a"  placeholder="Enter Email Address" name="email" required>
                 
