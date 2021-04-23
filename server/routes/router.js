@@ -4,8 +4,10 @@ const router = express.Router()
 const loginController = require("../controller/loginController")
 const mainController = require("../controller/mainController")
 
-router.route("/").get(loginController.checkMainLogin );
 
+
+
+router.route("/").get(loginController.checkMainLogin );
 
 router.route("/emaillogin").get(loginController.checkpreLogin,mainController.emaillogin);
 router.route("/emaillogin").post(loginController.emaillogin);
@@ -16,13 +18,29 @@ router.route("/hospital").get(loginController.checkLogin)//,mainController.hospi
 
 router.route("/about_us").get(loginController.checkLogin)//,mainController.hospital);
 
-
 router.route("/home").get(loginController.checkLogin,mainController.home);
 
 router.route("/signup").get(mainController.signup);
 router.route("/signup").post(loginController.signup);
 
 router.route("/show_user").get(mainController.show_user);
+
+router.route("/logout").get(loginController.logout);
+
+router.route("/forgot_password").post(loginController.forgot_password);
+
+router.route("/otp/:token").post( loginController.otp_create );
+
+router.route("/otp/:token/:code").get( loginController.otp_verifi );
+
+router.route("/otp").get(mainController.otp);
+router.route("/otp_send").post(loginController.otp_send);
+
+router.route("/create_password").get(mainController.create_password);
+router.route("/create_password").post(loginController.create_password);
+
+router.route("/phone_login").get(mainController.phone_login);
+router.route("/phone_login").post(loginController.phone_login);
 
 
 

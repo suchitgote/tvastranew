@@ -15,17 +15,18 @@
 <!-- include nav-->
 <%- include('include/_nav') %>
 <!-- /include nav -->
-<!--
 
+<% if(data.succ){ %>
     <div class="alert">
         <i class="fa fa-check-circle" aria-hidden="true"></i>
         <div class="alert_content">
-            <h4>success</h4>
-            <p> <strong>  </strong> </p>
+            <h4><%= data.succ.head %></h4>
+            <p> <strong> <%= data.succ.body %> </strong> </p>
         </div>
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
     </div>
--->
+<% } %>
+
 
 
 <!--.........main..........-->
@@ -716,7 +717,7 @@ for (var j = 0; j < w_h3.length; j++) {
 
 }
 
-
+//......................................................
 
 
 

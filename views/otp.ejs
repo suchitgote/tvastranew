@@ -20,6 +20,17 @@
 <%- include('include/_nav') %>
 <!-- /include nav -->
 
+<% if(data.err) { %>
+  <div class="alert">
+      <i class="fa fa-check-circle" aria-hidden="true"></i>
+      <div class="alert_content">
+          <h4>failuar</h4>
+          <p> <strong> <%= data.err %> </strong> </p>
+      </div>
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  </div>
+<% } %>
+  
 
 
 <div class="main">
@@ -32,12 +43,12 @@
 
         <div class="form">
             <p> we have sent one time password (OTP) to your registered Phone Number</p>
-            <form action="/api/otp_send" method="POST">
+            <form action="otp_send" method="POST">
               <div class="codebox">
-                <input name="input1" id="codeBox1" type="number" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)"/>
-                <input name="input2" id="codeBox2" type="number" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)"/>
-                <input name="input3" id="codeBox3" type="number" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)"/>
-                <input name="input4" id="codeBox4" type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)"/>             
+                <input name="input1" id="codeBox1" type="number" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)" required/>
+                <input name="input2" id="codeBox2" type="number" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)" required/>
+                <input name="input3" id="codeBox3" type="number" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)" required/>
+                <input name="input4" id="codeBox4" type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)" required/>             
 
               </div>
               <a href=""><h5>resend  <span id="timeleft"></span></h5></a>  

@@ -2,6 +2,7 @@
 
 var models = require('../model/model');
 const axios = require('axios');
+const { reset } = require('nodemon');
 
 
 
@@ -14,7 +15,6 @@ const emaillogin = (req, res) => {
         succ_message = req.session.succ_message;
         delete req.session.succ_message;
         res.render("email_login", data = { succ: succ_message, user: false });
-
     } else {
         res.render("email_login", data = { user: false })
     }
@@ -41,8 +41,7 @@ const show_user = (req, res) => {
     } else {
         models.user_schema.find()
             .then(user => {
-              
-                res.render("show_user",{users :user })
+                res.render("show_user",data= {users :user })
             })
             .catch(err => {
                 res.status(500).send({ message: err.message || "Error Occurred while retriving user information" })
@@ -50,8 +49,7 @@ const show_user = (req, res) => {
     }
 
 }
-
-
+ 
 const home = (req,res)=>{
     if(req.session.message && req.session.userid.count==0){
         req.session.userid.count = 1;
@@ -61,12 +59,41 @@ const home = (req,res)=>{
         res.render("index",data = {succ: null,user:req.session.userid.user});
 }
 
+const otp = (req, res) => {
+    if(req.session.otp_err){
+        var otp_error = req.session.otp_err ;
+        delete req.session.otp_err ;
+        res.render("otp" ,data = {err : otp_error ,user :false});
+    }else{
+        res.render("otp" ,data = {err : false , user :false });
+    }
+}
+
+const create_password = (req, res) => {
+    if( req.session.password_error ){
+        res.render('create_password' ,data = { err: req.session.password_error ,user: false });
+    }
+    res.render('create_password' ,data = { err : false , user: false});
+}
+
+
+const phone_login = (req,res)=>{
+    if(req.session.phone_err){
+        res.render("phone_login", data = { err:req.session.phone_err , user : false})
+    }
+    res.render("phone_login" ,data = { err:false , user : false})
+
+}
+
 
 module.exports = {
     emaillogin: emaillogin,
     signup: signup,
     show_user: show_user,
-    home:home
+    home:home,
+    otp: otp,
+    create_password:create_password,
+    phone_login:phone_login
 }
 
 
@@ -160,6 +187,7 @@ module.exports = {
 //         res.status(500).send({ message : err.message || "Error Occurred while retriving user information" }) 
 //     })
 // }
+
 // // forgot_password.....................................................
 // exports.forgot_password = (req, res)=>{
 //     models.user_schema.find({"email":req.body.email})
@@ -184,6 +212,7 @@ module.exports = {
 //         res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
 //     })
 // }
+
 // // otp_send.............................................................
 // exports.otp_send =(req, res)=> {
 
@@ -204,6 +233,8 @@ module.exports = {
 //         res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
 //     })
 // }
+
+
 // // create_password......................................................
 // exports.create_password = (req,res)=>{
 //     var password = req.body.password ;
@@ -222,6 +253,7 @@ module.exports = {
 //             res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
 //         })
 // }
+
 // // phone_login.............................................................
 // exports.phone_login = (req,res)=>{
 //     var phone_number = req.body.number ;
@@ -238,8 +270,5 @@ module.exports = {
 //     .catch(err =>{
 //         res.send(err);
 //     })
-
-
-
 // }
 

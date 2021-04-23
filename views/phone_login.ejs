@@ -20,6 +20,16 @@
 <%- include('include/_nav') %>
 <!-- /include nav -->
 
+<% if(data.err) { %>
+    <div class="alert">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+        <div class="alert_content">
+            <h4>failuar</h4>
+            <p> <strong> <%= data.err %> </strong> </p>
+        </div>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    </div>
+  <% } %>
 
 
 <div class="main">
@@ -31,8 +41,8 @@
         </div>
 
         <div class="form">
-            <form action="/api/phone_login" method="POST">
-                <input type="text" class="a"  placeholder="Enter phone number" name="number">
+            <form action="/phone_login" method="POST">
+                <input type="text" class="a"  placeholder="Enter phone number" name="number" required>
                 <div class="forgot">
                     <a href="/email_login">
                         <h5>Login with password</h5>  
