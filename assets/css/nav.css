@@ -10,6 +10,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: white;
 }
 
 .nav .nav-img {
@@ -159,7 +160,13 @@
   }
   .nav .desktop-nav-buttons .dropdown .dropbtn {
     cursor: pointer;
-    padding: 0.5rem 1rem;
+    padding: 2rem 0.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .nav .desktop-nav-buttons .dropdown .dropbtn h5 {
+    margin-right: 0.5rem;
   }
   .nav .desktop-nav-buttons .dropdown .dropdown-content {
     display: none;
@@ -168,17 +175,31 @@
     -webkit-box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, 0.2);
             box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    margin-top: -0.2rem;
-    margin-left: -3rem;
+    margin-left: -7rem;
     background-color: white;
   }
   .nav .desktop-nav-buttons .dropdown .dropdown-content a {
     display: block;
     padding: 12px 16px;
+    font-family: nexa-bold;
+    text-decoration: none;
   }
   .nav .desktop-nav-buttons .dropdown .dropdown-content a:hover {
     background-color: #ddd;
     border-left: 0.2rem solid blue;
+  }
+  .nav .desktop-nav-buttons .dropdown .dropdown-content .profile_info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .nav .desktop-nav-buttons .dropdown .dropdown-content .profile_info .photo {
+    width: 3rem;
+    height: 3rem;
+  }
+  .nav .desktop-nav-buttons .dropdown .dropdown-content .profile_info .name_number p {
+    margin-bottom: 0rem;
+    margin-top: 0.5rem;
   }
   .nav .desktop-nav-buttons .dropdown:hover .dropdown-content {
     display: block;

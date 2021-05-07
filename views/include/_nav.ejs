@@ -48,14 +48,24 @@
             <button class="quote-button"> get a quote   </button>
 
             <div  class="dropdown user_name">           
-                <div class="dropbtn">  <%= data.user.name %>  
+                <div class="dropbtn"> 
+                    <h5> <%= data.user.name %>  </h5>
                     <i class="fa fa-caret-down"></i>  
                 </div>
                 <div class="dropdown-content">
+                    <a href="/profile" class="profile_info">
+                        <div class="photo">
+                            <img src="./uploads/<%= data.user.file %>" alt="">
+                        </div>
+                        <div class="name_number">
+                            <h5><%= data.user.name %></h5>
+                            <p><%= data.user.number %></p>
+                        </div>
+                    </a>
+                    <a href="">my appointmenr</a>
+                    <a href="">my lab test</a>
+                    <a href="">my clinic order</a>
                     <a href="logout">logout</a>
-                    <a href="#">carcer</a>
-                    <a href="#">Multi organ transplant</a>
-                    <a href="create_password">create_password</a>
                 </div>       
             </div>
     </div>

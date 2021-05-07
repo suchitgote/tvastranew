@@ -186,10 +186,10 @@
 }
 
 .alert .closebtn {
+  color: red;
   margin-left: 15px;
   font-weight: bold;
   float: right;
-  color: red;
   font-size: 2rem;
   line-height: 20px;
   cursor: pointer;
@@ -199,6 +199,26 @@
 
 .alert:hover {
   color: black;
+}
+
+#succ {
+  border-left: 0.2rem solid blue;
+}
+
+#succ i {
+  color: blue;
+}
+
+#succ .alert_content h4 {
+  color: blue;
+}
+
+#succ .alert_content p {
+  color: blue;
+}
+
+#succ .closebtn {
+  color: blue;
 }
 
 input[type=number] {

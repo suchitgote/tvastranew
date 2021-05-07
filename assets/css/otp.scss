@@ -2,6 +2,7 @@
 $border-hidden:white;
 $timer:rgb(81, 81, 175);
 $red:red;
+$blue: blue ;
 
 .nav{
     .desktop-nav-buttons{
@@ -39,10 +40,10 @@ $red:red;
         }
     }
     .closebtn {
+        color: $red;
       margin-left: 15px;
       font-weight: bold;
       float: right;
-      color: $red;
       font-size: 2rem;
       line-height: 20px;
       cursor: pointer;
@@ -53,6 +54,24 @@ $red:red;
     }
 }
   
+#succ{
+    border-left: 0.2rem solid $blue;
+    i{
+        color: $blue;
+    }
+    .alert_content{
+        h4{
+            color: $blue;
+        }
+        p{
+            color: $blue;
+        }
+    }
+    .closebtn {
+        color: $blue;
+    }
+}
+
 input[type=number] {
     height: 45px;
     width: 45px;
@@ -78,3 +97,5 @@ h5{
 p{
     text-align: center;
 }
+
+

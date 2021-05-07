@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//scheme for demo table....
 var schema = new mongoose.Schema({
     name : {
         type : String,
@@ -38,7 +39,8 @@ var user_schema = new mongoose.Schema({
     },
     number :{
         type: String,
-        required:true
+        required:true,
+        unique: true
     },
     city :{
         type: String,
@@ -52,18 +54,55 @@ var user_schema = new mongoose.Schema({
         type: String,
         required:true
     },
-    doctor:String
-    
+    doctor:String,
+    timezon :{
+        type: String
+    },
+    house_no :{
+        type: String
+    },
+    colony :{
+        type: String
+    },
+    file :{
+        type: String
+    }
 })
+
+//scheme for medical_records table....
+var medical_records = new mongoose.Schema({
+    file :[],    
+    title :{
+        type: String,
+        required:true
+    },    
+    name :{
+        type: String,
+        required:true
+    },
+    date :{
+        type: String,
+        required:true
+    },
+    number :{
+        type: String,
+        required:true
+    },      
+    record_type :{
+        type: String,
+        required:true
+    }
+});
 
 const Userdb = mongoose.model('userdbcol', schema);
 
-const user_schema_table = mongoose.model('users',user_schema) 
+const user_schema_table = mongoose.model('users',user_schema) ;
 
-
+const medical_record = mongoose.model('medical_record',medical_records) ;
 
 
 module.exports = {
     Userdb : Userdb,
-    user_schema :user_schema_table
+    user_schema :user_schema_table,
+    medical_record :medical_record
 }

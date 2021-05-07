@@ -1,5 +1,6 @@
 @import "signup.scss"; 
 $red:red;
+$green :green;
 .nav{
     .desktop-nav-buttons{
         .dnlogin{
@@ -48,8 +49,22 @@ $red:red;
     &:hover {
       color: black;
     }
-  }
+}
   
+#succ{
+    border-left: 0.2rem solid $green;
+    i{
+        color: $green;
+    }
+    .alert_content{
+        h4{
+            color: $green;
+        }
+        p{
+            color: $green;
+        }
+    }
+}
 
 .main{
     .login-box{

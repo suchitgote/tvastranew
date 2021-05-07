@@ -21,17 +21,27 @@
 <!-- /include nav -->
 
 <% if(data.err) { %>
-  <div class="alert">
-      <i class="fa fa-check-circle" aria-hidden="true"></i>
+  <div class="alert" id="err">
+    <i class="fa fa-times-circle" aria-hidden="true"></i>
+
       <div class="alert_content">
-          <h4>failuar</h4>
+          <h4>Failuar</h4>
           <p> <strong> <%= data.err %> </strong> </p>
       </div>
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
   </div>
 <% } %>
   
-
+<% if(data.succ) { %>
+  <div class="alert" id="succ" >
+      <i class="fa fa-check-circle" aria-hidden="true"></i>
+      <div class="alert_content">
+          <h4>Info</h4>
+          <p> <strong> <%= data.succ %> </strong> </p>
+      </div>
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  </div>
+<% } %>
 
 <div class="main">
 
@@ -51,7 +61,7 @@
                 <input name="input4" id="codeBox4" type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)" required/>             
 
               </div>
-              <a href=""><h5>resend  <span id="timeleft"></span></h5></a>  
+              <a href="/resend_otp"><h5>resend  <span id="timeleft"></span></h5></a>  
               <button type="submit"> SUBMIT <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
             </form>
         </div>
@@ -95,13 +105,34 @@
       }
 
 
-      var timeleft = 30;
+
+      var timeleft = 5;
       var downloadTimer = setInterval(function(){
         if(timeleft <= 0){
           clearInterval(downloadTimer);
+          document.getElementById("timeleft").style.display = "none";
         }
         document.getElementById("timeleft").innerHTML = `${timeleft}`;
         timeleft -= 1;
+
+      }, 1000);
+
+      var timer = 3;
+      var downloadTimer = setInterval(function(){
+        if(timer <= 0){
+          clearInterval(downloadTimer);
+          document.getElementById("succ").style.display = "none";
+        }
+        timer -= 1;
+      }, 1000);
+
+      var timerr = 3;
+      var downloadTimer = setInterval(function(){
+        if(timerr <= 0){
+          clearInterval(downloadTimer);
+          document.getElementById("err").style.display = "none";
+        }
+        timerr -= 1;
       }, 1000);
 
   </script>

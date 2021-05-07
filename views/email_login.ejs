@@ -18,10 +18,10 @@
     <!-- /include nav -->
     <%- include('include/_nav') %>
     <!-- include nav-->
-        
+         
          <% if(data.err) { %>
-            <div class="alert">
-                <i class="fa fa-check-circle" aria-hidden="true"></i>
+            <div class="alert" id="err">
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
                 <div class="alert_content">
                     <h4>failuar</h4>
                     <p> <strong> <%= data.err %> </strong> </p>
@@ -31,11 +31,11 @@
         <% } %>
             
         <% if(data.succ) { %>
-            <div class="alert">
+            <div class="alert" id="succ">
                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                 <div class="alert_content">
-                    <h4>failuar</h4>
-                    <p> <strong> = messages </strong> </p>
+                    <h4>success</h4>
+                    <p> <strong> <%= data.succ %> </strong> </p>
                 </div>
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
             </div>
@@ -55,7 +55,10 @@
                 <input type="text" class="a"  placeholder="Enter Email Address" name="email" required>
                 
                 <div class="password_box">
-                    <input type="password" class="a" id="myInput" placeholder="Enter Password" name="password">
+                    <input type="password" class="a" id="myInput" placeholder="Enter Password" name="password" >
+                     <!--
+                         pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" >
+                     --> 
                     <i class="fa fa-eye-slash" id="password_eye" aria-hidden="true" onclick="myFunction()" ></i> 
                 </div>
 
@@ -98,6 +101,24 @@
         }
     }    
     
+    var timer = 3;
+    var downloadTimer = setInterval(function(){
+      if(timer <= 0){
+        clearInterval(downloadTimer);
+        document.getElementById("succ").style.display = "none";
+      }
+      timer -= 1;
+    }, 1000);
+
+    var timerr = 3;
+    var downloadTimer = setInterval(function(){
+      if(timerr <= 0){
+        clearInterval(downloadTimer);
+        document.getElementById("err").style.display = "none";
+      }
+      timerr -= 1;
+    }, 1000);
+
 </script>
 </body>
 </html>

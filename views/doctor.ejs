@@ -158,7 +158,6 @@
         </div>
         <div class="doctor-boxs">
             <div class="doctor-box">
-
                 <div class="doctor-content">  
 
                     <div class="doctor-name">
@@ -191,15 +190,70 @@
                     </div>
 
                     <div class="doctor-button"> 
-                        <a href="book_appointment"> <button> book an apointment </button> </a>
+                        <a href="#"> <button onclick="myFunction()"> book an apointment </button> </a>
                     </div>
 
                 </div>
-
                 <div class="doctor-photo">
                     <a href="doctor_profile">
                         <img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg" alt=""> 
                     </a>
+                </div>
+
+                <div id="doc_name_box3">
+                    <div class="arrow-button"> 
+                        <div class="arrow"  onclick="plusSlides(-1)" >  <i class="fa fa-chevron-left" aria-hidden="true"></i> </div>
+                        <div class="arrow"  onclick="plusSlides(1)" > <i class="fa fa-chevron-right" aria-hidden="true"></i> </div>
+                    </div> 
+
+                    <div class="elements" >
+                        <div class="slots" onclick="myfunctiontwo()">
+                            <h4>Today</h4> 
+                            <p>5 Slots Available</p>
+                        </div>
+                        <div class="slots">
+                            <h4>Tommorow</h4>
+                            <p>16 Slots Available</p>
+                        </div>
+                        <div class="slots">
+                            <h4>Wed Apr 28 2021</h4>
+                            <p>17 Slots Available</p>
+                        </div>                
+                        <div class="slots">
+                            <h4>Thu Apr 29 2021</h4>
+                            <p>18 Slots Available</p>
+                        </div>
+                        <div class="slots">
+                            <h4>Fri Apr 30 2021</h4>
+                            <p>0 Slots Available</p>
+                        </div>
+                        <div class="slots">
+                            <h4>Sat May 01 2021</h4>
+                            <p>17 Slots Available</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id = "booking-time-group">
+                        <div id="booking-time">
+                            <div class="daytime">Morning:</div>
+                            <ul>
+                                <li onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">10:00 AM</li>                             
+                            </ul>
+                        </div>
+                        <div id="booking-time">
+                            <div class="daytime">Afternoon:</div>
+                            <ul>  
+                                <li onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">10:00 AM</li>
+                            </ul>
+                        </div>
+                        <div id="booking-time">
+                            <div class="daytime">Evening:</div>
+                            <ul>
+                                <li onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">10:00 AM</li>
+                            </ul>
+                        </div>
+                        <div class="booking-hospital-name">Apollo Hospital</div>
                 </div>
 
             </div>
@@ -307,6 +361,64 @@
 <%- include('include/_footer') %>
 <!-- /include _footer -->
 
+
+<script>
+
+    console.log("...................screen.width= ",screen.width)
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("slots");
+          var dots = document.getElementsByClassName("arrow");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";  
+          }
+          if(screen.width<760){
+              slides[slideIndex-1].style.display = "flex";  
+          }else if(screen.width<1023){
+            slides[slideIndex-1].style.display = "flex";  
+            slides[slideIndex].style.display = "flex";  
+          }else{
+            slides[slideIndex-1].style.display = "flex";  
+            slides[slideIndex].style.display = "flex";  
+            slides[slideIndex+1].style.display = "flex";  
+
+          }
+        }
+
+</script>
+
+
+<script>
+        function myFunction() {
+        var x = document.getElementById("doc_name_box3");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+       function myfunctiontwo(){
+        var y = document.getElementById("booking-time-group");
+        if (y.style.display == "none") {
+            y.style.display = "flex";
+        } else {
+            y.style.display = "none";
+        }
+    }
+</script>
 
 
 

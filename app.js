@@ -3,8 +3,9 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyparser = require("body-parser");
 const path = require('path');
+const multer = require('multer');
+
 const session = require('express-session');
-const flush = require('connect-flash');
 
 
 const app = express();
@@ -25,6 +26,7 @@ app.use(bodyparser.urlencoded({ extended : true}))
 app.set("view engine", "ejs")
 
 // load css files
+app.use(express.static("assets"));
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
 
 app.use(session({
@@ -32,14 +34,12 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false,
 	cookie: {
-		maxAge: 1000 * 60 *60,
-		sameSite: true,
+		maxAge: 1000 * 60 * 60 * 60 ,
+		sameSite: true ,
 		secure: false
 	}
 }));
 
-// app.use(flush());
-// // load routers
 app.use('/', require('./server/routes/router'))
 
 app.listen(port, () => {

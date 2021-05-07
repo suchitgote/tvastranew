@@ -64,8 +64,12 @@ const otp = (req, res) => {
         var otp_error = req.session.otp_err ;
         delete req.session.otp_err ;
         res.render("otp" ,data = {err : otp_error ,user :false});
-    }else{
-        res.render("otp" ,data = {err : false , user :false });
+    } else if (req.session.otp_succ){
+        var otp_succ = req.session.otp_succ ;
+        delete req.session.otp_succ ;
+        res.render("otp" ,data = {succ : otp_succ ,user :false});
+    } else {
+        res.render("otp" ,data = {succ : false , user :false });
     }
 }
 
@@ -76,15 +80,49 @@ const create_password = (req, res) => {
     res.render('create_password' ,data = { err : false , user: false});
 }
 
-
 const phone_login = (req,res)=>{
     if(req.session.phone_err){
-        res.render("phone_login", data = { err:req.session.phone_err , user : false})
+        var phone_error = req.session.phone_err ;
+        delete req.session.phone_err ;
+        res.render("phone_login", data = { err: phone_error , user : false})
     }
     res.render("phone_login" ,data = { err:false , user : false})
 
 }
 
+const doctor = (req,res)=>{
+    res.render("doctor", data = { user: false });
+}
+
+const hospital = (req,res)=>{
+    res.render("hospital", data = { user: false });
+}
+
+const about_us = (req,res)=>{
+    res.render("about_us", data = { user: false });
+}
+
+const profile = (req,res)=>{
+    var record = req.session.record ;
+    delete req.session.record ;
+    // console.log("..............................................record = req.session.record .",record)
+    
+    if(req.session.update_profile){
+        console.log("...........................,req.session.update_profile...",req.session.update_profile)
+        var update_profile = req.session.update_profile;
+        if(update_profile ==  req.session.update_profile){
+            delete req.session.update_profile ;
+            
+            res.render("profile", data = { user: req.session.update_data ,succ : update_profile , record: record});
+        }
+    }else{
+        if(req.session.update_data){
+            res.render("profile", data = { user: req.session.update_data , record: record });
+        }else{
+            res. render("profile", data = { user: req.session.userid.user , record: record});
+        }
+    }
+}
 
 module.exports = {
     emaillogin: emaillogin,
@@ -93,7 +131,11 @@ module.exports = {
     home:home,
     otp: otp,
     create_password:create_password,
-    phone_login:phone_login
+    phone_login:phone_login,
+    doctor:doctor,
+    hospital:hospital,
+    about_us:about_us,
+    profile:profile
 }
 
 

@@ -4,21 +4,36 @@ const router = express.Router()
 const loginController = require("../controller/loginController")
 const mainController = require("../controller/mainController")
 
+const path = require('path');
+const multer = require('multer');
 
 
+// multer fo single file
+var storage = multer.diskStorage({
+    destination: "./assets/uploads/",
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+  });
 
+var upload = multer({ storage:storage })
+
+// multer fo mul file
+
+  
 router.route("/").get(loginController.checkMainLogin );
 
 router.route("/emaillogin").get(loginController.checkpreLogin,mainController.emaillogin);
 router.route("/emaillogin").post(loginController.emaillogin);
 
-router.route("/doctor").get(loginController.checkLogin)//,mainController.doctor);
+router.route("/doctor").get(loginController.checkLogin,mainController.doctor);
 
-router.route("/hospital").get(loginController.checkLogin)//,mainController.hospital);
+router.route("/hospital").get(loginController.checkLogin,mainController.hospital);
 
-router.route("/about_us").get(loginController.checkLogin)//,mainController.hospital);
+router.route("/about_us").get(loginController.checkLogin,mainController.about_us);
 
 router.route("/home").get(loginController.checkLogin,mainController.home);
+
 
 router.route("/signup").get(mainController.signup);
 router.route("/signup").post(loginController.signup);
@@ -37,17 +52,21 @@ router.route("/otp").get(mainController.otp);
 router.route("/otp_send").post(loginController.otp_send);
 
 router.route("/create_password").get(mainController.create_password);
-router.route("/create_password").post(loginController.create_password);
+router.route("/create_password").post(loginController.create_password); 
 
 router.route("/phone_login").get(mainController.phone_login);
 router.route("/phone_login").post(loginController.phone_login);
 
+router.route("/resend_otp").get(loginController.resend_otp);
 
+router.route("/profile").get(loginController.profile,mainController.profile);
+router.route("/update_profile").post(upload.single('file'),loginController.update_profile);
+router.route("/medical_record").post(upload.array('record_photos',5),loginController.medical_record);
+
+router.route("/delete_record").post(loginController.delete_record);
 
 
 module.exports = router ;
-
-
 
 
 
