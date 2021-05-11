@@ -112,7 +112,6 @@ body {
 }
 
 .profile .dashbord_content1 {
-  display: none;
   background-color: white;
   padding: 1rem;
   border-radius: 0.2rem;
@@ -251,7 +250,15 @@ body {
           justify-content: space-between;
 }
 
-.profile .dashbord_content2 .appointment .date_time .date {
+.profile .dashbord_content2 .appointment .date_time form {
+  height: 100%;
+}
+
+.profile .dashbord_content2 .appointment .date_time form input {
+  display: none;
+}
+
+.profile .dashbord_content2 .appointment .date_time form .date {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -263,6 +270,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background: white;
+  height: 100%;
 }
 
 .profile .dashbord_content2 .appointment .date_time .time .name {
@@ -334,6 +342,39 @@ body {
   height: 0;
   padding: 0;
   margin: 0;
+}
+
+.profile .medical_record .records {
+  width: auto;
+  margin: 1rem;
+  display: inline-block;
+}
+
+.profile .medical_record .records .record_delete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.3rem;
+  background: #ccc;
+}
+
+.profile .medical_record .records .record_delete form input {
+  display: none;
+}
+
+.profile .medical_record .records .record_delete form button {
+  background: none;
+}
+
+.profile .medical_record .records .photos {
+  border-bottom: 1.4rem solid #ccc;
+  height: 8rem;
 }
 
 #number_change {
@@ -703,6 +744,9 @@ body {
   }
   .profile .medical_record .appointment .cancel_appointment button {
     height: auto;
+  }
+  .profile .medical_record .records {
+    width: 18.5rem;
   }
 }
 

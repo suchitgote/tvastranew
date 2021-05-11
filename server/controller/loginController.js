@@ -307,13 +307,10 @@ const update_profile = (req,res) => {
             .then(user => {
                 console.log("profile updata succsesful")
                 req.session.update_profile = "profile update successfuly" ;
-
                 models.user_schema.findOne({ number : number})
                 .then(user=>{
-                req.session.update_data = user;
-                console.log(".....................req.session.update_data",req.session.update_data)
-                console.log(".....................req.session.update_data.country",req.session.update_data.country)
- 
+                    req.session.update_data = user;
+                    console.log(".......................................req.session.update_data",req.session.update_data)
                     res.redirect("/profile");
                 })
                 .catch(err=>{
@@ -326,7 +323,7 @@ const update_profile = (req,res) => {
     }else{
         console.log("profile is not updated");
         req.session.error_message = "profile is not updated" ;
-        res.redirect("/emaillogin")
+        res.redirect("/profile")
     }
 }
 
@@ -344,21 +341,22 @@ const medical_record = (req,res)=>{
             .save(medical_records)
             .then(data => {
                 console.log("................................................new uploaded..medical_record",data)
-                res.redirect("/profile");
+                res.redirect("/medical_report");
             }) 
             .catch(err =>{
                 res.status(500).send({
                     message : err.message || "Some error occurred while creating a create operation"
                 });
             });
-}
+} 
 
-const profile = (req,res,next)=>{
+const medical_report = (req,res,next)=>{
 
                 if(req.session.update_data){
                   var  y = req.session.update_data.number
                 }else{
                   var  y = req.session.userid.user.number ;
+                //  console.log("..............................................req.session.userid.userr",req.session.userid.user)
                 }
 
               models.medical_record.find({ number: y })
@@ -378,7 +376,7 @@ const delete_record = (req,res)=>{
     models.medical_record.remove({ "_id": uid })
     .then(user => {
           console.log("..............................................user",user)
-          res.redirect("/profile");
+          res.redirect("/medical_report");
     })
     .catch(err => {
         console.log("..............................................err",err)
@@ -386,6 +384,82 @@ const delete_record = (req,res)=>{
     })
 
 }
+
+const show_record = (req,res, next)=>{
+if(req.body.record_id){
+    console.log("..................................................req.body.file =",req.body.record_id)
+    req.session.recordid = req.body.record_id ;
+}
+
+    models.medical_record.findOne({_id : req.session.recordid})
+    .then(responce =>{
+        console.log(".................................................responce=",responce)
+        req.session.record_responce = responce ;
+        next();
+    })
+    .catch(err =>{
+         
+    })
+
+} 
+
+const delete_record_photo = (req,res)=>{
+
+    var filename = req.body.delete_record_photo ;
+    var a = req.session.recordid ; 
+
+    console.log("..........................................delete_record_photo.",filename)
+    console.log("..........................................a",a)
+
+    models.medical_record.updateOne({"_id":a},{$pull:{"file":{"filename":filename}}},{multi:true} )
+    .then(user => {
+        req.session.photo_delete = true;
+        res.redirect("/show_record");
+    })
+    .catch(err => {
+        console.log("..............................................err",err)
+        res.redirect("/emaillogin");
+    })
+}
+
+const add_record_photo = (req,res)=>{
+  
+    console.log("..........................................add_record_photo..req.files......................."
+    ,req.files)
+
+    // for(var i=0 ; i < req.files.length ; i++ ){
+    // }
+        models.medical_record.updateOne( { _id :  req.session.recordid } , { $push: { "file": req.files } } )
+        .then(user => {
+            res.redirect("/show_record");
+        })
+        .catch(err => {
+            console.log("..............................................err",err)
+            res.redirect("/emaillogin");
+        })
+
+
+}
+
+const tags = (req,res) =>{
+    console.log("................................................req.body..........",req.body)
+    console.log("................................................req.body.input1..........",        req.body.input1 )
+    console.log("................................................req.body.input1[0]..........",     req.body.input1[0] )
+    console.log("................................................req.body.input1[0].value........", req.body.input1[0].value )
+
+    req.session.tag_value = req.body ;
+    console.log("................................................req.session.tag_value.........",req.session.tag_value)
+  
+    res.redirect("/tags");
+
+}
+
+
+
+
+
+
+
 
 
 module.exports = {
@@ -405,8 +479,12 @@ module.exports = {
     resend_otp:resend_otp,
     update_profile:update_profile,
     medical_record:medical_record,
-    profile:profile,
-    delete_record:delete_record
+    medical_report:medical_report,
+    delete_record:delete_record,
+    show_record:show_record,
+    delete_record_photo:delete_record_photo,
+    add_record_photo:add_record_photo,
+    tags:tags
  
 }
 
@@ -414,83 +492,4 @@ module.exports = {
 
 
 
-/*
 
-const axios = require('axios');
-
-var is_login = true ;
-exports.index = (req, res) => {
-    if(req.flash('password_correct') == "login successfull"){
-        res.render('index',{ password_correct : req.flash('password_correct') } );
-    }
-    else{
-        res.redirect("/") ;
-    }
-} 
-exports.doctor = (req, res) => {
-    res.render('doctor');
-}
-exports.hospital = (req, res) => {
-    res.render('hospital');
-}
-exports.treatment = (req, res) => {
-    res.render('treatment');
-}
-
-exports.about_hospital = (req, res) => {
-    res.render('about_hospital');
-}
-exports.about_us = (req, res) => {
-    res.render('about_us');
-}
-exports.book_appointment = (req, res) => {
-    res.render('book_appointment');
-}
-exports.contact = (req, res) => {
-    res.render('contact');
-}
-exports.create_password = (req, res) => {
-    res.render('create_password');
-}
-exports.doctor_profile = (req, res) => {
-    res.render('doctor_profile');
-}
-
-exports.faq = (req, res) => {
-    res.render('faq');
-}
-exports.login = (req, res) => {
-    res.render('login');
-}
-exports.signup = (req, res) => {
-    res.render('signup');
-}
-exports.otp = (req, res) => {
-    res.render('otp');
-}
-exports.submit_your_query = (req, res) => {
-    res.render('submit_your_query');
-}
-exports.tvastra_plus = (req, res) => {
-    res.render('tvastra_plus');
-}
-exports.phone_login = (req, res) => {
-    res.render('phone_login');
-}
-
-
-//get user data and pass to demo_getdata page....................................
-exports.show_user = (req, res) => {
-    // Make a get request to /api/users
-    axios.get('http://localhost:3000/api/show_user')
-        .then(function(response){
-           // console.log(response.data)
-            res.render('show_user', { users : response.data });
-        })
-        .catch(err =>{
-            res.send(err);
-        })
-}
-
-
-*/

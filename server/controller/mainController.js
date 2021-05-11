@@ -103,8 +103,8 @@ const about_us = (req,res)=>{
 }
 
 const profile = (req,res)=>{
-    var record = req.session.record ;
-    delete req.session.record ;
+    // var record = req.session.record ;
+    // delete req.session.record ;
     // console.log("..............................................record = req.session.record .",record)
     
     if(req.session.update_profile){
@@ -112,19 +112,72 @@ const profile = (req,res)=>{
         var update_profile = req.session.update_profile;
         if(update_profile ==  req.session.update_profile){
             delete req.session.update_profile ;
-            
-            res.render("profile", data = { user: req.session.update_data ,succ : update_profile , record: record});
+            res.render("profile", data = { user: req.session.update_data ,succ : update_profile }); // ,record: record
         }
     }else{
         if(req.session.update_data){
-            res.render("profile", data = { user: req.session.update_data , record: record });
+            res.render("profile", data = { user: req.session.update_data  }); //, record: record
         }else{
-            res. render("profile", data = { user: req.session.userid.user , record: record});
+            res. render("profile", data = { user: req.session.userid.user }); //, record: record
         }
     }
 }
 
+const medical_report = (req,res)=>{
+    var record = req.session.record ;
+    delete req.session.record ;
+    if(req.session.update_data){
+        res.render("medical_report", data = { user: req.session.update_data , record: record });
+    }else{
+        res. render("medical_report", data = { user: req.session.userid.user , record: record });
+    }
+    
+}
+
+const appointment = (req,res)=>{
+    if(req.session.update_data){
+        res.render("appointment", data = { user: req.session.update_data  });
+    }else{
+        res. render("appointment", data = { user: req.session.userid.user  });
+    }
+}
+
+const setting = (req,res)=>{
+    if(req.session.update_data){
+        res.render("setting", data = { user: req.session.update_data  });
+    }else{
+        res. render("setting", data = { user: req.session.userid.user  });
+    }
+}
+
+const show_record = (req,res)=>{
+
+    var sec_var = req.session.record_responce ;
+    delete req.session.record_responce ;
+
+   // console.log(".................................................sec_var=",sec_var) ;
+ //   console.log(".............................................array....sec_var.file=",sec_var.file) ;
+
+
+    if(req.session.update_data){
+        res.render("show_record", data = { user: req.session.update_data  });
+    }else{
+        res.render("show_record", data = { user: req.session.userid.user , record_photos: sec_var.file });
+    }
+}
+
+const tags = (req,res)=>{
+    if(req.session.tag_value){
+        var sec_tag = req.session.tag_value ;
+        delete req.session.tag_value; 
+        res.render("tags",tagss = {tag : sec_tag} )   
+    }else{
+        res.render("tags",tagss = false)   
+    }
+}
+
 module.exports = {
+
     emaillogin: emaillogin,
     signup: signup,
     show_user: show_user,
@@ -135,182 +188,15 @@ module.exports = {
     doctor:doctor,
     hospital:hospital,
     about_us:about_us,
-    profile:profile
+    profile:profile,
+    appointment:appointment,
+    medical_report:medical_report,
+    setting:setting,
+    show_record:show_record,
+    tags:tags
+
 }
 
 
 
-// var models = require('../model/model');
-// const axios = require('axios');
-
-// var global ;
-// var global_email = "";
-
-// // create_user...........................................................
-// exports.create_user = (req,res)=>{
-//     // validate request
-//     if(!req.body){
-//         res.status(400).send({ message : "Content can not be emtpy!"});
-//         return;
-//     }
-
-//     // create new user
-//     const user = new models.user_schema({
-//         name : req.body.name,
-//         email : req.body.email,
-//         password : req.body.password,
-//         gender : req.body.gender,
-//         data : req.body.data,
-//         number : req.body.number,
-//         city : req.body.city,
-//         state : req.body.state,
-//         country : req.body.country,
-//         doctor : req.body.doctor
-//     })
-
-//     // save user in the database
-//     user
-//         .save(user)
-//         .then(data => {
-//           //res.send(data) 
-//           res.redirect('../show_user')
-//         })
-//         .catch(err =>{
-//             res.status(500).send({
-//                 message : err.message || "Some error occurred while creating a create operation"
-//             });
-//         });
-// }
-// // show_user.............................................................
-// exports.show_user = (req, res)=>{
-//     if(req.query.id){
-//         const id = req.query.id;
-//         models.user_schema.findById(id)
-//             .then(data =>{
-//                 if(!data){
-//                     res.status(404).send({ message : "Not found user with id "+ id})
-//                 }else{
-//                     res.send(data)
-//                 }
-//             })
-//             .catch(err =>{
-//                 res.status(500).send({ message: "Erro retrieving user with id " + id})
-//             })
-//     }else{
-//         models.user_schema.find()
-//             .then(user => {
-//                 res.send(user)
-//             })
-//             .catch(err => {
-//                 res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
-//             })
-//     }
-
-
-// }
-// // email_login...........................................................
-// exports.email_login = (req, res)=>{
-
-//  models.user_schema.find({"email":req.body.email})
-//     .then(user => {
-//         console.log(user[0].email,user[0].password);
-//         if(user[0].password == req.body.password ){
-//             console.log("password is correct")
-//             req.flash('password_correct' , 'login successfull')
-//             res.redirect("/index");
-
-//         }else{
-//             console.log("password is not correct")
-//             req.flash('password_wrong' , 'incorrect email or password')
-//             res.redirect("/");
-//         }
-//     })
-//     .catch(err => {
-//         res.status(500).send({ message : err.message || "Error Occurred while retriving user information" }) 
-//     })
-// }
-
-// // forgot_password.....................................................
-// exports.forgot_password = (req, res)=>{
-//     models.user_schema.find({"email":req.body.email})
-//     .then(user => {
-//         console.log(user[0].email);  
-//         console.log(user[0].number);  
-//         var number = user[0].number;
-
-//         global = number;
-//         global_email = user[0].email ;
-
-//        axios.post(`http://localhost:3000/otp/${number}`)
-//        .then(function(response){
-//           console.log(response.data)
-//            res.redirect('../otp');
-//        })
-//        .catch(err =>{
-//            res.send(err);
-//        })
-//     })
-//     .catch(err => {
-//         res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
-//     })
-// }
-
-// // otp_send.............................................................
-// exports.otp_send =(req, res)=> {
-
-//     var otp_number = req.body.input1 + req.body.input2 + req.body.input3 + req.body.input4 ;
-//     console.log(global) ;
-//     console.log("otp_number = ",`${otp_number}`)
-
-//     axios.get(`http://localhost:3000/otp/${global}/${otp_number}`)
-//     .then((response)=>{
-//         console.log("otp get working = ",response.data)
-//         if(!(global_email == "")){
-//             res.redirect('/create_password');
-//         }else{
-//             res.redirect('/index');
-//         }
-//     })
-//     .catch(err => {
-//         res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
-//     })
-// }
-
-
-// // create_password......................................................
-// exports.create_password = (req,res)=>{
-//     var password = req.body.password ;
-//     var confirm_password = req.body.confirm_password ;
-
-//     console.log("password = ",password)
-//     models.user_schema.updateOne(
-//         {'number' : global},
-//         {$set:{"password" : password }}
-//         )
-//         .then(user => {
-//             console.log("updata succsesful")
-//             res.redirect("/show_user");
-//         })
-//         .catch(err => {
-//             res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
-//         })
-// }
-
-// // phone_login.............................................................
-// exports.phone_login = (req,res)=>{
-//     var phone_number = req.body.number ;
-//     console.log("phone_number = ",phone_number)
-
-//     axios.post(`http://localhost:3000/otp/${phone_number}`)
-//     .then(function(response){
-//        console.log("phone login working....")
-//        global = phone_number;
-//        console.log("global = phone_number = ",phone_number,global)
-//        console.log(response.data)
-//         res.redirect('../otp');
-//     })
-//     .catch(err =>{
-//         res.send(err);
-//     })
-// }
 

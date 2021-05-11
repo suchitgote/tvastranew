@@ -93,7 +93,6 @@ body{
         }
     }
     .dashbord_content1{
-        display: none;
         background-color: $white;
         padding: 1rem;
         border-radius: 0.2rem;
@@ -206,12 +205,19 @@ body{
             .date_time{
                 display: flex;
                 justify-content: space-between;
-                .date{
-                    justify-content: center;
-                    display: flex;
-                    width: 6rem;
-                    align-items: center;
-                    background: white;
+                form{
+                    height: 100%;
+                    input{
+                        display: none;
+                    }
+                    .date{
+                        justify-content: center;
+                        display: flex;
+                        width: 6rem;
+                        align-items: center;
+                        background: white;
+                        height: 100%;
+                    }
                 }
                 .time{
                     .name{
@@ -274,6 +280,31 @@ body{
                     padding: 0;
                     margin: 0;
                 }
+            }
+        }
+        .records{
+            width: auto;
+            margin: 1rem;
+            display: inline-block;
+            .record_delete{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.3rem;
+                background: #ccc;
+                form{
+                    input{
+                        display: none;
+                    }
+                    button{
+                        background: none;
+                    }
+                }
+            }
+            .photos{
+                border-bottom: 1.4rem solid #ccc;
+               
+                height: 8rem;
             }
         }
     }
@@ -567,6 +598,9 @@ body{
                         height: auto;
                     }
                 }
+            }
+            .records{
+                width: 18.5rem;
             }
         }
     }

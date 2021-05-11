@@ -28,6 +28,8 @@ app.set("view engine", "ejs")
 // load css files
 app.use(express.static("assets"));
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
+app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
+
 
 app.use(session({
 	secret: 'SavingLife',
