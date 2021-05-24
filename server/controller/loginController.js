@@ -1,4 +1,9 @@
 const axios = require('axios');
+// 24hformat
+// const express = require('express')
+// const app = express()
+
+const hrformat = require('24hformat');
 
 var models = require('../model/model');
 
@@ -36,35 +41,115 @@ const checkLogin = (req, res, next) => {
 }
 
 const signup = (req,res)=>{
-    // validate request
     if(!req.body){
         res.status(400).send({ message : "Content can not be emtpy!"});
         return;
     }
-    // create new user
-    const user = new models.user_schema({
-        name : req.body.name,
-        email : req.body.email,
-        password : req.body.password,
-        gender : req.body.gender,
-        data : req.body.data,
-        number : req.body.number,
-        city : req.body.city,
-        state : req.body.state,
-        country : req.body.country,
-        doctor : req.body.doctor
-    })
-    // save user in the database
-    user
-        .save(user)
-        .then(data => {
-          res.redirect('../show_user')
+        
+    if(!(req.body.doctor == "doctor")){
+            // create new user
+            const user = new models.user_schema({
+                name : req.body.name,
+                email : req.body.email,
+                password : req.body.password,
+                gender : req.body.gender,
+                data : req.body.data,
+                number : req.body.number,
+                city : req.body.city,
+                state : req.body.state,
+                country : req.body.country,
+                doctor : req.body.doctor
+            })
+            // save user in the database
+            user
+                .save(user)
+                .then(data => {
+                res.redirect('../show_user')
+                })
+                .catch(err =>{
+                    res.status(500).send({
+                        message : err.message || "Some error occurred while creating a create operation"
+                    });
+                });
+    }else{
+        // create new user
+        console.log("req.body.name = ",req.body.name)
+        console.log("req.body.email = ",req.body.email)
+        console.log("req.body.password = ",req.body.password)
+        console.log("req.body.gender = ",req.body.gender)
+        console.log("req.body.data = ",req.body.data)
+        console.log("req.body.number = ",req.body.number)
+        console.log("req.body.city = ",req.body.city)
+        console.log("req.body.state = ",req.body.state)
+        console.log("req.body.country = ",req.body.country)
+        console.log("req.body.doctor = ",req.body.doctor)
+
+        var tag_inputs = []
+        var inputs_arr = [req.body.achivement , req.body.hospital , req.body.qualification , req.body.awards , req.body.specification] ;
+    
+        for(var j = 0 ; j < inputs_arr.length ;j++){
+            var input = JSON.parse(inputs_arr[j]) ;
+            console.log(`..............................................${input} = `,  input )
+            var arr = [];
+            for(var i = 0 ; i < input.length ;i++){
+                arr.push(`${input[i].value}`);
+            }
+            console.log(arr);
+            var arr_str = arr.toString()
+            console.log(arr_str);
+            tag_inputs.push(arr_str)
+        }
+        req.session.tag_value = tag_inputs ;
+        console.log("................................................req.session.tag_value.........",req.session.tag_value) 
+
+        console.log("req.body.yourself = ",req.body.yourself)
+        console.log("req.file = ",req.file)
+        console.log("req.body.achivement = ",tag_inputs[0])
+        console.log("req.body.hospital = ",tag_inputs[1])
+        console.log("req.body.experience = ",req.body.experience)
+        console.log("req.body.qualification = ",tag_inputs[2])
+        console.log("req.body.awards = ",tag_inputs[3])
+        console.log("req.body.specification = ",tag_inputs[4])
+        console.log("req.body.fees = ",req.body.fees) 
+        console.log("req.body.yourself = ",req.body.yourself)
+
+        const user = new models.user_schema({
+            name : req.body.name,
+            email : req.body.email,
+            password : req.body.password,
+            gender : req.body.gender,
+            data : req.body.data,
+            number : req.body.number,
+            city : req.body.city,
+            state : req.body.state,
+            country : req.body.country,
+            doctor : req.body.doctor,
+            
+            file : req.file.filename,
+            achivement : tag_inputs[0],
+            hospital : tag_inputs[1],
+            experience : req.body.experience,
+            qualification : tag_inputs[2],
+            awards : tag_inputs[3],
+            specification :tag_inputs[4],
+            fees : req.body.fees,
+            yourself : req.body.yourself
+                                    
         })
-        .catch(err =>{
-            res.status(500).send({
-                message : err.message || "Some error occurred while creating a create operation"
+        // save user in the database
+        user
+            .save(user)
+            .then(data => {
+            res.redirect('../show_user')
+            })
+            .catch(err =>{
+                res.status(500).send({
+                    message : err.message || "Some error occurred while creating a create operation"
+                });
             });
-        });
+        
+    }
+
 }
 
 const emaillogin =  (req, res) => {
@@ -96,11 +181,13 @@ const emaillogin =  (req, res) => {
 const logout = (req, res) => {
     if (req.session.userid) {
         delete req.session.userid;
+        delete req.session.update_data ;
     }
     res.redirect("/emaillogin")
 }
 
 const forgot_password = (req, res)=>{
+
     models.user_schema.findOne({"email":req.body.email})
     .then(user => {
         console.log(user.email);  
@@ -274,9 +361,10 @@ const resend_otp = (req,res) => {
 }
 
 const update_profile = (req,res) => {
-    var number = req.session.userid.user.number ;
+    var id = req.session.userid.user._id ;
     console.log("req.session.userid.user.file = ",req.session.userid.user.file)
     console.log("req.file = ",req.file)
+
     if(!req.file){
         if(req.session.update_data){
             x = req.session.update_data.file
@@ -288,38 +376,107 @@ const update_profile = (req,res) => {
         var x = req.file.filename ;
     }
 
-    if(number){
-        models.user_schema.updateOne( {'number' : number}, 
-        {$set:{
-            "name" : req.body.name ,
-            "number" : req.body.number ,
-            "email" : req.body.email ,
-            "gender" : req.body.gender ,
-            "data" : req.body.date ,
-            "timezon" : req.body.timezon ,
-            "house_no" : req.body.house_no ,
-            "colony" : req.body.colony ,
-            "city" : req.body.city ,
-            "state" : req.body.state ,
-            "country" : req.body.country,
-            "file":  x
-        }}  )
-            .then(user => {
-                console.log("profile updata succsesful")
-                req.session.update_profile = "profile update successfuly" ;
-                models.user_schema.findOne({ number : number})
-                .then(user=>{
-                    req.session.update_data = user;
-                    console.log(".......................................req.session.update_data",req.session.update_data)
-                    res.redirect("/profile");
+    var doctor = req.session.userid.user.doctor ;
+
+    if(id){
+        if(!(doctor == "doctor")){
+            models.user_schema.updateOne( {'_id' : id}, 
+            {$set:{
+                "name" : req.body.name ,
+                "number" : req.body.number ,
+                "email" : req.body.email ,
+                "gender" : req.body.gender ,
+                "data" : req.body.date ,
+                "timezon" : req.body.timezon ,
+                "house_no" : req.body.house_no ,
+                "colony" : req.body.colony ,
+                "city" : req.body.city ,
+                "state" : req.body.state ,
+                "country" : req.body.country,
+                "file":  x
+            }}  )
+                .then(user => {
+                    console.log("profile updata succsesful")
+                    req.session.update_profile = "profile update successfuly" ;
+    
+                    models.user_schema.findOne({ '_id' : id})
+                    .then(user=>{
+                        req.session.update_data = user;
+                        console.log(".......................................req.session.update_data",req.session.update_data)
+                        res.redirect("/profile");
+                    })
+                    .catch(err=>{
+                        res.redirect("/home");
+                    })
                 })
-                .catch(err=>{
-                    res.redirect("/home");
+                .catch(err => {
+                    res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
                 })
-            })
-            .catch(err => {
-                res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
-            })
+        }else{
+
+
+            var tag_inputs = []
+            var inputs_arr = [req.body.achivement , req.body.hospital , req.body.qualification , req.body.awards , req.body.specification] ;
+        
+            for(var j = 0 ; j < inputs_arr.length ;j++){
+                var input = JSON.parse(inputs_arr[j]) ;
+                console.log(`..............................................${input} = `,  input )
+                var arr = [];
+                for(var i = 0 ; i < input.length ;i++){
+                    arr.push(`${input[i].value}`);
+                }
+                console.log(arr);
+                var arr_str = arr.toString()
+                console.log(arr_str);
+                tag_inputs.push(arr_str)
+            }
+            req.session.tag_value = tag_inputs ;
+            console.log("................................................req.session.tag_value.........",req.session.tag_value) 
+    
+
+            models.user_schema.updateOne( {'_id' : id}, 
+            {$set:{
+                "name" : req.body.name ,
+                "number" : req.body.number ,
+                "email" : req.body.email ,
+                "gender" : req.body.gender ,
+                "data" : req.body.date ,
+                "timezon" : req.body.timezon ,
+                "house_no" : req.body.house_no ,
+                "colony" : req.body.colony ,
+                "city" : req.body.city ,
+                "state" : req.body.state ,
+                "country" : req.body.country,
+                "file":  x,
+                
+                achivement : tag_inputs[0],
+                hospital : tag_inputs[1],
+                experience : req.body.experience,
+                qualification : tag_inputs[2],
+                awards : tag_inputs[3],
+                specification :tag_inputs[4],
+                fees : req.body.fees,
+                yourself : req.body.yourself 
+            }}  )
+                .then(user => {
+                    console.log("profile updata succsesful")
+                    req.session.update_profile = "profile update successfuly" ;
+    
+                    models.user_schema.findOne({ '_id' : id})
+                    .then(user=>{
+                        req.session.update_data = user;
+                        console.log(".......................................req.session.update_data",req.session.update_data)
+                        res.redirect("/profile");
+                    })
+                    .catch(err=>{
+                        res.redirect("/home");
+                    })
+                })
+                .catch(err => {
+                    res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
+                })
+        }
+
     }else{
         console.log("profile is not updated");
         req.session.error_message = "profile is not updated" ;
@@ -386,11 +543,10 @@ const delete_record = (req,res)=>{
 }
 
 const show_record = (req,res, next)=>{
-if(req.body.record_id){
-    console.log("..................................................req.body.file =",req.body.record_id)
-    req.session.recordid = req.body.record_id ;
-}
-
+    if(req.body.record_id){
+        console.log("..................................................req.body.file =",req.body.record_id)
+        req.session.recordid = req.body.record_id ;
+    }
     models.medical_record.findOne({_id : req.session.recordid})
     .then(responce =>{
         console.log(".................................................responce=",responce)
@@ -440,26 +596,352 @@ const add_record_photo = (req,res)=>{
 
 
 }
+    
+const tags = (req,res) =>{ 
 
-const tags = (req,res) =>{
-    console.log("................................................req.body..........",req.body)
-    console.log("................................................req.body.input1..........",        req.body.input1 )
-    console.log("................................................req.body.input1[0]..........",     req.body.input1[0] )
-    console.log("................................................req.body.input1[0].value........", req.body.input1[0].value )
+    var tag_inputs = []
+    var inputs_arr = [req.body.input1 , req.body.input2] ;
 
-    req.session.tag_value = req.body ;
-    console.log("................................................req.session.tag_value.........",req.session.tag_value)
-  
+    for(var j = 0 ; j < inputs_arr.length ;j++){
+        var input = JSON.parse(inputs_arr[j]) ;
+        console.log(`..............................................${input} = `,  input )
+        var arr = [];
+        for(var i = 0 ; i < input.length ;i++){
+            arr.push(`${input[i].value}`);
+        }
+        console.log(arr);
+        var arr_str = arr.toString()
+        console.log(arr_str);
+        tag_inputs.push(arr_str)
+    }
+
+    req.session.tag_value = tag_inputs ;
+    console.log("................................................req.session.tag_value.........",req.session.tag_value) 
     res.redirect("/tags");
 
 }
 
+const schedule_form = (req,res)=>{
+
+    // check schedule is valid or not ........................
+    models.user_schema
+    .find({ _id :  data.user._id })
+    .select({schedule : 1 }) 
+    
+    .then(user=>{
+
+        // console.log("....................................list of obj with filter user=",user)
+        // console.log(".................................... user[0].schedule[0]=",  user[0].schedule[0])
+        // console.log(".................................... user[0].schedule[0].day=",  user[0].schedule[0].day)
+
+        function miner (n){
+            var startingtime = n ;
+            var sts = startingtime.slice(0,2);
+            var stss = parseInt(sts);
+            var aps= startingtime.slice(6,8)
+            if(aps=="PM" && stss != 12){ 
+                stss = stss + 12;  
+            }
+            // console.log("stss=",stss)
+            var smin = startingtime.slice(3,5);
+            var smin = parseInt(smin);
+            var hsmin = stss*60 ;
+            var tsmin = hsmin  + smin ;
+            // console.log("hsmin=",hsmin  )
+            // console.log("smin=",smin  )
+            // console.log("tsmin=",tsmin  )
+            return tsmin ;
+        }
+        var comp = false;
+        for(var i = 0 ; i < user[0].schedule.length ; i++){  
+            if( user[0].schedule[i].day == req.body.day){
+                console.log(" req.body.starttime - req.body.totime ",  req.body.starttime + " - " + req.body.totime)
+                console.log( `  user[0].schedule[${i}].starttime - user[0].schedule[${i}].totime == `, user[0].schedule[i].starttime + " - " + user[0].schedule[i].totime )
+
+                    console.log("miner(req.body.starttime) =",miner(req.body.starttime)  )
+                    console.log("miner(req.body.totime) =",miner(req.body.totime)  )
+                    console.log("miner(user[0].schedule[i].starttime) =",miner(user[0].schedule[i].starttime)  )
+                    console.log("miner(user[0].schedule[i].totime) =",miner(user[0].schedule[i].totime)  )
+                    
+                    if( 
+                        ( (miner(req.body.starttime) >= miner(user[0].schedule[i].totime)) && (miner(req.body.totime) >= miner(user[0].schedule[i].totime)) )        || 
+                        ( (miner(req.body.starttime) <= miner(user[0].schedule[i].starttime)) &&  (miner(req.body.totime) <= miner(user[0].schedule[i].starttime))) 
+                      ) {
+                        console.log(" ok ")
+                    }else{
+                            console.log("not ok ")
+                            comp = true ;
+                    }
+            }
+        }
+       
+            if(!comp){
+                
+                            var schedule_index = req.body.schedule_index ;
+                            console.log("req.body.schedule_index = ",req.body.schedule_index)
+                        
+                            console.log("req.body.day = ",req.body.day)
+                            console.log("req.body.hospital = ",req.body.hospital)
+                            console.log("req.body.starttime = ",req.body.starttime)
+                            console.log("req.body.totime = ",req.body.totime)
+                            console.log("req.body.interval = ",req.body.interval)
+                        
+                            var startingtime = req.body.starttime ;
+                            var totime = req.body.totime ;
+                            var interval= parseInt(req.body.interval);
+                            console.log("starting time=", startingtime);
+                            console.log("totime=", totime);
+                            console.log("interval=", interval);
+                        
+                            var tsmin = miner(startingtime); ;
+                            var temin = miner(totime);
+                
+                            var noslots = ( temin - tsmin )  / interval ;
+                            console.log(`noslots = ( ${temin} - ${tsmin} ) / ${interval} =`,( temin - tsmin) / interval)
+                            noslots = parseInt( noslots.toFixed(0) )
+                        
+                            console.log("noslots=",noslots)
+                            
+                            var slots = [];
+                            for (i=0; i < noslots; i++)
+                            {
+                                var hour = startingtime.slice(0,2);
+                                // console.log("hour=", hour)
+                                var min = startingtime.slice(3,5);
+                                var ampm= startingtime.slice(6,8);
+                                var hours = parseInt(hour);
+                            
+                                // console.log("hours=",hours)
+                                if(ampm=="PM" && hours != 12)
+                                {
+                                    hours = hours + 12;
+                                }
+                                var mins = parseInt(min);
+                                var sum = interval + mins;
+                            
+                                if(interval==60){
+                                    hours = hours + 1;
+                                    sum = sum - 60;
+                                }else if((sum/60) >= 1) {
+                                    hours = hours + 1 ;
+                                    sum = sum - 60;
+                                }
+                                else if (sum==60) {
+                                    hours = hours + 1;
+                                    sum = sum - 60;
+                                }
+                                var result ;
+                                if(hours >= 12) {
+                                    hours = hours - 12 ;
+                                    if(sum < 10){
+                                        result = "0" + `${hours}` + ":" + `0${sum}` + " " + "PM";
+                                    }else{
+                                        result = "0" + `${hours}` + ":" + `${sum}` + " " + "PM";
+                                    }
+                                }else {
+                                    if(hours == 10 || hours == 11){
+                                        if(sum < 10){
+                                            result = `${hours}` + ":" + `0${sum}` + " " + "AM";
+                                        }else{
+                                            result = `${hours}` + ":" + `${sum}` + " " + "AM";
+                                        }
+                                    }else{
+                                        if(sum < 10){
+                                            result ="0" + `${hours}` + ":" + `0${sum}` + " " + "AM";
+                                        }else{
+                                            result ="0" + `${hours}` + ":" + `${sum}` + " " + "AM";
+                                        }
+                                    }
+                                }
+                              //  console.log("result=", result);
+                                if(i == (noslots - 1)){
+                                    if(startingtime.slice(0,2) == "00"){
+                                        var replace3 = startingtime.replace("00","12");
+                                        slots.push(`${replace3} - ${totime} `)
+                                    }else{
+                                        slots.push(`${startingtime} - ${totime} `)
+                                    }
+                                }else{
+                                    if(startingtime.slice(0,2) == "00"){
+                                        var replace = startingtime.replace("00","12");
+                                        if(result.slice(0,2) == "00"){
+                                            var replace1 = result.replace("00","12");
+                                            slots.push(`${replace} - ${replace1}`)
+                                        }else{
+                                            slots.push(`${replace} - ${result}`)
+                                        }
+                                    }else if(result.slice(0,2) == "00"){
+                                        var replace2 = result.replace("00","12");
+                                        slots.push(`${startingtime} - ${replace2}`)
+                                    }else{
+                                        slots.push(`${startingtime} - ${result}`)
+                                    }
+                                }
+                                startingtime = result;
+                              //  console.log("new starting time=", startingtime)
+                            
+                            }
+                            
+                            var emtarr = [];
+                            for(var k = 0 ; k < slots.length ; k++ ){
+                                emtarr.push({
+                                    id:k,
+                                    schedule_time:slots[k],
+                                    checkbox:"false"
+                                })
+                            }
+                            
+                            // console.log("slots = ",slots);
+                            // console.log("emtarr =",emtarr);
+                        
+                            var obj = {
+                                schedule_index:schedule_index,
+                                schedule_checkbox : "false",
+                                day : req.body.day,
+                                hospital : req.body.hospital,
+                                starttime : req.body.starttime,
+                                totime : req.body.totime,
+                                interval :req.body.interval ,
+                                slots:emtarr
+                            }
+                        
+                            console.log("data.user.number = ",data.user.number)
+                            models.user_schema.updateOne( { _id : data.user._id} , { $push: { "schedule": obj } } )
+                            .then(response => {
+                                models.user_schema.findOne({ _id :  data.user._id})
+                                .then(user=>{
+                                    req.session.update_data = user;
+                                    req.session.schedule_creared = "schedule creared seccesfully"
+                                   // console.log(".......................................req.session.update_data",req.session.update_data)
+                                    res.redirect("/schedules");
+                                })
+                                .catch(err=>{
+                                    res.redirect("/home");
+                                })
+                            })
+                            .catch(err => {
+                                console.log("..............................................err",err)
+                                res.redirect("/emaillogin");
+                            }) 
+            }else{
+                req.session.schedule_creared = "time is booked"
+                res.redirect("/schedules");
+            }
+
+    })
+    .catch(err=>{
+        res.redirect("/home");
+    })
 
 
+    // end schedule is valid or not ........................
 
+}
 
+const delete_schedule = (req,res)=>{
 
+    console.log("req.query.id",req.query.id)
+    var xy = req.query.id ;  
+//   var xy =  req.body.delete_schedule  ;
+  console.log("..............................................xy",xy)
+  console.log("..............................................typeof(xy)",  typeof(xy) )
 
+    models.user_schema.updateOne(
+    { _id : data.user._id},
+    {$pull : {"schedule" : {schedule_index : xy}}}
+    ) 
+    .then(user => {
+        models.user_schema.findOne({ _id :  data.user._id})
+            .then(user=>{
+                req.session.update_data = user;
+                console.log(".......................................req.session.update_data",req.session.update_data)
+                res.redirect("/schedules");
+            })
+            .catch(err=>{
+                res.redirect("/home");
+            })
+    })
+    .catch(err => {
+        console.log("..............................................err",err)
+        res.redirect("/emaillogin");
+    })
+}
+
+const schedule_checkbox = (req,res)=>{
+
+    console.log("req.query",req.query)
+    console.log("req.query.id",req.query.id)
+    var schedule_obj_id = req.query.id ;
+
+    console.log("req.query.id",req.query.status)
+    var status = req.query.status ;
+
+    if(status == "true"){ 
+        var newstatus = "false" ;
+    }else{
+        var newstatus = "true" ;
+    }
+
+    models.user_schema.updateOne(
+        { _id : data.user._id , "schedule.schedule_index" : schedule_obj_id }, {$set : {"schedule.$.schedule_checkbox": newstatus}}
+        ) 
+        .then(user => {
+            models.user_schema.findOne({ _id :  data.user._id})
+                .then(user=>{
+                    req.session.update_data = user;
+                    console.log(".......................................req.session.update_data",req.session.update_data)
+                    res.redirect("/schedules");
+                })
+                .catch(err=>{
+                    res.redirect("/home");
+                })
+        })
+        .catch(err => {
+            console.log("..............................................err",err)
+            res.redirect("/emaillogin");
+        })
+}
+
+const delete_timer_checkbox = (req,res)=>{
+    console.log("req.query",req.query)
+
+    console.log("req.query.id",req.query.id)
+    var schedule_obj_id = req.query.id ;
+
+    console.log("req.query.id",req.query.status)
+    var status = req.query.status ;
+
+    console.log("req.query.timer_id",req.query.timer_id)
+    var timer_id = parseInt( req.query.timer_id );
+
+    if(status == "true"){ 
+        var newstatus = "false" ;
+    }else{
+        var newstatus = "true" ;
+    }
+
+    models.user_schema.updateOne(
+        { _id : data.user._id }, 
+        {$set : {"schedule.$[s].slots.$[si].checkbox": newstatus} },
+        {arrayFilters : [{'s.schedule_index':schedule_obj_id},{'si.id': timer_id}] }
+        ) 
+            .then(user => {
+                models.user_schema.findOne({ _id :  data.user._id})
+                .then(user=>{
+                    req.session.update_data = user;
+                    console.log(".......................................req.session.update_data",req.session.update_data)
+                    res.redirect("/schedules");
+                })
+                .catch(err=>{
+                    res.redirect("/home");
+                })
+        })
+        .catch(err => {
+            console.log("..............................................err",err)
+            res.redirect("/emaillogin");
+        })
+
+}
 
 
 module.exports = {
@@ -484,7 +966,11 @@ module.exports = {
     show_record:show_record,
     delete_record_photo:delete_record_photo,
     add_record_photo:add_record_photo,
-    tags:tags
+    tags:tags,
+    schedule_form:schedule_form,
+    delete_schedule:delete_schedule,
+    schedule_checkbox:schedule_checkbox,
+    delete_timer_checkbox:delete_timer_checkbox
  
 }
 

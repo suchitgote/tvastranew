@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/doctor_info.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.css" />
+
+    <title>doctor_info</title>
+</head>
+<body>
+
+<!-- include nav-->
+<%- include('include/_nav') %>
+<!-- /include nav -->
+
+
+<div class="main">
+    <div class="login-box">
+        <div class="login">
+            <h2>welcome</h2>
+        </div>
+        <div class="form">
+            <form action="doctor_info" method="POST">
+                <div id="doctor_div" style="width: 100%;">
+                    <p> Complete your profile to proceed further </p>
+                    <textarea name="" id="" cols="30" rows="6"></textarea>
+                    <div class="files">
+                        <div class="label" for="doctor_photo">Upload your photo </div>
+                        <input type="file" id="doctor_photo" >
+                    </div>
+                    <input name='achivement' value='' placeholder="your achivement" > 
+                    <input name='hospital' value='' placeholder="your hospital" >
+                    <input type="number" name="experience"  placeholder="your experience in year" >
+                    <input name='qualification' value='' placeholder="your qualification " >
+                    <input name='awards' value='' placeholder="any awards" >
+                    <input name='specification' value='' placeholder="your specification" >
+                    <input type="number" name="fees" placeholder="your average fees (in rupees)" >
+                    <button> SUBMIT <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+                </div>
+            </form>
+        </div>
+        <div class="signup">
+             Not Registerd? <a href="login"> submit</a> 
+        </div>
+    </div>
+    <div class="reserved">
+        <h6> All right reserved Tvastra 2020 </h6>
+    </div>
+
+</div>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.min.js"></script>
+<script>    
+    var achivement = document.querySelector('input[name=achivement]');
+    new Tagify(achivement)
+
+    var hospital = document.querySelector('input[name=hospital]');
+    new Tagify(hospital)
+
+    var qualification = document.querySelector('input[name=qualification]');
+    new Tagify(qualification)
+
+    var awards = document.querySelector('input[name=awards]');
+    new Tagify(awards)
+
+    var specification = document.querySelector('input[name=specification]');
+    new Tagify(specification)
+</script>
+
+
+</body>
+</html>

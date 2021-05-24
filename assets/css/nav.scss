@@ -183,6 +183,10 @@ $white:white;
                         .photo{
                             width: 3rem;
                             height: 3rem;
+                            margin-right: 0.5rem;
+                            img{
+                                border-radius: 50%;
+                            }
                         }
                         .name_number{
                             p{

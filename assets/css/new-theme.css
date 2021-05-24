@@ -206,6 +206,10 @@
   .nav .desktop-nav-buttons .dropdown .dropdown-content .profile_info .photo {
     width: 3rem;
     height: 3rem;
+    margin-right: 0.5rem;
+  }
+  .nav .desktop-nav-buttons .dropdown .dropdown-content .profile_info .photo img {
+    border-radius: 50%;
   }
   .nav .desktop-nav-buttons .dropdown .dropdown-content .profile_info .name_number p {
     margin-bottom: 0rem;
@@ -596,6 +600,7 @@ select {
   font-size: 0.9rem;
   font-family: nexa-light;
   outline: none;
+  background: white;
 }
 
 select option {

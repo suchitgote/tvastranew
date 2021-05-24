@@ -91,9 +91,154 @@ const phone_login = (req,res)=>{
 }
 
 const doctor = (req,res)=>{
-    res.render("doctor", data = { user: false });
-}
 
+    models.user_schema.find({ "doctor" :  "doctor"})
+    .then(user=>{
+        // console.log("......................................doctor user",user)
+
+        var user_array = user ;
+        // console.log("docarray", docarray);
+        for(var i = 0 ; i < user_array.length ; i++){
+            // console.log(`user${i} = `, user_array[i]);
+            var schedule = user_array[i].schedule;
+            // console.log(`schedule = `, schedule);
+            var days = [ [],[],[],[],[],[] ];
+            var y = -1 ;
+            var y2 = -1;
+            var y3 = -1;
+            var y4 = -1;
+            var y5 = -1;
+            var y6 = -1;
+
+            for(var j = 0 ; j < schedule.length ; j++){
+                var hi = schedule[j].day ;
+                console.log("hi",hi)
+
+                if( 'Monday' == hi ){
+                    console.log("Monday" == hi)
+                    var x = 0;
+                    if(y > x){
+                        console.log("y run....")
+                      days[0][y] = schedule[j] ;
+                    }else{
+                    console.log("else   run....")
+                      days[0][x] = schedule[j] ;
+                        y = x;
+                        y++;
+                    }
+                }
+                else if( "Tuesday"  == hi ){
+                    console.log("Tuesday" == hi)
+                    var x2 = 0;
+                    var sub_arr2;
+                    if(y2>0){
+                        console.log("y run....")
+                      days[1][y2] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[1][x2] = schedule[j] ;
+                        y2 = x2;
+                        y2++;
+                    }
+                }
+                else if( "Wednessday"  == hi ){
+                    console.log("Wednessday" == hi)
+                    var x3 = 0;
+                    if(y3>0){
+                        console.log("y run....")
+                      days[2][y3] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[2][x3] = schedule[j] ;
+                        y3 = x3;
+                        y3++;
+                    }
+                }
+                else if( "Thrusday"  == hi ){
+                    console.log("Thrusday" == hi)
+                    var x4 = 0;
+                    if(y4>0){
+                        console.log("y run....")
+                      days[3][y4] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[3][x4] = schedule[j] ;
+                        y4 = x4;
+                        y4++;
+                    }
+                }
+                else if( "Friday"  == hi ){
+                    console.log("Friday" == hi)
+                    var x5 = 0;
+                    if(y5>0){
+                        console.log("y run....")
+                      days[4][y5] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[4][x5] = schedule[j] ;
+                        y5 = x5;
+                        y5++;
+                    }
+                }
+                else if("Saturday" == hi){
+                    console.log("Saturday" == hi)
+                    var x6 = 0;
+                    if(y6>0){
+                        console.log("y run....")
+                      days[5][y6] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[5][x6] = schedule[j] ;
+                        y6 = x6;
+                        y6++; 
+                    }
+                }
+            }
+            // console.log("days = ",days)
+            // var days = [["1m"],["2t"],["3w"],["4th"],["5f"],["6sa"]]
+
+            var d = new Date();
+            var n = d.getDay()
+            console.log("n = ",n); 
+            // n = 3;
+            var newdays = [];
+            for(var x = 0 ; x < days.length ; x++){
+            
+                if(n == 0 || n == 7){
+                        // console.log("x,n = ",x,n)
+                        newdays.push([])
+                        // console.log("newdays = ",newdays)
+                    n++ ;
+                }
+                if(n > days.length){
+                    // console.log("x,n = ",x,n)
+                    newdays.push(days[n - (days.length + 1 + 1)])
+                    // console.log("newdays = ",newdays)
+                    n++ ;
+                }else{
+                    // console.log("x,n = ",x,n)
+                    newdays.push(days[n-1])
+                    // console.log("newdays = ",newdays)
+                    n++ ;
+                }
+            }
+            
+            console.log("newdays = ",newdays)
+
+            user_array[i].schedule = newdays ;
+            // console.log(` user_array[${i}] = `, user_array[i])
+
+           
+        }
+        console.log("user_array = ",user_array)
+        res.render("doctor", data = { user: req.session.userid.user , doctors :user_array });
+    })
+    .catch(err=>{
+        res.redirect("/home");
+    })
+
+}
+ 
 const hospital = (req,res)=>{
     res.render("hospital", data = { user: false });
 }
@@ -169,6 +314,7 @@ const show_record = (req,res)=>{
 const tags = (req,res)=>{
     if(req.session.tag_value){
         var sec_tag = req.session.tag_value ;
+        console.log(  "................................sec_tag[0]",sec_tag[0] )
         delete req.session.tag_value; 
         res.render("tags",tagss = {tag : sec_tag} )   
     }else{
@@ -176,8 +322,34 @@ const tags = (req,res)=>{
     }
 }
 
-module.exports = {
+const signup_doctor_info = (req,res)=>{
+    res.render("doctor_info", data = { user: false })
+}
 
+const schedules = (req,res)=>{
+    if(req.session.update_data){
+        var x = req.session.update_data ;
+        if(req.session.schedule_creared){
+            var y = req.session.schedule_creared ;
+            delete req.session.schedule_creared ;
+            res.render("schedules", data = { user: x ,succ : y});
+        }else{
+            res.render("schedules", data = { user: x });
+        }
+    }else{
+        if(req.session.schedule_creared){
+            var y =req.session.schedule_creared;
+            delete req.session.schedule_creared;
+            res. render("schedules", data = { user: req.session.userid.user ,succ : y });
+        }else{
+            res. render("schedules", data = { user: req.session.userid.user  });
+        }
+    }
+}
+
+
+
+module.exports = {
     emaillogin: emaillogin,
     signup: signup,
     show_user: show_user,
@@ -193,7 +365,9 @@ module.exports = {
     medical_report:medical_report,
     setting:setting,
     show_record:show_record,
-    tags:tags
+    // tags:tags,
+    // signup_doctor_info:signup_doctor_info,
+    schedules:schedules
 
 }
 

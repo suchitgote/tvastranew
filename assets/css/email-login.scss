@@ -70,23 +70,26 @@ $green :green;
     .login-box{
         .form{
             form{
-                .forgot{
-                    width: -webkit-fill-available;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin: 1rem 0rem;
-                    #forgot_password{
-                        padding: 0;
-                        width: auto;
-                        border: none;
-                        background: white;
-                        font-size: 1rem;
-                        font-weight: bold;
-                        color: var(--heading);
-                    }
-                    h5{
-                        color: var(--heading);
+                #user{
+                    width: 100%;
+                    .forgot{
+                        width: -webkit-fill-available;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 1rem 0rem;
+                        #forgot_password{
+                            padding: 0;
+                            width: auto;
+                            border: none;
+                            background: white;
+                            font-size: 1rem;
+                            font-weight: bold;
+                            color: var(--heading);
+                        }
+                        h5{
+                            color: var(--heading);
+                        }
                     }
                 }
             }

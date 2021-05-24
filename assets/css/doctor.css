@@ -92,8 +92,43 @@
   margin: 0.5rem 0rem;
 }
 
-#main .main .doctor-boxs .doctor-box #doc_name_box3 {
-  display: none;
+#main .main .doctor-boxs .doctor-box .date-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 3 / 1 / span 1 / span 2;
+}
+
+#main .main .doctor-boxs .doctor-box .date-container .date-groups {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#main .main .doctor-boxs .doctor-box .date-container .date-groups .dates {
+  width: 20rem;
+  text-align: center;
+}
+
+#main .main .doctor-boxs .doctor-box .date-container .back-button {
+  position: absolute;
+  cursor: pointer;
+  left: 0;
+}
+
+#main .main .doctor-boxs .doctor-box .date-container .frountbutton {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+}
+
+#main .main .doctor-boxs .doctor-box .doc_name_box3 {
   -ms-grid-row: 2;
       grid-row-start: 2;
   -ms-grid-column: 1;
@@ -102,7 +137,7 @@
   width: 100%;
 }
 
-#main .main .doctor-boxs .doctor-box #doc_name_box3 .arrow-button {
+#main .main .doctor-boxs .doctor-box .doc_name_box3 .arrow-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -111,18 +146,18 @@
           justify-content: space-between;
 }
 
-#main .main .doctor-boxs .doctor-box #doc_name_box3 .arrow-button .arrow {
+#main .main .doctor-boxs .doctor-box .doc_name_box3 .arrow-button .arrow {
   padding: 1rem;
 }
 
-#main .main .doctor-boxs .doctor-box #doc_name_box3 .elements {
+#main .main .doctor-boxs .doctor-box .doc_name_box3 .elements {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-top: -2.5rem;
 }
 
-#main .main .doctor-boxs .doctor-box #doc_name_box3 .elements .slots {
+#main .main .doctor-boxs .doctor-box .doc_name_box3 .elements .slots {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -137,46 +172,88 @@
   margin-left: 3rem;
 }
 
-#main .main .doctor-boxs .doctor-box #booking-time-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  row-gap: 1rem;
+#main .main .doctor-boxs .doctor-box .swiper-container {
+  width: 100%;
+  height: auto;
+}
+
+#main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide h4 {
+  text-align: center;
+}
+
+#main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide p {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+#main .main .doctor-boxs .doctor-box .swiper-container .swiper-button-next:after {
+  content: 'next';
+  font-size: 2rem;
+}
+
+#main .main .doctor-boxs .doctor-box .swiper-container .swiper-button-prev:after {
+  content: 'prev';
+  font-size: 2rem;
+}
+
+#main .main .doctor-boxs .doctor-box .slots {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 3 / 1 / span 1 / span 2;
+}
+
+#main .main .doctor-boxs .doctor-box .slots .bookingtimegroup {
   display: none;
 }
 
-#main .main .doctor-boxs .doctor-box #booking-time-group #booking-time .daytime {
-  text-align: center;
-  font-family: "Nexa Light";
-}
-
-#main .main .doctor-boxs .doctor-box #booking-time-group #booking-time ul {
+#main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time .daytime {
+  margin-right: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time ul {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-#main .main .doctor-boxs .doctor-box #booking-time-group #booking-time ul li {
-  padding: 0.6rem;
-  border: 1px solid greenyellow;
-  color: greenyellow;
-  margin-top: 0.5rem;
-  text-align: center;
+#main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time ul li {
   cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0.7rem 1rem;
 }
 
-#main .main .doctor-boxs .doctor-box #booking-time-group .booking-hospital-name {
+#main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-hospital-name {
   text-align: center;
-  color: greenyellow;
+  color: #3d4d25;
+}
+
+#main .main .doctor-boxs .doctor-box .slots .active {
+  display: block;
 }
 
 footer .footer-heading {
@@ -340,6 +417,8 @@ footer .footer-reserve {
     display: grid;
     -ms-grid-columns: 2fr 1fr;
         grid-template-columns: 2fr 1fr;
+    -ms-grid-rows: auto auto auto;
+        grid-template-rows: auto auto auto;
         grid-template-areas: "doctor-content doctor-photo";
     margin-bottom: 0.5rem;
   }
@@ -368,6 +447,21 @@ footer .footer-reserve {
     -ms-grid-row: 1;
     -ms-grid-column: 2;
     grid-area: doctor-photo;
+  }
+  #main .main .doctor-boxs .doctor-box .swiper-container {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: 2 / 1 / span 1 / span 2;
+    width: 33.5rem;
+    height: auto;
+  }
+  #main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide h4 {
+    text-align: center;
+  }
+  #main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide p {
+    text-align: center;
   }
   footer .footer-heading {
     display: none;
@@ -472,6 +566,16 @@ footer .footer-reserve {
   }
   #main .main .doctor-boxs .doctor-box .doctor-photo {
     height: 16rem;
+  }
+  #main .main .doctor-boxs .doctor-box .swiper-container {
+    width: 60rem;
+    height: auto;
+  }
+  #main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide h4 {
+    text-align: center;
+  }
+  #main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide p {
+    text-align: center;
   }
 }
 /*# sourceMappingURL=doctor.css.map */

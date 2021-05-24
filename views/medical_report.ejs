@@ -41,6 +41,11 @@
             <a href="/appointment">
                 <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
             </a>
+            <% if(data.user.doctor == "doctor"){ %>
+                <a href="/schedules">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>schedules</p></div>
+                </a>
+            <% } %>  
             <a href="/medical_report">
                 <div class="dash_btn dot medical_report"  ><i class="fa fa-user" aria-hidden="true"></i> <p>medical reports </p></div>
             </a>
@@ -86,7 +91,7 @@
 <div id="number_change" class="add_record" >
     <div class="edit_number">
 
-        <form action="/medical_record" method="POST" enctype="multipart/form-data">
+        <form action="/medical_record" method="POST" enctype="multipart/form-data" >
             <div class="add_photo">
                 <div id="previeww" >
                 </div>
@@ -99,7 +104,7 @@
             <div class="inputs">
                 <input type="text" name="title" class="" placeholder="title" >
                 <input type="text" name="name" class="" value='<%= data.user.name %>'>
-                <input type="date" name="date" class="date">
+                <input type="date" name="date" id="datefield" class="date">
                 <input type="text" name="number" class="number" value='<%= data.user.number %>'>
             </div>
             <div class="report">
@@ -142,7 +147,20 @@
 <%- include('include/_footer') %>
 
 <!-- /include _footer -->
+<script>
+    (function(){
+        const reportPicInput = document.getElementById("file-input");
+        var selectedPhotoContainer = document.querySelector("#previeww");
 
+        reportPicInput.addEventListener("change", e=>{
+            if(reportPicInput.files.length>5){
+                alert("Maximum 5 files are allowed");
+                reportPicInput.value=null;
+                selectedPhotoContainer.innerHTML='';
+            }
+        })
+    })();
+</script>
 <script>
 
         var medical_report = document.getElementsByClassName("medical_report");
@@ -186,6 +204,36 @@
 
 </script>
 
+<script>
+    // Use Javascript
+    var today = new Date();
+    console.log("today=",today)
+
+    var dd = today.getDate();
+    console.log("dd=",dd)
+
+    var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+    console.log("mm=",mm)
+
+    var yyyy = today.getFullYear();
+    console.log("yyyy=",yyyy)
+
+    if(dd<10){
+    dd='0'+dd
+    console.log("dd=",dd)
+
+    } 
+    if(mm<10){
+    mm='0'+mm
+    console.log("mm=",mm)
+
+    } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+    console.log("today=",today)
+
+    document.getElementById("datefield").setAttribute("max", today);
+</script>
 
 
 </body>

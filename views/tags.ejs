@@ -11,7 +11,8 @@
         <% } %>
     <!-- form -->
         <form action="/tags" method="POST">
-            <input name='input1' value='tag1'>
+            <input name='input1' value=' <%= tagss.tag %>'>
+            <input name='input2' value=''>
             <input type="submit">
         </form>
         <!-- script -->
@@ -19,6 +20,9 @@
             <script>    
                 var input1 = document.querySelector('input[name=input1]');
                 new Tagify(input1)
+
+                var input2 = document.querySelector('input[name=input2]');
+                new Tagify(input2)
             </script>
     </body>
 </html>

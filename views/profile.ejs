@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/new-theme.css">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.css" />
 </head>
 <body>
     
@@ -40,6 +42,11 @@
             <a href="/appointment">
                 <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
             </a>
+            <% if(data.user.doctor == "doctor"){ %>
+                <a href="/schedules">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>schedules</p></div>
+                </a>
+            <% } %>            
             <a href="/medical_report">
                 <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>medical reports </p></div>
             </a>
@@ -133,7 +140,48 @@
                     </select>
                 </div>
             </div>
+            
+        <% if(data.user.doctor == "doctor"){ %>
+            <div class="border_div">
+                <div class="inputs">
+                    <label for="hospital"><h4>hospital</h4></label>
+                    <input name='hospital' value='<%= data.user.hospital %>' placeholder="your hospital" id="hospital">
+                </div>
+                <div class="inputs">
+                    <label for="qualification"><h4>qualification</h4></label>
+                    <input name='qualification' value='<%= data.user.qualification %>' placeholder="your qualification" id="qualification">
+                </div>
+                <div class="inputs">
+                    <label for="achivement"><h4>achivement</h4></label>
+                    <input name='achivement' value='<%= data.user.achivement %>' placeholder="your achivement" id="achivement">
+                </div>
 
+                <div class="inputs">
+                    <label for="experience"><h4>experience</h4></label>
+                    <input type="number" name="experience" id="experience" value='<%= data.user.experience %>' placeholder="your experience in year" >
+                </div>
+
+                <div class="inputs">
+                    <label for="awards"><h4>awards</h4></label>
+                    <input name='awards' value='<%= data.user.awards %>' placeholder="your awards" id="awards">
+                </div>
+                <div class="inputs">
+                    <label for="specification"><h4>specification</h4></label>
+                    <input name='specification' value='<%= data.user.specification %>' placeholder="your specification" id="specification">
+                </div>
+
+                <div class="inputs">
+                    <label for="fees"><h4>fees</h4></label>
+                    <input type="number" name="fees" value='<%= data.user.fees %>' id="fees" placeholder="your average fees (in rupees)" >
+                </div>
+
+                <div class="last_class">
+                    <div class="yourself"><h4>yourself</h4></div>
+                    <textarea name="yourself" id="yourself"  cols="30" rows="6"> <%= data.user.yourself %>  </textarea>
+                </div>
+                
+            </div>
+        <% } %>    
         </form>
     </div>
 
@@ -165,6 +213,24 @@
 <!-- /include _footer -->
 
 
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.min.js"></script>
+<script>
+    var achivement = document.querySelector('input[name=achivement]');
+    new Tagify(achivement)
+
+    var hospital = document.querySelector('input[name=hospital]');
+    new Tagify(hospital)
+
+    var qualification = document.querySelector('input[name=qualification]');
+    new Tagify(qualification)
+
+    var awards = document.querySelector('input[name=awards]');
+    new Tagify(awards)
+
+    var specification = document.querySelector('input[name=specification]');
+    new Tagify(specification)
+
+</script>
 <script>
 
     var medical_report = document.getElementsByClassName("profile_page");

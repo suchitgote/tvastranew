@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "24hformat": "^1.0.2",
     "@vonage/server-sdk": "^2.10.7",
     "@yaireo/tagify": "^4.1.1",
     "axios": "^0.21.1",

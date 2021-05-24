@@ -157,6 +157,10 @@ body {
   height: 4rem;
 }
 
+.profile .dashbord_content1 .border_div .photo-con .profile_photo .img img {
+  border-radius: 5rem;
+}
+
 .profile .dashbord_content1 .border_div .photo-con .profile_photo .select_photo p {
   text-align: start;
   margin-left: 1rem;
@@ -179,6 +183,10 @@ body {
 
 .profile .dashbord_content1 .border_div .inputs label h4 {
   padding: 0.5rem 0;
+}
+
+.profile .dashbord_content1 .border_div .inputs .tagify {
+  padding: 0.3rem 0.7rem;
 }
 
 .profile .dashbord_content1 .border_div .inputs input {
@@ -214,6 +222,14 @@ body {
 .profile .dashbord_content1 .border_div .inputs .num i {
   color: #0a7abb;
   margin-right: 1rem;
+}
+
+.profile .dashbord_content1 .border_div .last_class {
+  width: 100%;
+}
+
+.profile .dashbord_content1 .border_div .last_class .yourself {
+  margin: 0.5rem 0;
 }
 
 .profile .dashbord_content2 {
@@ -387,11 +403,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: auto;
   left: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 #number_change .edit_number {
@@ -529,7 +545,7 @@ body {
 }
 
 .add_record .edit_number form .add_photo #previeww img {
-  width: 7rem;
+  width: 6.5rem;
   height: 5rem;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
@@ -539,6 +555,9 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   background-color: #333333;
   color: white;
   padding: 0.5rem;
@@ -570,11 +589,20 @@ body {
 
 .add_record .edit_number form .report {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .add_record .edit_number form .report h2 {
   margin: 0.5rem 0;
   margin-bottom: 1rem;
+  width: 100%;
   color: #0a7abb;
 }
 
@@ -592,8 +620,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1rem;
-  padding-bottom: 0rem;
 }
 
 .add_record .edit_number form .report .report_type:hover {
@@ -601,7 +627,7 @@ body {
 }
 
 .add_record .edit_number form .report .report_type i {
-  margin-right: 2rem;
+  margin-right: 0.5rem;
 }
 
 .add_record .edit_number form .inputs {

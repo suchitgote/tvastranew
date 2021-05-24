@@ -123,6 +123,9 @@ body{
                     .img{
                         width: 4rem;
                         height: 4rem;
+                        img{
+                            border-radius: 5rem;
+                        }
                     }
                     .select_photo{
                         p{
@@ -150,6 +153,9 @@ body{
                     h4{
                         padding: 0.5rem 0;
                     }
+                }
+                .tagify  {
+                    padding: 0.3rem 0.7rem;
                 }
                 input{
                     // margin-top: 0.5rem;
@@ -179,6 +185,12 @@ body{
                         color: $i;
                         margin-right: 1rem;
                     }
+                }
+            }
+            .last_class{
+                width: 100%;
+                .yourself{
+                    margin: 0.5rem 0;
                 }
             }
         }
@@ -316,11 +328,11 @@ body{
     display: none;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: auto;
     left: 0;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     .edit_number{
         max-width: 90%;
         width: 30rem;
@@ -420,7 +432,7 @@ body{
                     display: flex;
                     flex-wrap: wrap;
                     img{
-                        width: 7rem;
+                        width: 6.5rem;
                         height: 5rem;
                         margin-right: 0.5rem;
                         margin-bottom: 0.5rem;
@@ -428,6 +440,7 @@ body{
                 }
                 .add_photo_div{
                     width: fit-content;
+                    height: fit-content;
                     background-color: #333333;
                     color: white;
                     padding: 0.5rem;
@@ -449,9 +462,13 @@ body{
             }
             .report{
                 width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
                 h2{
                     margin: 0.5rem 0;
                     margin-bottom: 1rem;
+                    width: 100%;
                     color: $i;
                 }
                 input{
@@ -463,13 +480,11 @@ body{
                 .report_type{
                     display: flex;
                     align-items: center;
-                    padding: 1rem;
-                    padding-bottom: 0rem;
                     &:hover{
                         background-color: #cccccc;;
                     }
                     i{
-                        margin-right: 2rem;
+                        margin-right: 0.5rem;
                     }
                 }
             }

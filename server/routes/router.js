@@ -33,7 +33,7 @@ router.route("/about_us").get(loginController.checkLogin,mainController.about_us
 router.route("/home").get(loginController.checkLogin,mainController.home);
 
 router.route("/signup").get(mainController.signup);
-router.route("/signup").post(loginController.signup);
+router.route("/signup").post(upload.single('file'),loginController.signup);
 
 router.route("/show_user").get(mainController.show_user);
 
@@ -75,8 +75,16 @@ router.route("/add_record_photo").post(upload.array('record_photos',5),loginCont
 
 router.route("/setting").get(mainController.setting);
 
-router.route("/tags").get( mainController.tags );
-router.route("/tags").post( loginController.tags );
+router.route("/schedules").get( mainController.schedules );
+router.route("/schedule_form").post( loginController.schedule_form );
+
+router.route("/delete_schedule").get( loginController.delete_schedule ); 
+
+router.route("/schedule_checkbox").get( loginController.schedule_checkbox ); 
+
+router.route("/delete_timer_checkbox").get( loginController.delete_timer_checkbox ); 
+
+
 
 
 module.exports = router ;

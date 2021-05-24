@@ -64,9 +64,38 @@ var user_schema = new mongoose.Schema({
     colony :{
         type: String
     },
+    yourself :{
+        type: String
+    },
     file :{
         type: String
-    }
+    },
+    achivement :{
+        type: String
+    },
+    hospital :{
+        type: String
+    },
+    experience :{
+        type: String
+    },
+    qualification :{
+        type: String
+    },
+    awards :{
+        type: String
+    },
+    specification :{
+        type: String
+    },
+    fees :{
+        type: String
+    },
+    yourself :{
+        type: String
+    },
+    schedule :[],
+    slots:[]
 })
  
 //scheme for medical_records table....

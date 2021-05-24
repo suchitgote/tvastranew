@@ -41,6 +41,11 @@
             <a href="/appointment">
                 <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
             </a>
+            <% if(data.user.doctor == "doctor"){ %>
+                <a href="/schedules">
+                    <div class="dash_btn dot medical_report"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>schedules</p></div>
+                </a>
+            <% } %>  
             <a href="/medical_report">
                 <div class="dash_btn dot medical_report"  ><i class="fa fa-user" aria-hidden="true"></i> <p>medical reports </p></div>
             </a>
@@ -103,6 +108,22 @@
 <%- include('include/_footer') %>
 
 <!-- /include _footer -->
+
+
+<script>
+    (function(){
+        const reportPicInput = document.getElementById("file-input");
+        var selectedPhotoContainer = document.querySelector("#previeww");
+
+        reportPicInput.addEventListener("change", e=>{
+            if(reportPicInput.files.length>5){
+                alert("Maximum 5 files are allowed");
+                reportPicInput.value=null;
+                selectedPhotoContainer.innerHTML='';
+            }
+        })
+    })();
+</script>
 
 <script>
 
