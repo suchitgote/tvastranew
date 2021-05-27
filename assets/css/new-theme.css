@@ -556,6 +556,10 @@ input::placeholder {
   font-family: 'nexa-light';
 }
 
+input[readonly=""] {
+  background: #f8f4f4;
+}
+
 textarea {
   outline: none;
   width: -webkit-fill-available;

@@ -196,7 +196,6 @@ console.log("newdays = ",newdays)
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -213,8 +212,8 @@ console.log("newdays = ",newdays)
     <link rel="stylesheet" href="css/new-theme.css">
     <link rel="stylesheet" href="css/doctor.css">
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
 
 </head>
 
@@ -416,6 +415,7 @@ console.log("newdays = ",newdays)
                                         alt="">
                                 </a>
                             </div>
+                            
                             <%
                             var summ = 0 ;
                              for(var kk = 0 ; kk < data.doctors[i].schedule.length ; kk++) { 
@@ -426,18 +426,21 @@ console.log("newdays = ",newdays)
                                 }
                             }
                             if( summ > 0){ %>
+                            <div class="date-container">
 
-                            <div class="swiper-container">
-                                <!-- Additional required wrapper -->
-                                <div class="swiper-wrapper">
-                                    
+                                <div class="back-button">
+                                    <h4> < </h4>
+                                </div>
+
+                                <div class="date-groups">
+
                                     <% for(var k = 0 ; k < data.doctors[i].schedule.length ; k++) { 
                                         var inc = 0 + k;
                                         var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * inc);
                                         var abc = String(currentDate) ;
                                         var newcurrentDate = abc.slice(0,15)
                                         %>
-                                    <div class="swiper-slide">
+                                    <div class="dates" value=""  >
                                         <% if(k == 0){ %>
                                             <h4> Today </h4>
                                         <% }else if(k == 1) { %>
@@ -454,19 +457,26 @@ console.log("newdays = ",newdays)
                                                  console.log(`........${k}..sum = `,sum)
                                             }
                                             %>
-                                            <p> <%= sum %> Slots Available</p>
+                                            <h5> <%= sum %> Slots Available</h5>
                                             <% }else{ %>
-                                                <p>0 Slots Available</p>
+                                                <h5>0 Slots Available</h5>
                                                 <% } %>
                                     </div>
-                                    <% } %>    
-    
+                                    <% } %>
+                
                                 </div>
-    
-                                <div class="swiper-button-prev"></div>
-                                <div class="swiper-button-next"></div>                              
+
+                                <div class="frountbutton">
+                                    <h4> > </h4>
+                                </div>
                             </div>
                             
+                                <% }else{ %>
+                                    <div class="swiper-container">
+                                        <h4> pls creatae shedule </h4>
+                                    </div>
+                                <% } %>
+
                             <div class="slots">
                                 <% for(var j = 0 ; j < data.doctors[i].schedule.length ; j++) {   %>
                                     <div class="bookingtimegroup">
@@ -511,15 +521,15 @@ console.log("newdays = ",newdays)
                                                         <ul>
                                                             <% for(var n = 0; n < data.doctors[i].schedule[j][m].slots.length ; n++ ) { 
                                                                 var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
-                                                                var fore = parseInt(data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,2))
-
-                                                                 if( apmp == "PM" && fore >= 4) { %>
+                                                                var fore = parseInt(data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,2)) ;
+                                                                
+                                                                 if( apmp == "PM" && fore >= 4 && fore != 12)  { %>
                                                                      <li
                                                                          onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">
                                                                          <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
                                                                      </li>
                                                              <% } } %> 
-                                                        </ul>
+                                                        </ul> 
                                                     </div> 
                                                 <div class="booking-hospital-name">
                                                     <h4> <%= data.doctors[i].schedule[j][m].hospital + m %></h4>
@@ -532,11 +542,7 @@ console.log("newdays = ",newdays)
                                 <% } %>
                             </div>
 
-                            <% }else{ %>
-                                <div class="swiper-container">
-                                    <h4> pls creatae shedule </h4>
-                                </div>
-                            <% } %>
+                         
 
                         </div>
                         
@@ -558,43 +564,122 @@ console.log("newdays = ",newdays)
 
 
 
+                <script>    
+                ( function toggle_Schedules(){
+                    const datecontainer = document.getElementsByClassName("date-container");
+                    console.log("datecontainer = ",datecontainer)
 
+                    const frountbutton = document.getElementsByClassName("frountbutton");
+                    console.log("frountbutton = ",frountbutton)
+
+                    const backbutton = document.getElementsByClassName("back-button");
+                    console.log("backbutton = ",backbutton)
+
+                    for (let ii = 0; ii < datecontainer.length; ii++) {
+                        frountbutton[ii].addEventListener("click", e => {
+                            var xx = datecontainer[ii].getElementsByClassName("dates")[0].getAttribute("value") ;
+                                console.log("xx",xx);
+                            var xxx = parseInt(xx)
+                                console.log("parseInt xx",xxx);
+                            if((xx == "") || (xx == NaN)){
+                                xxx = 0 ;
+                                    console.log("xxx = ",xxx)
+                            }
+                            var s = xxx + 1; 
+                            console.log("s = ",s)
+                            if(s <= 3){
+                                console.log("yes");
+                            }else{
+                                console.log("no");
+                            }
+                            if(s <= 4){
+                                const dates = datecontainer[ii].getElementsByClassName("dates");
+                                for (let jj = 0; jj < dates.length; jj++) {
+                                    dates[jj].style.transform += "translateX(-100%)";
+                                   
+                                    dates[jj].setAttribute("value" , `${s}`);
+                                      
+                                   console.log("uv",datecontainer[ii].getElementsByClassName("dates")[0].getAttribute("value"))
+                                }
+                                var xx = datecontainer[ii].getElementsByClassName("dates")[0].style.transform ;
+                                console.log("xx f1= ",xx)
+                               
+                            }
+                        }); 
+                    }
+                    for (let iii = 0; iii < datecontainer.length; iii++) {
+                        backbutton[iii].addEventListener("click", ee => {
+                            var ss = datecontainer[iii].getElementsByClassName("dates")[0].getAttribute("value") ;
+                            console.log("ss = ",ss)
+                            var sss = parseInt(ss)
+                            console.log("sss = ",sss)
+                            if(ss == ""){
+                                var ssss = 0;
+                            }else{
+                                
+                                var ssss = sss - 1;
+                            }
+
+                            console.log("ssss = ",ssss)
+
+                            if((ss == "") || (ss == 0)){
+                                console.log("no")
+                            }
+
+                            if(!((ss == "") || (ss == 0))){
+                                const datess = datecontainer[iii].getElementsByClassName("dates");
+                                for (let j = 0; j < datess.length; j++) {
+                                    datess[j].style.transform += "translateX(100%)";
+                                    datess[j].setAttribute("value" , `${ssss}`);
+                                }
+                                 var sssss = datecontainer[iii].getElementsByClassName("dates")[0].style.transform ;
+                                 console.log("xxx f2= ",sssss)
+                            }
+                        });
+                    }
+                })();
+                </script>
 
                 <script>
-
                     function neww() {
-                        var slide = document.getElementsByClassName("swiper-container");
+                        var slide = document.getElementsByClassName("date-container");
                         for (var m = 0; m < slide.length; m++) {
                             slide[m].style.height = "0";
                         }
                     }
                     neww();
-
                     var slideIndexx;
-                    showSlidesss(slideIndexx);
 
-                    function myFunction(n) {
-                        showSlidesss(slideIndexx = n);
+                    function myFunction(slideIndexx) {
+                        showSlidesss(slideIndexx);
                     }
-
-                    function showSlidesss(n) {
-                        var s = document.getElementsByClassName("swiper-container");
+                    function showSlidesss(slideIndexx) {
+                        
+                        console.log(" slideIndexx ",slideIndexx)
+                        var s = document.getElementsByClassName("date-container");
+                        var doc = document.getElementsByClassName("doctor-box");
+                        var bt = doc[slideIndexx].getElementsByClassName("bookingtimegroup");
+                        
 
                         if (s[slideIndexx].style.height == "auto") {
                             s[slideIndexx].style.height = "0";
+                            s[slideIndexx].style.margin = "0";
+
+                            for(var j = 0 ; j< bt.length ;j++){
+                                bt[j].classList.remove("active");
+                            }
+
                         } else {
                             s[slideIndexx].style.height = "auto";
+                            s[slideIndexx].style.margin = "1rem 0.5rem";
+
                         }
                     }
-
-
                 </script>
 
                 <script>
                     (function toggle_Schedules_And_Slots () {
                         const booking = document.getElementsByClassName("doctor-box");
-                    
-                        // Show schedules
                         for (let i = 0; i < booking.length; i++) {
                             const bookingDateBtn = booking[i].getElementsByClassName("dates");
                             const timesGroup = booking[i].getElementsByClassName("bookingtimegroup");
@@ -603,19 +688,19 @@ console.log("newdays = ",newdays)
                                     for (a = 0; a < timesGroup.length; a++) {
                                         timesGroup[a].classList.remove("active");
                                         bookingDateBtn[a].classList.remove("active");
-                                    }
+                                    } 
                                     timesGroup[j].classList.add("active");
                                     bookingDateBtn[j].classList.add("active");
-                                    booking[i].style.maxHeight = booking[i].scrollHeight + "px";
+                                  //  booking[i].style.maxHeight = booking[i].scrollHeight + "px";
                                 });
                             }
                         }
                     
-                        // Show slots
                     
                     })();
                 </script>
 
+           
 
 </body>
 

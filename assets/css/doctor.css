@@ -195,27 +195,9 @@
 }
 
 #main .main .doctor-boxs .doctor-box .swiper-container {
-  width: 100%;
-  height: auto;
-}
-
-#main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide h4 {
   text-align: center;
-}
-
-#main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide p {
-  text-align: center;
-  margin-bottom: 0;
-}
-
-#main .main .doctor-boxs .doctor-box .swiper-container .swiper-button-next:after {
-  content: 'next';
-  font-size: 2rem;
-}
-
-#main .main .doctor-boxs .doctor-box .swiper-container .swiper-button-prev:after {
-  content: 'prev';
-  font-size: 2rem;
+  background: #f7f6f1;
+  overflow: hidden;
 }
 
 #main .main .doctor-boxs .doctor-box .slots {
@@ -250,6 +232,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 6rem;
 }
 
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time ul {
@@ -259,15 +242,14 @@
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time ul li {
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.5);
   padding: 0.7rem 1rem;
+  margin: 0.2rem;
+  z-index: 1;
 }
 
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-hospital-name {
@@ -477,14 +459,6 @@ footer .footer-reserve {
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
     grid-area: 2 / 1 / span 1 / span 2;
-    width: 33.5rem;
-    height: auto;
-  }
-  #main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide h4 {
-    text-align: center;
-  }
-  #main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide p {
-    text-align: center;
   }
   footer .footer-heading {
     display: none;
@@ -591,14 +565,7 @@ footer .footer-reserve {
     height: 16rem;
   }
   #main .main .doctor-boxs .doctor-box .swiper-container {
-    width: 60rem;
-    height: auto;
-  }
-  #main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide h4 {
-    text-align: center;
-  }
-  #main .main .doctor-boxs .doctor-box .swiper-container .swiper-wrapper .swiper-slide p {
-    text-align: center;
+    background: #f3efef;
   }
 }
 /*# sourceMappingURL=doctor.css.map */

@@ -4,6 +4,7 @@ var models = require('../model/model');
 const axios = require('axios');
 const { reset } = require('nodemon');
 
+var ObjectID = require('mongodb').ObjectID;
 
 
 const emaillogin = (req, res) => {
@@ -347,6 +348,281 @@ const schedules = (req,res)=>{
     }
 }
 
+const patientappointment = (req,res)=>{
+
+    var obj = {
+        appointmentdate : req.query.appointmentdate ,
+        stime: req.query.time.slice(0,8) ,
+        etime: req.query.time.slice(10,19),
+        name :req.query.name,
+        hospital:req.query.hospital,
+        qualification:req.query.qualification,
+        bookhospital:req.query.bookhospital,
+        doctorid:req.query.doctorid
+    }
+    console.log("obj ",obj ) ;
+
+    res.render("patientappointment", data = { user: req.session.userid.user , obj : obj})
+
+}
+
+const confirmappointment = (req,res)=>{
+
+    var l = req.session.update_data.appointments.length
+    var obj ={
+        appointmentdate : req.session.update_data.appointments[l-1].appointmentdate,
+        stime:req.session.update_data.appointments[l-1].stime,
+        etime: req.session.update_data.appointments[l-1].etime,
+        name :req.session.update_data.appointments[l-1].name,
+        hospital:req.session.update_data.appointments[l-1].hospital,
+        qualification:req.session.update_data.appointments[l-1].qualification,
+        bookhospital:req.session.update_data.appointments[l-1].bookhospital,
+        objid:req.session.update_data.appointments[l-1]._id,
+        doctorid:req.session.update_data.appointments[l-1].doctorid
+
+    }
+    console.log("obj ",obj ) ;
+
+    res.render("confirmappointment", data = { user: req.session.update_data , obj : obj})
+
+}
+
+
+const reschedule = (req,res)=>{
+    
+    if(req.session.update_data){
+        var l = req.session.update_data.appointments.length
+        var obj = {
+            appointmentdate : req.session.update_data.appointments[l-1].appointmentdate,
+            stime:req.session.update_data.appointments[l-1].stime,
+            etime: req.session.update_data.appointments[l-1].etime,
+            name :req.session.update_data.appointments[l-1].name,
+            hospital:req.session.update_data.appointments[l-1].hospital,
+            qualification:req.session.update_data.appointments[l-1].qualification,
+            bookhospital:req.session.update_data.appointments[l-1].bookhospital,
+            objid:req.session.update_data.appointments[l-1]._id,
+            doctorid:req.session.update_data.appointments[l-1].doctorid,
+        }
+        console.log("obj ",obj ) ;
+    }else{
+    var i = req.query.objindex ;
+        var obj = {
+            appointmentdate : req.session.userid.user.appointments[i].appointmentdate,
+            stime:req.session.userid.user.appointments[i].stime,
+            etime: req.session.userid.user.appointments[i].etime,
+            name :req.session.userid.user.appointments[i].name,
+            hospital:req.session.userid.user.appointments[i].hospital,
+            qualification:req.session.userid.user.appointments[i].qualification,
+            bookhospital:req.session.userid.user.appointments[i].bookhospital,
+            objid:req.session.userid.user.appointments[i]._id,
+            doctorid:req.session.userid.user.appointments[i].doctorid,
+        }
+        console.log("obj ",obj ) ;
+    }
+
+
+
+    models.user_schema.findOne({ "_id" :  obj.doctorid })
+    .then(user=>{
+        console.log("......................................doctor user",user)
+
+        var user_array = user ;
+        // console.log("docarray", docarray);
+
+            // console.log(`user${i} = `, user_array[i]);
+            var schedule = user_array.schedule;
+            // console.log(`schedule = `, schedule);
+            var days = [ [],[],[],[],[],[] ];
+            var y = -1 ;
+            var y2 = -1;
+            var y3 = -1;
+            var y4 = -1;
+            var y5 = -1;
+            var y6 = -1;
+
+            for(var j = 0 ; j < schedule.length ; j++){
+                var hi = schedule[j].day ;
+                console.log("hi",hi)
+
+                if( 'Monday' == hi ){
+                    console.log("Monday" == hi)
+                    var x = 0;
+                    if(y > x){
+                        console.log("y run....")
+                      days[0][y] = schedule[j] ;
+                    }else{
+                    console.log("else   run....")
+                      days[0][x] = schedule[j] ;
+                        y = x;
+                        y++;
+                    }
+                }
+                else if( "Tuesday"  == hi ){
+                    console.log("Tuesday" == hi)
+                    var x2 = 0;
+                    var sub_arr2;
+                    if(y2>0){
+                        console.log("y run....")
+                      days[1][y2] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[1][x2] = schedule[j] ;
+                        y2 = x2;
+                        y2++;
+                    }
+                }
+                else if( "Wednessday"  == hi ){
+                    console.log("Wednessday" == hi)
+                    var x3 = 0;
+                    if(y3>0){
+                        console.log("y run....")
+                      days[2][y3] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[2][x3] = schedule[j] ;
+                        y3 = x3;
+                        y3++;
+                    }
+                }
+                else if( "Thrusday"  == hi ){
+                    console.log("Thrusday" == hi)
+                    var x4 = 0;
+                    if(y4>0){
+                        console.log("y run....")
+                      days[3][y4] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[3][x4] = schedule[j] ;
+                        y4 = x4;
+                        y4++;
+                    }
+                }
+                else if( "Friday"  == hi ){
+                    console.log("Friday" == hi)
+                    var x5 = 0;
+                    if(y5>0){
+                        console.log("y run....")
+                      days[4][y5] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[4][x5] = schedule[j] ;
+                        y5 = x5;
+                        y5++;
+                    }
+                }
+                else if("Saturday" == hi){
+                    console.log("Saturday" == hi)
+                    var x6 = 0;
+                    if(y6>0){
+                        console.log("y run....")
+                      days[5][y6] = schedule[j] ;
+                    }else{
+                        console.log("else run....")
+                      days[5][x6] = schedule[j] ;
+                        y6 = x6;
+                        y6++; 
+                    }
+                }
+            }
+            // console.log("days = ",days)
+            // var days = [["1m"],["2t"],["3w"],["4th"],["5f"],["6sa"]]
+
+            var d = new Date();
+            var n = d.getDay()
+            console.log("n = ",n); 
+            // n = 3;
+            var newdays = [];
+            for(var x = 0 ; x < days.length ; x++){
+            
+                if(n == 0 || n == 7){
+                        // console.log("x,n = ",x,n)
+                        newdays.push([])
+                        // console.log("newdays = ",newdays)
+                    n++ ;
+                }
+                if(n > days.length){
+                    // console.log("x,n = ",x,n)
+                    newdays.push(days[n - (days.length + 1 + 1)])
+                    // console.log("newdays = ",newdays)
+                    n++ ;
+                }else{
+                    // console.log("x,n = ",x,n)
+                    newdays.push(days[n-1])
+                    // console.log("newdays = ",newdays)
+                    n++ ;
+                }
+            }
+            
+            console.log("newdays = ",newdays)
+
+            user_array.schedule = newdays ;
+            // console.log(` user_array = `, user_array)
+
+           
+        
+        console.log("user_array = ",user_array)
+        if(req.session.update_data){
+            res.render("reschedule", data = { user: req.session.update_data , obj : obj , doctors :user_array})
+        }else{
+            res.render("reschedule", data = { user: req.session.userid.user , obj : obj , doctors :user_array})
+        }
+    })
+    .catch(err=>{
+        res.redirect("/home");
+    })
+
+    
+    
+}
+
+const updatereschedule = (req,res)=>{
+    var appointmentdate = req.query.appointmentdate ;
+    var bookhospital = req.query.bookhospital ;
+    var time = req.query.time ;
+    var doctorid = req.query.doctorid ;
+    var objid = req.query.objid ;
+
+    var stime = time.slice(0,8);
+    var etime = time.slice(11,19);
+
+    console.log(
+        "appointmentdate",appointmentdate,
+        "bookhospital",bookhospital,
+        "stime",stime,
+        "etime",etime,
+
+        "doctorid",doctorid,
+        "objid",objid
+    )
+
+    models.user_schema.updateOne(
+    { _id : data.user._id }, 
+    {$set : 
+        {"appointments.$[s].appointmentdate": appointmentdate,
+        "appointments.$[s].stime": stime,
+        "appointments.$[s].etime": etime,
+        "appointments.$[s].bookhospital": bookhospital} 
+    },
+    {arrayFilters : [{'s._id':ObjectID(objid) }] }
+    ) 
+    .then(user => {
+        console.log("...................res .................................user",user)
+        models.user_schema.findOne({ _id :  data.user._id})
+        .then(user=>{
+            req.session.update_data = user;
+            res.redirect("/appointment");
+        })
+        .catch(err=>{
+            res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
+        })
+    })
+    .catch(err => {
+        res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
+    })
+ 
+
+
+}
 
 
 module.exports = {
@@ -367,7 +643,11 @@ module.exports = {
     show_record:show_record,
     // tags:tags,
     // signup_doctor_info:signup_doctor_info,
-    schedules:schedules
+    schedules:schedules,
+    patientappointment:patientappointment,
+    confirmappointment:confirmappointment,
+    reschedule:reschedule,
+    updatereschedule:updatereschedule
 
 }
 

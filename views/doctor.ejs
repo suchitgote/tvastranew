@@ -217,6 +217,7 @@
                                         alt="">
                                 </a>
                             </div>
+                            
                             <%
                             var summ = 0 ;
                              for(var kk = 0 ; kk < data.doctors[i].schedule.length ; kk++) { 
@@ -227,8 +228,7 @@
                                 }
                             }
                             if( summ > 0){ %>
-
-                            <div class="date-container">
+                            <div class="date-container opencon">
 
                                 <div class="back-button">
                                     <h4> < </h4>
@@ -271,9 +271,13 @@
                                 <div class="frountbutton">
                                     <h4> > </h4>
                                 </div>
-                            
                             </div>
                             
+                                <% }else{ %>
+                                    <div class="swiper-container opencon">
+                                        <h4> No shedule </h4>
+                                    </div>
+                                <% } %>
 
                             <div class="slots">
                                 <% for(var j = 0 ; j < data.doctors[i].schedule.length ; j++) {   %>
@@ -287,9 +291,13 @@
                                                         <ul>
                                                             <% for(var n = 0; n < data.doctors[i].schedule[j][m].slots.length ; n++ ) { 
                                                                var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
-                                                                if( apmp == "AM") { %>
+                                                                if( apmp == "AM") {
+                                                                    var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * j);
+                                                                    var abc = String(currentDate) ;
+                                                                        abc = abc.slice(0,15)
+                                                                    %>
                                                                     <li
-                                                                        onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">
+                                                                        onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %>&doctorid=<%= data.doctors[i]._id %> '" >
                                                                         <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
                                                                     </li>
                                                             <% } } %> 
@@ -305,8 +313,8 @@
                                                                 var fore = parseInt(data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,2))
 
                                                                  if( (apmp == "PM" && fore < 4) || fore == 12 ) { %>
-                                                                     <li
-                                                                         onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">
+                                                                     <li 
+                                                                     onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %> '" >
                                                                          <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
                                                                      </li>
                                                              <% } } %> 
@@ -323,7 +331,7 @@
                                                                 
                                                                  if( apmp == "PM" && fore >= 4 && fore != 12)  { %>
                                                                      <li
-                                                                         onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">
+                                                                     onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %> '"   >
                                                                          <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
                                                                      </li>
                                                              <% } } %> 
@@ -340,11 +348,7 @@
                                 <% } %>
                             </div>
 
-                            <% }else{ %>
-                                <div class="swiper-container">
-                                    <h4> pls creatae shedule </h4>
-                                </div>
-                            <% } %>
+                         
 
                         </div>
                         
@@ -375,7 +379,7 @@
                     console.log("frountbutton = ",frountbutton)
 
                     const backbutton = document.getElementsByClassName("back-button");
-                    console.log("bbackbutton = ",backbutton)
+                    console.log("backbutton = ",backbutton)
 
                     for (let ii = 0; ii < datecontainer.length; ii++) {
                         frountbutton[ii].addEventListener("click", e => {
@@ -385,6 +389,7 @@
                                 console.log("parseInt xx",xxx);
                             if((xx == "") || (xx == NaN)){
                                 xxx = 0 ;
+
                                     console.log("xxx = ",xxx)
                             }
                             var s = xxx + 1; 
@@ -409,15 +414,16 @@
                             }
                         }); 
                     }
-                    for (let i = 0; i < datecontainer.length; i++) {
-                        backbutton[i].addEventListener("click", ee => {
-                            var ss = datecontainer[i].getElementsByClassName("dates")[0].getAttribute("value") ;
+                    for (let iii = 0; iii < datecontainer.length; iii++) {
+                        backbutton[iii].addEventListener("click", ee => {
+                            var ss = datecontainer[iii].getElementsByClassName("dates")[0].getAttribute("value") ;
                             console.log("ss = ",ss)
                             var sss = parseInt(ss)
                             console.log("sss = ",sss)
                             if(ss == ""){
                                 var ssss = 0;
                             }else{
+                                
                                 var ssss = sss - 1;
                             }
 
@@ -428,12 +434,12 @@
                             }
 
                             if(!((ss == "") || (ss == 0))){
-                                const datess = datecontainer[i].getElementsByClassName("dates");
+                                const datess = datecontainer[iii].getElementsByClassName("dates");
                                 for (let j = 0; j < datess.length; j++) {
                                     datess[j].style.transform += "translateX(100%)";
                                     datess[j].setAttribute("value" , `${ssss}`);
                                 }
-                                 var sssss = datecontainer[i].getElementsByClassName("dates")[0].style.transform ;
+                                 var sssss = datecontainer[iii].getElementsByClassName("dates")[0].style.transform ;
                                  console.log("xxx f2= ",sssss)
                             }
                         });
@@ -443,7 +449,7 @@
 
                 <script>
                     function neww() {
-                        var slide = document.getElementsByClassName("date-container");
+                        var slide = document.getElementsByClassName("opencon");
                         for (var m = 0; m < slide.length; m++) {
                             slide[m].style.height = "0";
                         }
@@ -457,7 +463,7 @@
                     function showSlidesss(slideIndexx) {
                         
                         console.log(" slideIndexx ",slideIndexx)
-                        var s = document.getElementsByClassName("date-container");
+                        var s = document.getElementsByClassName("opencon");
                         var doc = document.getElementsByClassName("doctor-box");
                         var bt = doc[slideIndexx].getElementsByClassName("bookingtimegroup");
                         

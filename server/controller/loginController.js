@@ -13,6 +13,8 @@ const otpSender = require("../../otp/otpSender");
 const { response } = require('express');
 const otpManager = new OtpManager(otpRepository, { otpLength: 4, validityTime: 5 });
 
+var ObjectID = require('mongodb').ObjectID;
+
 
 const checkMainLogin = (req, res) => {
     if (req.session.userid) {
@@ -536,7 +538,7 @@ const delete_record = (req,res)=>{
           res.redirect("/medical_report");
     })
     .catch(err => {
-        console.log("..............................................err",err)
+         console.log("..............................................err",err)
          res.redirect("/emaillogin");
     })
 
@@ -943,6 +945,80 @@ const delete_timer_checkbox = (req,res)=>{
 
 }
 
+const patientappointment = (req,res)=>{
+
+    var obj = {
+        scheduleid:req.body.scheduleid,
+        slotid:req.body.slotid,
+
+        name :req.body.doctorname,
+        bookhospital:req.body.bookhospital,
+        appointmentdate : req.body.appointmentdate ,
+        stime: req.body.stime ,
+        etime: req.body.etime,
+        hospital: req.body.hospital,
+        qualification: req.body.qualification,
+        doctorid:req.body.doctorid
+    }
+    console.log("obj ",obj ) ;
+
+    models.user_schema.updateOne( { _id : data.user._id},
+          { $push:{appointments:
+        {   _id:ObjectID(),        
+            name :req.body.doctorname,
+            bookhospital:req.body.bookhospital,
+            appointmentdate : req.body.appointmentdate ,
+            stime: req.body.stime ,
+            etime: req.body.etime,
+            hospital: req.body.hospital,
+            qualification: req.body.qualification,
+            doctorid:req.body.doctorid
+          }}})
+
+    .then(response => {
+        models.user_schema.findOne({ _id :  data.user._id})
+        .then(user=>{
+            req.session.update_data = user;
+            res.redirect("/confirmappointment");
+        })
+        .catch(err=>{
+            res.redirect("/home");
+        })
+    })
+    .catch(err => {
+        console.log("..............................................err",err)
+        res.redirect("/emaillogin");
+    }) 
+}
+
+const deleteappointment = (req,res)=>{
+
+    var hulk = req.query.objid
+
+    console.log("...................... bookhospital ......hulk",hulk)
+    
+    models.user_schema.updateOne({"_id":data.user._id},{$pull:{ "appointments":{"_id":ObjectID(`${hulk}`)}}} )
+    .then(user => {
+        models.user_schema.findOne({ _id :  data.user._id})
+        .then(user=>{
+            req.session.update_data = user;
+            res.redirect("/appointment");
+        })
+        .catch(err=>{
+            res.redirect("/home");
+        })
+    })
+    .catch(err => {
+        console.log("..............................................err",err)
+        res.redirect("/emaillogin");
+    })
+
+
+}
+
+
+
+
 
 module.exports = {
     
@@ -970,8 +1046,10 @@ module.exports = {
     schedule_form:schedule_form,
     delete_schedule:delete_schedule,
     schedule_checkbox:schedule_checkbox,
-    delete_timer_checkbox:delete_timer_checkbox
- 
+    delete_timer_checkbox:delete_timer_checkbox,
+    patientappointment:patientappointment,
+    deleteappointment:deleteappointment   
+
 }
 
 

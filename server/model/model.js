@@ -95,7 +95,8 @@ var user_schema = new mongoose.Schema({
         type: String
     },
     schedule :[],
-    slots:[]
+    slots:[],
+    appointments:[]
 })
  
 //scheme for medical_records table....

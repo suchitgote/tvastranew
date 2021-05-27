@@ -131,6 +131,7 @@ $show_more_bor:rgba(0, 0, 0,0.2);
                             color: white;
                         }
                     }
+
                 }
            
                 .doc_name_box3 {
@@ -157,38 +158,11 @@ $show_more_bor:rgba(0, 0, 0,0.2);
                        }
                     }
                 }
-
                 .swiper-container{
-                    width: 100%;
-                    height: auto;
-                    .swiper-wrapper{
-                        .swiper-slide{
-                            h4{
-                                text-align: center;
-                            }
-                            p{
-                                text-align: center;
-                                margin-bottom: 0;
-                            }
-                        }
-                       
-                    }
-                    .swiper-button-next{
-                        &:after {
-                            content: 'next';
-                           
-                            font-size: 2rem;
-                        }
-                    }
-                    .swiper-button-prev{
-                        &:after {
-                            content: 'prev';
-                            font-size: 2rem;
-                        }
-                    }
-                    
+                    text-align: center;
+                    background: rgb(247, 246, 241);
+                    overflow: hidden;
                 }
-
                 .slots{
                     grid-area: 3 / 1 / span 1 / span 2;
                     .bookingtimegroup {
@@ -204,24 +178,18 @@ $show_more_bor:rgba(0, 0, 0,0.2);
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
+                                width: 6rem;
                             }
                             ul {
-                                // display: flex;
                                 flex-wrap: wrap;
-                                // justify-content: space-evenly;
                                 display: flex;
                                 width: 100%;
-                                justify-content: space-between;
                                 li {
-                                    // padding: 0.6rem;
-                                    // border: 1px solid greenyellow;
-                                    // color: greenyellow;
-                                    // margin-top: 0.5rem;
-                                    // text-align: center;
                                     cursor: pointer;
                                     border: 1px solid rgba(0,0,0,0.5);
                                     padding: 0.7rem 1rem;
-        
+                                    margin: 0.2rem;
+                                    z-index: 1;
                                 }
                             }
                         }
@@ -417,18 +385,7 @@ footer{
                 }
                 .swiper-container{
                     grid-area: 2 / 1 / span 1 / span 2;
-                    width: 33.5rem;
-                    height: auto;
-                    .swiper-wrapper{
-                        .swiper-slide{
-                            h4{
-                                text-align: center;
-                            }
-                            p{
-                                text-align: center;
-                            }
-                        }
-                    }
+                  
                 }
             }
         }
@@ -559,18 +516,7 @@ footer{
                     height: 16rem;
                 }
                 .swiper-container{
-                    width: 60rem;
-                    height: auto;
-                    .swiper-wrapper{
-                        .swiper-slide{
-                            h4{
-                                text-align: center;
-                            }
-                            p{
-                                text-align: center;
-                            }
-                        }
-                    }
+                  background: rgb(243, 239, 239);
                 }
             }
         }

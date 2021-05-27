@@ -114,6 +114,9 @@ input{
         // padding-left: 0.5rem;
     }
 }    
+input[readonly=""]{
+    background: rgb(248, 244, 244);
+}
 textarea{
     outline: none;
     width: -webkit-fill-available;

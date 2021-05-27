@@ -84,6 +84,18 @@ router.route("/schedule_checkbox").get( loginController.schedule_checkbox );
 
 router.route("/delete_timer_checkbox").get( loginController.delete_timer_checkbox ); 
 
+router.route("/patientappointment").get( mainController.patientappointment ); 
+router.route("/patientappointment").post( loginController.patientappointment ); 
+
+router.route("/confirmappointment").get( mainController.confirmappointment ); 
+
+router.route("/deleteappointment").get( loginController.deleteappointment ); 
+
+router.route("/reschedule").get( mainController.reschedule ); 
+
+
+router.route("/updatereschedule").get( mainController.updatereschedule ); 
+
 
 
 

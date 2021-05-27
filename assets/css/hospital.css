@@ -98,7 +98,6 @@
   display: flex;
   overflow: hidden;
   position: relative;
-  margin: 0.5rem;
   -ms-grid-row: 3;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
@@ -149,6 +148,13 @@
 
 #main .main .doctor-boxs .doctor-box .date-container .frountbutton h4 {
   color: white;
+}
+
+#main .main .doctor-boxs .doctor-box .date-container .swiper-container {
+  text-align: center;
+  padding: 0.5rem;
+  background: #f7f6f1;
+  overflow: hidden;
 }
 
 #main .main .doctor-boxs .doctor-box .doc_name_box3 {
@@ -227,6 +233,11 @@
   grid-area: 3 / 1 / span 1 / span 2;
 }
 
+#main .main .doctor-boxs .doctor-box .slots .bookingtimegroup {
+  display: none;
+  margin-top: 3rem;
+}
+
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -246,6 +257,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 6rem;
 }
 
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time ul {
@@ -255,15 +267,14 @@
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time ul li {
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.5);
   padding: 0.7rem 1rem;
+  margin: 0.2rem;
+  z-index: 1;
 }
 
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-hospital-name {

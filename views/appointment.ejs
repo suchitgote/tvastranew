@@ -57,70 +57,45 @@
   
     <div class="dashbord_content2 mySlides">
         <h2 class="no_appointment ">  no Appointment 😥 </h2>
+
         <h2>Upcomming Appointments</h2>
+
+        <%  for(var i = 0; i < data.user.appointments.length ; i++){ %>
         <div class="appointment">
             <div class="date_time">
-                <div class="date"> <h4>mar 22</h4></div>
+                <div class="date"> <h4> <%= data.user.appointments[i].appointmentdate.slice(4,10)  %> </h4></div>
                 <div class="time"> 
-                    <h4 class="name">CHARLIE MOON </h4>
-                    <h4>Tue 12:00 PM </h4>
-                    <h4>Apollo Hospital </h4>
+                    <h4 class="name"><%= data.user.appointments[i].name  %> </h4>
+                    <h4><%= data.user.appointments[i].stime  %> to <%= data.user.appointments[i].etime %></h4>
+                    <h4><%= data.user.appointments[i].bookhospital %> </h4>
                     <div class="confirmed">Confirmed </div>
                 </div>
             </div>
             <div class="cancel_appointment">
-                <button>reshedule Aappointment</button>
-                <button  onclick="cancel_appointment_btn()" >cancel Aappointment </button>
+                <button type="button" onclick="window.location.href='/reschedule?objindex=<%= i %> '"> reshedule Aappointment</button >
+                <button  onclick="cancel_appointment_btn(`<%= i %>`)" >cancel Aappointment </button>
             </div>
         </div>
-        <div class="appointment">
-            <div class="date_time">
-                <div class="date"> <h4>mar 22</h4></div>
-                <div class="time"> 
-                    <h4 class="name">CHARLIE MOON </h4>
-                    <h4>Tue 12:00 PM </h4>
-                    <h4>Apollo Hospital </h4>
-                    <div class="confirmed">Confirmed </div>
+        
+        <div id="cancel_appointment" class="cancel_appointment_btn" >
+            <div class="edit_number">
+                <h2>Cancel Appointment?</h2>
+                <p>Are you sure you want to cancel your appointment deleteappointment ?</p>
+                <div class="send_otp">
+                    <button class="yes" type="button" onclick="window.location.href='/deleteappointment?objid=<%= data.user.appointments[i]._id %> '">yes</button>
+                    <button class="no"  onclick="cancel_appointment_btn_no(`<%= i %>`)"  >no</button>
                 </div>
-            </div>
-            <div class="cancel_appointment">
-                <button>reshedule Aappointment</button>
-                <button>cancel Aappointment </button>
             </div>
         </div>
-        <div class="appointment">
-            <div class="date_time">
-                <div class="date"> <h4>mar 22</h4></div>
-                <div class="time"> 
-                    <h4 class="name">CHARLIE MOON </h4>
-                    <h4>Tue 12:00 PM </h4>
-                    <h4>Apollo Hospital </h4>
-                    <div class="confirmed">Confirmed </div>
-                </div>
-            </div>
-            <div class="cancel_appointment">
-                <button>reshedule Aappointment</button>
-                <button>cancel Aappointment </button>
-            </div>
-        </div>  
-        <h2>compleated Appointments</h2>
+        <% } %>
+
+        <h2 class="compleatedAppointments">compleated Appointments</h2>
                     
     </div>
 
 </section>
 
 
-
-<div id="cancel_appointment" class="cancel_appointment_btn" >
-    <div class="edit_number">
-        <h2>Cancel Appointment?</h2>
-        <p>Are you sure you want to cancel your appointment?</p>
-        <div class="send_otp">
-            <button class="yes" >yes</button>
-            <button class="no"  onclick="cancel_appointment_btn_no()"  >no</button>
-        </div>
-    </div>
-</div>
 
 
 
@@ -140,14 +115,14 @@
   
 
     //...............................................
-    function cancel_appointment_btn(){
+    function cancel_appointment_btn(i){
         var cancel_appointment_btn = document.getElementsByClassName("cancel_appointment_btn");
-        cancel_appointment_btn[0].style.display = "flex";
+        cancel_appointment_btn[i].style.display = "flex";
     }
     
-    function cancel_appointment_btn_no(){
+    function cancel_appointment_btn_no(i){
         var cancel_appointment_btn = document.getElementsByClassName("cancel_appointment_btn");
-        cancel_appointment_btn[0].style.display = "none";
+        cancel_appointment_btn[i].style.display = "none";
     }
     //............................................
     

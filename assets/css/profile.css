@@ -239,6 +239,10 @@ body {
   border-radius: 0.3rem;
 }
 
+.profile .dashbord_content2 .compleatedAppointments {
+  margin: 1rem 0;
+}
+
 .profile .dashbord_content2 .no_appointment {
   padding: 2rem 0;
   text-align: center;
@@ -264,6 +268,23 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.profile .dashbord_content2 .appointment .date_time .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+}
+
+.profile .dashbord_content2 .appointment .date_time .date h4 {
+  text-align: center;
 }
 
 .profile .dashbord_content2 .appointment .date_time form {
