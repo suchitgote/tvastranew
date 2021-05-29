@@ -172,6 +172,7 @@ section {
                 padding-top: 0.5rem;
                 padding-bottom: 0.5rem;
                 font-weight: bold;
+                font-family: 'nexa-bold';
             }
             button {
                 width: -webkit-fill-available;
@@ -203,13 +204,26 @@ section {
                     padding-top: 1rem;
                     padding-bottom: 1rem;
                     width: 100%;
+                    .itemContainer{
+                        display: flex;
+                        flex-direction: column;
+                        span{
+                            margin: 0.5rem 0;
+                        }
+                    }
                 }
                 .row2 {
                     width: 100%;
                     .itemContainer {
+                        display: flex;
+                        flex-direction: column;
                         label {
+                            font-size: 1rem;
                             color : rgb(9, 116, 187);
                             font-weight: bold;
+                        }
+                        span{
+                            margin: 0.5rem 0;
                         }
                     }
                     .buttons {
@@ -221,6 +235,7 @@ section {
                         .buttonContainer {
                             button {
                                 background-color: rgb(9, 116, 187);
+                                width: 100%;
                             }
                         }
                     }
@@ -242,6 +257,9 @@ section {
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: space-between;
+                li{
+                    width: 50%;
+                }
             }
         #doctor-info {
             figure {
@@ -261,8 +279,32 @@ section {
         justify-content: space-evenly;
         #doctor-box {
             ul {
-                width: 70%;
+                li{
+                    width: 100%;
+                }
             }
         }
+        .form{
+            width: 35%;
+        }
+        .col2 {
+            .patientDetails {
+                form {
+                    .row2 {
+                        .buttons {
+                            flex-direction: row;
+                            .buttonContainer {
+                                margin-right: 0.5rem;
+                                button {
+                                    background-color: rgb(9, 116, 187);
+                                    width: auto;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
     }
 }

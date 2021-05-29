@@ -927,7 +927,7 @@ const delete_timer_checkbox = (req,res)=>{
         {$set : {"schedule.$[s].slots.$[si].checkbox": newstatus} },
         {arrayFilters : [{'s.schedule_index':schedule_obj_id},{'si.id': timer_id}] }
         ) 
-            .then(user => {
+        .then(user => {
                 models.user_schema.findOne({ _id :  data.user._id})
                 .then(user=>{
                     req.session.update_data = user;
@@ -948,9 +948,6 @@ const delete_timer_checkbox = (req,res)=>{
 const patientappointment = (req,res)=>{
 
     var obj = {
-        scheduleid:req.body.scheduleid,
-        slotid:req.body.slotid,
-
         name :req.body.doctorname,
         bookhospital:req.body.bookhospital,
         appointmentdate : req.body.appointmentdate ,
@@ -958,9 +955,18 @@ const patientappointment = (req,res)=>{
         etime: req.body.etime,
         hospital: req.body.hospital,
         qualification: req.body.qualification,
-        doctorid:req.body.doctorid
+        doctorid:req.body.doctorid,
+        schedule_obj_id:req.body.scheduleid,
+        timer_id:req.body.slotid
     }
-    console.log("obj ",obj ) ;
+    var newstatus = "true" ;
+    var schedule_obj_id = req.body.scheduleid ;
+    var timer_id = parseInt( req.body.slotid ) ;
+
+    console.log("log patientappointment obj ",obj ) ;
+    console.log(" newstatus = ",newstatus ) ;
+    console.log(" schedule_obj_id = ",schedule_obj_id ) ;
+    console.log(" timer_id = ",timer_id ) ;
 
     models.user_schema.updateOne( { _id : data.user._id},
           { $push:{appointments:
@@ -972,18 +978,32 @@ const patientappointment = (req,res)=>{
             etime: req.body.etime,
             hospital: req.body.hospital,
             qualification: req.body.qualification,
-            doctorid:req.body.doctorid
+            doctorid:req.body.doctorid,
+            scheduleid:schedule_obj_id,
+            slotid:timer_id
           }}})
 
     .then(response => {
-        models.user_schema.findOne({ _id :  data.user._id})
-        .then(user=>{
-            req.session.update_data = user;
-            res.redirect("/confirmappointment");
-        })
-        .catch(err=>{
-            res.redirect("/home");
-        })
+
+        models.user_schema.updateOne(
+            { _id : req.body.doctorid }, 
+            {$set : {"schedule.$[s].slots.$[si].checkbox": "true"} },
+            {arrayFilters : [{'s.schedule_index':schedule_obj_id},{'si.id': timer_id}] }
+            ) 
+            .then(user => {
+                models.user_schema.findOne({ _id :  data.user._id})
+                .then(user=>{
+                    req.session.update_data = user;
+                    res.redirect("/confirmappointment");
+                })
+                .catch(err=>{
+                    res.redirect("/home");
+                }) 
+            })
+            .catch(err => {
+                console.log("..............................................err",err)
+                res.redirect("/emaillogin");
+            })
     })
     .catch(err => {
         console.log("..............................................err",err)

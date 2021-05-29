@@ -358,9 +358,13 @@ const patientappointment = (req,res)=>{
         hospital:req.query.hospital,
         qualification:req.query.qualification,
         bookhospital:req.query.bookhospital,
-        doctorid:req.query.doctorid
+        doctorid:req.query.doctorid,
+        scheduleid:req.query.scheduleid,
+        slotid:req.query.slotid,
+
     }
-    console.log("obj ",obj ) ;
+    console.log("main pati obj ",obj ) ;
+
 
     res.render("patientappointment", data = { user: req.session.userid.user , obj : obj})
 
@@ -381,7 +385,7 @@ const confirmappointment = (req,res)=>{
         doctorid:req.session.update_data.appointments[l-1].doctorid
 
     }
-    console.log("obj ",obj ) ;
+    console.log("confirmappointment obj ",obj ) ;
 
     res.render("confirmappointment", data = { user: req.session.update_data , obj : obj})
 
@@ -624,7 +628,7 @@ const updatereschedule = (req,res)=>{
 
 }
 
-
+ 
 module.exports = {
     emaillogin: emaillogin,
     signup: signup,

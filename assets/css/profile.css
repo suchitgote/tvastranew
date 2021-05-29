@@ -181,6 +181,10 @@ body {
   color: #0a7abb;
 }
 
+.profile .dashbord_content1 .border_div .inputs {
+  margin-top: 0.5rem;
+}
+
 .profile .dashbord_content1 .border_div .inputs label h4 {
   padding: 0.5rem 0;
 }

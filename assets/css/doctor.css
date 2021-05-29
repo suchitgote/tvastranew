@@ -98,11 +98,11 @@
   display: flex;
   overflow: hidden;
   position: relative;
-  -ms-grid-row: 3;
+  -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
-  grid-area: 3 / 1 / span 1 / span 2;
+  grid-area: 2 / 1 / span 1 / span 2;
 }
 
 #main .main .doctor-boxs .doctor-box .date-container .date-groups {
@@ -112,14 +112,22 @@
 }
 
 #main .main .doctor-boxs .doctor-box .date-container .date-groups .dates {
-  width: 20rem;
+  width: 17rem;
   text-align: center;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  height: 2rem;
+  cursor: pointer;
 }
 
-#main .main .doctor-boxs .doctor-box .date-container .date-groups .active {
-  display: block;
+#main .main .doctor-boxs .doctor-box .date-container .date-groups .dates:hover {
+  border-bottom: 3px solid #0c71a7;
+}
+
+#main .main .doctor-boxs .doctor-box .date-container .date-groups .active h5 {
+  border-bottom: 3px solid #0c71a7;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 #main .main .doctor-boxs .doctor-box .date-container .back-button {
@@ -210,13 +218,19 @@
 
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup {
   display: none;
-  margin-top: 3rem;
 }
 
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -232,7 +246,13 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  align-items: center;
   width: 6rem;
+  margin-bottom: 0.5rem;
 }
 
 #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time ul {
@@ -241,6 +261,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
 }
 
@@ -453,12 +476,22 @@ footer .footer-reserve {
     -ms-grid-column: 2;
     grid-area: doctor-photo;
   }
+  #main .main .doctor-boxs .doctor-box .date-container .date-groups .dates {
+    width: 16rem;
+    height: 2.7rem;
+  }
   #main .main .doctor-boxs .doctor-box .swiper-container {
     -ms-grid-row: 2;
     -ms-grid-row-span: 1;
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
     grid-area: 2 / 1 / span 1 / span 2;
+  }
+  #main .main .doctor-boxs .doctor-box .slots .bookingtimegroup .booking-time {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
   footer .footer-heading {
     display: none;
@@ -563,6 +596,10 @@ footer .footer-reserve {
   }
   #main .main .doctor-boxs .doctor-box .doctor-photo {
     height: 16rem;
+  }
+  #main .main .doctor-boxs .doctor-box .date-container .date-groups .dates {
+    width: 20rem;
+    height: 3.1rem;
   }
   #main .main .doctor-boxs .doctor-box .swiper-container {
     background: #f3efef;

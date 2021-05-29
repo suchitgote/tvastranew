@@ -233,6 +233,7 @@ section .form form label {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   font-weight: bold;
+  font-family: 'nexa-bold';
 }
 
 section .form form button {
@@ -270,13 +271,42 @@ section .col2 .patientDetails form .row1 {
   width: 100%;
 }
 
+section .col2 .patientDetails form .row1 .itemContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section .col2 .patientDetails form .row1 .itemContainer span {
+  margin: 0.5rem 0;
+}
+
 section .col2 .patientDetails form .row2 {
   width: 100%;
 }
 
+section .col2 .patientDetails form .row2 .itemContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 section .col2 .patientDetails form .row2 .itemContainer label {
+  font-size: 1rem;
   color: #0974bb;
   font-weight: bold;
+}
+
+section .col2 .patientDetails form .row2 .itemContainer span {
+  margin: 0.5rem 0;
 }
 
 section .col2 .patientDetails form .row2 .buttons {
@@ -294,6 +324,7 @@ section .col2 .patientDetails form .row2 .buttons {
 
 section .col2 .patientDetails form .row2 .buttons .buttonContainer button {
   background-color: #0974bb;
+  width: 100%;
 }
 
 @media only screen and (min-width: 768px) {
@@ -318,6 +349,9 @@ section .col2 .patientDetails form .row2 .buttons .buttonContainer button {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+  section #doctor-box ul li {
+    width: 50%;
+  }
   section #doctor-box #doctor-info figure figcaption ul {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -335,8 +369,24 @@ section .col2 .patientDetails form .row2 .buttons .buttonContainer button {
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
   }
-  section #doctor-box ul {
-    width: 70%;
+  section #doctor-box ul li {
+    width: 100%;
+  }
+  section .form {
+    width: 35%;
+  }
+  section .col2 .patientDetails form .row2 .buttons {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  section .col2 .patientDetails form .row2 .buttons .buttonContainer {
+    margin-right: 0.5rem;
+  }
+  section .col2 .patientDetails form .row2 .buttons .buttonContainer button {
+    background-color: #0974bb;
+    width: auto;
   }
 }
 /*# sourceMappingURL=patientappointment.css.map */

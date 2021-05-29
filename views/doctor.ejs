@@ -290,8 +290,10 @@
                                                     </div>
                                                         <ul>
                                                             <% for(var n = 0; n < data.doctors[i].schedule[j][m].slots.length ; n++ ) { 
-                                                               var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
-                                                                if( apmp == "AM") {
+                                                               var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8) ;
+                                                               var checkbox = data.doctors[i].schedule[j][m].slots[n].checkbox ;
+
+                                                                if( apmp == "AM" && checkbox == "false") {
                                                                     var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * j);
                                                                     var abc = String(currentDate) ;
                                                                         abc = abc.slice(0,15)
@@ -299,6 +301,7 @@
                                                                     <li
                                                                         onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %>&doctorid=<%= data.doctors[i]._id %> '" >
                                                                         <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
+                                                                        
                                                                     </li>
                                                             <% } } %> 
                                                         </ul>
@@ -312,9 +315,13 @@
                                                                 var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
                                                                 var fore = parseInt(data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,2))
 
-                                                                 if( (apmp == "PM" && fore < 4) || fore == 12 ) { %>
+                                                                 if( (apmp == "PM" && fore < 4) || fore == 12 ) {
+                                                                    var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * j);
+                                                                    var abc = String(currentDate) ;
+                                                                        abc = abc.slice(0,15)
+                                                                     %>
                                                                      <li 
-                                                                     onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %> '" >
+                                                                     onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %>&doctorid=<%= data.doctors[i]._id %> '" >
                                                                          <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
                                                                      </li>
                                                              <% } } %> 
@@ -329,16 +336,20 @@
                                                                 var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
                                                                 var fore = parseInt(data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,2)) ;
                                                                 
-                                                                 if( apmp == "PM" && fore >= 4 && fore != 12)  { %>
+                                                                 if( apmp == "PM" && fore >= 4 && fore != 12)  { 
+                                                                    var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * j);
+                                                                    var abc = String(currentDate) ;
+                                                                        abc = abc.slice(0,15) 
+                                                                    %>
                                                                      <li
-                                                                     onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %> '"   >
+                                                                     onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %>&doctorid=<%= data.doctors[i]._id %> '"   >
                                                                          <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
                                                                      </li>
                                                              <% } } %> 
                                                         </ul> 
                                                     </div> 
                                                 <div class="booking-hospital-name">
-                                                    <h4> <%= data.doctors[i].schedule[j][m].hospital + m %></h4>
+                                                    <h4> <%= data.doctors[i].schedule[j][m].hospital %></h4>
                                                 </div>
                                             <% } %> 
                                         <% }else{ %>
