@@ -5,6 +5,8 @@ const axios = require('axios');
 
 const hrformat = require('24hformat');
 
+const sortArray = require('sort-array');
+
 var models = require('../model/model');
 
 const OtpManager = require("../../otp/OtpManager");
@@ -632,7 +634,7 @@ const schedule_form = (req,res)=>{
     
     .then(user=>{
 
-        // console.log("....................................list of obj with filter user=",user)
+        console.log("....................................list of obj with filter user=",user)
         // console.log(".................................... user[0].schedule[0]=",  user[0].schedule[0])
         // console.log(".................................... user[0].schedule[0].day=",  user[0].schedule[0].day)
 
@@ -789,7 +791,8 @@ const schedule_form = (req,res)=>{
                                 emtarr.push({
                                     id:k,
                                     schedule_time:slots[k],
-                                    checkbox:"false"
+                                    checkbox:"false",
+                                    isbook:"false"
                                 })
                             }
                             
@@ -982,28 +985,45 @@ const patientappointment = (req,res)=>{
             scheduleid:schedule_obj_id,
             slotid:timer_id
           }}})
-
     .then(response => {
 
-        models.user_schema.updateOne(
-            { _id : req.body.doctorid }, 
-            {$set : {"schedule.$[s].slots.$[si].checkbox": "true"} },
-            {arrayFilters : [{'s.schedule_index':schedule_obj_id},{'si.id': timer_id}] }
-            ) 
-            .then(user => {
-                models.user_schema.findOne({ _id :  data.user._id})
-                .then(user=>{
-                    req.session.update_data = user;
-                    res.redirect("/confirmappointment");
+        models.user_schema.updateOne( { _id : req.body.doctorid},
+            { $push:{appointments:
+            { _id:ObjectID(),        
+              name :req.body.patname,
+              number :req.body.mobile,
+              patientnumber :req.body.patientmobile,
+              email :req.body.email,
+              bookhospital:req.body.bookhospital,
+              appointmentdate : req.body.appointmentdate ,
+              stime: req.body.stime ,
+              etime: req.body.etime,
+            }}}) 
+            .then(response => {
+                    models.user_schema.updateOne(
+                        { _id : req.body.doctorid }, 
+                        {$set : {"schedule.$[s].slots.$[si].isbook": "true"} },
+                        {arrayFilters : [{'s.schedule_index':schedule_obj_id},{'si.id': timer_id}] }
+                        ) 
+                        .then(user => {
+                            models.user_schema.findOne({ _id :  data.user._id})
+                            .then(user=>{
+                                req.session.update_data = user;
+                                res.redirect("/confirmappointment");
+                            })
+                            .catch(err=>{
+                                res.redirect("/home");
+                            }) 
+                        })
+                        .catch(err => {
+                            console.log("..............................................err",err)
+                            res.redirect("/emaillogin");
+                        })
                 })
-                .catch(err=>{
-                    res.redirect("/home");
-                }) 
-            })
             .catch(err => {
-                console.log("..............................................err",err)
-                res.redirect("/emaillogin");
-            })
+                    console.log("..............................................err",err)
+                    res.redirect("/emaillogin");
+                })      
     })
     .catch(err => {
         console.log("..............................................err",err)
@@ -1037,6 +1057,204 @@ const deleteappointment = (req,res)=>{
 }
 
 
+const getschedule = (req,res)=>{
+    var ids = req.query.docid ;
+    console.log("ids = ",ids);
+
+    models.user_schema.findOne({_id : ids})
+    .select({schedule:1}) 
+    .then(user=>{
+        console.log("user_array = ",user);
+        console.log("user_array = ",user.schedule[0].day);
+
+
+        var schedule = user.schedule;
+        // console.log(`schedule = `, schedule);
+        var days = [ [],[],[],[],[],[] ];
+        var y = -1 ;
+        var y2 = -1;
+        var y3 = -1;
+        var y4 = -1;
+        var y5 = -1;
+        var y6 = -1;
+
+        for(var j = 0 ; j < schedule.length ; j++){
+            var hi = schedule[j].day ;
+            console.log("hi",hi)
+
+            if( 'Monday' == hi ){
+                console.log("Monday" == hi)
+                var x = 0;
+                if(y > x){
+                    console.log("y run....")
+                  days[0][y] = schedule[j] ;
+                }else{
+                console.log("else   run....")
+                  days[0][x] = schedule[j] ;
+                    y = x;
+                    y++;
+                }
+            }
+            else if( "Tuesday"  == hi ){
+                console.log("Tuesday" == hi)
+                var x2 = 0;
+                var sub_arr2;
+                if(y2>0){
+                    console.log("y run....")
+                  days[1][y2] = schedule[j] ;
+                }else{
+                    console.log("else run....")
+                  days[1][x2] = schedule[j] ;
+                    y2 = x2;
+                    y2++;
+                }
+            }
+            else if( "Wednesday"  == hi ){
+                console.log("Wednesday" == hi)
+                var x3 = 0;
+                if(y3>0){
+                    console.log("y run....")
+                  days[2][y3] = schedule[j] ;
+                }else{
+                    console.log("else run....")
+                  days[2][x3] = schedule[j] ;
+                    y3 = x3;
+                    y3++;
+                }
+            }
+            else if( "Thursday"  == hi ){
+                console.log("Thursday" == hi)
+                var x4 = 0;
+                if(y4>0){
+                    console.log("y run....")
+                  days[3][y4] = schedule[j] ;
+                }else{
+                    console.log("else run....")
+                  days[3][x4] = schedule[j] ;
+                    y4 = x4;
+                    y4++;
+                }
+            }
+            else if( "Friday"  == hi ){
+                console.log("Friday" == hi)
+                var x5 = 0;
+                if(y5>0){
+                    console.log("y run....")
+                  days[4][y5] = schedule[j] ;
+                }else{
+                    console.log("else run....")
+                  days[4][x5] = schedule[j] ;
+                    y5 = x5;
+                    y5++;
+                }
+            }
+            else if("Saturday" == hi){
+                console.log("Saturday" == hi)
+                var x6 = 0;
+                if(y6>0){
+                    console.log("y run....")
+                  days[5][y6] = schedule[j] ;
+                }else{
+                    console.log("else run....")
+                  days[5][x6] = schedule[j] ;
+                    y6 = x6;
+                    y6++; 
+                }
+            }
+        }
+        // console.log("days = ",days)
+        // var days = [["1m"],["2t"],["3w"],["4th"],["5f"],["6sa"]]
+
+        var d = new Date();
+        var n = d.getDay()
+        console.log("n = ",n); 
+        // n = 3;
+        var newdays = [];
+        for(var x = 0 ; x < days.length ; x++){
+        
+            if(n == 0 || n == 7){
+                    // console.log("x,n = ",x,n)
+                    newdays.push([])
+                    // console.log("newdays = ",newdays)
+                n++ ;
+            }
+            if(n > days.length){
+                // console.log("x,n = ",x,n)
+                newdays.push(days[n - (days.length + 1 + 1)])
+                // console.log("newdays = ",newdays)
+                n++ ;
+            }else{
+                // console.log("x,n = ",x,n)
+                newdays.push(days[n-1])
+                // console.log("newdays = ",newdays)
+                n++ ;
+            }
+        }
+        
+        console.log("newdays = ",newdays)
+
+        var summ = 0 ;
+        var sumarray = [];
+
+        console.log("  newdays.length ",newdays.length)
+
+        for(var kk = 0 ; kk < newdays.length ; kk++) { 
+            console.log(` newdays[${kk}].length `,newdays[kk].length)
+            if(newdays[kk].length != 0){
+                for( var ll = 0 ; ll < newdays[kk].length ; ll++ ){
+                    var totalslot = newdays[kk][ll].slots.length ;
+                    summ = summ + totalslot ;
+                    console.log(`........${kk}..summ = `,summ)
+                }
+                sumarray.push(summ);
+       console.log("sumarray.................",sumarray) ;
+
+                summ = 0 ;
+            }else{
+                sumarray.push(newdays[kk].length);
+       console.log("sumarray.................",sumarray) ;
+
+            }
+       }
+
+       console.log("sumarray.................",sumarray) ;
+
+        user.schedule = sumarray ;
+
+
+        res.send(user)
+    })
+    .catch(err=>{
+        res.send("/home");
+    })
+}
+
+
+const setschedule = (req,res)=>{
+    var ids = req.query.docid ;
+    console.log("ids = ",ids);
+
+    var clickday = req.query.clickday ;
+    console.log("clickday = ",clickday);
+
+    models.user_schema.findOne({_id : ids})
+    .select({schedule:1}) 
+    .then(user=>{
+    var objarray =[];
+
+    for(var i =0 ;i < user.schedule.length ;i++){
+    if( user.schedule[i].day == clickday ){
+        objarray.push(user.schedule[i])
+    }
+    }
+    console.log("objarray = ",objarray);
+
+            res.send(objarray)
+        })
+        .catch(err=>{
+            res.send("/home");
+        })
+}
 
 
 
@@ -1068,7 +1286,9 @@ module.exports = {
     schedule_checkbox:schedule_checkbox,
     delete_timer_checkbox:delete_timer_checkbox,
     patientappointment:patientappointment,
-    deleteappointment:deleteappointment   
+    deleteappointment:deleteappointment,
+    getschedule:getschedule,
+    setschedule:setschedule
 
 }
 

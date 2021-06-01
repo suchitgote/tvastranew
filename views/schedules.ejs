@@ -79,7 +79,7 @@
             <div class="btns">
                  
                     <button onclick="return (confirm('Do you want to delete schedule?')? window.location.href='/delete_schedule?id=<%= data.user.schedule[i].schedule_index %>' : '')" >remove schedule  </button>
-                    <button class="viweslots" onclick="currentSlide(`<%= i %>`)" >viwe slots </button>
+                    <button class="viweslots" onclick="currentSlide(`<%= i %>`)" >views slots </button>
 
                       <% if(data.user.schedule[i].schedule_checkbox == "true"){ %>     
                         <input type="checkbox"  onchange="window.location.href='/schedule_checkbox?id=<%= data.user.schedule[i].schedule_index %>&status=<%= data.user.schedule[i].schedule_checkbox %>'" checked />
@@ -130,8 +130,8 @@
             <select name="day" multiple="" required="">
                 <option value="Monday">Monday</option>
                 <option value="Tuesday">Tuesday</option>
-                <option value="Wednessday">Wednessday</option>
-                <option value="Thrusday">Thrusday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
                 <option value="Friday">Friday</option>
                 <option value="Saturday">Saturday</option>
             </select>

@@ -30,7 +30,7 @@
         <div id="doctor-box">
             <h1>In Clinic Appointment</h1>
             <ul>
-                <li><i class="far fa-calendar-plus"></i> <%= data.obj.appointmentdate %> <%= data.obj.scheduleid %> <%= data.obj.slotid %> </li>
+                <li><i class="far fa-calendar-plus"></i> <%= data.obj.appointmentdate %>  </li>
                 <li><i class="far fa-clock"></i> <%= data.obj.stime %> </li>
                 <li><i class="far fa-clock"></i>To <%= data.obj.etime %>  </li>
                 <li><a href="/doctors">Change date &amp; time</a></li>
@@ -99,7 +99,7 @@
                     <label>Mobile number:</label>
                     <input type="text" name="mobile" value="<%= data.user.number %>" readonly="">
                     <label>Patient's mobile number:</label>
-                    <input type="text" name="patientMobile" value="<%= data.user.number %>" readonly="">
+                    <input type="text" name="patientmobile" value="<%= data.user.number %>" readonly="">
                     <label>Patient's full name:</label>
                     <input type="email" name="email" value="<%= data.user.email %>" readonly="">
                     <button type="submit">Book Appointment</button>

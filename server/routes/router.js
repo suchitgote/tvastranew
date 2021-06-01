@@ -26,6 +26,8 @@ router.route("/emaillogin").post(loginController.emaillogin);
 
 router.route("/doctor").get(loginController.checkLogin,mainController.doctor);
 
+router.route("/demodoc").get(loginController.checkLogin,mainController.demodoc);
+
 router.route("/hospital").get(loginController.checkLogin,mainController.hospital);
 
 router.route("/about_us").get(loginController.checkLogin,mainController.about_us);
@@ -97,7 +99,11 @@ router.route("/reschedule").get( mainController.reschedule );
 router.route("/updatereschedule").get( mainController.updatereschedule ); 
 
 
+router.route("/getschedule").get( loginController.getschedule ); 
 
+router.route("/setschedule").get( loginController.setschedule ); 
+
+//v setschedule
 
 module.exports = router ;
 

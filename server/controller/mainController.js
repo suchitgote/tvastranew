@@ -240,6 +240,31 @@ const doctor = (req,res)=>{
 
 }
  
+const demodoc = (req,res)=>{
+    // models.user_schema..find({ _id :  data.user._id })
+    models.user_schema.find({ "doctor" :  "doctor"})
+    .select({name : 1 ,_id : 1,specification:1,hospital:1,qualification:1,experience:1,city:1,fees:1,file:1,state:1,colony:1}) 
+    .then(user=>{
+        console.log("......................................doctors specific data",user)
+
+        console.log("user_array = ",user)
+
+        var isdoctor = req.session.isdoctor ;
+        console.log(".......isdoctor",isdoctor)
+        if(isdoctor){
+            delete req.session.isdoctor ;
+            res.render("demodoc", data = { user: req.session.userid.user , doctors :user ,err:isdoctor});
+        }else{
+            res.render("demodoc", data = { user: req.session.userid.user , doctors :user });
+        }
+    })
+    .catch(err=>{
+        res.redirect("/home");
+    })
+
+}
+
+
 const hospital = (req,res)=>{
     res.render("hospital", data = { user: false });
 }
@@ -365,8 +390,12 @@ const patientappointment = (req,res)=>{
     }
     console.log("main pati obj ",obj ) ;
 
-
+if(req.query.isdoctor == "doctor"){
+    req.session.isdoctor = "you can't book appointment as a doctor" ;
+    res.redirect("demodoc") ;
+}else{
     res.render("patientappointment", data = { user: req.session.userid.user , obj : obj})
+}
 
 }
 
@@ -394,7 +423,41 @@ const confirmappointment = (req,res)=>{
 
 const reschedule = (req,res)=>{
     
-    if(req.session.update_data){
+    if(req.query.objindex && req.session.update_data){
+
+        var i = req.query.objindex ;
+        var obj = {
+            appointmentdate : req.session.update_data.appointments[i].appointmentdate,
+            stime:req.session.update_data.appointments[i].stime,
+            etime: req.session.update_data.appointments[i].etime,
+            name :req.session.update_data.appointments[i].name,
+            hospital:req.session.update_data.appointments[i].hospital,
+            qualification:req.session.update_data.appointments[i].qualification,
+            bookhospital:req.session.update_data.appointments[i].bookhospital,
+            objid:req.session.update_data.appointments[i]._id,
+            doctorid:req.session.update_data.appointments[i].doctorid,
+        }
+        console.log("...........................obj ",obj ) ;
+
+      
+    }else if(req.query.objindex ){
+
+        var i = req.query.objindex ;
+        var obj = {
+            appointmentdate : req.session.userid.user.appointments[i].appointmentdate,
+            stime:req.session.userid.user.appointments[i].stime,
+            etime: req.session.userid.user.appointments[i].etime,
+            name :req.session.userid.user.appointments[i].name,
+            hospital:req.session.userid.user.appointments[i].hospital,
+            qualification:req.session.userid.user.appointments[i].qualification,
+            bookhospital:req.session.userid.user.appointments[i].bookhospital,
+            objid:req.session.userid.user.appointments[i]._id,
+            doctorid:req.session.userid.user.appointments[i].doctorid,
+        }
+        console.log("...........................obj ",obj ) ;
+
+    }else{
+
         var l = req.session.update_data.appointments.length
         var obj = {
             appointmentdate : req.session.update_data.appointments[l-1].appointmentdate,
@@ -408,20 +471,7 @@ const reschedule = (req,res)=>{
             doctorid:req.session.update_data.appointments[l-1].doctorid,
         }
         console.log("obj ",obj ) ;
-    }else{
-    var i = req.query.objindex ;
-        var obj = {
-            appointmentdate : req.session.userid.user.appointments[i].appointmentdate,
-            stime:req.session.userid.user.appointments[i].stime,
-            etime: req.session.userid.user.appointments[i].etime,
-            name :req.session.userid.user.appointments[i].name,
-            hospital:req.session.userid.user.appointments[i].hospital,
-            qualification:req.session.userid.user.appointments[i].qualification,
-            bookhospital:req.session.userid.user.appointments[i].bookhospital,
-            objid:req.session.userid.user.appointments[i]._id,
-            doctorid:req.session.userid.user.appointments[i].doctorid,
-        }
-        console.log("obj ",obj ) ;
+
     }
 
 
@@ -560,10 +610,7 @@ const reschedule = (req,res)=>{
             console.log("newdays = ",newdays)
 
             user_array.schedule = newdays ;
-            // console.log(` user_array = `, user_array)
 
-           
-        
         console.log("user_array = ",user_array)
         if(req.session.update_data){
             res.render("reschedule", data = { user: req.session.update_data , obj : obj , doctors :user_array})
@@ -638,6 +685,7 @@ module.exports = {
     create_password:create_password,
     phone_login:phone_login,
     doctor:doctor,
+    demodoc:demodoc,
     hospital:hospital,
     about_us:about_us,
     profile:profile,
