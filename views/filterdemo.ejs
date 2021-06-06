@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/login.css">
+
+
+    <title>email-login</title>
+</head>
+<body>
+
+
+
+<div class="main">
+
+    <div class="login-box">
+
+        
+        <input type="text">
+        <div class="form">
+            <form id="loginform" >
+                <h3>location</h3>
+                <% for(var i=0; i < data.all_doc_check.length; i++) { %>    
+
+                    <div style="display: flex;">
+                     <% var typehospital= data.all_doc_check[i].city.split(",")
+                        console.log("typehospital",typehospital)
+                       
+                            for(var j=0; j< typehospital.length ;j++)
+                            { %>
+                                <label for="city"><%= typehospital[j] %></label>
+                                <input style="width: auto;" onchange="this.form.submit()" type="checkbox" name="city" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %> checked='checked' "><br>
+                           <% }  %>
+                    
+                    </div>
+                <% } %>
+
+                <h3>hospital</h3>
+
+                <% for(var i=0; i < data.all_doc_check.length; i++) { %>    
+
+                    <div style="display: flex;">
+                     <% var typehospital= data.all_doc_check[i].hospital.split(",")
+                        console.log("typehospital",typehospital)
+                       
+                            for(var j=0; j< typehospital.length ;j++)
+                            { %>
+                                <label for="hospital"><%= typehospital[j] %></label>
+                                <input style="width: auto;" onchange="this.form.submit()" type="checkbox" name="hospital" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><br>
+                           <% }  %>
+                    
+                    </div>
+                <% } %>
+
+                <h3>experience</h3>
+
+                <% for(var i=0; i < data.all_doc_check.length; i++) { %>    
+
+                    <div style="display: flex;">
+                     <% var typehospital= data.all_doc_check[i].experience.split(",")
+                        console.log("typehospital",typehospital)
+                       
+                            for(var j=0; j< typehospital.length ;j++)
+                            { %>
+                                <label for="experience"><%= typehospital[j] %></label>
+                                <input style="width: auto;" onchange="this.form.submit()"
+                                 type="checkbox" name="experience" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><br>
+                           <% } %>
+                    
+                    </div>
+                <% } %>
+
+                
+                
+                <button type="submit"> LOGIN <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+            </form>
+            <div>
+                <% for(var i=0; i < data.doctors.length; i++) { %>    
+                    
+                    <h4><%= data.doctors[i].name %></h4>
+                   
+                <% } %>
+            </div>
+        </div>
+    
+        <!-- onchange="this.form.submit()" -->
+    </div>
+
+    
+
+</div>
+
+    <script>
+        var form = document.getElementById("loginform");
+        function handleForm(event) { event.preventDefault(); } 
+        form.addEventListener('submit', handleForm);
+    </script>
+
+</body>
+</html>

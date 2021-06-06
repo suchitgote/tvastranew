@@ -241,27 +241,198 @@ const doctor = (req,res)=>{
 }
  
 const demodoc = (req,res)=>{
-    // models.user_schema..find({ _id :  data.user._id })
-    models.user_schema.find({ "doctor" :  "doctor"})
-    .select({name : 1 ,_id : 1,specification:1,hospital:1,qualification:1,experience:1,city:1,fees:1,file:1,state:1,colony:1}) 
+
+    models.user_schema.find({"doctor" : "doctor"})
+    .select({name : 1 ,_id : 1,specification:1,hospital:1,qualification:1,experience:1,city:1,fees:1,state:1,colony:1}) 
     .then(user=>{
-        console.log("......................................doctors specific data",user)
+        
+        var all_doc_check = user;
+        console.log("......................................all_doc_check",all_doc_check)
+        
+        
+        var a = req.body.city;
+        var b = req.body.hospital;
+        var c = req.body.experience;
+        var s = req.body.specification;
 
-        console.log("user_array = ",user)
-
-        var isdoctor = req.session.isdoctor ;
-        console.log(".......isdoctor",isdoctor)
-        if(isdoctor){
-            delete req.session.isdoctor ;
-            res.render("demodoc", data = { user: req.session.userid.user , doctors :user ,err:isdoctor});
-        }else{
-            res.render("demodoc", data = { user: req.session.userid.user , doctors :user });
+        var emp =[];
+        if(a != undefined) {
+            emp.push(a);
         }
+        if(b != undefined) {
+            emp.push(b);
+        }
+        if(c != undefined) {
+            emp.push(c);
+        }
+        if(s != undefined) {
+            emp.push(s);
+        }
+        console.log("emparray",emp)
+        
+
+    
+        console.log("aaaaaaaaa",a);
+        console.log("bbbbbbbbbbbbb",b);
+        console.log("ccccccccccccccc",c);
+        console.log("ssssssssssss",s);
+       
+        var match = [{ "doctor" :  "doctor"}];
+        
+        if(a == undefined) {
+            a = [];
+         }
+        if(b == undefined) {
+           b = [];
+        }
+         if(c == undefined) {
+            c = [];
+         }
+         if(s == undefined) {
+            s = [];
+         }   
+
+        if(typeof(a)== "string") {
+            match.push({city : {$regex : a,$options:"$i"}})
+        }
+        else {
+            for(var i=0;i <a.length; i++) {
+                match.push({city : {$regex : a[i],$options:"$i"}})
+            }
+        }
+        
+        if(typeof(b)== "string") {
+            match.push({hospital : {$regex : b,$options:"$i"}}) 
+        }
+        else {
+            for(var i=0;i <b.length; i++) {
+                match.push({hospital : {$regex : b[i],$options:"$i"}})
+            }
+        }
+
+        if(typeof(c)== "string") {
+            match.push({experience : {$regex : c,$options:"$i"}})
+        }
+        else {
+    
+            for(var i=0;i < c.length; i++) {
+                match.push({experience : {$regex : c[i],$options:"$i"}})
+            }
+        }
+
+        if(typeof(s)== "string") {
+            match.push({specification : {$regex : s,$options:"$i"}})
+        }
+        else {
+    
+            for(var i=0;i < s.length; i++) {
+                match.push({specification : {$regex : s[i],$options:"$i"}})
+            }
+        }
+
+
+        console.log("match",match);
+       
+        var query = { "$and" : [] }
+    
+        for (var i = 0; i < match.length; i++) {
+            query["$and"].push( match[i] );
+        }
+       
+        console.log("queryyyyyyyyyyyyyyyyyyyyyyy",query);
+    
+        var sortby  ;
+        var sortbyvalue  ;
+        
+        if(req.body.name == "name"){ 
+            sortby ="name"
+            sortbyvalue = 1
+        }
+        if(req.body.name == "-name"){ 
+            sortby ="name"
+            sortbyvalue = -1
+        }
+        if(req.body.name == "experience"){ 
+            sortby ="experience"
+            sortbyvalue = 1
+        }
+        if(req.body.name == "-experience"){ 
+            sortby ="experience"
+            sortbyvalue = -1
+        }
+        if(req.body.name == "fees"){ 
+            sortby ="fees"
+            sortbyvalue = 1
+        }
+        if(req.body.name == "-fees"){ 
+            sortby ="fees"
+            sortbyvalue = -1
+        }
+            console.log("sortby",sortby)
+            console.log("sortbyvalue",sortbyvalue)
+      
+            if((sortby == "name") || (sortby == "-name")){
+                var obj = {"name" : sortbyvalue}
+            }
+            if((sortby == "experience") || (sortby == "-experience")){
+                var obj = {"experience" : sortbyvalue}
+            }
+            if((sortby == "fees") || (sortby == "-fees")){
+                var obj = {"fees" : sortbyvalue}
+            }
+
+        console.log("obj",obj) ;
+        
+        models.user_schema.find(query)
+        .sort(obj)
+        .select({name : 1 ,_id : 1,specification:1,hospital:1,qualification:1,experience:1,city:1,fees:1,state:1,colony:1}) 
+        .then(user=>{
+            console.log("......................................doctors specific data",user)
+            var pageno = parseInt(req.body.pageno);
+            console.log("pageno",pageno);
+            var st = 0;
+            var et = 2;
+            var noofuser = user.length
+
+            
+            if(pageno){
+                 st = (pageno - 1)*2 ;
+                 et = pageno*2 ;
+            }
+                user = user.slice(st,et);
+                
+            console.log("user",user);
+            
+               var isdoctor = req.session.isdoctor ;
+                console.log(".......isdoctor",isdoctor)
+                if(isdoctor){
+                    delete req.session.isdoctor ;
+                    res.render("demodoc", data = { user: req.session.userid.user , doctors :user,noofuser:noofuser ,all_doc_check : all_doc_check ,emp : emp ,err:isdoctor });
+                }else{
+                    res.render("demodoc", data = { user: req.session.userid.user , doctors :user,noofuser:noofuser ,all_doc_check : all_doc_check ,emp : emp});
+                }
+        })
+        .catch(err=>{
+            res.redirect("/home");
+        })
+       
     })
     .catch(err=>{
         res.redirect("/home");
     })
 
+
+
+    // var isdoctor = req.session.isdoctor ;
+    // console.log(".......isdoctor",isdoctor)
+    // if(isdoctor){
+    //     delete req.session.isdoctor ;
+    //     res.render("demodoc", data = { user: req.session.userid.user , doctors :user ,err:isdoctor});
+    // }else{
+    //     res.render("demodoc", data = { user: req.session.userid.user , doctors :user });
+    // }
+   // res.render("demodoc", data = { user: req.session.userid.user , doctors :user ,err:isdoctor});
+    
 }
 
 
@@ -419,7 +590,6 @@ const confirmappointment = (req,res)=>{
     res.render("confirmappointment", data = { user: req.session.update_data , obj : obj})
 
 }
-
 
 const reschedule = (req,res)=>{
     

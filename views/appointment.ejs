@@ -138,7 +138,7 @@
                 <div class="cancel_appointment">
                     <% if( !(data.user.doctor == "doctor")){ %>
                     <button type="button" onclick="window.location.href='/reschedule?objindex=<%= i %> '"> reshedule Aappointment</button >
-                    <button onclick="return (confirm('Do you want to delete appointment?')? window.location.href='/deleteappointment?objid=<%= data.user.appointments[i]._id %> ' : '')" >cancel Aappointment </button>
+                    <button onclick="return (confirm('Do you want to delete appointment?')? window.location.href='/deleteappointment?doctorid=<%= data.user.appointments[i].doctorid %>&scheduleid=<%= data.user.appointments[i].scheduleid %>&slotid=<%= data.user.appointments[i].slotid %>&objid=<%= data.user.appointments[i]._id %> ' : '')" >cancel Aappointment </button>
                     <% } %>
                 </div>
             </div>

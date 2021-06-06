@@ -27,6 +27,9 @@ router.route("/emaillogin").post(loginController.emaillogin);
 router.route("/doctor").get(loginController.checkLogin,mainController.doctor);
 
 router.route("/demodoc").get(loginController.checkLogin,mainController.demodoc);
+router.route("/demodoc").post(mainController.demodoc);
+
+router.route("/filterdemo").get( loginController.filterdemo ); 
 
 router.route("/hospital").get(loginController.checkLogin,mainController.hospital);
 

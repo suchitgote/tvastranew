@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>doctor</title>
+    <title>demodoc</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/new-theme.css">
@@ -24,7 +24,18 @@
 
     <!-- include nav-->
     <%- include('include/_nav') %>
-        <!-- /include nav -->
+    <!-- /include nav -->
+
+        <% if(data.err) { %>
+            <div class="alert" id="err">
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                <div class="alert_content">
+                    <h4>failuar</h4>
+                    <p> <strong> <%= data.err %> </strong> </p>
+                </div>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            </div>
+        <% } %>
 
         <section id="delhi">
             <div>
@@ -35,12 +46,19 @@
         <!--.........sort ..........-->
         <div class="sort">
             <div class="sort-home"> Home / Doctor List </div>
-            <select id="" name="">
-                <option value="volvo">sort by</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
+            <select id="" name="" onchange="sortBy(`${this.value}`)">
+                <option >sort by</option>
+
+                <option  value="name" onclick="sortBy('name')">name(A-Z)</option>
+                <option  value="-name" onclick="sortBy('-name')">name(Z-A)</</option>
+
+                <option value="experience"  onclick="sortBy('experience')">experience(LOW-HIGH)</option>
+                <option value="-experience"  onclick="sortBy('-experience')">experience(HIGH-LOW)</option>
+
+                <option value="fees"  onclick="sortBy('fees')">avg fees(LOW-HIGH)</option>
+                <option value="-fees"  onclick="sortBy('-fees')">avg fees(HIGH-LOW)</option>
             </select>
+
         </div>
         <!--.........sort end..........-->
 
@@ -52,64 +70,96 @@
                     <div class="filter-bar">
                         <h5> Filter By </h5>
                     </div>
-                    <form action="">
+                    <input type="hidden" id="aakhiri_umeed" value="<%= data.emp %>">
+                    <form action="/demodoc" method="POST" id="filterform">
                         <div class="filter-buttons">
-                            <div class="fil-button">
-                                <div> DLF Cyber city </div>
-                                <i class="fa fa-times"></i>
-                            </div>
-                            <div class="fil-button">
-                                <div>multy organ transplant </div>
-                                <i class="fa fa-times"></i>
-                            </div>
-                            <div class="fil-button">
-                                <div>apolo hospital </div>
-                                <i class="fa fa-times"></i>
-                            </div>
-                            <div class="fil-button">
-                                <div>30+ </div>
-                                <i class="fa fa-times"></i>
-                            </div>
+                        
                         </div>
+                        <input type="hidden" name="pageno" id="pageno" value="1">
+                        <input type="hidden" name="name" id="sortInput" value="name">
 
                         <div class="filter-search">
                             <div class="filter-type">
                                 <div class="heading"> Location </div>
                                 <div class="logos">
-                                    <div class="logo-search"> <i class="fas fa-search searchicon"></i> </div>
+                                    <div class="logo-search" onclick="filter_search_open(0)"> <i class="fas fa-search searchicon"></i> </div>
                                     <div class="logo-minus"> <i class="fa fa-minus"></i></div>
                                 </div>
                             </div>
+                            <input type="search" onblur="filter_search_close(this)" placeholder="search location"/>
                             <div class="filter-check-box">
                                 <ul>
-                                    <li> <input type="checkbox"> DLF Cyber city </li>
-                                    <li> <input type="checkbox"> Dwaraka </li>
-                                    <li> <input type="checkbox"> Lajpat Nagar </li>
-                                    <li> <input type="checkbox"> Palam Vihar </li>
-                                    <li> <input type="checkbox"> Punjabi Baag </li>
-                                    <li> <input type="checkbox"> Pusa Road </li>
+                                    <%
+                                    var emtarr = []; 
+                                    for(var i=0; i < data.all_doc_check.length; i++) { 
+                                        var typehospital= data.all_doc_check[i].city.split(",")
+                                        for(var j=0; j< typehospital.length ;j++) {
+                                            if(emtarr.length > 0){
+                                                for(var k=0; k < emtarr.length; k++){
+                                                 var ok = 0;
+                                                    if(typehospital[j].toLowerCase() == emtarr[k] ){
+                                                        k = emtarr.length;
+                                                    }else{
+                                                         ok = 1;
+                                                    }
+                                                }
+                                                if(ok){
+                                                    emtarr.push(typehospital[j].toLowerCase()); 
+                                                    %>
+                                                    <li> <input type="checkbox"  onchange="this.form.submit()" name="city" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><%= typehospital[j] %></li>
+                                        <%
+                                                }
+                                            }else{ 
+                                                emtarr.push(typehospital[j].toLowerCase())  %>
+                                                <li> <input type="checkbox" onchange="this.form.submit()" name="city" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><%= typehospital[j] %></li>
+                                         <%   }
+                                       } 
+                                    } %>
                                 </ul>
                             </div>
                             <div class="filter-show-more"><a href="#">+ show more</a></div>
 
+                       
                         </div>
 
                         <div class="filter-search">
                             <div class="filter-type">
                                 <div class="heading"> Treatment </div>
                                 <div class="logos">
-                                    <div class="logo-search"> <i class="fas fa-search searchicon"></i> </div>
+                                    <div class="logo-search" onclick="filter_search_open(1)"> <i class="fas fa-search searchicon"></i> </div>
                                     <div class="logo-minus"> <i class="fa fa-minus"></i></div>
                                 </div>
                             </div>
+                            <input type="search" onblur="filter_search_close(this)" placeholder="search location"/>
+
                             <div class="filter-check-box">
                                 <ul>
-                                    <li> <input type="checkbox"> Multi Organ Transplant</li>
-                                    <li> <input type="checkbox"> Orthopedic Surgurey </li>
-                                    <li> <input type="checkbox"> Infertility Treatment </li>
-                                    <li> <input type="checkbox"> Dentistry </li>
-                                    <li> <input type="checkbox"> Cardiology </li>
-                                    <li> <input type="checkbox"> cancer </li>
+                                    <%
+                                    var emtarr = []; 
+                                    for(var i=0; i < data.all_doc_check.length; i++) { 
+                                        var typehospital= data.all_doc_check[i].specification.split(",")
+                                        for(var j=0; j< typehospital.length ;j++) {
+                                            if(emtarr.length > 0){
+                                                for(var k=0; k < emtarr.length; k++){
+                                                 var ok = 0;
+                                                    if(typehospital[j].toLowerCase() == emtarr[k] ){
+                                                        k = emtarr.length;
+                                                    }else{
+                                                         ok = 1;
+                                                    }
+                                                }
+                                                if(ok){
+                                                    emtarr.push(typehospital[j].toLowerCase()); 
+                                                    %>
+                                                    <li> <input type="checkbox" onchange="this.form.submit()"  name="specification" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><%= typehospital[j] %></li>
+                                        <%
+                                                }
+                                            }else{ 
+                                                emtarr.push(typehospital[j].toLowerCase())  %>
+                                                <li> <input type="checkbox" onchange="this.form.submit()"  name="specification" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><%= typehospital[j] %></li>
+                                         <%   }
+                                       } 
+                                    } %>
                                 </ul>
                             </div>
                             <div class="filter-show-more"><a href="#">+ show more</a></div>
@@ -120,18 +170,41 @@
                             <div class="filter-type">
                                 <div class="heading"> Hospital </div>
                                 <div class="logos">
-                                    <div class="logo-search"> <i class="fas fa-search searchicon"></i> </div>
+                                    <div class="logo-search" onclick="filter_search_open(2)"> <i class="fas fa-search searchicon"></i> </div>
+
                                     <div class="logo-minus"> <i class="fa fa-minus"></i></div>
                                 </div>
                             </div>
+                            <input type="search" onblur="filter_search_close(this)" placeholder="search location"/>
+
                             <div class="filter-check-box">
                                 <ul>
-                                    <li> <input type="checkbox">Apollo Hospital </li>
-                                    <li> <input type="checkbox"> Manipal North </li>
-                                    <li> <input type="checkbox"> Side Hospital </li>
-                                    <li> <input type="checkbox"> Northstar </li>
-                                    <li> <input type="checkbox"> AIMS </li>
-                                    <li> <input type="checkbox"> Fortis Hospital </li>
+                                    <%
+                                    var emtarr = []; 
+                                    for(var i=0; i < data.all_doc_check.length; i++) { 
+                                        var typehospital= data.all_doc_check[i].hospital.split(",")
+                                        for(var j=0; j< typehospital.length ;j++) {
+                                            if(emtarr.length > 0){
+                                                for(var k=0; k < emtarr.length; k++){
+                                                 var ok = 0;
+                                                    if(typehospital[j].toLowerCase() == emtarr[k] ){
+                                                        k = emtarr.length;
+                                                    }else{
+                                                         ok = 1;
+                                                    }
+                                                }
+                                                if(ok){
+                                                    emtarr.push(typehospital[j].toLowerCase()); 
+                                                    %>
+                                                    <li> <input type="checkbox"  onchange="this.form.submit()" name="hospital" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><%= typehospital[j] %></li>
+                                        <%
+                                                }
+                                            }else{ 
+                                                emtarr.push(typehospital[j].toLowerCase())  %>
+                                                <li> <input type="checkbox"  onchange="this.form.submit()" name="hospital" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><%= typehospital[j] %></li>
+                                         <%   }
+                                       } 
+                                    } %>
                                 </ul>
                             </div>
                             <div class="filter-show-more"><a href="#">+ show more</a></div>
@@ -142,25 +215,48 @@
                             <div class="filter-type">
                                 <div class="heading"> Year of experience </div>
                                 <div class="logos">
-                                    <div class="logo-search"> <i class="fas fa-search searchicon"></i> </div>
+                                    <div class="logo-search" onclick="filter_search_open(3)"> <i class="fas fa-search searchicon"></i> </div>
+
                                     <div class="logo-minus"> <i class="fa fa-minus"></i></div>
                                 </div>
                             </div>
+                            <input type="search" onblur="filter_search_close(this)" placeholder="search location"/>
+
                             <div class="filter-check-box">
                                 <ul>
-                                    <li> <input type="checkbox"> 30+ </li>
-                                    <li> <input type="checkbox"> 20+ </li>
-                                    <li> <input type="checkbox"> 25+ </li>
-                                    <li> <input type="checkbox"> 15+ </li>
-                                    <li> <input type="checkbox"> 10+ </li>
-                                    <li> <input type="checkbox"> 5+ </li>
+                                    <%
+                                    var emtarr = []; 
+                                    for(var i=0; i < data.all_doc_check.length; i++) { 
+                                        var typehospital= data.all_doc_check[i].experience.split(",")
+                                        for(var j=0; j< typehospital.length ;j++) {
+                                            if(emtarr.length > 0){
+                                                for(var k=0; k < emtarr.length; k++){
+                                                 var ok = 0;
+                                                    if(typehospital[j] == emtarr[k] ){
+                                                        k = emtarr.length;
+                                                    }else{
+                                                         ok = 1;
+                                                    }
+                                                }
+                                                if(ok){
+                                                    emtarr.push(typehospital[j]); 
+                                                    %>
+                                                    <li> <input type="checkbox"  onchange="this.form.submit()" name="experience" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><%= typehospital[j] %></li>
+                                        <%
+                                                }
+                                            }else{ 
+                                                emtarr.push(typehospital[j])  %>
+                                                <li> <input type="checkbox"  onchange="this.form.submit()" name="experience" id = "<%= typehospital[j] %>" value="<%= typehospital[j] %>"><%= typehospital[j] %></li>
+                                         <%   }
+                                       } 
+                                    } %>
                                 </ul>
                             </div>
                             <div class="filter-show-more"><a href="#">+ show more</a></div>
 
                         </div>
                     </form>
-                </div>
+                </div> 
 
                 <div class="doctor-boxs">
                     <% for(var i=0 ; i < data.doctors.length ; i++) {%>
@@ -168,28 +264,26 @@
                             <div class="doctor-content">
 
                                 <div class="doctor-name">
-                                    <h4>
-                                        <%= data.doctors[i].name %>
-                                    </h4>
+                                    <h4 id='name<%= i %><%= data.doctors[i]._id %>'><%= data.doctors[i].name %></h4>
                                 </div>
 
                                 <div class="doctor-logos">
                                     <ul>
                                         <li>
                                             <div class="doctor-logo"><i class="fas fa-certificate"></i></div>
-                                            <%= data.doctors[i].specification %>
+                                            <div id='specification<%= i %><%= data.doctors[i]._id %>'><%= data.doctors[i].specification %></div>
                                         </li>
                                         <li>
                                             <div class="doctor-logo"><i class="fas fa-hospital"></i></div>
-                                            <%= data.doctors[i].qualification %>
+                                            <div id='qualification<%= i %><%= data.doctors[i]._id %>'><%= data.doctors[i].qualification %></div>
                                         </li>
                                         <li>
                                             <div class="doctor-logo"><i class="fas fa-clock"></i></div>
-                                            <%= data.doctors[i].experience %>
+                                            <div id='experience<%= i %><%= data.doctors[i]._id %>'><%= data.doctors[i].experience %></div>
                                         </li>
                                         <li>
                                             <div class="doctor-logo"><i class="fa fa-map-marker"></i></div>
-                                            <%= data.doctors[i].hospital %>
+                                            <div id='hospital<%= i %><%= data.doctors[i]._id %>'><%= data.doctors[i].hospital %></div>
                                         </li>
                                         <li>
                                             <div class="doctor-logo"> <i class="fas fa-clock"></i></div>
@@ -205,7 +299,7 @@
                                 </div>
 
                                 <div class="doctor-button">
-                                    <button class="bookapointment" onclick="myFunction(`<%= i %>`)"> book an apointment
+                                    <button class="bookapointment" onclick="myFunction(`<%= i %>`,`<%= data.doctors[i]._id %>`)"> book an apointment
                                     </button>
                                 </div>
 
@@ -218,16 +312,7 @@
                                 </a>
                             </div>
                             
-                            <%
-                            var summ = 0 ;
-                             for(var kk = 0 ; kk < data.doctors[i].schedule.length ; kk++) { 
-                                for( var ll = 0 ; ll < data.doctors[i].schedule[kk].length ; ll++ ){
-                                    var totalslot = data.doctors[i].schedule[kk][ll].slots.length ;
-                                    summ = summ + totalslot ;
-                                    console.log(`........${kk}..summ = `,summ)
-                                }
-                            }
-                            if( summ > 0){ %>
+                           
                             <div class="date-container opencon">
 
                                 <div class="back-button">
@@ -236,33 +321,23 @@
 
                                 <div class="date-groups">
 
-                                    <% for(var k = 0 ; k < data.doctors[i].schedule.length ; k++) { 
+                                    <% for(var k = 0 ; k < 7 ; k++) { 
                                         var inc = 0 + k;
                                         var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * inc);
                                         var abc = String(currentDate) ;
                                         var newcurrentDate = abc.slice(0,15)
                                         %>
-                                    <div class="dates" value=""  >
+                                    <div class="dates" value="" id='date<%= k %><%= data.doctors[i]._id %>' >
                                         <% if(k == 0){ %>
-                                            <h4> Today </h4>
+                                            <h4  id='bookingdate<%= k %><%= data.doctors[i]._id %>'>Today</h4>
                                         <% }else if(k == 1) { %>
-                                            <h4> tommorow </h4>
+                                            <h4  id='bookingdate<%= k %><%= data.doctors[i]._id %>'>Tommorow</h4>
                                         <% }else{ %>
-                                            <h4> <%= newcurrentDate %> </h4>
+                                            <h4  id='bookingdate<%= k %><%= data.doctors[i]._id %>'><%= newcurrentDate %></h4>
                                         <% } %>
 
-                                        <%  if( data.doctors[i].schedule[k].length > 0 ){ 
-                                            var sum = 0 ;
-                                            for( var l = 0 ; l < data.doctors[i].schedule[k].length ; l++ ){
-                                                var totalslots = data.doctors[i].schedule[k][l].slots.length ;
-                                                 sum = sum + totalslots ;
-                                                 console.log(`........${k}..sum = `,sum)
-                                            }
-                                            %>
-                                            <h5> <%= sum %> Slots Available</h5>
-                                            <% }else{ %>
-                                                <h5>0 Slots Available</h5>
-                                                <% } %>
+                                                <h5><span id='day<%= k %><%= data.doctors[i]._id %>'`>  0  </span> Slots Available</h5>
+                                              
                                     </div>
                                     <% } %>
                 
@@ -273,106 +348,33 @@
                                 </div>
                             </div>
                             
-                                <% }else{ %>
-                                    <div class="swiper-container opencon">
-                                        <h4> No shedule </h4>
-                                    </div>
-                                <% } %>
-
+                               
                             <div class="slots">
-                                <% for(var j = 0 ; j < data.doctors[i].schedule.length ; j++) {   %>
+                                <% for(var j = 0 ; j < 7 ; j++) {   %>
                                     <div class="bookingtimegroup">
-                                        <% if(data.doctors[i].schedule[j].length > 0) { %>
-                                            <% for(var m = 0; m < data.doctors[i].schedule[j].length ; m++ ) { %>
-                                                <div class="booking-time">
-                                                    <div class="daytime">
-                                                        <h5> Morning: </h5> 
-                                                    </div>
-                                                        <ul>
-                                                            <% for(var n = 0; n < data.doctors[i].schedule[j][m].slots.length ; n++ ) { 
-                                                               var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8) ;
-                                                               var checkbox = data.doctors[i].schedule[j][m].slots[n].checkbox ;
-                                                               var isbook = data.doctors[i].schedule[j][m].slots[n].isbook ;
 
-                                                                if( apmp == "AM" && checkbox == "false" && isbook == "false") {
-                                                                    var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * j);
-                                                                    var abc = String(currentDate) ;
-                                                                        abc = abc.slice(0,15)
-                                                                    %>
-                                                                    <li
-                                                                        onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %>&doctorid=<%= data.doctors[i]._id %> '" >
-                                                                        <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
-                                                                        
-                                                                    </li>
-                                                            <% } } %> 
-                                                        </ul>
-                                                    </div>
-                                                    <div class="booking-time">
-                                                        <div class="daytime">
-                                                            <h5> afternoon: </h5> 
-                                                        </div>
-                                                        <ul>
-                                                            <% for(var n = 0; n < data.doctors[i].schedule[j][m].slots.length ; n++ ) { 
-                                                                var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
-                                                                var fore = parseInt(data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,2))
-                                                                var checkbox = data.doctors[i].schedule[j][m].slots[n].checkbox ;
-                                                                var isbook = data.doctors[i].schedule[j][m].slots[n].isbook ;
-
-                                                                 if( ((apmp == "PM" && fore < 4) || fore == 12 ) && (checkbox == "false") && (isbook == "false") ) {
-                                                                    var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * j);
-                                                                    var abc = String(currentDate) ;
-                                                                        abc = abc.slice(0,15)
-                                                                     %>
-                                                                     <li 
-                                                                     onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %>&doctorid=<%= data.doctors[i]._id %> '" >
-                                                                         <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
-                                                                     </li>
-                                                             <% } } %> 
-                                                        </ul>
-                                                    </div>
-                                                    <div class="booking-time">
-                                                        <div class="daytime">
-                                                            <h5> Evening: </h5>  
-                                                        </div>
-                                                        <ul>
-                                                            <% for(var n = 0; n < data.doctors[i].schedule[j][m].slots.length ; n++ ) { 
-                                                                var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
-                                                                var fore = parseInt(data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,2)) ;
-                                                                
-                                                                 if( apmp == "PM" && fore >= 4 && fore != 12)  { 
-                                                                    var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * j);
-                                                                    var abc = String(currentDate) ;
-                                                                        abc = abc.slice(0,15) 
-                                                                    %>
-                                                                     <li
-                                                                     onclick="window.location.href='/patientappointment?name=<%= data.doctors[i].name %>&hospital=<%= data.doctors[i].hospital %>&qualification=<%= data.doctors[i].qualification %>&appointmentdate=<%= abc %>&time=<%= data.doctors[i].schedule[j][m].slots[n].schedule_time %>&bookhospital=<%= data.doctors[i].schedule[j][m].hospital %>&scheduleid=<%= data.doctors[i].schedule[j][m].schedule_index %>&slotid=<%= data.doctors[i].schedule[j][m].slots[n].id %>&doctorid=<%= data.doctors[i]._id %> '"   >
-                                                                         <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
-                                                                     </li>
-                                                             <% } } %> 
-                                                        </ul> 
-                                                    </div> 
-                                                <div class="booking-hospital-name">
-                                                    <h4> <%= data.doctors[i].schedule[j][m].hospital %></h4>
-                                                </div>
-                                            <% } %> 
-                                        <% }else{ %>
-                                            <h4> No slots Available </h4>
-                                        <% } %>    
                                     </div> 
                                 <% } %>
                             </div>
-
-                         
-
-                        </div>
-                        
-
+   
+                        </div>                       
                     <% } %>
-
                 </div>
 
             </div>
         </section>
+
+
+        <ul id="pagination">       
+            <li class="pageBtn"><a>First</a></li>
+            <% for(var i=1; i<=Math.ceil(data.noofuser/2) ;i++){  
+                console.log("noofuser........",noofuser, noofuser/2, noofuser+1, Math.ceil(data.noofuser/2))
+                %>
+                <li class="pageNo" id="pageNo<%= i %>"> <a onclick="pageno(`<%= i %>`)" ><%= i %></a></li>
+                <%   }  %>
+            <li class="pageBtn"><a onclick="pageno()" >Last</a></li>       
+        </ul>
+
 
         <!-- include help-->
         <%- include('include/_help') %>
@@ -471,16 +473,16 @@
                     neww();
                     var slideIndexx;
 
-                    function myFunction(slideIndexx) {
-                        showSlidesss(slideIndexx);
+                   function myFunction(slideIndexx,docid) {
+                        showSlidesss(slideIndexx,docid);
                     }
-                    function showSlidesss(slideIndexx) {
+                    async  function showSlidesss(slideIndexx,docid) {
+                        console.log(" ids ",docid)
                         
                         console.log(" slideIndexx ",slideIndexx)
                         var s = document.getElementsByClassName("opencon");
                         var doc = document.getElementsByClassName("doctor-box");
                         var bt = doc[slideIndexx].getElementsByClassName("bookingtimegroup");
-                        
 
                         if (s[slideIndexx].style.height == "auto") {
                             s[slideIndexx].style.height = "0";
@@ -490,38 +492,270 @@
                                 bt[j].classList.remove("active");
                             }
 
-                        } else {
+                         }else {
                             s[slideIndexx].style.height = "auto";
                             s[slideIndexx].style.margin = "1rem 0.5rem";
 
                         }
+
+                        console.log( "/getschedule/" + docid )
+                        const responsee = await fetch(`/getschedule?docid=${docid}`)
+                        const c = await responsee.json();
+                       // console.log("cccccccccc",c.schedule[1][0].day)
+
+                        for(var i =0 ;i < c.schedule.length; i++){
+                            var date = document.getElementById(`day${i}${docid}`);
+                            date.innerHTML=c.schedule[i]
+                        }
+                    
                     }
-                </script>
+                </script>                               
 
                 <script>
                     (function toggle_Schedules_And_Slots () {
                         const booking = document.getElementsByClassName("doctor-box");
+
                         for (let i = 0; i < booking.length; i++) {
                             const bookingDateBtn = booking[i].getElementsByClassName("dates");
                             const timesGroup = booking[i].getElementsByClassName("bookingtimegroup");
+
+
                             for (let j = 0; j < bookingDateBtn.length; j++) {
-                                bookingDateBtn[j].addEventListener("click", e => {
+                                bookingDateBtn[j].addEventListener("click",async e => {
                                     for (a = 0; a < timesGroup.length; a++) {
                                         timesGroup[a].classList.remove("active");
                                         bookingDateBtn[a].classList.remove("active");
                                     } 
                                     timesGroup[j].classList.add("active");
                                     bookingDateBtn[j].classList.add("active");
-                                  //  booking[i].style.maxHeight = booking[i].scrollHeight + "px";
+
+                                    
+                                    var ids = bookingDateBtn[j].id ;
+                                    var isdlen = ids.length ;
+                                    var day =parseInt(  ids.slice(4,5) );
+                                    var docid = ids.slice(5,isdlen) ;
+                                    
+                                    console.log("bookingDateBtn[j]............",bookingDateBtn[j]) ;
+                                    console.log("bookingdate${j}${docid}. h4id.",`bookingdate${j}${docid}`) ;
+                                    var x = document.getElementById(`bookingdate${j}${docid}`).innerHTML;
+                                    console.log("  xtypeof = ",typeof(x))
+                                    console.log("  xxx = ",`b${x}m`)
+
+                                    var isdoctor = `<%= data.user.doctor %>`
+                                    console.log(".isdoctor",isdoctor)
+
+
+                                    if(x == "Today"){
+                                        var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * 0);
+                                        var abc = String(currentDate) ;
+                                            x = abc.slice(0,15) 
+                                        console.log("  x = ",x)
+                                    }else if(x == "Tommorow"){
+                                        var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * 1);
+                                        var abc = String(currentDate) ;
+                                            x = abc.slice(0,15) 
+                                        console.log("  x = ",x)
+                                    }else{
+                                        console.log("  x = ",x)
+                                    }
+
+
+                                    console.log("  ids ",ids)
+                                    console.log("  day ",day)
+                                    console.log("  docid ",docid)
+
+                                     var d = new Date();
+                                     var n = d.getDay()
+                                     console.log("n = ",n); 
+
+                                     var clickday = n + day ;
+                                     console.log("vclickday = ",clickday); 
+                                     if(clickday > 6){
+                                         var clickday = clickday - 7 ;
+                                         console.log("clickday = ",clickday); 
+                                     }
+
+                                     if(clickday == 0)clickday="Sunday" ;
+                                     if(clickday == 1)clickday="Monday" ;
+                                     if(clickday == 2)clickday="Tuesday" ;
+                                     if(clickday == 3)clickday="Wednesday" ;
+                                     if(clickday == 4)clickday="Thursday" ;
+                                     if(clickday == 5)clickday="Friday" ;
+                                     if(clickday == 6)clickday="Saturday" ;
+
+                                     console.log("nuwclickday = ",clickday); 
+
+                                     const responsee = await fetch(`/setschedule?docid=${docid}&clickday=${clickday}`)
+                                     const c = await responsee.json();
+                                     console.log("cc = ",c); 
+
+                                    timesGroup[j].innerHTML = "";
+
+                                    console.log("bookingdate = ")
+                                    for(var k=0 ; k < c.length ; k++){
+                                        var mlis ="" ;
+                                        var alis ="" ;
+                                        var elis ="" ;
+
+                                        for(var l=0 ; l <  c[k].slots.length  ; l++){ 
+
+                                            var apmp = c[k].slots[l].schedule_time.slice(6,8);
+                                            var fore = parseInt(c[k].slots[l].schedule_time.slice(0,2));
+                                            var checkbox = c[k].slots[l].checkbox ;
+                                            var isbook = c[k].slots[l].isbook ;
+
+
+                                            var name = document.getElementById(`name${i}${docid}`).innerHTML;
+                                            console.log("  doc name ",name)                                         
+
+                                            var hospital = document.getElementById(`hospital${i}${docid}`).innerHTML;
+                                            console.log("  doc hospital ",hospital)
+                                            
+                                            var qualification = document.getElementById(`qualification${i}${docid}`).innerHTML;
+                                            console.log("  doc qualification ",qualification)
+                                            
+                                            var appointmentdate = x;
+                                            console.log("  doc appointmentdate ",appointmentdate)
+                                          
+                                            if(apmp == "AM" && checkbox == "false" && isbook == "false"){
+                                                mlis += `<li onclick="window.location.href='/patientappointment?name=${name}&hospital=${hospital}&qualification=${qualification}&appointmentdate=${x}&time=${c[k].slots[l].schedule_time}&bookhospital=${c[k].hospital}&scheduleid=${c[k].schedule_index }&slotid=${c[k].slots[l].id}&doctorid=${docid}&isdoctor=${isdoctor} '" > ${c[k].slots[l].schedule_time.slice(0,8)} </li>`;
+                                            }
+                                            else if( (apmp == "PM" && fore < 4 && checkbox == "false" && isbook == "false") || fore == 12 ){
+                                                alis += `<li onclick="window.location.href='/patientappointment?name=${name}&hospital=${hospital}&qualification=${qualification}&appointmentdate=${x}&time=${c[k].slots[l].schedule_time}&bookhospital=${c[k].hospital}&scheduleid=${c[k].schedule_index }&slotid=${c[k].slots[l].id}&doctorid=${docid}&isdoctor=${isdoctor} '" > ${c[k].slots[l].schedule_time.slice(0,8)} </li>`;
+                                            }else if(checkbox == "false" && isbook == "false"){
+                                                elis += `<li onclick="window.location.href='/patientappointment?name=${name}&hospital=${hospital}&qualification=${qualification}&appointmentdate=${x}&time=${c[k].slots[l].schedule_time}&bookhospital=${c[k].hospital}&scheduleid=${c[k].schedule_index }&slotid=${c[k].slots[l].id}&doctorid=${docid}&isdoctor=${isdoctor} '" > ${c[k].slots[l].schedule_time.slice(0,8)} </li>`;
+                                            }
+                                        }
+
+                                     timesGroup[j].innerHTML += 
+                                       `<div class="booking-time">
+                                            <div class="daytime">
+                                                <h5> Morning: </h5> 
+                                            </div>
+                                            <ul>
+                                               ${mlis}
+                                            </ul>
+                                        </div>
+                                        <div class="booking-time">
+                                            <div class="daytime">
+                                                <h5> afternoon: </h5> 
+                                            </div>
+                                            <ul>
+                                                ${alis}
+                                            </ul>
+                                        </div>
+                                        <div class="booking-time">
+                                            <div class="daytime">
+                                                <h5> Evening: </h5>  
+                                            </div>
+                                            <ul>
+                                                ${elis}
+                                            </ul> 
+                                        </div> 
+                                        <div class="booking-hospital-name">
+                                            <h4>  ${c[k].hospital} </h4>
+                                        </div>`
+                                    
+                                    }
+                            
                                 });
                             }
                         }
                     
-                    
                     })();
                 </script>
 
-           
+                <script>
+                    var aakhiri_umeed = document.getElementById("aakhiri_umeed").value
+                    console.log("aakhiri_umeed",aakhiri_umeed);
+                    aakhiri_umeed = aakhiri_umeed.split(",")
+                    for( var i=0 ;i< aakhiri_umeed.length ; i++) {
+                        document.getElementById(`${aakhiri_umeed[i]}`).setAttribute("checked", "");
+                     }
+
+                    var fltr_checkBox = document.querySelectorAll(".filter-check-box input") ;
+                    var selectedFilters = document.querySelector(".filter-buttons") ;
+                    console.log("fltr_checkBox",fltr_checkBox);
+                    console.log("selectedFilters",selectedFilters);
+
+                     for(i=0; i < fltr_checkBox.length; i++){
+                         if(fltr_checkBox[i].checked){
+                             var fltrName = fltr_checkBox[i].parentElement.innerText;
+                             selectedFilters.innerHTML += `<div class="fil-button"> <div> ${fltrName} </div> <i class="fa fa-times" onclick="removeFltr(${i})" ></i> </div>` ;
+                        };
+                     };
+
+                     function removeFltr(i){
+                        fltr_checkBox[i].checked = false;
+                        fltr_checkBox[i].form.submit();
+                    };
+                    
+                    function filter_search_open (i){
+                        var target = document.querySelectorAll(".filter-search > input");
+                        //  target[i].classList.toggle("active");
+                        target[i].style.display ="block";
+                    };
+                    
+                    function filter_search_close (e){
+                        //  e.classList.remove("active");
+                        e.style.display ="none";
+                    };
+                    
+                                        (function searchFilters(){
+                                            const fltr_search = document.querySelectorAll(".filter-search > input");
+                                            console.log("fltr_search...",fltr_search)
+                    
+                                            for(i=0; i < fltr_search.length; i++){
+                                                fltr_search[i].addEventListener("input", (e)=>{
+                                                    var searchValue = e.target.value.toLowerCase();
+                                                    var fg = e.target.parentElement;
+                                                    var items = fg.getElementsByTagName("li");
+                                                    console.log("li...",items)
+                                                    for(j=0; j<items.length; j++){
+                                                        if (items[j].innerText.toLowerCase().includes(searchValue)) {
+                                                            items[j].style.display = "block";
+                                                        }else{
+                                                            items[j].style.display = "none";
+                                                        }
+                                                    }
+                                                })
+                                            };
+                                        })();
+
+
+                                        (function checkedFiltersOnTop () {
+                                            const filterList = document.querySelectorAll(".filter-check-box ul");
+                                        
+                                            filterList.forEach(function (ul) {
+                                        
+                                                var arrListItems = ul.children;
+                                                
+                                                for (var i = 0; i < arrListItems.length; i++) {
+                                                    if (arrListItems[i].querySelector("input").checked) {
+                                                        ul.prepend(arrListItems[i]);
+                                                    };
+                                                }
+                                            });
+                                        })();
+
+                                        function sortBy(value){
+                                            console.log("sottby.......")
+                                            document.getElementById("sortInput").value = value;
+                                            console.log("sottby.......")
+
+                                            document.getElementById("filterform").submit();
+                                        };
+
+                                        function pageno(value){
+                                            console.log("pageno.......")
+                                            document.getElementById("pageno").value = value;
+
+                                            document.getElementById("filterform").submit();
+                                        };
+                                        
+
+                </script>
+       
 
 </body>
 

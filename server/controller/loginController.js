@@ -926,7 +926,7 @@ const delete_timer_checkbox = (req,res)=>{
     }
 
     models.user_schema.updateOne(
-        { _id : data.user._id }, 
+        { _id : ObjectID(`${data.user._id}`) }, 
         {$set : {"schedule.$[s].slots.$[si].checkbox": newstatus} },
         {arrayFilters : [{'s.schedule_index':schedule_obj_id},{'si.id': timer_id}] }
         ) 
@@ -1039,14 +1039,30 @@ const deleteappointment = (req,res)=>{
     
     models.user_schema.updateOne({"_id":data.user._id},{$pull:{ "appointments":{"_id":ObjectID(`${hulk}`)}}} )
     .then(user => {
-        models.user_schema.findOne({ _id :  data.user._id})
-        .then(user=>{
-            req.session.update_data = user;
-            res.redirect("/appointment");
-        })
-        .catch(err=>{
-            res.redirect("/home");
-        })
+
+        console.log(" req.query.doctorid", req.query.doctorid)
+        console.log(" req.query.scheduleid", req.query.scheduleid)
+        console.log(" req.query.slotid", req.query.slotid)
+
+        models.user_schema.updateOne(
+            { _id : req.query.doctorid }, 
+            {$set : {"schedule.$[s].slots.$[si].isbook": "false"} },
+            {arrayFilters : [{'s.schedule_index': req.query.scheduleid},{'si.id': parseInt(req.query.slotid)}] }
+            ) 
+            .then(user => {       
+                    models.user_schema.findOne({ _id :  data.user._id})
+                    .then(user=>{
+                        req.session.update_data = user;
+                        res.redirect("/appointment");
+                    })
+                    .catch(err=>{
+                        res.redirect("/home");
+                    })
+            })
+            .catch(err => {
+                console.log("..............................................err",err)
+                res.redirect("/emaillogin");
+            })    
     })
     .catch(err => {
         console.log("..............................................err",err)
@@ -1055,7 +1071,6 @@ const deleteappointment = (req,res)=>{
 
 
 }
-
 
 const getschedule = (req,res)=>{
     var ids = req.query.docid ;
@@ -1202,7 +1217,13 @@ const getschedule = (req,res)=>{
             console.log(` newdays[${kk}].length `,newdays[kk].length)
             if(newdays[kk].length != 0){
                 for( var ll = 0 ; ll < newdays[kk].length ; ll++ ){
-                    var totalslot = newdays[kk][ll].slots.length ;
+                    var totalslot =0;
+                    for( var lll = 0 ; lll < newdays[kk][ll].slots.length ; lll++ ){
+                        if(newdays[kk][ll].slots[lll].isbook == "false"){
+                            totalslot++ ;
+                        }
+                    }
+                   // var totalslot = newdays[kk][ll].slots.length ;
                     summ = summ + totalslot ;
                     console.log(`........${kk}..summ = `,summ)
                 }
@@ -1212,8 +1233,7 @@ const getschedule = (req,res)=>{
                 summ = 0 ;
             }else{
                 sumarray.push(newdays[kk].length);
-       console.log("sumarray.................",sumarray) ;
-
+                console.log("sumarray.................",sumarray) ;
             }
        }
 
@@ -1228,7 +1248,6 @@ const getschedule = (req,res)=>{
         res.send("/home");
     })
 }
-
 
 const setschedule = (req,res)=>{
     var ids = req.query.docid ;
@@ -1256,7 +1275,78 @@ const setschedule = (req,res)=>{
         })
 }
 
+const filterdemo = (req,res) => {
+var emtarr = req.query.emtarr ;
+console.log("emtarrlllllllllll = ",emtarr);
 
+var a = [];
+var b = [];
+var c = [];
+var d = [];
+
+var arr = emtarr.split(",");
+console.log("arrrrr = ",arr);
+for(var i = 0 ; i < (arr.length - 1) ; i++){
+    console.log("arr[i].charAt(0)",arr[i].charAt(0))
+    if(arr[i].charAt(0) == "c") {
+        a.push(arr[i].substring(1))
+    }
+    else if(arr[i].charAt(0) == "s") {
+        b.push(arr[i].substring(1))
+    }
+    else if(arr[i].charAt(0) == "h") {
+        c.push(arr[i].substring(1))
+    }
+    else {
+        d.push(arr[i].substring(1))
+    }
+}
+
+
+console.log("aaaaaaaaa",a);
+console.log("bbbbbbbbbbbbb",b);
+console.log("ccccccccccccccc",c);
+console.log("dddddddddddd",d);
+       
+        var match = [{ "doctor" :  "doctor"}];
+        
+        for(var i=0;i <a.length; i++) {
+            match.push({city : {$regex : a[i]}})
+        }
+        for(var i=0;i < b.length; i++) {
+            match.push({specification : {$regex : b[i]}})
+        }
+        for(var i=0;i <c.length; i++) {
+            match.push({hospital : {$regex : c[i]}})
+        }
+        for(var i=0;i < d.length; i++) {
+            match.push({experience : {$regex : d[i]}})
+        }
+
+        console.log("match",match);
+       
+        var query = { "$and" : [] }
+    
+        for (var i = 0; i < match.length; i++) {
+            query["$and"].push( match[i] );
+        }
+       
+        console.log("queryyyyyyyyyyyyyyyyyyyyyyy",query);
+    
+    
+        models.user_schema.find(query)
+        .select({name : 1 ,_id : 1,specification:1,hospital:1,qualification:1,experience:1,city:1,fees:1,state:1,colony:1}) 
+        .then(user=>{
+            console.log("....................................filter..user....",user)
+            res.send(user);
+           
+        })
+        .catch(err=>{
+            res.redirect("/home");
+        })
+
+
+}
 
 module.exports = {
     
@@ -1288,7 +1378,8 @@ module.exports = {
     patientappointment:patientappointment,
     deleteappointment:deleteappointment,
     getschedule:getschedule,
-    setschedule:setschedule
+    setschedule:setschedule,
+    filterdemo:filterdemo
 
 }
 

@@ -263,6 +263,31 @@ $red :red;
     }
 }
 
+#pagination {
+    width: max-content;
+    margin: 2rem auto;
+    display: flex;
+    .pageBtn {
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        margin: 0 0.5rem;
+    }
+    .pageNo {
+        a {
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid $i;
+            margin: 0 0.5rem;
+            font-size: 0.8rem;
+            // color: var(--dark);
+        }
+    }
+}
+
 // ...........main..end..............................
 
 // ...............footer..............
@@ -345,6 +370,10 @@ footer{
                 }
                 .filter-search{
                     width: 95%;
+                    input[type="search"]{
+                        display: none;
+                        margin-bottom: 0.5rem;
+                    }
                     .filter-type{
                         display: flex;
                         justify-content: space-between;
