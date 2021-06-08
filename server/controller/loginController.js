@@ -29,6 +29,9 @@ const checkMainLogin = (req, res) => {
 const checkpreLogin = (req, res, next) => {
     if (req.session.userid) {
         res.redirect("/home");
+    }
+    if (req.session.admin) {
+        res.redirect("/admin");
     }else {
         next();
     }
@@ -62,7 +65,8 @@ const signup = (req,res)=>{
                 city : req.body.city,
                 state : req.body.state,
                 country : req.body.country,
-                doctor : req.body.doctor
+                doctor : req.body.doctor,
+                type : "user"
             })
             // save user in the database
             user
@@ -137,7 +141,8 @@ const signup = (req,res)=>{
             awards : tag_inputs[3],
             specification :tag_inputs[4],
             fees : req.body.fees,
-            yourself : req.body.yourself
+            yourself : req.body.yourself,
+            type : "doctor"
                                     
         })
         // save user in the database
@@ -165,7 +170,11 @@ const emaillogin =  (req, res) => {
                     req.session.userid = { user: user, count: 0 };
                     req.session.message = { success: { head: "Success", body: "You have successfully logged in." } };
                     // console.log(req.session.userid)
-                    res.redirect("/home");
+                   if( user.type == "admin" ){
+                        res.redirect("/admin");
+                   }else{
+                       res.redirect("/home");
+                   }
                 } else {
                     req.session.error_message = "Wrong Password"
                     res.redirect("/emaillogin");
@@ -186,6 +195,8 @@ const logout = (req, res) => {
     if (req.session.userid) {
         delete req.session.userid;
         delete req.session.update_data ;
+        delete req.session.admin_update_data ;
+
     }
     res.redirect("/emaillogin")
 }
@@ -365,7 +376,18 @@ const resend_otp = (req,res) => {
 }
 
 const update_profile = (req,res) => {
-    var id = req.session.userid.user._id ;
+    if(req.session.userid.user.type == "admin"){
+        if(data.user){
+            var id = data.user._id ;
+        }else{
+            var id = req.session.userid.user._id ;
+            req.session.adminprofileupdate = true ;
+        }
+    }else{
+        var id = req.session.userid.user._id ;
+    }
+
+    
     console.log("req.session.userid.user.file = ",req.session.userid.user.file)
     console.log("req.file = ",req.file)
 
@@ -373,14 +395,28 @@ const update_profile = (req,res) => {
         if(req.session.update_data){
             x = req.session.update_data.file
         }else{
-            var x = req.session.userid.user.file ;
+            if(req.session.userid.user.type == "admin"){
+                if(data.user){
+                    var x = data.user.file ;
+                }else{
+                    var x = data.admin.file ;
+                }
+            }else{
+                var x = req.session.userid.user.file ;
+            }
         }
     }
     else{
         var x = req.file.filename ;
     }
 
+    // if(data.user.type == "user"){
+    //     var doctor = "user" ;
+    // }else{
+    // }
     var doctor = req.session.userid.user.doctor ;
+    console.log("...................................update_profile.........doctor = ",doctor)
+
 
     if(id){
         if(!(doctor == "doctor")){
@@ -407,7 +443,20 @@ const update_profile = (req,res) => {
                     .then(user=>{
                         req.session.update_data = user;
                         console.log(".......................................req.session.update_data",req.session.update_data)
-                        res.redirect("/profile");
+                           if(req.session.userid.user.type == "admin"){
+                               if(data.user){
+                                   if(data.user.type == "doctor"){
+                                        res.redirect("/doctoradmin");
+                                   }else{
+                                       res.redirect("/useradmin");
+                                   }
+                                }else{
+                                    req.session.admin_update_data = user;
+                                    res.redirect("/admin");
+                                }
+                            }else{
+                                res.redirect("/profile");
+                            }
                     })
                     .catch(err=>{
                         res.redirect("/home");
@@ -514,9 +563,32 @@ const medical_record = (req,res)=>{
 const medical_report = (req,res,next)=>{
 
                 if(req.session.update_data){
-                  var  y = req.session.update_data.number
+
+                    if(req.session.userid.user.type == "admin"){
+                        var  y = req.query.number ;
+                        if(req.query.number == undefined ){
+                            y = req.session.y ;
+                        }else{
+                            req.session.y = y ;
+                        }
+                        console.log("............................................. req.query.number,y",  req.query.number,y)
+                    }else{
+                        var  y = req.session.update_data.number
+                    }
+
                 }else{
-                  var  y = req.session.userid.user.number ;
+                    if(req.session.userid.user.type == "admin"){
+                        var  y = req.query.number ;
+                        if(req.query.number == undefined ){
+                            y = req.session.y ;
+                        }else{
+                            req.session.y = y ;
+                        }
+                        console.log("i l mc = ",req.query.i)
+                        console.log("............................................. req.query.number,",  req.query.number)
+                    }else{
+                        var  y = req.session.userid.user.number ;
+                    }
                 //  console.log("..............................................req.session.userid.userr",req.session.userid.user)
                 }
 
@@ -598,30 +670,6 @@ const add_record_photo = (req,res)=>{
             res.redirect("/emaillogin");
         })
 
-
-}
-    
-const tags = (req,res) =>{ 
-
-    var tag_inputs = []
-    var inputs_arr = [req.body.input1 , req.body.input2] ;
-
-    for(var j = 0 ; j < inputs_arr.length ;j++){
-        var input = JSON.parse(inputs_arr[j]) ;
-        console.log(`..............................................${input} = `,  input )
-        var arr = [];
-        for(var i = 0 ; i < input.length ;i++){
-            arr.push(`${input[i].value}`);
-        }
-        console.log(arr);
-        var arr_str = arr.toString()
-        console.log(arr_str);
-        tag_inputs.push(arr_str)
-    }
-
-    req.session.tag_value = tag_inputs ;
-    console.log("................................................req.session.tag_value.........",req.session.tag_value) 
-    res.redirect("/tags");
 
 }
 
@@ -952,6 +1000,7 @@ const patientappointment = (req,res)=>{
 
     var obj = {
         name :req.body.doctorname,
+        username :req.body.username,
         bookhospital:req.body.bookhospital,
         appointmentdate : req.body.appointmentdate ,
         stime: req.body.stime ,
@@ -975,6 +1024,7 @@ const patientappointment = (req,res)=>{
           { $push:{appointments:
         {   _id:ObjectID(),        
             name :req.body.doctorname,
+            username :req.body.username,
             bookhospital:req.body.bookhospital,
             appointmentdate : req.body.appointmentdate ,
             stime: req.body.stime ,
@@ -991,6 +1041,7 @@ const patientappointment = (req,res)=>{
             { $push:{appointments:
             { _id:ObjectID(),        
               name :req.body.patname,
+              username :req.body.username,  
               number :req.body.mobile,
               patientnumber :req.body.patientmobile,
               email :req.body.email,
@@ -1228,7 +1279,7 @@ const getschedule = (req,res)=>{
                     console.log(`........${kk}..summ = `,summ)
                 }
                 sumarray.push(summ);
-       console.log("sumarray.................",sumarray) ;
+                console.log("sumarray.................",sumarray) ;
 
                 summ = 0 ;
             }else{
@@ -1259,94 +1310,83 @@ const setschedule = (req,res)=>{
     models.user_schema.findOne({_id : ids})
     .select({schedule:1}) 
     .then(user=>{
-    var objarray =[];
-
-    for(var i =0 ;i < user.schedule.length ;i++){
-    if( user.schedule[i].day == clickday ){
-        objarray.push(user.schedule[i])
-    }
-    }
-    console.log("objarray = ",objarray);
-
-            res.send(objarray)
-        })
-        .catch(err=>{
-            res.send("/home");
-        })
+        var objarray =[];
+        for(var i =0 ;i < user.schedule.length ;i++){
+            if( user.schedule[i].day == clickday ){
+                objarray.push(user.schedule[i])
+            }
+        }
+        console.log("objarray = ",objarray);
+        res.send(objarray)
+    })
+    .catch(err=>{
+        res.send("/home");
+    })
 }
 
-const filterdemo = (req,res) => {
-var emtarr = req.query.emtarr ;
-console.log("emtarrlllllllllll = ",emtarr);
+const update_password = (req,res)=>{
+    var current_password = req.body.current_password ; 
+    var password = req.body.new_password ; 
+    var confirm_password = req.body.confirm_password ;
 
-var a = [];
-var b = [];
-var c = [];
-var d = [];
+    console.log("current_password = ",current_password)
+    console.log("password = ",password)
+    console.log("confirm_password = ",confirm_password)
 
-var arr = emtarr.split(",");
-console.log("arrrrr = ",arr);
-for(var i = 0 ; i < (arr.length - 1) ; i++){
-    console.log("arr[i].charAt(0)",arr[i].charAt(0))
-    if(arr[i].charAt(0) == "c") {
-        a.push(arr[i].substring(1))
-    }
-    else if(arr[i].charAt(0) == "s") {
-        b.push(arr[i].substring(1))
-    }
-    else if(arr[i].charAt(0) == "h") {
-        c.push(arr[i].substring(1))
-    }
-    else {
-        d.push(arr[i].substring(1))
+    if( password == confirm_password ){
+    
+        models.user_schema.findOne({ _id :  data.user._id })
+        .then(user => {
+                if(user.password == current_password) {
+                    models.user_schema.updateOne( { _id :  data.user._id }, {$set:{"password" : password }}  )
+                        .then(user => {
+                            console.log("updata succsesful")
+                            req.session.succ_message = "password update successfuly"
+                            res.redirect("/logout");
+                        })
+                        .catch(err => {
+                            res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
+                        })
+                } else {
+                    req.session.error_message = "Wrong Password"
+                    res.redirect("/emaillogin");
+                }
+        })
+        .catch(err => {
+            console.log("enter valid Username")
+            req.session.error_message = "enter valid Username"
+            res.redirect("/emaillogin");
+        })
+    }else{
+        req.session.password_error = "confirm_password is wrong" ;
+        res.redirect("/setting")
     }
 }
 
+const adminallappointment = (req,res)=>{
+    console.log("adminallappointment ",req.query.userid)
 
-console.log("aaaaaaaaa",a);
-console.log("bbbbbbbbbbbbb",b);
-console.log("ccccccccccccccc",c);
-console.log("dddddddddddd",d);
-       
-        var match = [{ "doctor" :  "doctor"}];
-        
-        for(var i=0;i <a.length; i++) {
-            match.push({city : {$regex : a[i]}})
-        }
-        for(var i=0;i < b.length; i++) {
-            match.push({specification : {$regex : b[i]}})
-        }
-        for(var i=0;i <c.length; i++) {
-            match.push({hospital : {$regex : c[i]}})
-        }
-        for(var i=0;i < d.length; i++) {
-            match.push({experience : {$regex : d[i]}})
-        }
+    models.user_schema.findOne( { _id :  req.query.userid }  )
+    .then(user => {
+        console.log("user = ",user)
 
-        console.log("match",match);
-       
-        var query = { "$and" : [] }
-    
-        for (var i = 0; i < match.length; i++) {
-            query["$and"].push( match[i] );
+        if(req.session.update_data){
+            if(req.session.admin_update_data){
+                res.render("appointment", data = { user: user ,admin : req.session.admin_update_data });
+            }else{
+                res.render("appointment", data = { user: req.session.update_data ,admin : req.session.userid.user });
+            }
+        }else{
+            res.render("appointment", data = { user: user ,admin : req.session.userid.user });
         }
-       
-        console.log("queryyyyyyyyyyyyyyyyyyyyyyy",query);
-    
-    
-        models.user_schema.find(query)
-        .select({name : 1 ,_id : 1,specification:1,hospital:1,qualification:1,experience:1,city:1,fees:1,state:1,colony:1}) 
-        .then(user=>{
-            console.log("....................................filter..user....",user)
-            res.send(user);
-           
-        })
-        .catch(err=>{
-            res.redirect("/home");
-        })
-
+    })
+    .catch(err => {
+        res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
+    })
 
 }
+
+
 
 module.exports = {
     
@@ -1370,7 +1410,6 @@ module.exports = {
     show_record:show_record,
     delete_record_photo:delete_record_photo,
     add_record_photo:add_record_photo,
-    tags:tags,
     schedule_form:schedule_form,
     delete_schedule:delete_schedule,
     schedule_checkbox:schedule_checkbox,
@@ -1379,8 +1418,8 @@ module.exports = {
     deleteappointment:deleteappointment,
     getschedule:getschedule,
     setschedule:setschedule,
-    filterdemo:filterdemo
-
+    update_password:update_password,
+    adminallappointment:adminallappointment
 }
 
 

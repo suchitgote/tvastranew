@@ -94,6 +94,9 @@ var user_schema = new mongoose.Schema({
     yourself :{
         type: String
     },
+    type :{
+        type: String
+    },
     schedule :[],
     slots:[],
     appointments:[]

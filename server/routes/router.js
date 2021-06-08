@@ -24,12 +24,8 @@ router.route("/").get(loginController.checkMainLogin );
 router.route("/emaillogin").get(loginController.checkpreLogin,mainController.emaillogin);
 router.route("/emaillogin").post(loginController.emaillogin);
 
-router.route("/doctor").get(loginController.checkLogin,mainController.doctor);
-
 router.route("/demodoc").get(loginController.checkLogin,mainController.demodoc);
 router.route("/demodoc").post(mainController.demodoc);
-
-router.route("/filterdemo").get( loginController.filterdemo ); 
 
 router.route("/hospital").get(loginController.checkLogin,mainController.hospital);
 
@@ -79,6 +75,7 @@ router.route("/add_record_photo").post(upload.array('record_photos',5),loginCont
 
 
 router.route("/setting").get(mainController.setting);
+router.route("/update_password").post( loginController.update_password ); 
 
 router.route("/schedules").get( mainController.schedules );
 router.route("/schedule_form").post( loginController.schedule_form );
@@ -98,15 +95,27 @@ router.route("/deleteappointment").get( loginController.deleteappointment );
 
 router.route("/reschedule").get( mainController.reschedule ); 
 
-
 router.route("/updatereschedule").get( mainController.updatereschedule ); 
-
 
 router.route("/getschedule").get( loginController.getschedule ); 
 
 router.route("/setschedule").get( loginController.setschedule ); 
 
-//v setschedule
+
+router.route("/admin").get(loginController.checkLogin,mainController.admin);
+
+router.route("/adminallappointment").get(loginController.adminallappointment);
+
+router.route("/useradmin").get( mainController.useradmin ); 
+
+router.route("/admineditprofile").get( mainController.admineditprofile ); 
+
+router.route("/doctoradmin").get( mainController.doctoradmin ); 
+
+router.route("/admindoctorallappointment").get( mainController.admindoctorallappointment ); 
+
+
+
 
 module.exports = router ;
 

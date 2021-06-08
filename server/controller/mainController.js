@@ -8,6 +8,7 @@ var ObjectID = require('mongodb').ObjectID;
 
 
 const emaillogin = (req, res) => {
+    console.log("mai emlog ")
     if (req.session.error_message) {
         message = req.session.error_message
         delete req.session.error_message
@@ -91,155 +92,6 @@ const phone_login = (req,res)=>{
 
 }
 
-const doctor = (req,res)=>{
-
-    models.user_schema.find({ "doctor" :  "doctor"})
-    .then(user=>{
-        // console.log("......................................doctor user",user)
-
-        var user_array = user ;
-        // console.log("docarray", docarray);
-        for(var i = 0 ; i < user_array.length ; i++){
-            // console.log(`user${i} = `, user_array[i]);
-            var schedule = user_array[i].schedule;
-            // console.log(`schedule = `, schedule);
-            var days = [ [],[],[],[],[],[] ];
-            var y = -1 ;
-            var y2 = -1;
-            var y3 = -1;
-            var y4 = -1;
-            var y5 = -1;
-            var y6 = -1;
-
-            for(var j = 0 ; j < schedule.length ; j++){
-                var hi = schedule[j].day ;
-                console.log("hi",hi)
-
-                if( 'Monday' == hi ){
-                    console.log("Monday" == hi)
-                    var x = 0;
-                    if(y > x){
-                        console.log("y run....")
-                      days[0][y] = schedule[j] ;
-                    }else{
-                    console.log("else   run....")
-                      days[0][x] = schedule[j] ;
-                        y = x;
-                        y++;
-                    }
-                }
-                else if( "Tuesday"  == hi ){
-                    console.log("Tuesday" == hi)
-                    var x2 = 0;
-                    var sub_arr2;
-                    if(y2>0){
-                        console.log("y run....")
-                      days[1][y2] = schedule[j] ;
-                    }else{
-                        console.log("else run....")
-                      days[1][x2] = schedule[j] ;
-                        y2 = x2;
-                        y2++;
-                    }
-                }
-                else if( "Wednessday"  == hi ){
-                    console.log("Wednessday" == hi)
-                    var x3 = 0;
-                    if(y3>0){
-                        console.log("y run....")
-                      days[2][y3] = schedule[j] ;
-                    }else{
-                        console.log("else run....")
-                      days[2][x3] = schedule[j] ;
-                        y3 = x3;
-                        y3++;
-                    }
-                }
-                else if( "Thrusday"  == hi ){
-                    console.log("Thrusday" == hi)
-                    var x4 = 0;
-                    if(y4>0){
-                        console.log("y run....")
-                      days[3][y4] = schedule[j] ;
-                    }else{
-                        console.log("else run....")
-                      days[3][x4] = schedule[j] ;
-                        y4 = x4;
-                        y4++;
-                    }
-                }
-                else if( "Friday"  == hi ){
-                    console.log("Friday" == hi)
-                    var x5 = 0;
-                    if(y5>0){
-                        console.log("y run....")
-                      days[4][y5] = schedule[j] ;
-                    }else{
-                        console.log("else run....")
-                      days[4][x5] = schedule[j] ;
-                        y5 = x5;
-                        y5++;
-                    }
-                }
-                else if("Saturday" == hi){
-                    console.log("Saturday" == hi)
-                    var x6 = 0;
-                    if(y6>0){
-                        console.log("y run....")
-                      days[5][y6] = schedule[j] ;
-                    }else{
-                        console.log("else run....")
-                      days[5][x6] = schedule[j] ;
-                        y6 = x6;
-                        y6++; 
-                    }
-                }
-            }
-            // console.log("days = ",days)
-            // var days = [["1m"],["2t"],["3w"],["4th"],["5f"],["6sa"]]
-
-            var d = new Date();
-            var n = d.getDay()
-            console.log("n = ",n); 
-            // n = 3;
-            var newdays = [];
-            for(var x = 0 ; x < days.length ; x++){
-            
-                if(n == 0 || n == 7){
-                        // console.log("x,n = ",x,n)
-                        newdays.push([])
-                        // console.log("newdays = ",newdays)
-                    n++ ;
-                }
-                if(n > days.length){
-                    // console.log("x,n = ",x,n)
-                    newdays.push(days[n - (days.length + 1 + 1)])
-                    // console.log("newdays = ",newdays)
-                    n++ ;
-                }else{
-                    // console.log("x,n = ",x,n)
-                    newdays.push(days[n-1])
-                    // console.log("newdays = ",newdays)
-                    n++ ;
-                }
-            }
-            
-            console.log("newdays = ",newdays)
-
-            user_array[i].schedule = newdays ;
-            // console.log(` user_array[${i}] = `, user_array[i])
-
-           
-        }
-        console.log("user_array = ",user_array)
-        res.render("doctor", data = { user: req.session.userid.user , doctors :user_array });
-    })
-    .catch(err=>{
-        res.redirect("/home");
-    })
-
-}
- 
 const demodoc = (req,res)=>{
 
     models.user_schema.find({"doctor" : "doctor"})
@@ -407,9 +259,17 @@ const demodoc = (req,res)=>{
                 console.log(".......isdoctor",isdoctor)
                 if(isdoctor){
                     delete req.session.isdoctor ;
-                    res.render("demodoc", data = { user: req.session.userid.user , doctors :user,noofuser:noofuser ,all_doc_check : all_doc_check ,emp : emp ,err:isdoctor });
+                    if(req.session.update_data){
+                        res.render("demodoc", data = { user: req.session.update_data , doctors :user,noofuser:noofuser ,all_doc_check : all_doc_check ,emp : emp ,err:isdoctor });
+                    }else{
+                        res.render("demodoc", data = { user: req.session.userid.user , doctors :user,noofuser:noofuser ,all_doc_check : all_doc_check ,emp : emp ,err:isdoctor });
+                    }
                 }else{
-                    res.render("demodoc", data = { user: req.session.userid.user , doctors :user,noofuser:noofuser ,all_doc_check : all_doc_check ,emp : emp});
+                    if(req.session.update_data){
+                        res.render("demodoc", data = { user: req.session.update_data , doctors :user,noofuser:noofuser ,all_doc_check : all_doc_check ,emp : emp});
+                    }else{
+                        res.render("demodoc", data = { user: req.session.userid.user , doctors :user,noofuser:noofuser ,all_doc_check : all_doc_check ,emp : emp});
+                    }
                 }
         })
         .catch(err=>{
@@ -435,7 +295,6 @@ const demodoc = (req,res)=>{
     
 }
 
-
 const hospital = (req,res)=>{
     res.render("hospital", data = { user: false });
 }
@@ -454,13 +313,21 @@ const profile = (req,res)=>{
         var update_profile = req.session.update_profile;
         if(update_profile ==  req.session.update_profile){
             delete req.session.update_profile ;
-            res.render("profile", data = { user: req.session.update_data ,succ : update_profile }); // ,record: record
+            if(req.session.userid.user.type == "admin"){
+                res.render("profile", data = { user: false ,succ : update_profile ,admin :req.session.userid.user }); // ,record: record
+             }else{ 
+                res.render("profile", data = { user: req.session.update_data ,succ : update_profile }); // ,record: record
+             } 
         }
     }else{
         if(req.session.update_data){
-            res.render("profile", data = { user: req.session.update_data  }); //, record: record
+            res.render("profile", data = { user: req.session.update_data  }); 
         }else{
-            res. render("profile", data = { user: req.session.userid.user }); //, record: record
+             if(req.session.userid.user.type == "admin"){
+                res.render("profile", data = { admin: req.session.userid.user ,user :false});
+             }else{ 
+                 res.render("profile", data = { user: req.session.userid.user });
+             } 
         }
     }
 }
@@ -469,16 +336,33 @@ const medical_report = (req,res)=>{
     var record = req.session.record ;
     delete req.session.record ;
     if(req.session.update_data){
-        res.render("medical_report", data = { user: req.session.update_data , record: record });
+        if(req.session.userid.user.type == "admin"){
+            if(req.session.admin_update_data){
+                res.render("medical_report", data = { user: false , record: record ,admin : req.session.admin_update_data });
+            }else{
+                res.render("medical_report", data = { user: false , record: record ,admin : req.session.userid.user });
+            }
+        }else{
+            res.render("medical_report", data = { user: req.session.update_data , record: record ,admin :false});
+        }
     }else{
-        res. render("medical_report", data = { user: req.session.userid.user , record: record });
+        if(req.session.userid.user.type == "admin"){
+            console.log("i cmc ,req.session.i,data.userlist= ",req.query.i,req.session.i,data.userlist)
+            res.render("medical_report", data = { user: false , record: record ,admin : req.session.userid.user });
+        }else{
+            res.render("medical_report", data = { user: req.session.userid.user , record: record ,admin :false});
+        }
     }
     
 }
 
 const appointment = (req,res)=>{
     if(req.session.update_data){
-        res.render("appointment", data = { user: req.session.update_data  });
+        if(req.session.userid.user.type == "admin"){
+            res.render("appointment", data = { user: req.session.update_data ,admin : req.session.userid.user });
+        }else{
+            res.render("appointment", data = { user: req.session.update_data  });
+        }
     }else{
         res. render("appointment", data = { user: req.session.userid.user  });
     }
@@ -502,25 +386,22 @@ const show_record = (req,res)=>{
 
 
     if(req.session.update_data){
-        res.render("show_record", data = { user: req.session.update_data  });
+        if(req.session.userid.user.type == "admin"){
+            if(req.session.admin_update_data){
+                res.render("show_record", data = { admin: req.session.admin_update_data , record_photos: sec_var.file  });
+            }else{
+                res.render("show_record", data = { admin: req.session.userid.user , record_photos: sec_var.file  });
+            }
+        }else{
+            res.render("show_record", data = { user: req.session.update_data , record_photos: sec_var.file  });
+        }
     }else{
-        res.render("show_record", data = { user: req.session.userid.user , record_photos: sec_var.file });
+        if(req.session.userid.user.type == "admin"){
+            res.render("show_record", data = { admin: req.session.userid.user , record_photos: sec_var.file });
+        }else{
+            res.render("show_record", data = { user: req.session.userid.user , record_photos: sec_var.file });
+        }
     }
-}
-
-const tags = (req,res)=>{
-    if(req.session.tag_value){
-        var sec_tag = req.session.tag_value ;
-        console.log(  "................................sec_tag[0]",sec_tag[0] )
-        delete req.session.tag_value; 
-        res.render("tags",tagss = {tag : sec_tag} )   
-    }else{
-        res.render("tags",tagss = false)   
-    }
-}
-
-const signup_doctor_info = (req,res)=>{
-    res.render("doctor_info", data = { user: false })
 }
 
 const schedules = (req,res)=>{
@@ -613,16 +494,30 @@ const reschedule = (req,res)=>{
     }else if(req.query.objindex ){
 
         var i = req.query.objindex ;
-        var obj = {
-            appointmentdate : req.session.userid.user.appointments[i].appointmentdate,
-            stime:req.session.userid.user.appointments[i].stime,
-            etime: req.session.userid.user.appointments[i].etime,
-            name :req.session.userid.user.appointments[i].name,
-            hospital:req.session.userid.user.appointments[i].hospital,
-            qualification:req.session.userid.user.appointments[i].qualification,
-            bookhospital:req.session.userid.user.appointments[i].bookhospital,
-            objid:req.session.userid.user.appointments[i]._id,
-            doctorid:req.session.userid.user.appointments[i].doctorid,
+        if(req.session.userid.user.type == "admin"){
+            var obj = {
+                appointmentdate : data.user.appointments[i].appointmentdate,
+                stime:data.user.appointments[i].stime,
+                etime: data.user.appointments[i].etime,
+                name :data.user.appointments[i].name,
+                hospital:data.user.appointments[i].hospital,
+                qualification:data.user.appointments[i].qualification,
+                bookhospital:data.user.appointments[i].bookhospital,
+                objid:data.user.appointments[i]._id,
+                doctorid:data.user.appointments[i].doctorid,
+            }
+        }else{
+            var obj = {
+                appointmentdate : req.session.userid.user.appointments[i].appointmentdate,
+                stime:req.session.userid.user.appointments[i].stime,
+                etime: req.session.userid.user.appointments[i].etime,
+                name :req.session.userid.user.appointments[i].name,
+                hospital:req.session.userid.user.appointments[i].hospital,
+                qualification:req.session.userid.user.appointments[i].qualification,
+                bookhospital:req.session.userid.user.appointments[i].bookhospital,
+                objid:req.session.userid.user.appointments[i]._id,
+                doctorid:req.session.userid.user.appointments[i].doctorid,
+            }
         }
         console.log("...........................obj ",obj ) ;
 
@@ -785,7 +680,11 @@ const reschedule = (req,res)=>{
         if(req.session.update_data){
             res.render("reschedule", data = { user: req.session.update_data , obj : obj , doctors :user_array})
         }else{
-            res.render("reschedule", data = { user: req.session.userid.user , obj : obj , doctors :user_array})
+            if(req.session.userid.user.type == "admin"){
+                res.render("reschedule", data = { user: data.user , obj : obj , doctors :user_array})
+            }else{
+                res.render("reschedule", data = { user: req.session.userid.user , obj : obj , doctors :user_array})
+            }
         }
     })
     .catch(err=>{
@@ -845,7 +744,189 @@ const updatereschedule = (req,res)=>{
 
 }
 
- 
+const admin = (req,res)=>{
+
+    models.user_schema.find()
+    .then(user=>{
+        var totaluser = 0;
+        var totaldoctor = 0;
+        var appointments = 0;
+        var patient = [];
+        var obj = {};
+        var emtarr = []; 
+
+        for(var i=0; i < user.length ;i++){
+            if(user[i].type == "user"){
+                totaluser++ ;
+                appointments = appointments +  user[i].appointments.length ;
+                if(user[i].appointments.length > 0){
+                    var patientdata = {}
+                    patientdata.id = user[i]._id ;
+                    patientdata.name = user[i].name ;
+                    patientdata.number = user[i].number ;
+                    patientdata.email = user[i].email ;
+
+                    patient.push(patientdata) ;
+                }
+            }
+            if(user[i].type == "doctor"){
+                totaldoctor++ ;
+
+                    var typehospital= user[i].hospital.split(",");
+                    // console.log("typehospital = ",typehospital );
+                    
+                    for(var j=0; j< typehospital.length ;j++) {
+                        if(emtarr.length > 0){
+                            for(var k=0; k < emtarr.length; k++){
+                             var ok = 0;
+                                if(typehospital[j].toLowerCase() == emtarr[k] ){
+                                    k = emtarr.length;
+                                }else{
+                                     ok = 1;
+                                }
+                            }
+                            if(ok){
+                                emtarr.push(typehospital[j].toLowerCase()); 
+                            }
+                        }else{ 
+                            emtarr.push(typehospital[j].toLowerCase())  
+                       }
+                   } 
+                console.log("emtarr = ",emtarr );
+                console.log("emtarr.length = ",emtarr.length );
+
+                
+            }
+        }
+        obj.totaluser =totaluser ;
+        obj.totaldoctor =totaldoctor ;
+        obj.appointments =appointments ;
+        obj.hospital =emtarr.length ;
+        obj.patient =patient ;
+
+        req.session.admin = obj ;
+        console.log("obj",obj );
+        if(req.session.admin_update_data){
+            //admin_update_data
+            res.render("admin", data = { succ: req.session.message.success , admin: req.session.admin_update_data , obj:obj } )
+        }else{
+            res.render("admin", data = { succ: req.session.message.success , admin: req.session.userid.user , obj:obj } )
+        }
+    })
+    .catch(err=>{
+        res.send("/emaillogin");
+    })
+    
+
+}
+
+const useradmin = (req,res)=>{
+
+    models.user_schema.find({type : "user"})
+    .then(user=>{
+        var userlist = [];
+        for( var i = 0; i < user.length ;i++ ){
+            var patientdata = {} ;
+            patientdata.id = user[i]._id ;
+            patientdata.name = user[i].name ;
+            patientdata.number = user[i].number ;
+            patientdata.email = user[i].email ;
+            patientdata.gender = user[i].gender ;
+            patientdata.date = user[i].data ;
+            patientdata.city = user[i].city ;
+            patientdata.state = user[i].state ;
+
+            userlist.push(patientdata) ;
+        }
+
+        if(req.session.admin_update_data){
+            // res.render("profile", data = { user: user ,admin : req.session.admin_update_data });
+            res.render("useradmin", data = {  admin : req.session.admin_update_data, userlist : userlist } )
+
+        }else{
+            // res.render("profile", data = { user: req.session.update_data  });
+            res.render("useradmin", data = {  admin : req.session.userid.user , userlist : userlist } )
+        }
+    })
+    .catch(err=>{
+        res.send("/emaillogin");
+    })
+    
+}
+
+const admineditprofile = (req,res)=>{
+    
+    console.log("admineditprofile ",req.query.userid)
+
+    models.user_schema.findOne( { _id :  req.query.userid }  )
+    .then(user => {
+        console.log("user = ",user)
+
+        if(req.session.update_data){
+            if(req.session.admin_update_data){
+                res.render("profile", data = { user: user ,admin : req.session.admin_update_data });
+            }else{
+                res.render("profile", data = { user: req.session.update_data  });
+            }
+        }else{
+            res.render("profile", data = { user: user ,admin : req.session.userid.user });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
+    })
+
+}
+
+
+const doctoradmin = (req,res)=>{
+
+    models.user_schema.find({type : "doctor"})
+    .then(user=>{
+        var userlist = [];
+        for( var i = 0; i < user.length ;i++ ){
+            var patientdata = {} ;
+            patientdata.id = user[i]._id ;
+            patientdata.name = user[i].name ;
+            patientdata.specification = user[i].specification ;
+            patientdata.qualification = user[i].qualification ;
+            patientdata.experience = user[i].experience ;
+            patientdata.hospital = user[i].hospital ;
+            patientdata.city = user[i].city ;
+            patientdata.state = user[i].state ;
+            patientdata.fees = user[i].fees ;
+
+            userlist.push(patientdata) ;
+        }
+        console.log("user[0]",user[0])
+
+        if(req.session.admin_update_data){
+            res.render("doctoradmin", data = {  admin : req.session.admin_update_data, userlist : userlist } )
+
+        }else{
+            res.render("doctoradmin", data = {  admin : req.session.userid.user , userlist : userlist } )
+        }
+    })
+    .catch(err=>{
+        res.send("/emaillogin");
+    })
+    
+}
+
+const admindoctorallappointment = (req,res)=>{
+
+    models.user_schema.findOne({ _id : req.query.id })
+    .select({appointments : 1,_id : 1 })
+    .then(user=>{
+        console.log("user = ",user) ;
+        res.render("admindoctorallappointment", data = {  admin : req.session.userid.user , useridapp : user } )
+
+    })
+    .catch(err=>{
+        res.send("/emaillogin");
+    })
+}
+
 module.exports = {
     emaillogin: emaillogin,
     signup: signup,
@@ -854,7 +935,6 @@ module.exports = {
     otp: otp,
     create_password:create_password,
     phone_login:phone_login,
-    doctor:doctor,
     demodoc:demodoc,
     hospital:hospital,
     about_us:about_us,
@@ -863,13 +943,16 @@ module.exports = {
     medical_report:medical_report,
     setting:setting,
     show_record:show_record,
-    // tags:tags,
-    // signup_doctor_info:signup_doctor_info,
     schedules:schedules,
     patientappointment:patientappointment,
     confirmappointment:confirmappointment,
     reschedule:reschedule,
-    updatereschedule:updatereschedule
+    updatereschedule:updatereschedule,
+    admin:admin,
+    useradmin:useradmin,
+    admineditprofile:admineditprofile,
+    doctoradmin:doctoradmin,
+    admindoctorallappointment:admindoctorallappointment
 
 }
 

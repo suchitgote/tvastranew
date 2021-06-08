@@ -604,6 +604,26 @@
                                             var checkbox = c[k].slots[l].checkbox ;
                                             var isbook = c[k].slots[l].isbook ;
 
+                                            var sabchangaci = true;
+                                            console.log(" ..................................x ,new Date().getHours()",x, (`${new Date()}`).slice(0,15));
+                                            if(   x == (`${new Date()}`).slice(0,15)   ){
+                                                var foremin = parseInt(c[k].slots[l].schedule_time.slice(3,5));
+                                                console.log(" ....................................fore:foremin apmp ",fore ,foremin , apmp) 
+                                                var newfore = fore;
+                                                if(apmp == "PM" && newfore != 12 ){
+                                                    newfore = newfore + 12 ;
+                                                }                                        
+                                                console.log(" ..............................new......fore:foremin apmp ",newfore ,foremin , apmp) 
+                                                console.log(" ............................new Date().getHours()...,.getMinutes().....",new Date().getHours() ,new Date().getMinutes() )                                         
+                                                    sabchangaci = false;
+    
+                                                if( (newfore*60 + foremin) > (new Date().getHours()*60 + new Date().getMinutes()) ){
+                                                    sabchangaci =  true ;
+                                                    console.log(" .............sabchangaci............",sabchangaci )                                         
+                                                }
+                                            }
+
+
 
                                             var name = document.getElementById(`name${i}${docid}`).innerHTML;
                                             console.log("  doc name ",name)                                         
@@ -617,12 +637,12 @@
                                             var appointmentdate = x;
                                             console.log("  doc appointmentdate ",appointmentdate)
                                           
-                                            if(apmp == "AM" && checkbox == "false" && isbook == "false"){
+                                            if(apmp == "AM" && checkbox == "false" && isbook == "false" && sabchangaci ){
                                                 mlis += `<li onclick="window.location.href='/patientappointment?name=${name}&hospital=${hospital}&qualification=${qualification}&appointmentdate=${x}&time=${c[k].slots[l].schedule_time}&bookhospital=${c[k].hospital}&scheduleid=${c[k].schedule_index }&slotid=${c[k].slots[l].id}&doctorid=${docid}&isdoctor=${isdoctor} '" > ${c[k].slots[l].schedule_time.slice(0,8)} </li>`;
                                             }
-                                            else if( (apmp == "PM" && fore < 4 && checkbox == "false" && isbook == "false") || fore == 12 ){
+                                            else if( (apmp == "PM" && fore < 4 && checkbox == "false" && isbook == "false" && sabchangaci ) || (fore == 12  && sabchangaci)){
                                                 alis += `<li onclick="window.location.href='/patientappointment?name=${name}&hospital=${hospital}&qualification=${qualification}&appointmentdate=${x}&time=${c[k].slots[l].schedule_time}&bookhospital=${c[k].hospital}&scheduleid=${c[k].schedule_index }&slotid=${c[k].slots[l].id}&doctorid=${docid}&isdoctor=${isdoctor} '" > ${c[k].slots[l].schedule_time.slice(0,8)} </li>`;
-                                            }else if(checkbox == "false" && isbook == "false"){
+                                            }else if(checkbox == "false" && isbook == "false" && sabchangaci){
                                                 elis += `<li onclick="window.location.href='/patientappointment?name=${name}&hospital=${hospital}&qualification=${qualification}&appointmentdate=${x}&time=${c[k].slots[l].schedule_time}&bookhospital=${c[k].hospital}&scheduleid=${c[k].schedule_index }&slotid=${c[k].slots[l].id}&doctorid=${docid}&isdoctor=${isdoctor} '" > ${c[k].slots[l].schedule_time.slice(0,8)} </li>`;
                                             }
                                         }

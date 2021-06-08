@@ -36,23 +36,44 @@
     <div class="dashbord">
         <h2>dashbord</h2>
         <div class="dashbord_button">
-            <a href="/profile">
-                <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>profile</p></div>
-            </a>
-            <a href="/appointment">
-                <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
-            </a>
-            <% if(data.user.doctor == "doctor"){ %>
-                <a href="/schedules">
-                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>schedules</p></div>
+            <% if(!(data.admin)){ %>
+            
+                <a href="/profile">
+                    <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>profile</p></div>
                 </a>
-            <% } %>            
-            <a href="/medical_report">
-                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>medical reports </p></div>
-            </a>
-            <a href="/setting">
-                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
-            </a>
+                <a href="/appointment">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
+                </a>
+                <% if(data.user.doctor == "doctor"){ %>
+                    <a href="/schedules">
+                        <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>schedules</p></div>
+                    </a>
+                <% } %>            
+                <a href="/medical_report">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>medical reports </p></div>
+                </a>
+                <a href="/setting">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
+                </a>
+
+            <% }else{  %> 
+                <a href="/admin">
+                    <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>dashbord</p></div>
+                </a>
+                <a href="/useradmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>user</p></div>
+                </a>
+                <a href="/doctoradmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>doctor</p></div>
+                </a>           
+                <a href="/hospitaladmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>hospital reports </p></div>
+                </a>
+                <a href="/settingadmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
+                </a>
+            <%   } %>            
+
         </div>
     </div>
 
@@ -66,8 +87,12 @@
                 <div class="photo-con">
                     <h4>profile photo</h4>
                     <div class="profile_photo">
-                        <div class="img">                            
-                            <img src="./uploads/<%= data.user.file %>"  id="preview">
+                        <div class="img">     
+                            <% if(!data.admin && data.user != false){ %>
+                                <img src="./uploads/<%= data.user.file %>"  id="preview">
+                            <% }else{ %>
+                                <img src="./uploads/<%= data.admin.file %>" id="preview">
+                            <% } %>                       
                         </div>
                         <div class="select_photo">
                             <p> pick a photo from your system</p>
@@ -80,25 +105,46 @@
                 </div>
                 <div class="inputs">
                     <label for="name"><h4>name</h4></label>
-                    <input type="text" name="name" id="name" value= '<%= data.user.name %>' >
+                    <% if(!data.admin  || data.user != false){ %>
+                        <input type="text" name="name" id="name" value= '<%= data.user.name %>' >
+                    <% }else{ %>
+                        <input type="text" name="name" id="name" value= '<%= data.admin.name %>' >
+
+                    <% } %>  
                 </div>
             </div>
             <div class="border_div">
                 <div class="inputs">
                     <label for="number"><h4>number</h4></label>
                     <div class="num">
-                        <input type="text" name="number" id="number" value= '<%= data.user.number %>' readonly>
+                        <% if(!data.admin || data.user != false){ %>
+                            <input type="text" name="number" id="number" value= '<%= data.user.number %>' readonly>
+                            <% }else{ %>
+                            <input type="text" name="number" id="number" value= '<%= data.admin.number %>' readonly>
+                            
+                            <% } %>  
                         <i class="fa fa-pencil" aria-hidden="true" class="pencil" onclick = "editnumber()" ></i>
                     </div>
                 </div>
                 <div class="inputs">
                     <label for="email"><h4>email</h4></label>
-                    <input type="email" name="email" id="email" value= '<%= data.user.email %> '>
+                    <% if(!data.admin || data.user != false){ %>
+                        <input type="email" name="email" id="email" value= '<%= data.user.email %> '>
+
+                        <% }else{ %>
+                        <input type="email" name="email" id="email" value= '<%= data.admin.email %> '>
+                            
+                        <% } %>  
                 </div>
                 <div class="inputs">
                     <label for="gender"><h4>gender</h4></label>
                     <select id="gender" name="gender" >
-                        <option value = '<%= data.user.gender %>' > <%= data.user.gender %> </option>
+                        <% if(!data.admin || data.user != false){ %>
+                            <option value = '<%= data.user.gender %>' > <%= data.user.gender %> </option>
+                            <% }else{ %>
+                            <option value = '<%= data.admin.gender %>' > <%= data.admin.gender %> </option>
+                                
+                            <% } %>  
                         <option value="male">male</option>
                         <option value="female">female</option>
                         <option value="other">other</option>
@@ -106,34 +152,77 @@
                 </div>
                 <div class="inputs">
                     <label for="date"><h4>date</h4></label>
-                    <input type="date" name="date" id="date" value= '<%= data.user.data %>' >
+                    <% if(!data.admin || data.user != false){ %>
+                        <input type="date" name="date" id="date" value= '<%= data.user.data %>' >
+
+                        <% }else{ %>
+                        <input type="date" name="date" id="date" value= '<%= data.admin.data %>' >
+                            
+                        <% } %>  
                 </div>
                 <div class="inputs">
                     <label for="timezon"><h4>timezon</h4></label>
-                    <input type="text" name="timezon" id="timezon" value= '<%= data.user.timezon %>' >
+                    <% if(!data.admin || data.user != false){ %>
+                        <input type="text" name="timezon" id="timezon" value= '<%= data.user.timezon %>' >
+
+                        <% }else{ %>
+                        <input type="text" name="timezon" id="timezon" value= '<%= data.admin.timezon %>' >
+                            
+                        <% } %>  
                 </div>
             </div>
             <div class="border_div">
                 <div class="inputs">
                     <label for="house no"><h4>house no</h4></label>
-                    <input type="text" name="house_no" id="house no" value= '<%= data.user.house_no %>' >
+                    <% if(!data.admin || data.user != false){ %>
+                        <input type="text" name="house_no" id="house no" value= '<%= data.user.house_no %>' >
+
+                        <% }else{ %>
+                        <input type="text" name="house_no" id="house no" value= '<%= data.admin.house_no %>' >
+
+                            
+                        <% } %>  
                 </div>
                 <div class="inputs">
                     <label for="colony"><h4>colony</h4></label>
-                    <input type="text" name="colony" id="colony" value = '<%= data.user.colony %>' >
+                    <% if(!data.admin || data.user != false){ %>
+                        <input type="text" name="colony" id="colony" value = '<%= data.user.colony %>' >
+
+                        <% }else{ %>
+                        <input type="text" name="colony" id="colony" value = '<%= data.admin.colony %>' >
+                            
+                        <% } %>  
                 </div>
                 <div class="inputs">
                     <label for="city"><h4>city</h4></label>
-                    <input type="text" name="city" id="city" value= '<%= data.user.city %>' >
+                    <% if(!data.admin || data.user != false){ %>
+                        <input type="text" name="city" id="city" value= '<%= data.user.city %>' >
+
+                        <% }else{ %>
+                        <input type="text" name="city" id="city" value= '<%= data.admin.city %>' >
+                            
+                        <% } %>  
                 </div>
                 <div class="inputs">
                     <label for="state"><h4>state</h4></label>
-                    <input type="text" name="state" id="state" value= '<%= data.user.state %>' >
+                    <% if(!data.admin || data.user != false){ %>
+                        <input type="text" name="state" id="state" value= '<%= data.user.state %>' >
+
+                        <% }else{ %>
+                        <input type="text" name="state" id="state" value= '<%= data.admin.state %>' >
+                            
+                        <% } %>  
                 </div>
                 <div class="inputs">
                     <label for="country"><h4>country</h4></label>
-                    <select id="country" name="country" value= '<%= data.user.country %>' >
-                        <option value = '<%= data.user.country %>' ><%= data.user.country %></option>
+                    <% if(!data.admin || data.user != false){ %>
+                        <select id="country" name="country" value= '<%= data.user.country %>' >
+                            <option value = '<%= data.user.country %>' ><%= data.user.country %></option>
+
+                    <% }else{ %>
+                        <select id="country" name="country" value= '<%= data.admin.country %>' >
+                            <option value = '<%= data.admin.country %>' ><%= data.admin.country %></option>
+                    <% } %>  
                         <option value="india">india</option>
                         <option value="usa">usa</option>
                         <option value="newyork">newyork</option>
@@ -145,38 +234,46 @@
             <div class="border_div">
                 <div class="inputs">
                     <label for="hospital"><h4>hospital</h4></label>
+                 
                     <input name='hospital' value='<%= data.user.hospital %>' placeholder="your hospital" id="hospital">
                 </div>
                 <div class="inputs">
                     <label for="qualification"><h4>qualification</h4></label>
+                
                     <input name='qualification' value='<%= data.user.qualification %>' placeholder="your qualification" id="qualification">
                 </div>
                 <div class="inputs">
                     <label for="achivement"><h4>achivement</h4></label>
+                  
                     <input name='achivement' value='<%= data.user.achivement %>' placeholder="your achivement" id="achivement">
                 </div>
 
                 <div class="inputs">
                     <label for="experience"><h4>experience</h4></label>
+                    
                     <input type="number" name="experience" id="experience" value='<%= data.user.experience %>' placeholder="your experience in year" >
                 </div>
 
                 <div class="inputs">
                     <label for="awards"><h4>awards</h4></label>
+                  
                     <input name='awards' value='<%= data.user.awards %>' placeholder="your awards" id="awards">
                 </div>
                 <div class="inputs">
                     <label for="specification"><h4>specification</h4></label>
+                  
                     <input name='specification' value='<%= data.user.specification %>' placeholder="your specification" id="specification">
                 </div>
 
                 <div class="inputs">
                     <label for="fees"><h4>fees</h4></label>
+                   
                     <input type="number" name="fees" value='<%= data.user.fees %>' id="fees" placeholder="your average fees (in rupees)" >
                 </div>
 
                 <div class="last_class">
                     <div class="yourself"><h4>yourself</h4></div>
+                  
                     <textarea name="yourself" id="yourself"  cols="30" rows="6"> <%= data.user.yourself %>  </textarea>
                 </div>
                 
@@ -193,9 +290,15 @@
         <form>
             <div class="inputs">
                 <label for="number"><h4>Current phone number</h4></label>
-                <input type="text" class="number" value= <%= data.user.number %>  readonly>
-                <label for="number"><h4>Enter new phone number</h4></label>
-                <input type="text" class="new_number">
+                <% if(!data.admin){ %>
+                    <input type="text" class="number" value= <%= data.user.number %>  readonly>
+                    <label for="number"><h4>Enter new phone number</h4></label>
+                    <input type="text" class="new_number">
+                    <% }else{ %>
+                        <input type="text" class="number" value= <%= data.admin.number %>  readonly>
+                        <label for="number"><h4>Enter new phone number</h4></label>
+                        <input type="text" class="new_number">
+                    <% } %>
             </div>
             <div class="send_otp">
                 <button class="cancel_btn" onclick="noteditnumber()">cancel</button>

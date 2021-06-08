@@ -10,35 +10,35 @@
     <div class="nav-i">
         <i class="fa fa-bars fa-1x"></i>
     </div>
+    <% if(!data.admin){ %>
+        <div class="desktop-nav">
+            <ul>               
+                <a href="/demodoc">  <li>  Doctor   </li> </a>
+                <a href="hospital"> <li>   Hospital   </li> </a>
+                <li  class="dropdown">           
+                    <div class="dropbtn">treatment  
+                        <i class="fa fa-caret-down"></i>  
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="filterdemo">filterdemo</a>
+                        <a href="#">carcer</a>
+                        <a href="#">Multi organ transplant</a>
+                        <a href="create_password">create_password</a>
+                        <a href="/">email_login</a>
+                        <a href="otp">otp</a>
+                        <a href="phone_login">phone_login</a>
+                        <a href="tvastra_plus">tvastra_plus</a>
+                        <a href="show_user">show_user</a>       
     
-    <div class="desktop-nav">
-        <ul>               
-            <a href="/demodoc">  <li>  Doctor   </li> </a>
-            <a href="hospital"> <li>   Hospital   </li> </a>
-            <li  class="dropdown">           
-                <div class="dropbtn">treatment  
-                    <i class="fa fa-caret-down"></i>  
-                </div>
-                <div class="dropdown-content">
-                    <a href="filterdemo">filterdemo</a>
-                    <a href="#">carcer</a>
-                    <a href="#">Multi organ transplant</a>
-                    <a href="create_password">create_password</a>
-                    <a href="/">email_login</a>
-                    <a href="otp">otp</a>
-                    <a href="phone_login">phone_login</a>
-                    <a href="tvastra_plus">tvastra_plus</a>
-                    <a href="demo_getdata">demo_getdata</a>
-                    <a href="demo_postdata">demo_postdata</a>
-                    <a href="show_user">show_user</a>       
-
-                </div>       
-            </li>
-            <a href="about_us">  <li>  About </li>   </a> 
-        </ul>
-    </div>
+                    </div>       
+                </li>
+                <a href="about_us">  <li>  About </li>   </a> 
+            </ul>
+        </div>
+ <%  } %>
     
     <div class="desktop-nav-buttons">
+        <% if(!data.admin){ %>
             <div class="dnlogin"> 
                 <a href="login">  Login  </a> 
                 / 
@@ -46,25 +46,38 @@
             </div>
             <button class="tvastra_plus"> tvastra plus </button>
             <button class="quote-button"> get a quote   </button>
- 
+        <% } %>
             <div  class="dropdown user_name">           
                 <div class="dropbtn"> 
-                    <h5> <%= data.user.name %>  </h5>
+                    <% if(!data.admin){ %>
+                        <h5> <%= data.user.name %>  </h5>
+                    <% }else{ %>
+                        <h5> <%= data.admin.name %>  </h5>
+                    <% } %>
                     <i class="fa fa-caret-down"></i>  
                 </div>
                 <div class="dropdown-content">
                     <a href="/profile" class="profile_info">
                         <div class="photo">
-                            <img src="./uploads/<%= data.user.file %>" alt="">
+                            <% if(!data.admin){ %>
+                                <img src="./uploads/<%= data.user.file %>" alt="">
+                            <% }else{ %>
+                                <img src="./uploads/<%= data.admin.file %>" alt="">
+                            <% } %>
                         </div>
                         <div class="name_number">
-                            <h5><%= data.user.name %></h5>
-                            <p><%= data.user.number %></p>
+                            <% if(!data.admin){ %>
+                                <h5> <%= data.user.name %>  </h5>
+                                <p><%= data.user.number %></p>
+                            <% }else{ %>
+                                <h5> <%= data.admin.name %>  </h5>
+                                <p><%= data.admin.number %></p>
+                            <% } %>
                         </div>
                     </a>
-                    <a href="/tags">my tags</a>
-                    <a href="/demodoc">demodoc</a>
-                    <a href="">my clinic order</a>
+                    <a href="appointment">appointment</a>
+                    <a href="medical_report">medical_report</a>
+                    <a href="setting">setting</a>
                     <a href="logout">logout</a>
                 </div>       
             </div>

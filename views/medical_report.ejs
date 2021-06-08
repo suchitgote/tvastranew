@@ -35,33 +35,56 @@
     <div class="dashbord">
         <h2>dashbord</h2>
         <div class="dashbord_button">
-            <a href="/profile">
-                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>profile</p></div>
-            </a>
-            <a href="/appointment">
-                <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
-            </a>
-            <% if(data.user.doctor == "doctor"){ %>
-                <a href="/schedules">
-                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>schedules</p></div>
+            <% if(!(data.admin.type == "admin")){ %>
+            
+                <a href="/profile">
+                    <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>profile</p></div>
                 </a>
-            <% } %>  
-            <a href="/medical_report">
-                <div class="dash_btn dot medical_report"  ><i class="fa fa-user" aria-hidden="true"></i> <p>medical reports </p></div>
-            </a>
-            <a href="/setting">
-                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
-            </a>
+                <a href="/appointment">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
+                </a>
+                <% if(data.user.doctor == "doctor"){ %>
+                    <a href="/schedules">
+                        <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>schedules</p></div>
+                    </a>
+                <% } %>            
+                <a href="/medical_report">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>medical reports </p></div>
+                </a>
+                <a href="/setting">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
+                </a>
+
+            <% }else{  %> 
+                <a href="/admin">
+                    <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>dashbord</p></div>
+                </a>
+                <a href="/useradmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>user</p></div>
+                </a>
+                <a href="/doctoradmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>doctor</p></div>
+                </a>           
+                <a href="/hospitaladmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>hospital reports </p></div>
+                </a>
+                <a href="/settingadmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
+                </a>
+            <%   } %> 
         </div>
     </div>
 
     <div class="dashbord_content2 mySlides medical_record">
+
         <div class="head">
             <h2>Medical Records</h2>
-            <button onclick="add_record()"  >add record </button>
+            <% if(!(data.admin.type == "admin")){ %>
+                <button onclick="add_record()"  >add record </button>
+             <% } %>   
         </div>
 
-    <% for(var i = 0 ; i < record.length ; i++ ){ %>
+    <% for(var i = 0 ; i < data.record.length ; i++ ){ %>
     <div class="appointment">
         <div class="date_time">
             <form action="/show_record" method="POST">
@@ -148,6 +171,32 @@
 
 <!-- /include _footer -->
 <script>
+
+    
+    function previewImages() {
+        var preview = document.querySelector('#previeww');
+        if (this.files) {
+            [].forEach.call(this.files, readAndPreview);
+            }
+            function readAndPreview(file) {
+            if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                return alert(file.name + " is not an image");
+            } // else...
+            var reader = new FileReader();
+            reader.addEventListener("load", function() {
+                var image = new Image();
+                image.height = 100;
+                image.title  = file.name;
+                image.src    = this.result;
+                preview.appendChild(image);
+            });
+            reader.readAsDataURL(file);
+        }
+    }
+    
+    document.querySelector('#file-input').addEventListener("change", previewImages);
+    
+
     (function(){
         const reportPicInput = document.getElementById("file-input");
         var selectedPhotoContainer = document.querySelector("#previeww");
@@ -179,28 +228,7 @@
         }
     
             
-        function previewImages() {
-            var preview = document.querySelector('#previeww');
-            if (this.files) {
-            [].forEach.call(this.files, readAndPreview);
-            }
-            function readAndPreview(file) {
-            if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
-                return alert(file.name + " is not an image");
-            } // else...
-            var reader = new FileReader();
-            reader.addEventListener("load", function() {
-                var image = new Image();
-                image.height = 100;
-                image.title  = file.name;
-                image.src    = this.result;
-                preview.appendChild(image);
-            });
-            reader.readAsDataURL(file);
-            }
-        }
-        
-        document.querySelector('#file-input').addEventListener("change", previewImages);
+ 
 
 
 </script>

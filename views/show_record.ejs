@@ -35,23 +35,43 @@
     <div class="dashbord">
         <h2>dashbord</h2>
         <div class="dashbord_button">
-            <a href="/profile">
-                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>profile</p></div>
-            </a>
-            <a href="/appointment">
-                <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
-            </a>
-            <% if(data.user.doctor == "doctor"){ %>
-                <a href="/schedules">
-                    <div class="dash_btn dot medical_report"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>schedules</p></div>
+            <% if(!(data.admin)){ %>
+            
+                <a href="/profile">
+                    <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>profile</p></div>
                 </a>
-            <% } %>  
-            <a href="/medical_report">
-                <div class="dash_btn dot medical_report"  ><i class="fa fa-user" aria-hidden="true"></i> <p>medical reports </p></div>
-            </a>
-            <a href="/setting">
-                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
-            </a>
+                <a href="/appointment">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
+                </a>
+                <% if(data.user.doctor == "doctor"){ %>
+                    <a href="/schedules">
+                        <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>schedules</p></div>
+                    </a>
+                <% } %>            
+                <a href="/medical_report">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>medical reports </p></div>
+                </a>
+                <a href="/setting">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
+                </a>
+
+            <% }else{  %> 
+                <a href="/admin">
+                    <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>dashbord</p></div>
+                </a>
+                <a href="/useradmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>user</p></div>
+                </a>
+                <a href="/doctoradmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>doctor</p></div>
+                </a>           
+                <a href="/hospitaladmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>hospital reports </p></div>
+                </a>
+                <a href="/settingadmin">
+                    <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
+                </a>
+            <%   } %> 
         </div>
     </div>
 

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/admindashbord.css">
+
+    <title>email-login</title>
+</head>
+<body>
+    
+
+
+<!-- include nav-->
+<%- include('include/_nav') %>
+<!-- /include nav -->
+
+<% if(data.succ){ %>
+    <div class="alert">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+        <div class="alert_content">
+            <h4>success</h4>
+            <p> <strong> <%= data.succ %> </strong> </p>
+        </div>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    </div>
+<% } %>
+
+<section class="profile">
+    <div class="dashbord">
+        <h2>dashbord</h2>
+        <div class="dashbord_button">
+            <a href="/admin">
+                <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>dashbord</p></div>
+            </a>
+            <a href="/useradmin">
+                <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>user</p></div>
+            </a>
+            <a href="/doctoradmin">
+                <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>doctor</p></div>
+            </a>           
+            <a href="/hospitaladmin">
+                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>hospital reports </p></div>
+            </a>
+            <a href="/settingadmin">
+                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="dashbord_content1 mySlides">
+        <div>
+       
+            <div class="recentAppointments">
+                <h3>Patients Enrolled</h3>
+                <table class="recentAppointmentsTable">
+                    <thead>
+                        <tr>
+                            <td>
+                                <h4>patient</h4>
+                            </td>
+                            <td>
+                                <h4>patient Number</h4>
+                            </td>
+                            <td>
+                                <h4>user</h4>
+                            </td>
+                            <td>
+                                <h4>hospital name</h4>
+                            </td>
+                            <td>
+                                <h4>date</h4>
+                            </td>
+                            <td>
+                                <h4>timing</h4>
+                            </td>
+                            <td>
+                                <h4>status</h4>
+                            </td>
+                            <td>
+                                <h4>action</h4>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (var i = 0; i < data.useridapp.appointments.length ;i++ ){ %>
+                            <tr>
+                                <td>
+                                    <h4> <%= data.useridapp.appointments[i].name  %> </h4>
+                                </td>
+                                <td>
+                                    <h4> <%= data.useridapp.appointments[i].patientnumber  %></h4>
+                                </td>
+                                <td>
+                                    <h4> <%= data.useridapp.appointments[i].username  %> </h4>
+                                </td>
+                                <td>
+                                    <h4> <%= data.useridapp.appointments[i].bookhospital  %> </h4>
+                                </td>
+                                <td>
+                                    <h4> <%= data.useridapp.appointments[i].appointmentdate  %> </h4>
+                                </td>
+                                <td>
+                                    <h4> <%= data.useridapp.appointments[i].stime  %>-<%= data.useridapp.appointments[i].etime  %></h4>
+                                </td>
+                                <td>
+                                    <h4>  ? </h4>
+                                </td>
+                                <td>
+                                    <h4>  ? </h4>
+                                </td>
+                            </tr>
+                      <%  } %>
+                                                
+                    </tbody>
+                </table>
+               
+            </div>
+    
+        </div>
+    </div>
+
+</section>
+
+ 
+
+
+
+<!-- include _footer-->
+<%- include('include/_footer') %>
+
+<!-- /include _footer -->
+
+
+
+</body>
+</html>
