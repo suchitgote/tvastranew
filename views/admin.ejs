@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/new-theme.css">
     <link rel="stylesheet" href="css/admindashbord.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <title>email-login</title>
 </head>
 <body>
@@ -46,9 +47,9 @@
                 <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>doctor</p></div>
             </a>           
             <a href="/hospitaladmin">
-                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>hospital reports </p></div>
+                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>hospital </p></div>
             </a>
-            <a href="/settingadmin">
+            <a href="/setting">
                 <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
             </a>
         </div>
@@ -122,7 +123,7 @@
                                     <h4> <%= data.obj.patient[i].email  %> </h4>
                                 </td>
                                 <td>
-                                    <h4 onclick="window.location.href='/adminallappointment?userid=<%= data.obj.patient[i].id  %>'" > Appointment Details</h4>
+                                    <h4 class="cancel" onclick="window.location.href='/adminallappointment?userid=<%= data.obj.patient[i].id  %>'" > Appointment Details</h4>
                                 </td>
                             </tr>
                       <%  } %>
@@ -146,7 +147,18 @@
 
 <!-- /include _footer -->
 
+<script>
+    var medical_report = document.getElementsByClassName("profile_page");
+    medical_report[0].style.background = "rgb(226, 220, 220)"; 
+    medical_report[0].classList.add("mystyle");
 
+    function popupremove() {
+        var h = document.querySelector(".alert");
+        setTimeout(function(){ h.style.display = "none" }, 700);
+    }
+    popupremove();  
+</script>
 
 </body>
 </html>
+

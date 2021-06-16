@@ -263,25 +263,25 @@
 
 
 
-function neww(){
-    var slide = document.getElementsByClassName("schedule-times");
-    for( var m = 0; m < slide.length; m++) {
-        slide[m].style.height = "0";  
-    } 
-}
-neww();
+    function neww(){
+        var slide = document.getElementsByClassName("schedule-times");
+        for( var m = 0; m < slide.length; m++) {
+            slide[m].style.height = "0";  
+        } 
+    }
+    neww();
 
-var slideIndex ;
-showSlidesss(slideIndex);
+    var slideIndex ;
+    showSlidesss(slideIndex);
 
-function currentSlide(n) {
-  showSlidesss(slideIndex = n);
-}
+    function currentSlide(n) {
+    showSlidesss(slideIndex = n);
+    }
 
-function showSlidesss(n) {
-  var slides = document.getElementsByClassName("schedule-times");
- // var dots = document.getElementsByClassName("viweslots");
-  
+    function showSlidesss(n) {
+    var slides = document.getElementsByClassName("schedule-times");
+    // var dots = document.getElementsByClassName("viweslots");
+    
 
     if (slides[slideIndex].style.height == "auto"){
         slides[slideIndex].style.height = "0";  
@@ -299,6 +299,14 @@ function showSlidesss(n) {
 
 
 
+</script>
+
+<script>
+    function popupremove() {
+        var h = document.querySelector(".alert");
+        setTimeout(function(){ h.style.display = "none" }, 700);
+    }
+    popupremove();   
 </script>
 
 </body>

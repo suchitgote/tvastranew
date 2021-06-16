@@ -209,7 +209,7 @@ body{
             display: none;
         }
         h2{
-            margin-bottom: 1rem;
+            margin: 1rem 0;
         }
         .appointment{
             padding: 0.5rem;
@@ -591,13 +591,14 @@ body{
                 display: flex;
                 .date_time{
                     width: 50%;
-                    margin: 0 auto;
+                    // margin: 0 auto;
                     .time{
                         margin: 0 auto;
                     }
                 }
                 .cancel_appointment{
                     margin-top: 0;
+                    margin-left: auto;
                     button{
                         height: 3.5rem;
                         margin: auto;

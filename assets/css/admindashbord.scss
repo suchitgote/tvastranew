@@ -1,5 +1,8 @@
 $red :red;
 $green :green;
+$i:rgb(22, 125, 221);
+
+
 .alert {
     padding: 0.5rem 1rem;
     background-color: white;
@@ -70,7 +73,7 @@ $green :green;
                 padding:0.5rem 0.8rem;
               //  margin-right: 1rem;
                 i{
-                    color: var(--blue_sky);
+                    color: #0a7abb;
                     margin-right: 1rem;
                 }
                 p{
@@ -145,7 +148,6 @@ $green :green;
        
     }
     .recentAppointments {
-        padding: 1rem;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -159,7 +161,7 @@ $green :green;
                 background-color: black;
                 tr {
                     td {
-                        max-width: 23vw;
+                        max-width: 1rem;
                         overflow-x: scroll;
                         padding: 0.5rem;
                         border: 0.05rem solid gray;
@@ -173,11 +175,15 @@ $green :green;
             tbody{
                 tr {
                     td{
-                        max-width: 23vw;
+                        max-width: 1rem;
                         overflow-x: scroll;
-                        padding: 0.5rem;
                         border: 0.05rem solid grey;
                         vertical-align: middle;
+                        .cancel{
+                            color: $i;
+                            cursor: pointer;
+                        }
+
                     }
                 }
             }
@@ -218,6 +224,7 @@ $green :green;
                         top: 2rem;
                         left: 0;
                         li {
+                            padding: 0.2rem;
                             a {
                                 font-family: nexa-bold;
                                 color: #3b7abd;
@@ -270,12 +277,27 @@ $green :green;
                     span {
                         margin: 0;
                         font-size: 1rem;
-                        overflow-x: hidden;
                     }
                 }
             }
         }
     
+    }
+    .dashbord_content1{
+        form{
+            width: 100%;
+            h2{
+                color: $i;
+            }
+            .inputgroup{
+                width: 100%;
+                margin: 0.5rem 0;
+                h3{
+                    margin: 0.5rem 0;
+                    color: $i;
+                }
+            }
+        }
     }
 }
 
@@ -315,7 +337,7 @@ $green :green;
 
 @media only screen and ( min-width:1024px) {
     .profile{
-        padding: 2rem;
+        // padding: 2rem;
         -webkit-box-shadow: inset 0 0.5rem 1rem -0.5rem grey;
         box-shadow: inset 0 0.5rem 1rem -0.5rem grey;
         display: -ms-grid;
@@ -332,17 +354,34 @@ $green :green;
                 flex-direction: column;
             }
         }
+        .adminDashboard {
+            .col{
+                width: 14rem;
+            }
+        }
         .recentAppointments {
             table {
+                thead {
+                    background-color: black;
+                    tr {
+                        td {
+                            max-width: unset;
+                            overflow-x: unset;
+                        }
+                    }
+                }
                 tbody {
                     tr {
-                        overflow:auto;
+                        overflow: hidden;
                         td{
-                            overflow:auto;
+                            overflow: unset;
+                            max-width: fit-content;
+                            padding: 0.2rem;
                         }
                     }
                 }
             }
+
         }
         .cards{
             grid-template-columns: 31.5% 31.5% 31.5%;

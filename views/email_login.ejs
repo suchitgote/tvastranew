@@ -54,7 +54,7 @@
                 <div id="user">
                     <input type="text" class="a"  placeholder="Enter Email Address" name="email" required>              
                     <div class="password_box">
-                        <input type="password" class="a" id="myInput" placeholder="Enter Password" name="password" > 
+                        <input type="password" class="a" id="myInput" placeholder="Enter Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" > 
                         <!-- // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"> -->
                      
                         <i class="fa fa-eye-slash" id="password_eye" aria-hidden="true" onclick="myFunction()" ></i> 
@@ -86,6 +86,21 @@
     
     
 <script>
+
+    function sidebar(){
+        var sidebar = document.querySelector("#sidebar");
+        if( sidebar.style.display == "block" ){
+            sidebar.style.display = "none" ;
+        }else{
+            sidebar.style.display = "block"
+        }
+    } 
+
+    function popupremove() {
+        var h = document.querySelector(".alert");
+        setTimeout(function(){ h.style.display = "none" }, 700);
+    }
+    popupremove();   
 
  function myFunction() {
      var x = document.getElementById("myInput");
@@ -119,5 +134,7 @@
     }, 1000);
 
 </script>
+
+
 </body>
 </html>

@@ -287,22 +287,22 @@
 <div class="number_change" id="number_change">
     <div class="edit_number">
         <h2>change phone number</h2>
-        <form>
+        <form action="updatenumber" method="POST" >
             <div class="inputs">
                 <label for="number"><h4>Current phone number</h4></label>
-                <% if(!data.admin){ %>
-                    <input type="text" class="number" value= <%= data.user.number %>  readonly>
+                <% if(!data.admin || data.user != false){ %>
+                    <input type="text" name="currentnumber" class="number" value= <%= data.user.number %>  readonly>
                     <label for="number"><h4>Enter new phone number</h4></label>
-                    <input type="text" class="new_number">
+                    <input type="text" name="newnumber" class="new_number">
                     <% }else{ %>
-                        <input type="text" class="number" value= <%= data.admin.number %>  readonly>
+                        <input type="text" name="currentnumber" class="number" value= <%= data.admin.number %>  readonly>
                         <label for="number"><h4>Enter new phone number</h4></label>
-                        <input type="text" class="new_number">
+                        <input type="text" name="newnumber" class="new_number">
                     <% } %>
             </div>
             <div class="send_otp">
-                <button class="cancel_btn" onclick="noteditnumber()">cancel</button>
-                <button class="otp_btn">send otp</button>
+                <button type="button" class="cancel_btn" onclick="noteditnumber()">cancel</button>
+                <button  class="otp_btn">send otp</button>
             </div>
         </form>
     </div>
@@ -335,6 +335,12 @@
 
 </script>
 <script>
+
+    function popupremove() {
+        var h = document.querySelector(".alert");
+        setTimeout(function(){ h.style.display = "none" }, 700);
+    }
+    popupremove();   
 
     var medical_report = document.getElementsByClassName("profile_page");
     medical_report[0].style.background = "rgb(226, 220, 220)"; 

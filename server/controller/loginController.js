@@ -29,9 +29,6 @@ const checkMainLogin = (req, res) => {
 const checkpreLogin = (req, res, next) => {
     if (req.session.userid) {
         res.redirect("/home");
-    }
-    if (req.session.admin) {
-        res.redirect("/admin");
     }else {
         next();
     }
@@ -52,7 +49,7 @@ const signup = (req,res)=>{
         res.status(400).send({ message : "Content can not be emtpy!"});
         return;
     }
-        
+         
     if(!(req.body.doctor == "doctor")){
             // create new user
             const user = new models.user_schema({
@@ -79,86 +76,257 @@ const signup = (req,res)=>{
                         message : err.message || "Some error occurred while creating a create operation"
                     });
                 });
-    }else{
-        // create new user
-        console.log("req.body.name = ",req.body.name)
-        console.log("req.body.email = ",req.body.email)
-        console.log("req.body.password = ",req.body.password)
-        console.log("req.body.gender = ",req.body.gender)
-        console.log("req.body.data = ",req.body.data)
-        console.log("req.body.number = ",req.body.number)
-        console.log("req.body.city = ",req.body.city)
-        console.log("req.body.state = ",req.body.state)
-        console.log("req.body.country = ",req.body.country)
-        console.log("req.body.doctor = ",req.body.doctor)
-
-        var tag_inputs = []
-        var inputs_arr = [req.body.achivement , req.body.hospital , req.body.qualification , req.body.awards , req.body.specification] ;
-    
-        for(var j = 0 ; j < inputs_arr.length ;j++){
-            var input = JSON.parse(inputs_arr[j]) ;
-            console.log(`..............................................${input} = `,  input )
-            var arr = [];
-            for(var i = 0 ; i < input.length ;i++){
-                arr.push(`${input[i].value}`);
-            }
-            console.log(arr);
-            var arr_str = arr.toString()
-            console.log(arr_str);
-            tag_inputs.push(arr_str)
-        }
-        req.session.tag_value = tag_inputs ;
-        console.log("................................................req.session.tag_value.........",req.session.tag_value) 
-
-        console.log("req.body.yourself = ",req.body.yourself)
-        console.log("req.file = ",req.file)
-        console.log("req.body.achivement = ",tag_inputs[0])
-        console.log("req.body.hospital = ",tag_inputs[1])
-        console.log("req.body.experience = ",req.body.experience)
-        console.log("req.body.qualification = ",tag_inputs[2])
-        console.log("req.body.awards = ",tag_inputs[3])
-        console.log("req.body.specification = ",tag_inputs[4])
-        console.log("req.body.fees = ",req.body.fees) 
-        console.log("req.body.yourself = ",req.body.yourself)
-
-        const user = new models.user_schema({
-            name : req.body.name,
-            email : req.body.email,
-            password : req.body.password,
-            gender : req.body.gender,
-            data : req.body.data,
-            number : req.body.number,
-            city : req.body.city,
-            state : req.body.state,
-            country : req.body.country,
-            doctor : req.body.doctor,
-            
-            file : req.file.filename,
-            achivement : tag_inputs[0],
-            hospital : tag_inputs[1],
-            experience : req.body.experience,
-            qualification : tag_inputs[2],
-            awards : tag_inputs[3],
-            specification :tag_inputs[4],
-            fees : req.body.fees,
-            yourself : req.body.yourself,
-            type : "doctor"
-                                    
-        })
-        // save user in the database
-        user
-            .save(user)
-            .then(data => {
-            res.redirect('../show_user')
-            })
-            .catch(err =>{
-                res.status(500).send({
-                    message : err.message || "Some error occurred while creating a create operation"
-                });
-            });
-        
     }
+    // else{
+    //     // create new user
+    //     console.log("req.body.name = ",req.body.name)
+    //     console.log("req.body.email = ",req.body.email)
+    //     console.log("req.body.password = ",req.body.password)
+    //     console.log("req.body.gender = ",req.body.gender)
+    //     console.log("req.body.data = ",req.body.data)
+    //     console.log("req.body.number = ",req.body.number)
+    //     console.log("req.body.city = ",req.body.city)
+    //     console.log("req.body.state = ",req.body.state)
+    //     console.log("req.body.country = ",req.body.country)
+    //     console.log("req.body.doctor = ",req.body.doctor)
 
+    //     var tag_inputs = []
+    //     var inputs_arr = [req.body.achivement , req.body.hospital , req.body.qualification , req.body.awards , req.body.specification] ;
+    
+    //     for(var j = 0 ; j < inputs_arr.length ;j++){
+    //         var input = JSON.parse(inputs_arr[j]) ;
+    //         console.log(`..............................................${input} = `,  input )
+    //         var arr = [];
+    //         for(var i = 0 ; i < input.length ;i++){
+    //             arr.push(`${input[i].value}`);
+    //         }
+    //         console.log(arr);
+    //         var arr_str = arr.toString()
+    //         console.log(arr_str);
+    //         tag_inputs.push(arr_str)
+    //     }
+    //     req.session.tag_value = tag_inputs ;
+    //     console.log("................................................req.session.tag_value.........",req.session.tag_value) 
+
+    //     console.log("req.body.yourself = ",req.body.yourself)
+    //     console.log("req.file = ",req.file)
+    //     console.log("req.body.achivement = ",tag_inputs[0])
+    //     console.log("req.body.hospital = ",tag_inputs[1])
+    //     console.log("req.body.experience = ",req.body.experience)
+    //     console.log("req.body.qualification = ",tag_inputs[2])
+    //     console.log("req.body.awards = ",tag_inputs[3])
+    //     console.log("req.body.specification = ",tag_inputs[4])
+    //     console.log("req.body.fees = ",req.body.fees) 
+    //     console.log("req.body.yourself = ",req.body.yourself)
+
+    //     const user = new models.user_schema({
+    //         name : req.body.name,
+    //         email : req.body.email,
+    //         password : req.body.password,
+    //         gender : req.body.gender,
+    //         data : req.body.data,
+    //         number : req.body.number,
+    //         city : req.body.city,
+    //         state : req.body.state,
+    //         country : req.body.country,
+    //         doctor : req.body.doctor,
+            
+    //         file : req.file.filename,
+    //         achivement : tag_inputs[0],
+    //         hospital : tag_inputs[1],
+    //         experience : req.body.experience,
+    //         qualification : tag_inputs[2],
+    //         awards : tag_inputs[3],
+    //         specification :tag_inputs[4],
+    //         fees : req.body.fees,
+    //         yourself : req.body.yourself,
+    //         type : "doctor"
+                                    
+    //     })
+    //     // save user in the database
+    //     user
+    //         .save(user)
+    //         .then(data => {
+
+    //             models.hospital_list.find()
+    //             .then(users =>{
+    //                 var ok = true ;
+    //                 var index = [];
+    //                 var typehospital= tag_inputs[1].split(",");
+    //                 for(var j=0; j< typehospital.length ;j++) {
+    //                     for(var k=0; k < users.length ;k++){
+
+    //                         var hospitals= users[k].name.split(",");
+    //                         for(var l=0; l< hospitals.length ;l++) {
+    //                             console.log(`....${hospitals[l].toLowerCase()} == ${typehospital[j].toLowerCase()}...... ,l `,hospitals[l].toLowerCase() == typehospital[j].toLowerCase())
+                                
+    //                             if(hospitals[l].toLowerCase() == typehospital[j].toLowerCase()){
+    //                                 ok = false ;
+    //                                 console.log("hospital exist")
+    //                                 index.push(j);
+    //                             }
+    //                         }
+
+    //                     }
+    //                 }
+
+    //                 console.log(" .....index",index) ;
+    //                 let newindex = [...new Set(index)];
+    //                 console.log("uniqueChars =",newindex);
+
+    //                 for(var l=0; l< typehospital.length ;l++) {
+    //                         if( newindex.indexOf(l) != -1 ){
+    //                             console.log(" ................................dont create hospital ,j ",j)
+    //                         }else{
+    //                             console.log(" ................................create hospital ,l ",l)
+                                
+    //                             const hospital = new models.hospital_list({
+    //                                 name : typehospital[l]
+    //                             })
+    //                             hospital
+    //                                 .save(hospital)
+    //                                 .then(data => {
+    //                                     // res.redirect('../show_user')
+    //                                     console.log(" ................................create hospital in database,l ",l) ;
+    //                                 })
+    //                                 .catch(err =>{
+    //                                     res.status(500).send({
+    //                                         message : err.message || "Some error occurred while creating a create operation"
+    //                                     });
+    //                                 });
+    //                         }
+    //                 }
+    //                 res.redirect('../show_user')
+                    
+
+    //             })
+    //             .catch(err =>{
+    //                 res.status(500).send({
+    //                     message : err.message || "Some error occurred while creating a create operation"
+    //                 });
+    //             })
+                        
+                        
+    //         })
+    //         .catch(err =>{
+    //             res.status(500).send({
+    //                 message : err.message || "Some error occurred while creating a create operation"
+    //             });
+    //         });
+        
+    // }
+
+}
+
+const signupdoc =(req,res)=> {
+   
+    var objectofall =
+        {
+        name  :  req.body.name,
+        email: req.body.email,
+        password:  req.body.password,
+        data:  req.body.data,
+        number: req.body.number,
+        gender:  req.body.gender,
+        city :req.body.city,
+        state: req.body.state,
+        country:  req.body.country,
+        doctor : "doctor"
+      }
+      req.session.objectofall = objectofall ;
+      res.render("signup", data = { user: false , doclog : true })
+      
+}
+
+const signupdocnew =(req,res)=>{
+      
+          // create new user
+          console.log("req.body.name = ",req.session.objectofall.name)
+          console.log("req.body.email = ",req.session.objectofall.email)
+          console.log("req.body.password = ",req.session.objectofall.password)
+          console.log("req.body.gender = ",req.session.objectofall.gender)
+          console.log("req.body.data = ",req.session.objectofall.data)
+          console.log("req.body.number = ",req.session.objectofall.number)
+          
+          console.log("req.body.city = ",req.session.objectofall.city)
+          console.log("req.body.state = ",req.session.objectofall.state)
+          console.log("req.body.country = ",req.session.objectofall.country)
+          console.log("req.body.doctor = ",req.session.objectofall.doctor)
+          console.log("req.body.filename = ",req.file.filename)
+          console.log("req.body.achivement = ",req.body.achivement)
+          console.log("req.body.hospital = ",req.body.hospital)
+  
+          var tag_inputs = []
+          var inputs_arr = [req.body.achivement , req.body.hospital , req.body.qualification , req.body.awards , req.body.specification] ;
+          
+      
+          for(var j = 0 ; j < inputs_arr.length ;j++){
+              console.log("inputs_arr[j] = ",inputs_arr[j]);
+              var input = JSON.parse(inputs_arr[j]) ;
+              console.log("22222inputs_arr[j] = ",input);
+              console.log("22222inputs_arr[j] = ",input[j]);
+              console.log(`..............................................${input} = `,  input )
+              var arr = [];
+              for(var i = 0 ; i < input.length ;i++){
+                  arr.push(`${input[i].value}`);
+              }
+              console.log(arr);
+              var arr_str = arr.toString()
+              console.log(arr_str);
+              tag_inputs.push(arr_str)
+          }
+          req.session.tag_value = tag_inputs ;
+          console.log("................................................req.session.tag_value.........",req.session.tag_value) 
+  
+          console.log("req.body.yourself = ",req.body.yourself)
+          console.log("req.file = ",req.file)
+          console.log("req.body.achivement = ",tag_inputs[0])
+          console.log("req.body.hospital = ",tag_inputs[1])
+          console.log("req.body.experience = ",req.body.experience)
+          console.log("req.body.qualification = ",tag_inputs[2])
+          console.log("req.body.awards = ",tag_inputs[3])
+          console.log("req.body.specification = ",tag_inputs[4])
+          console.log("req.body.fees = ",req.body.fees) 
+          console.log("req.body.yourself = ",req.body.yourself)
+  
+          const user = new models.user_schema({
+              name : req.session.objectofall.name,
+              email : req.session.objectofall.email,
+              password : req.session.objectofall.password,
+              gender : req.session.objectofall.gender,
+              data : req.session.objectofall.data,
+              number : req.session.objectofall.number,
+              city : req.session.objectofall.city,
+              state : req.session.objectofall.state,
+              country : req.session.objectofall.country,
+              doctor : req.session.objectofall.doctor,
+              
+              file : req.file.filename,
+              achivement : tag_inputs[0],
+              hospital : tag_inputs[1],
+              experience : req.body.experience,
+              qualification : tag_inputs[2],
+              awards : tag_inputs[3],
+              specification :tag_inputs[4],
+              fees : req.body.fees,
+              yourself : req.body.yourself,
+              type : "doctor"
+                                      
+          })
+          // save user in the database
+          user
+              .save(user)
+              .then(data => {
+              res.redirect('emaillogin')
+              })
+              .catch(err =>{
+                  // res.status(500).send({
+                  //     message : err.message || "Some error occurred while creating a create operation"
+                  // });
+                  req.session.error_message = "please enter all details";
+                  res.redirect('/signup');
+              });
+          
 }
 
 const emaillogin =  (req, res) => {
@@ -275,6 +443,47 @@ const otp_send =(req, res)=> {
     })
 }
 
+const otp_send_new =(req, res)=> {
+    console.log("..........................................post otp_send")
+
+    var otp_number = req.body.input1 + req.body.input2 + req.body.input3 + req.body.input4 ;
+
+    var mobile_number = req.session.numberupdate ;
+
+    delete req.session.numberupdate ;
+
+    console.log(".......................................mobile_number = ",`${mobile_number}`)
+    console.log(".......................................otp_number = ",`${otp_number}`)
+
+    axios.get(`http://localhost:3000/otp/${mobile_number}/${otp_number}`)
+    .then(response => {
+        console.log(" .............................post..otp_send then() ")
+        console.log("..............................otp verified working = ",response.data)
+    
+        req.session.message = { success: { head: "Success", body: "number update " } };
+        res.redirect('/updatenumbercomp');
+         
+    })
+    .catch(err => {
+        console.log(" ...............................otp_send catch() ")
+        console.log("..............................err.response.status:", err.response.status)
+
+        if( 404 == err.response.status ){
+            req.session.otp_err = "enter correct otp"
+            res.redirect('/otp');
+        }
+        if( 409 == err.response.status ){
+            req.session.otp_err = "The code has already been verified";
+            res.redirect('/otp');
+        }
+        if( 410 == err.response.status ){
+            req.session.otp_err = "The code is expired";
+            res.redirect('/otp');
+        }
+        res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
+    })
+}
+
 const otp_verifi = (req, res) => {
         const verificationResults = otpManager.VerificationResults;
         const verificationResult = otpManager.verify(req.params.token, req.params.code);
@@ -337,6 +546,7 @@ const create_password = (req,res)=>{
 }
 
 const phone_login = (req,res)=>{
+
     models.user_schema.findOne({"number":req.body.number})
      .then(user =>{
          req.session.userid = { user: user, count: 0 };
@@ -452,7 +662,8 @@ const update_profile = (req,res) => {
                                    }
                                 }else{
                                     req.session.admin_update_data = user;
-                                    res.redirect("/admin");
+                                    res.redirect("/profile");
+                                    // res.redirect("/admin");  2 min me aaya
                                 }
                             }else{
                                 res.redirect("/profile");
@@ -1037,44 +1248,65 @@ const patientappointment = (req,res)=>{
           }}})
     .then(response => {
 
-        models.user_schema.updateOne( { _id : req.body.doctorid},
-            { $push:{appointments:
-            { _id:ObjectID(),        
-              name :req.body.patname,
-              username :req.body.username,  
-              number :req.body.mobile,
-              patientnumber :req.body.patientmobile,
-              email :req.body.email,
-              bookhospital:req.body.bookhospital,
-              appointmentdate : req.body.appointmentdate ,
-              stime: req.body.stime ,
-              etime: req.body.etime,
-            }}}) 
-            .then(response => {
-                    models.user_schema.updateOne(
-                        { _id : req.body.doctorid }, 
-                        {$set : {"schedule.$[s].slots.$[si].isbook": "true"} },
-                        {arrayFilters : [{'s.schedule_index':schedule_obj_id},{'si.id': timer_id}] }
-                        ) 
-                        .then(user => {
-                            models.user_schema.findOne({ _id :  data.user._id})
-                            .then(user=>{
-                                req.session.update_data = user;
-                                res.redirect("/confirmappointment");
+        models.user_schema.findOne({ _id :  data.user._id})
+        .select({appointments:1})
+        .then(user=>{
+
+            console.log("..............patientappointment objid find... user._id  = ",user._id ) ;
+            console.log("..............patientappointment objid find... user  = ",user ) ;
+            console.log("..............patientappointment objid find... user.appointments[appointments.length-1]._id   = ",user.appointments[user.appointments.length-1]._id ) ;
+
+            var currentuser = user._id  ;
+            var appointmentid = user.appointments[user.appointments.length-1]._id   ;
+
+
+            models.user_schema.updateOne( { _id : req.body.doctorid},
+                { $push:{appointments:
+                { _id:ObjectID(),        
+                  name :req.body.patname,
+                  username :req.body.username,  
+                  number :req.body.mobile,
+                  patientnumber :req.body.patientmobile,
+                  email :req.body.email,
+                  bookhospital:req.body.bookhospital,
+                  appointmentdate : req.body.appointmentdate ,
+                  stime: req.body.stime ,
+                  etime: req.body.etime,
+                  userid : currentuser ,
+                  userappointmentid : appointmentid ,
+                  cancel:""
+                }}}) 
+                .then(response => {
+                        models.user_schema.updateOne(
+                            { _id : req.body.doctorid }, 
+                            {$set : {"schedule.$[s].slots.$[si].isbook": "true"} },
+                            {arrayFilters : [{'s.schedule_index':schedule_obj_id},{'si.id': timer_id}] }
+                            ) 
+                            .then(user => {
+                                models.user_schema.findOne({ _id :  data.user._id})
+                                .then(user=>{
+                                    req.session.update_data = user;
+                                    res.redirect("/confirmappointment");
+                                })
+                                .catch(err=>{
+                                    res.redirect("/home");
+                                }) 
                             })
-                            .catch(err=>{
-                                res.redirect("/home");
-                            }) 
-                        })
-                        .catch(err => {
-                            console.log("..............................................err",err)
-                            res.redirect("/emaillogin");
-                        })
+                            .catch(err => {
+                                console.log("..............................................err",err)
+                                res.redirect("/emaillogin");
+                            })
                 })
-            .catch(err => {
-                    console.log("..............................................err",err)
-                    res.redirect("/emaillogin");
+                .catch(err => {
+                        console.log("..............................................err",err)
+                        res.redirect("/emaillogin");
                 })      
+        })
+        .catch(err=>{
+            res.redirect("/home");
+        })
+
+
     })
     .catch(err => {
         console.log("..............................................err",err)
@@ -1333,23 +1565,36 @@ const update_password = (req,res)=>{
     console.log("password = ",password)
     console.log("confirm_password = ",confirm_password)
 
+    if(data.admin){
+        console.log("data.admin if setting")
+        var id = data.admin._id ;
+    }else{
+        var id = data.user._id ;
+    }
+
     if( password == confirm_password ){
     
-        models.user_schema.findOne({ _id :  data.user._id })
+        models.user_schema.findOne({ _id :  id })
         .then(user => {
                 if(user.password == current_password) {
-                    models.user_schema.updateOne( { _id :  data.user._id }, {$set:{"password" : password }}  )
+                    models.user_schema.updateOne( { _id :  id }, {$set:{"password" : password }}  )
                         .then(user => {
                             console.log("updata succsesful")
                             req.session.succ_message = "password update successfuly"
                             res.redirect("/logout");
                         })
                         .catch(err => {
+           
                             res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
                         })
                 } else {
                     req.session.error_message = "Wrong Password"
-                    res.redirect("/emaillogin");
+                    if(data.admin){
+                        console.log("Wrong Password")
+                        res.redirect("/setting");
+                    }else{
+                        res.redirect("/emaillogin");
+                    }
                 }
         })
         .catch(err => {
@@ -1386,6 +1631,113 @@ const adminallappointment = (req,res)=>{
 
 }
 
+const hospitaladminform = (req,res)=>{
+    console.log("req.body.name = ",req.body.name)
+    console.log("req.body.bed = ",req.body.bed)
+    console.log("req.body.speciality = ",req.body.speciality)
+    console.log("req.body.address = ",req.body.address)
+    console.log("req.body.treatment = ",req.body.treatment)
+    console.log("req.body.discription = ",req.body.discription)
+    console.log("req.file.filename = ",req.file.filename)
+
+
+        models.hospital_list.updateOne( {'_id' : req.body.id}, 
+            {$set:{
+                name : req.body.name ,
+                bed : req.body.bed ,
+                speciality : req.body.speciality ,
+                address : req.body.address ,
+                treatment : req.body.treatment ,
+                discription : req.body.discription ,
+                file : req.file.filename
+            }}  )
+        .then(data => {
+            console.log(" ................................hos up succ") ;
+            res.redirect('hospitaladmin')
+        })
+        .catch(err =>{
+            res.status(500).send({
+                message : err.message || "Some error occurred while creating a create operation"
+            });
+        });
+
+}
+
+const updatenumber = (req,res)=>{ 
+
+    var currentnumber = req.body.currentnumber ;
+    console.log("currentnumber = ",currentnumber)
+    
+        var newnumber = req.body.newnumber ;
+        req.session.newnumber = req.body.newnumber ;
+        console.log("newnumber = ",newnumber)
+
+    axios.post(`http://localhost:3000/otp/${currentnumber}`)
+    .then(response =>{
+
+        console.log("..........................................response.data ", response.status)
+    
+        req.session.otp_succ = "otp valid for 30sec" ;
+        req.session.numberupdate = currentnumber ;
+        res.redirect("../otpnew") ;        
+    })
+    .catch(err =>{
+        res.send(err);
+    })
+        
+}
+
+const updatenumbercomp = (req,res)=>{
+    
+        var newnumber = req.session.newnumber ;
+        console.log("newnumber = ",newnumber)
+        
+        if(req.session.userid.user.type == "admin"){
+            if(data.user){
+                var id = data.user._id ;
+            }else{
+                var id = req.session.userid.user._id ;
+                req.session.adminprofileupdate = true ;
+            }
+        }else{
+            var id = req.session.userid.user._id ;
+        }
+        
+        models.user_schema.updateOne( { _id :  id }, {$set:{"number" : newnumber }}  )
+        .then(user => {
+            console.log("profile updata succsesful")
+            req.session.update_profile = "number update successfuly" ;
+        
+            models.user_schema.findOne({ '_id' : id})
+            .then(user=>{
+                req.session.update_data = user;
+                console.log(".......................................req.session.update_data",req.session.update_data)
+                if(req.session.userid.user.type == "admin"){
+                    if(data.user){
+                        if(data.user.type == "doctor"){
+                                res.redirect("/doctoradmin");
+                        }else{
+                            res.redirect("/useradmin");
+                        }
+                    }else{
+                        req.session.admin_update_data = user;
+                        res.redirect("/profile");
+                    }
+                }else{
+                    res.redirect("/profile");
+                }
+            })
+            .catch(err=>{
+                res.redirect("/home");
+            })
+        })
+        .catch(err => {
+            res.status(500).send({ message : err.message || "Error Occurred while retriving user information for update" })
+        })
+    
+}
+
+
 
 
 module.exports = {
@@ -1394,6 +1746,8 @@ module.exports = {
     checkpreLogin : checkpreLogin ,
     checkLogin : checkLogin,
     signup : signup,
+    signupdoc:signupdoc,
+    signupdocnew:signupdocnew,
     emaillogin : emaillogin,
     logout : logout,
     forgot_password: forgot_password,
@@ -1419,7 +1773,12 @@ module.exports = {
     getschedule:getschedule,
     setschedule:setschedule,
     update_password:update_password,
-    adminallappointment:adminallappointment
+    adminallappointment:adminallappointment,
+    hospitaladminform:hospitaladminform,
+    updatenumber:updatenumber,
+    otp_send_new:otp_send_new,
+    updatenumbercomp:updatenumbercomp
+
 }
 
 

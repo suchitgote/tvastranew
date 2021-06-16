@@ -109,11 +109,87 @@
                                 <td>
                                     <h4> <%= data.useridapp.appointments[i].stime  %>-<%= data.useridapp.appointments[i].etime  %></h4>
                                 </td>
-                                <td>
-                                    <h4>  ? </h4>
+                                <td>                                   
+                                    <%  
+                                        console.log("data.useridapp.appointments[i] ", data.useridapp.appointments[i] ) 
+                                    
+                                        console.log("date", data.useridapp.appointments[i].appointmentdate , data.useridapp.appointments[i].etime ) 
+                                        var year= parseInt(  data.useridapp.appointments[i].appointmentdate.slice(11,15) );
+                                        var a=data.useridapp.appointments[i].appointmentdate.slice(4,7);
+                                        var day= parseInt(  data.useridapp.appointments[i].appointmentdate.slice(8,10) );
+                                        if(a=="Jan") a = 01;
+                                        if(a=="Feb") a = 02;
+                                        if(a=="Mar") a = 03;
+                                        if(a=="Apr") a = 04;
+                                        if(a=="May") a = 05;
+                                        if(a=="Jun") a = 06;
+                                        if(a=="Jul") a = 07;
+                                        if(a=="Aug") a = 08;
+                                        if(a=="Sep") a = 09;
+                                        if(a=="Oct") a = 10;
+                                        if(a=="Nov") a = 11;
+                                        if(a=="Dec") a = 12;
+                            
+                                        console.log("answer",a)
+                                        var eth = parseInt( data.useridapp.appointments[i].etime.slice(1,3) );
+                                        var etm =  parseInt( data.useridapp.appointments[i].etime.slice(4,6) );
+                                        var etam =   data.useridapp.appointments[i].etime.slice(7,9) ;
+                                
+                                        console.log(".........etam",etam)
+                                        if(etam == "PM" && eth != 12){
+                                            eth = eth + 12 ;
+                                        }
+                            
+                                        var current = new Date();
+                                        console.log(current)
+                                       var y = current.getFullYear() ;
+                                       var cm = current.getMonth() + 1;
+                                       var d = current.getDate() ;
+                                       var h = current.getHours() ;
+                                       var min = current.getMinutes() ;
+                            
+                                       console.log("y",y  );
+                                       console.log("cm",cm  );
+                                       console.log("d", d );
+                                       console.log("h", h );
+                                       console.log("min",min  );
+                            
+                                        console.log("year" , year );
+                                        console.log("a" ,  a);
+                                        console.log("day" ,day);
+                                        console.log("eth" ,eth  );
+                                        console.log("etm" ,etm  );
+                            
+                            
+                            
+                                        if( !((y > year) || ((y==year) && (cm>a)) || ((y==year) && (cm==a) && (d>day) ) || ((y==year) && (cm==a) && (d==day) && (h>eth)) ||  ((y==year) && (cm==a) && (d==day) && (h==eth) && (min>etm))) ){
+                                        console.log("ok")   
+                                        var isok = "ok";
+                                        }else{ 
+                                            console.log("not ok") 
+                                            var isok = "notok";
+                                        } 
+                                        
+                                         if(isok == "notok"){ %>
+                                            <h4>  Compleated </h4>
+                                        <% }else{  %>
+                                            <%  if (data.useridapp.appointments[i].cancel == "cancel"){  %>
+                                                <h4> canceled  </h4>
+                                            <%  }else{ %>
+                                                <h4>  Approved </h4>
+                                            <%  } %>
+                                        <%  } %>
+                                                
+                               
                                 </td>
                                 <td>
-                                    <h4>  ? </h4>
+                                    <%  if(isok == "notok"){ %>
+                                        <h4>   </h4>
+                                    <% }else if (data.useridapp.appointments[i].cancel == "cancel"){  %>
+                                        <h4>   </h4>
+                                        <%  }else{ %>
+                                            <h4 class="cancel" onclick="window.location.href='/cancelappointmentadmin?docid=<%= data.useridapp._id %>&docappoid=<%= data.useridapp.appointments[i]._id %>&userid=<%= data.useridapp.appointments[i].userid %>&userappointmentid=<%= data.useridapp.appointments[i].userappointmentid %>'">  Cancel </h4>     
+                                      <% } %>
                                 </td>
                             </tr>
                       <%  } %>

@@ -499,6 +499,8 @@ footer .footer-reserve {
   }
   #main .main .filter form .filter-search .filter-check-box {
     margin-bottom: 1rem;
+    max-height: 9.2rem;
+    overflow: hidden;
   }
   #main .main .filter form .filter-search .filter-check-box ul li {
     display: -webkit-box;
@@ -526,6 +528,25 @@ footer .footer-reserve {
     left: 0rem;
   }
   #main .main .filter form .filter-search .filter-show-more a {
+    -webkit-text-decoration-line: none;
+            text-decoration-line: none;
+    font-family: nexa-light;
+    color: blue;
+  }
+  #main .main .filter form .filter-search .filter-show-less {
+    display: none;
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  #main .main .filter form .filter-search .filter-show-less::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    top: 2rem;
+    left: 0rem;
+  }
+  #main .main .filter form .filter-search .filter-show-less a {
     -webkit-text-decoration-line: none;
             text-decoration-line: none;
     font-family: nexa-light;

@@ -41,7 +41,7 @@
                     <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>profile</p></div>
                 </a>
                 <a href="/appointment">
-                    <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
+                    <div class="dash_btn dot appointment_page"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>appointments</p></div>
                 </a>
                 <% if(data.user.doctor == "doctor"){ %>
                     <a href="/schedules">
@@ -173,7 +173,7 @@
 
 
         <div class="comp">
-            <h2>compleated Appointments</h2>
+            <h2>completed Appointments</h2>
             <%   for(var i = 0; i < data.user.appointments.length ; i++){ 
            
                 console.log("date", data.user.appointments[i].appointmentdate , data.user.appointments[i].etime ) 
@@ -243,7 +243,7 @@
                             <h4 class="name"><%= data.user.appointments[i].name  %> </h4>
                             <h4><%= data.user.appointments[i].stime  %> to <%= data.user.appointments[i].etime %></h4>
                             <h4><%= data.user.appointments[i].bookhospital %> </h4>
-                            <div class="confirmed">Confirmed </div>
+                            <div class="confirmed">Completed  </div>
                         </div>
                     </div>
                 </div>

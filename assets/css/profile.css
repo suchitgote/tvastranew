@@ -254,7 +254,7 @@ body {
 }
 
 .profile .dashbord_content2 h2 {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .profile .dashbord_content2 .appointment {
@@ -760,13 +760,13 @@ body {
   }
   .profile .dashbord_content2 .appointment .date_time {
     width: 50%;
-    margin: 0 auto;
   }
   .profile .dashbord_content2 .appointment .date_time .time {
     margin: 0 auto;
   }
   .profile .dashbord_content2 .appointment .cancel_appointment {
     margin-top: 0;
+    margin-left: auto;
   }
   .profile .dashbord_content2 .appointment .cancel_appointment button {
     height: 3.5rem;

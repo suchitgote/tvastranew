@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="css/new-theme.css">
     <link rel="stylesheet" href="css/admindashbord.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+ 
 </head>
 <body>
     
@@ -50,7 +49,7 @@
             <a href="/hospitaladmin">
                 <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>hospital </p></div>
             </a>
-            <a href="/settingadmin">
+            <a href="/setting">
                 <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
             </a>
         </div>
@@ -63,14 +62,18 @@
                 <% for(var i =0; i < data.userlist.length ; i++) { %>
                 <div class="card card<%= i %>">
                     <div class="picContainer hospitalPicContainer">
-                        <img src="https://tvastra-pics.s3.ap-south-1.amazonaws.com/ajayJun-30-2020-10%3A59%3A46.jpeg" alt=" Doctor Pic">
+                        <% if(data.userlist[i].file){  %>
+                            <img src="./uploads/<%= data.userlist[i].file %>"  alt=" Doctor Pic">
+                        <% }else{  %>
+                            <img src="https://cdn2.iconfinder.com/data/icons/medical-services-2/256/Doctor2-512.png"  alt=" Doctor Pic">
+                        <%   } %>
                         <div class="controls userControls">
                             <a onclick="showMenu('<%= i %>')">
                                 <div>
-                                    <i class="fas fa-bars"></i>
+                                    <i class="fa fa-address-card" aria-hidden="true" ></i>
                                 </div>
                             </a>
-                            <ul class="menuItems" id="menuItem0">
+                            <ul class="menuItems" id="menuItem<%= i %>">
                                 <li><a  onclick="window.location.href='/admineditprofile?userid=<%= data.userlist[i].id  %>'">
                                         Edit Profile</a></li>
                                 <li><a  onclick="window.location.href='/adminallappointment?userid=<%= data.userlist[i].id  %>'">
@@ -87,23 +90,23 @@
                             </h3>
                         </li>
                         <li>
-                            <i class="fas fa-phone-alt"></i>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
                             <span><%= data.userlist[i].number %> </span>
                         </li>
                         <li>
-                            <i class="fas fa-envelope"></i>
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
                             <span> <%= data.userlist[i].email %> </span>
                         </li>
                         <li>
-                            <i class="fas fa-venus-mars"></i> 
+                            <i class="fa fa-user" aria-hidden="true"></i>
                             <span> <%= data.userlist[i].gender %></span>
                         </li>
                         <li>
-                            <i class="fas fa-calendar-week"></i>
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
                             <span><%= data.userlist[i].date %>  </span>
                         </li>
                         <li>
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
                             <span> <%= data.userlist[i].city %> <%= data.userlist[i].state %> </span>
                         </li>
                     </ul>
@@ -116,6 +119,11 @@
 </section>
 
 <script>
+
+    var medical_report = document.getElementsByClassName("profile_page");
+    medical_report[0].style.background = "rgb(226, 220, 220)"; 
+    medical_report[0].classList.add("mystyle");
+
     async function showMenu(menuId) {
         var menuItem = document.querySelector("#menuItem" + menuId);
         if (menuItem.style.height === "unset")

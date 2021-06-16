@@ -85,7 +85,7 @@
 }
 
 .profile .dashbord .dashbord_button .dash_btn i {
-  color: var(--blue_sky);
+  color: #0a7abb;
   margin-right: 1rem;
 }
 
@@ -168,7 +168,6 @@
 }
 
 .profile .recentAppointments {
-  padding: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -183,7 +182,7 @@
 }
 
 .profile .recentAppointments table thead tr td {
-  max-width: 23vw;
+  max-width: 1rem;
   overflow-x: scroll;
   padding: 0.5rem;
   border: 0.05rem solid gray;
@@ -195,11 +194,15 @@
 }
 
 .profile .recentAppointments table tbody tr td {
-  max-width: 23vw;
+  max-width: 1rem;
   overflow-x: scroll;
-  padding: 0.5rem;
   border: 0.05rem solid grey;
   vertical-align: middle;
+}
+
+.profile .recentAppointments table tbody tr td .cancel {
+  color: #167ddd;
+  cursor: pointer;
 }
 
 .profile .cards {
@@ -244,6 +247,10 @@
   position: absolute;
   top: 2rem;
   left: 0;
+}
+
+.profile .cards .card .picContainer .controls .menuItems li {
+  padding: 0.2rem;
 }
 
 .profile .cards .card .picContainer .controls .menuItems li a {
@@ -301,7 +308,24 @@
 .profile .cards .card .abouHospital li span {
   margin: 0;
   font-size: 1rem;
-  overflow-x: hidden;
+}
+
+.profile .dashbord_content1 form {
+  width: 100%;
+}
+
+.profile .dashbord_content1 form h2 {
+  color: #167ddd;
+}
+
+.profile .dashbord_content1 form .inputgroup {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.profile .dashbord_content1 form .inputgroup h3 {
+  margin: 0.5rem 0;
+  color: #167ddd;
 }
 
 @media only screen and (min-width: 768px) {
@@ -335,7 +359,6 @@
 
 @media only screen and (min-width: 1024px) {
   .profile {
-    padding: 2rem;
     -webkit-box-shadow: inset 0 0.5rem 1rem -0.5rem grey;
     box-shadow: inset 0 0.5rem 1rem -0.5rem grey;
     display: -ms-grid;
@@ -356,11 +379,25 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .profile .adminDashboard .col {
+    width: 14rem;
+  }
+  .profile .recentAppointments table thead {
+    background-color: black;
+  }
+  .profile .recentAppointments table thead tr td {
+    max-width: unset;
+    overflow-x: unset;
+  }
   .profile .recentAppointments table tbody tr {
-    overflow: auto;
+    overflow: hidden;
   }
   .profile .recentAppointments table tbody tr td {
-    overflow: auto;
+    overflow: unset;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    padding: 0.2rem;
   }
   .profile .cards {
     -ms-grid-columns: 31.5% 31.5% 31.5%;

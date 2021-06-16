@@ -77,7 +77,7 @@ var user_schema = new mongoose.Schema({
         type: String
     },
     experience :{
-        type: String
+        type: Number
     },
     qualification :{
         type: String
@@ -89,7 +89,7 @@ var user_schema = new mongoose.Schema({
         type: String
     },
     fees :{
-        type: String
+        type: Number
     },
     yourself :{
         type: String
@@ -127,15 +127,49 @@ var medical_records = new mongoose.Schema({
     }
 });
 
+//scheme for hospital_list table....
+var hospital_list = new mongoose.Schema({
+         
+    name :{
+        type: String,
+        required:true
+    },
+    discription :{
+        type: String
+    },
+    speciality :{
+        type: String
+    },
+    bed :{
+        type: Number
+    },
+    address :{
+        type: String
+    },
+    file :{
+        type: String
+    },
+    treatment :{
+        type: String
+    }
+
+});
+
+
+
+
 const Userdb = mongoose.model('userdbcol', schema);
 
 const user_schema_table = mongoose.model('users',user_schema) ;
 
 const medical_record = mongoose.model('medical_record',medical_records) ;
 
+const hospital_lists = mongoose.model('hospital_list',hospital_list) ;
+
 
 module.exports = {
     Userdb : Userdb,
     user_schema :user_schema_table,
-    medical_record :medical_record
+    medical_record :medical_record,
+    hospital_list : hospital_lists
 }

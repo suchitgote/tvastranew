@@ -57,10 +57,11 @@ section #doctor-box .date-container .date-groups {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 2.5rem;
 }
 
 section #doctor-box .date-container .date-groups .dates {
-  width: 18rem;
+  width: 15rem;
   text-align: center;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -147,6 +148,7 @@ section #doctor-box .slots .bookingtimegroup .booking-time ul li {
   padding: 0.7rem 1rem;
   margin: 0.2rem;
   z-index: 1;
+  width: auto;
 }
 
 section #doctor-box .slots .bookingtimegroup .booking-hospital-name {
@@ -191,10 +193,6 @@ section #doctor-box #hospital-info figure .hospimage {
   height: 7rem;
   padding-top: 0.5rem;
   border-top: 0.1rem solid #5e5e5e;
-}
-
-section .reschedule {
-  width: 70%;
 }
 
 section .form {
@@ -352,6 +350,9 @@ section .col2 .patientDetails form .row2 .buttons .buttonContainer button {
   section #doctor-box ul li {
     width: 50%;
   }
+  section #doctor-box .date-container .date-groups .dates {
+    width: 19rem;
+  }
   section #doctor-box #doctor-info figure figcaption ul {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -360,6 +361,9 @@ section .col2 .patientDetails form .row2 .buttons .buttonContainer button {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  section .reschedule {
+    width: 95%;
   }
 }
 
@@ -371,6 +375,9 @@ section .col2 .patientDetails form .row2 .buttons .buttonContainer button {
   }
   section #doctor-box ul li {
     width: 100%;
+  }
+  section .reschedule {
+    width: 70%;
   }
   section .form {
     width: 35%;

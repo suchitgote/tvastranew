@@ -29,12 +29,33 @@ router.route("/demodoc").post(mainController.demodoc);
 
 router.route("/hospital").get(loginController.checkLogin,mainController.hospital);
 
+router.route("/treatment").get(loginController.checkLogin,mainController.treatment);
+
 router.route("/about_us").get(loginController.checkLogin,mainController.about_us);
+
+router.route("/tvastra_plus").get(loginController.checkLogin,mainController.tvastra_plus);
+
+router.route("/submit_your_query").get(loginController.checkLogin,mainController.submit_your_query);
+
+router.route("/faq").get(loginController.checkLogin,mainController.faq);
+
+router.route("/doctor_profile").get(loginController.checkLogin,mainController.doctor_profile);
+
+router.route("/book_appointment").get(loginController.checkLogin,mainController.book_appointment);
+
+router.route("/contact").get(loginController.checkLogin,mainController.contact);
+
+
+
+
+ 
 
 router.route("/home").get(loginController.checkLogin,mainController.home);
 
 router.route("/signup").get(mainController.signup);
-router.route("/signup").post(upload.single('file'),loginController.signup);
+router.route("/signup").post( loginController.signup);
+router.route("/signupdoc").post( loginController.signupdoc);
+router.route("/signupdocnew").post(upload.single('file'),loginController.signupdocnew);
 
 router.route("/show_user").get(mainController.show_user);
 
@@ -57,7 +78,7 @@ router.route("/phone_login").post(loginController.phone_login);
 
 router.route("/resend_otp").get(loginController.resend_otp);
 
-router.route("/profile").get( mainController.profile);  // loginController.profile ,
+router.route("/profile").get( mainController.profile); 
 router.route("/update_profile").post(upload.single('file'),loginController.update_profile);
 
 router.route("/delete_record").post(loginController.delete_record);
@@ -102,6 +123,8 @@ router.route("/getschedule").get( loginController.getschedule );
 router.route("/setschedule").get( loginController.setschedule ); 
 
 
+
+
 router.route("/admin").get(loginController.checkLogin,mainController.admin);
 
 router.route("/adminallappointment").get(loginController.adminallappointment);
@@ -114,35 +137,24 @@ router.route("/doctoradmin").get( mainController.doctoradmin );
 
 router.route("/admindoctorallappointment").get( mainController.admindoctorallappointment ); 
 
+router.route("/hospitaladmin").get( mainController.hospitaladmin );
 
+router.route("/hospitaladminform").get( mainController.hospitaladminform ); 
+
+router.route("/hospitaladminform").post(upload.single('file'), loginController.hospitaladminform ); 
+
+router.route("/updatenumber").post( loginController.updatenumber ); 
+
+router.route("/cancelappointmentadmin").get( mainController.cancelappointmentadmin ); 
+
+router.route("/otpnew").get(mainController.otpnew);
+
+router.route("/otp_send_new").post(loginController.otp_send_new);
+
+router.route("/updatenumbercomp").get(loginController.updatenumbercomp);
+
+// updatenumbercomp
 
 
 module.exports = router ;
-
-
-
-
-// // router.route("/").get(loginController.checkMainLogin,mainController.home);
- 
-//   route.get('/', loginController.email_login);
-//   route.get('/index', loginController.index )
-//   route.get('/doctor',  loginController.doctor)
-//   route.get('/hospital',  loginController.hospital)
-//   route.get('/treatment', loginController.treatment )
-//   route.get('/about_hospital', loginController.about_hospital )
-
-//   route.get('/about_us', loginController.about_us )
-//   route.get('/book_appointment', loginController.book_appointment )
-//   route.get('/contact', loginController.contact )
-//   route.get('/create_password', loginController.create_password )
-//   route.get('/doctor_profile', loginController.doctor_profile )
-
-//   route.get('/faq', loginController.faq )
-//   route.get('/login', loginController.login )
-//   route.get('/signup', loginController.signup )
-//   route.get('/otp', loginController.otp )
-
-//   route.get('/submit_your_query', loginController.submit_your_query )
-//   route.get('/tvastra_plus', loginController.tvastra_plus )
-//   route.get('/phone_login', loginController.phone_login )
 

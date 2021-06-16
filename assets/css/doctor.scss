@@ -401,6 +401,8 @@ footer{
                     }
                     .filter-check-box{
                         margin-bottom: 1rem;
+                        max-height: 9.2rem;
+                        overflow: hidden;
                         ul{
                             li{
                                 display: flex;
@@ -415,6 +417,24 @@ footer{
                         }
                     }
                     .filter-show-more{
+                        position: relative;
+                        margin-bottom: 2rem;
+                        &::after{
+                            position: absolute;
+                            content: "";
+                            width: 100%;
+                            border-bottom: 2px solid $show_more_bor;
+                            top:  2rem;
+                            left: 0rem;
+                        }
+                        a{
+                            text-decoration-line: none;
+                            font-family: nexa-light;
+                            color: $show-more;
+                        }
+                    }
+                    .filter-show-less{
+                        display: none;
                         position: relative;
                         margin-bottom: 2rem;
                         &::after{

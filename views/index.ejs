@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/new-theme.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 
@@ -37,15 +38,35 @@
     <div class="searchbox">
         <h1>Find Affordable Healthcare </h1>
         <p> Join the theousend of other who have exercised their rights to quality healthcare at a price you can afford</p>
-        <form action="#">
+        <form action="demodoc" method="POST">
            <div class="location">      
                 <i class="fa fa-map-marker" ></i>
                 <input class="input1" type="text" class="searchinput"  placeholder = "Ahamadabad" >
                 <div class="simg">
                     <img class="img" src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/gps.png" alt="tvastra logo">
                 </div>
+
            </div>
-            <input class="input2" type="text" class="searchinput" placeholder="Search for hospital doctor and treatment" >
+            <!-- <input class="input2" type="text" class="searchinput" placeholder="Search for hospital doctor and treatment" > -->
+            <input list="brow"  placeholder="Search for hospital doctor and treatment" name="sortinput">
+            <datalist id="brow">
+                <% for( var i =0; i < data.userlist[0].length ; i++){ %>
+                    <option value="   <%= data.userlist[0][i] %>"> 
+                        <p>doctor</p> 
+                   </option>
+                <% } %>
+                <% for( var i =0; i < data.userlist[1].length ; i++){ %>
+                    <option value=" <%= data.userlist[1][i] %>"> 
+                        <p>treatment</p> 
+                   </option>
+                <% } %>
+                <% for( var i =0; i < data.userlist[2].length ; i++){ %>
+                    <option value="  <%= data.userlist[2][i] %>"> 
+                        <p>hospital</p> 
+                   </option>
+                <% } %>
+            </datalist>  
+         
             <button class="primary-button">search</button>
         </form>
     </div>
@@ -633,98 +654,106 @@
 
 <script>
 
-var slideIndex = 1;
-showSlidesss(slideIndex);
 
-function currentSlide(n) {
-  showSlidesss(slideIndex = n);
-}
+    function popupremove() {
+        var h = document.querySelector(".alert");
+        setTimeout(function(){ h.style.display = "none" }, 700);
+    }
+    popupremove();    
 
-function showSlidesss(n) {
+    var slideIndex = 1;
+    showSlidesss(slideIndex);
+
+    function currentSlide(n) {
+    showSlidesss(slideIndex = n);
+    }
+
+    function showSlidesss(n) {
+        var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i] = dots[i].style.background = "white";
+        }
+        slides[slideIndex-1].style.display = "flex";  
+        dots[slideIndex-1].style.background = "grey";
+    }
+
+
+    //.................................................................................
+
+    var slideIndexx = 1;
+    showSlidess(slideIndexx);
+
+    function currentSlidee(n) {
+    showSlidess(slideIndexx = n);
+    }
+
+    function showSlidess(n) {
     var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
+    var slidess = document.getElementsByClassName("doc");
+    var dotss = document.getElementsByClassName("dott");
+    if (n > slidess.length) {slideIndexx = 1}    
+    if (n < 1) {slideIndexx = slidess.length}
+    for (i = 0; i < slidess.length; i++) {
+        slidess[i].style.display = "none";  
     }
-    for (i = 0; i < dots.length; i++) {
-        dots[i] = dots[i].style.background = "white";
+    for (i = 0; i < dotss.length; i++) {
+        dotss[i] = dotss[i].style.background = "rgba(0,0,0,0.2)";
     }
-    slides[slideIndex-1].style.display = "flex";  
-    dots[slideIndex-1].style.background = "grey";
-}
-
-
-//.................................................................................
-
-var slideIndexx = 1;
-showSlidess(slideIndexx);
-
-function currentSlidee(n) {
-  showSlidess(slideIndexx = n);
-}
-
-function showSlidess(n) {
-  var i;
-  var slidess = document.getElementsByClassName("doc");
-  var dotss = document.getElementsByClassName("dott");
-  if (n > slidess.length) {slideIndexx = 1}    
-  if (n < 1) {slideIndexx = slidess.length}
-  for (i = 0; i < slidess.length; i++) {
-      slidess[i].style.display = "none";  
-  }
-  for (i = 0; i < dotss.length; i++) {
-      dotss[i] = dotss[i].style.background = "rgba(0,0,0,0.2)";
-  }
-  slidess[slideIndexx-1].style.display = "flex";  
-  dotss[slideIndexx-1].style.background = "grey";
-}
-
-//......................................................
-
-
-var slideIndexxx = 1;
-showSlides(slideIndexxx);
-
-function currentSlideee(n) {
-  showSlides(slideIndexxx = n);
-}
-
-function showSlides(n) {
-    var i;
-  var slidesss = document.getElementsByClassName("w-img");
-  var dots = document.getElementsByClassName("w-but");
-  if (n > slidesss.length) {slideIndexxx = 1}    
-  if (n < 1) {slideIndexxx = slidesss.length}
-  for (i = 0; i < slidesss.length; i++) {
-      slidesss[i].style.display = "none";  
+    slidess[slideIndexx-1].style.display = "flex";  
+    dotss[slideIndexx-1].style.background = "grey";
     }
 
-var w_h3 = document.getElementsByClassName("w-h3");
-var w_span = document.getElementsByClassName("w-span");
+    //......................................................
 
-for (var j = 0; j < w_h3.length; j++) {
-    w_h3[j].style.color = "rgba(0,0,0,0.2)";
-    w_span[j].style.color = "rgba(0,0,0,0.2)";
-    dots[j].style.border = "0.1rem solid rgba(0,0,0,0.2)";  
-}    
-    slidesss[slideIndexxx-1].style.display = "flex";  
-    dots[slideIndexxx-1].style.border = "0.1rem solid black";  
-    w_h3[slideIndexxx-1].style.color = "#1e0447";
-    w_span[slideIndexxx-1].style.color = "skyblue";
 
-}
+    var slideIndexxx = 1;
+    showSlides(slideIndexxx);
 
-//......................................................
+    function currentSlideee(n) {
+    showSlides(slideIndexxx = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slidesss = document.getElementsByClassName("w-img");
+        var dots = document.getElementsByClassName("w-but");
+        if (n > slidesss.length) {slideIndexxx = 1}    
+        if (n < 1) {slideIndexxx = slidesss.length}
+        for (i = 0; i < slidesss.length; i++) {
+            slidesss[i].style.display = "none";  
+            }
+
+        var w_h3 = document.getElementsByClassName("w-h3");
+        var w_span = document.getElementsByClassName("w-span");
+
+        for (var j = 0; j < w_h3.length; j++) {
+            w_h3[j].style.color = "rgba(0,0,0,0.2)";
+            w_span[j].style.color = "rgba(0,0,0,0.2)";
+            dots[j].style.border = "0.1rem solid rgba(0,0,0,0.2)";  
+        }    
+            slidesss[slideIndexxx-1].style.display = "flex";  
+            dots[slideIndexxx-1].style.border = "0.1rem solid black";  
+            w_h3[slideIndexxx-1].style.color = "#1e0447";
+            w_span[slideIndexxx-1].style.color = "skyblue";
+
+    }
+
+    //......................................................
 
 
 
 
 
 </script>
-             
+
+
 
 </body>
 </html>

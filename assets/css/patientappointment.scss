@@ -39,8 +39,9 @@ section {
             grid-area: 3 / 1 / span 1 / span 2;
             .date-groups{
                 display: flex;
+                height: 2.5rem;
                 .dates{
-                    width: 18rem;
+                    width: 15rem;
                     text-align: center;
                     transition: 0.3s;
                 }
@@ -74,6 +75,7 @@ section {
             }
 
         }
+
         .slots{
             grid-area: 3 / 1 / span 1 / span 2;
             .bookingtimegroup {
@@ -100,6 +102,7 @@ section {
                             padding: 0.7rem 1rem;
                             margin: 0.2rem;
                             z-index: 1;
+                            width: auto;
                         }
                     }
                 }
@@ -139,9 +142,7 @@ section {
             }
         }
     }
-    .reschedule{
-        width: 70%;
-    }
+
     .form {
         background-color: var(--white);
         padding: 1rem; 
@@ -261,6 +262,15 @@ section {
                     width: 50%;
                 }
             }
+            .date-container{
+                .date-groups{
+                    .dates{
+                        width: 19rem;
+                    }
+                }
+            }
+            
+            
         #doctor-info {
             figure {
                 figcaption {
@@ -271,6 +281,10 @@ section {
                 }
             }
         }
+        }
+
+        .reschedule{
+            width: 95%;
         }
     }
 }
@@ -283,6 +297,9 @@ section {
                     width: 100%;
                 }
             }
+        }
+        .reschedule{
+            width: 70%;
         }
         .form{
             width: 35%;

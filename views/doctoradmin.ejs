@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="css/new-theme.css">
     <link rel="stylesheet" href="css/admindashbord.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  
 </head>
 <body>
     
@@ -41,16 +40,16 @@
                 <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>dashbord</p></div>
             </a>
             <a href="/useradmin">
-                <div class="dash_btn dot profile_page"  ><i class="fa fa-user" aria-hidden="true"></i> <p>user</p></div>
+                <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>user</p></div>
             </a>
             <a href="/doctoradmin">
-                <div class="dash_btn dot"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>doctor</p></div>
+                <div class="dash_btn dot profile_page"  ><i class="fa fa-th-list" aria-hidden="true"></i> <p>doctor</p></div>
             </a>
            
             <a href="/hospitaladmin">
                 <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>hospital </p></div>
             </a>
-            <a href="/settingadmin">
+            <a href="/setting">
                 <div class="dash_btn dot"  ><i class="fa fa-user" aria-hidden="true"></i> <p>setting</p></div>
             </a>
         </div>
@@ -58,19 +57,23 @@
 
     <div class="dashbord_content1 mySlides">
         <div class="allHospitalsContainer">
-            <h2>All Users</h2>
+            <h2>All doctor</h2>
             <div class="cards">
                 <% for(var i =0; i < data.userlist.length ; i++) { %>
                 <div class="card card<%= i %>">
                     <div class="picContainer hospitalPicContainer">
-                        <img src="https://tvastra-pics.s3.ap-south-1.amazonaws.com/ajayJun-30-2020-10%3A59%3A46.jpeg" alt=" Doctor Pic">
+                        <% if(data.userlist[i].file){  %>
+                            <img src="./uploads/<%= data.userlist[i].file %>"  alt=" Doctor Pic">
+                        <% }else{  %>
+                            <img src="https://cdn2.iconfinder.com/data/icons/medical-services-2/256/Doctor2-512.png"  alt=" Doctor Pic">
+                        <%   } %>
                         <div class="controls userControls">
                             <a onclick="showMenu('<%= i %>')">
                                 <div>
-                                    <i class="fas fa-bars"></i>
+                                    <i class="fa fa-address-card" aria-hidden="true"></i>
                                 </div>
                             </a>
-                            <ul class="menuItems" id="menuItem0">
+                            <ul class="menuItems" id="menuItem<%= i %>">
                                 <li><a  onclick="window.location.href='/admineditprofile?userid=<%= data.userlist[i].id  %>'">
                                         Edit Profile</a></li>
                                 <li><a  onclick="window.location.href='/adminallappointment?userid=<%= data.userlist[i].id  %>'">
@@ -89,27 +92,27 @@
                             </h3>
                         </li>
                         <li>
-                            <i class="fas fa-certificate"></i>
+                            <i class="fa fa-certificate" aria-hidden="true"></i>
                             <span><%= data.userlist[i].specification %> </span>
                         </li>
                         <li>
-                            <i class="fas fa-award"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             <span> <%= data.userlist[i].qualification %> </span>
                         </li>
                         <li>
-                            <i class="fas fa-venus-mars"></i> 
+                            <i class="fa fa-hospital-o" aria-hidden="true"></i>
                             <span> <%= data.userlist[i].hospital %></span>
                         </li>
                         <li>
-                            <i class="far fa-clock"></i>
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
                             <span><%= data.userlist[i].experience %>  </span>
                         </li>
                         <li>
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
                             <span> <%= data.userlist[i].city %> <%= data.userlist[i].state %> </span>
                         </li>
                         <li>
-                            <i class="fas fa-calendar-week"></i>
+                            <i class="fa fa-inr" aria-hidden="true"></i>
                             <span><%= data.userlist[i].fees %>  </span>
                         </li>
                     </ul>
@@ -129,6 +132,11 @@
         else
             menuItem.style.height = "unset";
     }
+
+    var medical_report = document.getElementsByClassName("profile_page");
+    medical_report[0].style.background = "rgb(226, 220, 220)"; 
+    medical_report[0].classList.add("mystyle");
+
 </script>
 
 
@@ -138,6 +146,14 @@
 
 <!-- /include _footer -->
 
+
+<script>
+    function popupremove() {
+        var h = document.querySelector(".alert");
+        setTimeout(function(){ h.style.display = "none" }, 700);
+    }
+    popupremove();   
+</script>
 
 
 </body>
