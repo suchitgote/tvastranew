@@ -1,0 +1,362 @@
+:root {
+  --input-border:  rgba(0,0,0,0.2);
+  --heading: rgb(12 ,113 ,167);
+  --placeholder: rgba(0,0,0,0.2);
+  --background:rgb(147, 190, 222);
+  --form-background:white;
+  --i:rgba(223, 215, 215, 0.87);
+  --button-font:white;
+}
+
+.nav {
+  position: absolute;
+  z-index: 1;
+  background: white;
+  width: -webkit-fill-available;
+}
+
+.main {
+  background: var(--background);
+  position: relative;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0rem 1rem;
+}
+
+.main .login-box {
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.main .login-box .login {
+  text-align: center;
+  background: var(--form-background);
+  margin-bottom: 0.05rem;
+  padding: 1rem 0rem;
+}
+
+.main .login-box .login h2 {
+  color: var(--heading);
+}
+
+.main .login-box .form {
+  background: var(--form-background);
+  padding: 1rem;
+  text-align: center;
+}
+
+.main .login-box .form form .location {
+  -ms-flex-pack: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.main .login-box .form form .location input {
+  border: none;
+}
+
+.main .login-box .form form .location span {
+  font-size: 0.8rem;
+  margin-right: 0.6rem;
+}
+
+.main .login-box .form form .location span i {
+  color: var(--i);
+  font-size: 1rem;
+}
+
+.main .login-box .form form .a {
+  margin-bottom: 0.5rem;
+}
+
+.main .login-box .form form button {
+  width: 100%;
+  height: 2.5rem;
+  position: relative;
+  color: var(--button-font);
+  letter-spacing: 0.2rem;
+  font-size: 0.7rem;
+}
+
+.main .login-box .form form button span {
+  position: absolute;
+  right: 1.2rem;
+}
+
+.main .login-box .form form button span i {
+  color: var(--button-font);
+}
+
+.main .login-box .form form .showdocdiv {
+  width: 100%;
+  height: 2.5rem;
+  position: relative;
+  color: var(--button-font);
+  letter-spacing: 0.2rem;
+  font-size: 0.7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #222844;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: 'nexa-light';
+}
+
+.main .login-box .form form .showdocdiv span {
+  position: absolute;
+  right: 1.2rem;
+}
+
+.main .login-box .form form .showdocdiv span i {
+  color: var(--button-font);
+}
+
+.main .login-box .signup {
+  background: var(--form-background);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: 'nexa-light';
+}
+
+.main .login-box .signup a {
+  text-decoration: none;
+  font-weight: 900;
+  color: #0c71a7;
+}
+
+.main .reserved {
+  text-align: center;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .main .login-box {
+    width: 65%;
+    margin-top: 5rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .main .login-box {
+    width: 35%;
+    margin-top: 6rem;
+  }
+  .main .login-box .form form button {
+    padding: 0rem;
+  }
+}
+
+.main .login-box .form form #user select {
+  margin-bottom: 0.5rem;
+}
+
+.main .login-box .form form #user input[type="date"] {
+  color: rgba(0, 0, 0, 0.6);
+  padding-right: 0;
+  background: white;
+}
+
+.main .login-box .form form #user .password_box {
+  position: relative;
+  width: -webkit-fill-available;
+}
+
+.main .login-box .form form #user .password_box i {
+  color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.main .login-box .form form #user .city-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.main .login-box .form form #user .city-button input {
+  width: 50%;
+}
+
+.main .login-box .form form #user .city-button .b {
+  margin-right: 0.5rem;
+}
+
+.main .login-box .form form #user .isdoctor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main .login-box .form form #user .isdoctor input {
+  width: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.main .login-box .form form #doctor_div p {
+  margin-bottom: 0.5rem;
+}
+
+.main .login-box .form form #doctor_div input {
+  margin-bottom: 0.5rem;
+  padding: 0.7rem 1rem;
+}
+
+.main .login-box .form form #doctor_div input::-webkit-input-placeholder {
+  font-size: 1rem;
+}
+
+.main .login-box .form form #doctor_div input:-ms-input-placeholder {
+  font-size: 1rem;
+}
+
+.main .login-box .form form #doctor_div input::-ms-input-placeholder {
+  font-size: 1rem;
+}
+
+.main .login-box .form form #doctor_div input::placeholder {
+  font-size: 1rem;
+}
+
+.main .login-box .form form #doctor_div .files .label {
+  font-family: nexa-light;
+  font-size: 0.9rem;
+  text-align: start;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.main .login-box .form form #doctor_div .files input {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border: none;
+  margin: 0.5rem 0;
+}
+
+.main .login-box .form form #doctor_div .tagify {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.main .login-box .form form #doctor_div .tagify__input:empty::before {
+  left: 0.5rem;
+  font-family: nexa-light;
+}
+
+@media only screen and (min-width: 768px) {
+  .main .login-box .form form #doctor_div .files {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+  }
+  .main .login-box .form form #doctor_div .files .label {
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+
+#doctor_div p {
+  margin-bottom: 0.5rem;
+}
+
+#doctor_div input {
+  margin-bottom: 0.5rem;
+}
+
+#doctor_div input::-webkit-input-placeholder {
+  font-size: 1rem;
+}
+
+#doctor_div input:-ms-input-placeholder {
+  font-size: 1rem;
+}
+
+#doctor_div input::-ms-input-placeholder {
+  font-size: 1rem;
+}
+
+#doctor_div input::placeholder {
+  font-size: 1rem;
+}
+
+#doctor_div .files .label {
+  font-family: nexa-light;
+  font-size: 0.9rem;
+  text-align: start;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+#doctor_div .files input {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border: none;
+  margin: 0.5rem 0;
+}
+
+#doctor_div .tagify {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+#doctor_div .tagify__input:empty::before {
+  left: 0.5rem;
+  font-family: nexa-light;
+}
+
+@media only screen and (min-width: 768px) {
+  #doctor_div .files {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+  }
+  #doctor_div .files .label {
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+/*# sourceMappingURL=doctor_info.css.map */

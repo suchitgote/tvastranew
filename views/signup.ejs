@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.css" />
+
+    <title>signup</title>
+</head>
+<body>
+
+
+<!-- include nav-->
+<%- include('include/_nav') %>
+<!-- /include nav -->
+
+
+<div class="main">
+    <div class="login-box">
+        <div class="login">
+            <h2>sign up</h2>
+        </div>
+        <div class="form">
+
+            
+
+                <% if(!doclog) { %>
+                    <form action="/signup" method="POST" id="myForm" >
+                        <div id="user">
+                            <input type="text" class="a"  placeholder="Enter Name" name = "name" required>
+                            <input type="text" class="a"  placeholder="Enter Email" name = "email" required>
+                            <div class="password_box">
+                                <input type="password" class="a" id="myInput" placeholder="Enter Password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> 
+                             <i class="fa fa-eye-slash" id="password_eye" aria-hidden="true" onclick="myFunction()" ></i> 
+                            </div>  
+                            <!-- <input type="password" value="" id="pswd"  placeholder="Enter Password" name = "password" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required> -->
+                            <span id = "message" style="color:red"> </span> 
+
+                            <select id="gend" name="gender" required>
+                                <option value="">Select your gender</option>
+                                <option value="abc">male</option>
+                                <option value="abc">female</option>
+                                <option value="abc">other</option>
+                            </select>
+                    
+                            <input type="date" id ="datefield" class="a" name = "data" required>
+                            <input type="text" class="a"  placeholder="Enter phone number"  name = "number" pattern="[7-9]{1}[0-9]{9}" title="Phone number with 7-9 and remaing 9 digit with 0-9" required>
+
+                            <div class="city-button" required>
+                                <input type="text" class="a b"  placeholder="Enter city" name = "city" required>         
+                                <input type="text" class="a"  placeholder="Enter state" name = "state" required>
+                            </div>
+
+                            
+                            <select id="count" name="country" required>
+                                <option value="">select your country</option>
+                                <option value="bcd">india</option>
+                                <option value="bcd">USA</option>
+                                <option value="bcd">Germany</option>
+                            </select>
+
+                            <div class="isdoctor">    
+                                <input type="checkbox" id="doctor" name="doctor" value="doctor">
+                                <span> <label for="doctor">is Doctor</label> </span> 
+                            </div>
+
+                            <button type="submit" class = "showdocdiv" >SIGN UP <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+                        </div>
+                    </form>
+                <% } %>
+
+                <% if(doclog) { %>
+                    <form action="/signupdocnew" method="POST" id="myForm" enctype="multipart/form-data">
+                        <div id="doctor_div" style="width: 100%;">
+                            <p> Complete your profile to proceed further </p>
+                            <textarea name="yourself" id="" cols="30" rows="6" required></textarea>
+                            <div class="files">
+                                <div class="label" for="doctor_photo">Upload your photo </div>
+                                <input type="file" name="file" id="doctor_photo" required>
+                            </div>
+                            <input name='achivement' value=''placeholder="your achivement" required> 
+                            <input name='hospital' value='' placeholder="your hospital" required>
+                            <input type="number" name="experience"  placeholder="your experience in year" required>
+                            <input name='qualification' value='' placeholder="your qualification " required>
+                            <input name='awards' value='' placeholder="any awards" required>
+                            <input name='specification' value='' placeholder="your specification" required>
+                            <input type="number" name="fees" placeholder="your average fees (in rupees)" required>
+                            <button > SUBMIT <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+                        </div>
+                    </form>
+                <% } %>
+            
+            <!--
+                <form id="myForm" action="signup" method="POST" > 
+                    <div id="user">
+                        <input type="text" class="a" name="name" placeholder="Enter Name" >
+                        <input type="text" class="a"  name="email" placeholder="Enter Email" required>   
+                        <div class="password_box">
+                            <input type="password" class="a" id="myInput" placeholder="Enter Password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"> 
+                         <i class="fa fa-eye-slash" id="password_eye" aria-hidden="true" onclick="myFunction()" ></i> 
+                        </div>                   
+                        <select id="gender" name="gender" required>
+                            <option value="volvo">select your gender</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                            <option value="other">other</option>
+                        </select>    
+                        <input type="date" class="a"  placeholder="" id="datefield" name="data" required>
+                        <input type="tel" class="a"  placeholder="Enter phone number"  name="number" minlength="10" maxlength="10" required>   
+                        <div class="city-button">
+                            <input type="text" class="a b"  placeholder="Enter city"  name="city" required>         
+                            <input type="text" class="a"  placeholder="Enter state"  name="state" required>
+                        </div>   
+                        <select id="country" name="country" required>
+                            <option value="volvo">select your country</option>
+                            <option value="india">india</option>
+                            <option value="Fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>    
+                        <div class="isdoctor">    
+                            <input type="checkbox" id="doctor" name="doctor" value="doctor">
+                            <span> <label for="doctor">is Doctor</label> </span> 
+                        </div>
+        
+                        <button type="submit" class="showdocdiv" >SIGN UP <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+                    </div>              
+                </form>
+    
+                <form id="myForm" action="signup" method="POST" enctype="multipart/form-data"> 
+                    <div id="doctor_div" style="width: 100%;">
+                        <p> Complete your profile to proceed further </p>
+                        <textarea name="yourself" id="" cols="30" rows="6"></textarea>
+                        <div class="files">
+                            <div class="label" for="doctor_photo">Upload your photo </div>
+                            <input type="file" name="file" id="doctor_photo" required>
+                        </div>
+                        <input name='achivement' value='' placeholder="your achivement" > 
+                        <input name='hospital' value='' placeholder="your hospital" >
+                        <input type="number" name="experience"  placeholder="your experience in year" >
+                        <input name='qualification' value='' placeholder="your qualification " >
+                        <input name='awards' value='' placeholder="any awards" >
+                        <input name='specification' value='' placeholder="your specification" >
+                        <input type="number" name="fees" placeholder="your average fees (in rupees)" >
+                        <button type="submit"> SUBMIT <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+                    </div>
+                </form>
+
+            -->
+
+
+        </div>
+        <div class="signup">
+             Not Registerd? <a href="login"> Login</a> 
+        </div>
+    </div>
+ 
+    <div class="reserved">
+        <h6> All right reserved Tvastra 2020 </h6>
+    </div>
+
+</div>
+
+<script>
+    function myFunction(){
+      var x = document.getElementById("myInput");
+      var password_eye = document.getElementById("password_eye");
+      if (x.type === "password") {
+        x.type = "text";
+        password_eye.style.color = "rgb(81, 81, 175)"
+      }else{
+        x.type = "password";
+        password_eye.style.color = "rgba(0,0,0,0.2)"
+      }
+    }    
+  
+    
+        var abc = document.getElementById("doctor")
+        console.log("abcccccccccccc",abc)
+   
+        abc.addEventListener("click",e => {
+            if(abc.checked) {
+                console.log("true hai ");
+                document.querySelector(".showdocdiv").setAttribute("formaction" ,"signupdoc")
+            }
+            else {
+                console.log("jab check nahi hai");
+                document.querySelector(".showdocdiv").removeAttribute("formaction")
+            }
+        })
+   
+
+
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.min.js"></script>
+<script>
+
+
+    var achivement = document.querySelector('input[name=achivement]');
+    new Tagify(achivement)
+
+    var hospital = document.querySelector('input[name=hospital]');
+    new Tagify(hospital)
+
+    var qualification = document.querySelector('input[name=qualification]');
+    new Tagify(qualification)
+
+    var awards = document.querySelector('input[name=awards]');
+    new Tagify(awards)
+
+    var specification = document.querySelector('input[name=specification]');
+    new Tagify(specification)
+
+
+</script>
+<script>
+    // Use Javascript
+    var today = new Date();
+    console.log("today=",today)
+
+    var dd = today.getDate();
+    console.log("dd=",dd)
+
+    var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+    console.log("mm=",mm)
+
+    var yyyy = today.getFullYear();
+    console.log("yyyy=",yyyy)
+
+    if(dd<10){
+    dd='0'+dd
+    console.log("dd=",dd)
+
+    } 
+    if(mm<10){
+    mm='0'+mm
+    console.log("mm=",mm)
+
+    } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+    console.log("today=",today)
+
+    document.getElementById("datefield").setAttribute("max", today);
+</script>
+
+</body>
+</html>

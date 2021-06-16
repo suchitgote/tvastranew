@@ -1,0 +1,61 @@
+
+@import "login.scss"; 
+$red:red;
+
+$login:rgb(81, 81, 175);
+.alert {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    top: 6rem;
+    z-index: 1;
+    align-items: center;
+    border-left: 0.2rem solid $red;
+    i{
+        font-size: 1.5rem;
+        color: $red;
+    }
+    .alert_content{
+        margin-left: 1rem;
+        h4{
+            color: $red;
+        }
+        p{
+            color: $red;
+            margin-bottom: 0;
+        }
+    }
+    .closebtn {
+      margin-left: 15px;
+      font-weight: bold;
+      float: right;
+      color: $red;
+      font-size: 2rem;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    &:hover {
+      color: black;
+    }
+}
+  
+.main{
+    .login-box{
+        .form{
+            form{
+                .forgot{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 1rem 0rem;
+                    h5{
+                        color: $login;
+                    }
+                }
+            }
+        }
+    }
+}

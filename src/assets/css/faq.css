@@ -1,0 +1,224 @@
+:root {
+  --heading:white;
+  --box-border:rgba(0, 0, 0,0.4);
+  --sudo:blue;
+  --doctor-name:blue;
+}
+
+.top-one {
+  background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/contactUs.png");
+  background-size: cover;
+  background-position: center;
+  height: 11rem;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.top-one h2 {
+  color: var(--heading);
+  margin-bottom: 1rem;
+}
+
+.top-one p {
+  color: var(--heading);
+  margin-bottom: 0rem;
+}
+
+.all-about-doc {
+  border: 0.1px solid var(--box-border);
+  padding: 0.5rem;
+}
+
+.all-about-doc .photo-and-butn button {
+  width: 100%;
+  height: 2rem;
+  margin: 0.5rem 0rem;
+}
+
+.all-about-doc .text-info .name-info h2 {
+  position: relative;
+  text-align: left;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  color: #5151be;
+}
+
+.all-about-doc .text-info .name-info h2::before {
+  position: absolute;
+  content: " ";
+  width: 2.3rem;
+  border-bottom: 0.2rem solid #5151be;
+  left: -2.5rem;
+  top: 0.5rem;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab .accordian-toggle {
+  display: none;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab .accordian-toggle:checked ~ label::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.all-about-doc .text-info .accordian .accordian-tab .accordian-toggle:checked ~ .accordian-content {
+  max-height: 100vh;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab .accordian-toggle:checked ~ label {
+  border-top: 0.1px dashed #5151be;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab label {
+  color: #5151be;
+  border-bottom: 0.1px dashed var(--gray);
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem 0rem;
+  position: relative;
+  border-bottom: 0.1px dashed #5151be;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab label::after {
+  content: "\f13a";
+  font: normal normal normal 14px/1 FontAwesome;
+  position: absolute;
+  top: 1.1rem;
+  right: 1rem;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab label:checked ~ label {
+  border-top: 0.1px dashed #5151be;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab label i {
+  margin-right: 1rem;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab label i::before {
+  color: #5151be;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab .accordian-content {
+  max-height: 0;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  overflow: hidden;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab .accordian-content p {
+  text-align: left;
+  background-color: rgba(190, 190, 248, 0.3);
+  padding: 0.5rem;
+}
+
+.fa:before {
+  content: "\f0a3";
+}
+
+@media only screen and (min-width: 768px) {
+  .top-one {
+    background-position: left;
+  }
+  .all-about-doc {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 65% 35%;
+        grid-template-columns: 65% 35%;
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
+    padding: 1rem;
+  }
+  .all-about-doc .photo-and-butn {
+    -ms-grid-column: 2;
+        grid-column-start: 2;
+    text-align: end;
+    width: 95%;
+    margin-left: auto;
+  }
+  .all-about-doc .text-info {
+    -ms-grid-row: 1;
+        grid-row-start: 1;
+  }
+  .all-about-doc .text-info .name-info h2::before {
+    left: -3rem;
+  }
+}
+
+@media only screen and (min-width: 1023px) {
+  .top-one h2 {
+    text-align: start;
+  }
+  .all-about-doc {
+    -ms-grid-columns: 75% 25%;
+        grid-template-columns: 75% 25%;
+    padding: 1.5rem;
+  }
+  .all-about-doc .text-info {
+    -ms-grid-row: 1;
+        grid-row-start: 1;
+  }
+  .all-about-doc .text-info .name-info h2::before {
+    left: -3.5rem;
+  }
+}
+
+.all-about-doc {
+  border: none;
+  padding: 0rem;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab .accordian-toggle:checked ~ label {
+  border-top: none;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab label {
+  font-size: 1rem;
+  border-bottom: none;
+  font-family: 'nexa-bold';
+}
+
+.all-about-doc .text-info .accordian .accordian-tab label::after {
+  right: 0;
+}
+
+.all-about-doc .text-info .accordian .accordian-tab label i {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .top-one {
+    background-position: right;
+  }
+  .all-about-doc {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .all-about-doc .text-info .accordian .accordian-tab label {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 1023px) {
+  .top-one {
+    height: 12rem;
+  }
+}
+/*# sourceMappingURL=faq.css.map */

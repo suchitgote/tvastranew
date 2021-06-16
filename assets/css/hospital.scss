@@ -1,0 +1,96 @@
+@import "doctor.scss"; 
+$fil_button:rgba(0,0,0,0.4);
+// ...........main................................
+#main{
+    .main{
+        .doctor-boxs{
+            .doctor-box{
+                .doctor-content{
+                    .filter-buttons{
+                        font-family: nexa-light;
+                        margin: 1rem ;
+                        margin-left: 2rem;
+                        display: flex;
+                        flex-wrap: wrap;
+                        .fil-button{
+                            border: 0.02rem solid $fil_button;
+                            margin-right: 0.3rem;
+                            margin-bottom: 0.3rem;
+                            padding: 0.5rem;
+                            border-radius: 1rem;
+                            font-size: 0.9rem;
+                            i{
+                                margin-left: 0.5rem;
+                            }
+                        }
+                    }
+                    .doctor-button{
+                        button{
+                            padding: 0.5rem 3rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// ...........main..end..............................
+
+
+
+@media only screen and ( min-width:768px) {
+   
+// ........delhi........
+#delhi{
+    display: none;
+}
+// ...........main................................
+#main{
+    .main{
+        grid-template-columns: 1fr;
+        .filter{
+            display: none;
+        }
+        .doctor-boxs{
+            .doctor-box{
+                .doctor-content{
+                    .doctor-logos{
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+// ...........main..end..............................
+
+
+
+}
+
+
+@media only screen and (min-width:1023px){
+
+// ........delhi.................................
+#delhi{
+    display: flex;
+}
+
+// ...........main................................
+#main{
+    .main{
+        grid-template-columns: 1fr 3fr;
+        .filter{
+            display: block;
+        }
+        .doctor-boxs{
+            .doctor-box{
+                .doctor-photo{
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+}

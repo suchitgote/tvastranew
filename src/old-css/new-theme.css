@@ -1,0 +1,337 @@
+
+@font-face{
+    font-family: 'nexa-light';
+    src: url('Nexa-Light.otf');
+}
+@font-face{
+    font-family: 'nexa-bold';
+    src: url('Nexa-Bold.otf');
+}
+
+
+/* ............................................... */
+:root {
+    --white: #ffffff;
+    --white_dark:rgba(255, 255, 255,0.7);
+    --black: rgb(0, 0, 0);
+    --black_light:rgba(10, 10, 10,0.5);
+    --dark_blue: #03090f;
+    --light_blue:rgba(2, 3, 51, 0.8) ;
+    --sky_blue:rgb(78, 108, 163);
+    --input-border:  rgba(0,0,0,0.2);
+
+  }
+  
+/* .................................................. */
+nav{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section{
+    padding: 1.5rem 1rem;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'nexa-bold';
+    letter-spacing: 0.01rem;
+    color:var(--dark_blue);
+}
+h1{
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 0.5rem ;
+}
+h2{
+    font-size:1.4rem;
+}
+h3{
+    font-size: 1.2rem;
+}
+h4{
+    font-size: 1rem;
+}
+h5{
+    font-size: 0.8rem;
+}
+h6{
+    font-size: 0.6rem;
+}
+p{
+    color: var(--black);
+    font-size: 0.8rem;
+    font-family: 'nexa-light';
+    text-align: center;
+    line-height: 1.2rem;
+    letter-spacing: 0.059rem;
+    margin-bottom: 1rem;
+}
+
+::placeholder{
+    font-family: 'nexa-light';
+    padding-left: 0.5rem;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+    
+input{
+    width: 100%;
+    padding: 0.5rem 0rem;
+    outline: none;
+    border: 1px solid  var(--input-border);
+}    
+textarea{
+    outline: none;
+}
+i{
+    width: 1rem;
+    color: var(--dark_blue);
+}    
+
+button{
+    background-color: var(--light_blue);
+    color: var(--white_dark);
+    padding: 0.2rem 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+select {
+    background: none;
+    font-size: 1rem;
+}
+select option {
+    font-size: 1.1rem;
+}
+
+a,i {
+    cursor: pointer;
+}
+
+/* .........work....................................................... */
+
+
+li{
+    color: var(--black);
+    font-size: 0.8rem;
+    font-family: 'nexa-light';
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* ....................help....... */
+
+/* .....foooter......... */
+footer{
+    text-align: center;
+    background: var(--dark_blue);
+    padding: 1rem;
+}
+
+/* ....................................................*/
+/* ................................................... */
+/* ............tablet................................... */
+/* .................................................... */
+/* .................................................. */
+
+
+@media only screen and ( min-width:768px) and (max-width:1023px){
+
+    nav{
+        padding: 1rem 2rem;
+    }
+    nav img{
+        width: 18%;
+    }
+    section{
+        padding:  2rem;
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-family: 'nexa-bold';
+        letter-spacing: 0.01rem;
+        color:var(--dark_blue);
+    }
+    h1{
+        font-size: 1.7rem;
+        text-align: center;
+        margin-bottom: 0.5rem ;
+    }
+    h2{
+        font-size:1.5rem;
+    }
+    h3{
+        font-size: 1.3rem;
+    }
+    h4{
+        font-size: 1.1rem;
+    }
+    h5{
+        font-size: 0.9rem;
+    }
+    h6{
+        font-size: 0.7rem;
+    }
+    p{
+        color: var(--black);
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+    }
+      
+    button{
+        font-size: 1rem;
+        padding: 0.4rem 1rem;
+
+    }
+    select {
+        background: none;
+        font-size: 1.1rem;
+    }
+    select option {
+        font-size: 1.21rem;
+    } 
+  
+    li{
+        color: var(--black);
+        font-size: 0.9rem;
+        padding: 0.2rem auto ;
+    }
+
+    footer {
+        padding:1rem 2rem ;
+        background: var(--white);
+        display: grid;
+        align-items: center;
+        grid-template-columns: 2.5fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            "footer-nav footer-logo "
+            "footer-reserve footer-sites";
+    }
+
+    
+}
+
+
+
+/* ....................................................*/
+/* ................................................... */
+/* ............decstop................................... */
+/* .................................................... */
+/* .................................................. */
+
+@media only screen and ( min-width:1024px){
+
+
+
+    nav{
+        padding: 1.5rem 7rem;
+    }
+    li{
+        color: var(--black);
+        font-size: 1rem;
+        padding: 0.2rem auto ;
+    }
+    nav .i{
+        display: none;
+    }
+    
+    nav a {
+        text-decoration: none;
+        color: var(--black);
+    }
+       
+    h1,h2,h3,h4,h5,h6,p,li,a{
+        margin: 0rem;
+        padding:0rem;
+    }
+
+    section{
+        padding: 2rem 7rem;
+    }
+    
+    h1,h2,h3,h4,h5,h6{
+        font-family: 'nexa-bold';
+        letter-spacing: 0.01rem;
+        color:var(--dark_blue);
+    }
+    h1{
+        font-size: 3rem;
+        text-align: start;
+        margin-bottom: 1rem ;
+    }
+    h2{
+        font-size:1.8rem;
+    }
+    h3{
+        font-size: 1.6rem;
+    }
+    h4{
+        font-size: 1.4rem;
+    }
+    h5{
+        font-size: 1rem;
+    }
+    h6{
+        font-size: 0.8rem;
+    }
+    p{
+        text-align: start;
+        color: var(--black);
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-bottom: 2rem;
+
+    }
+      
+    
+    /* ..........search.......................... */
+    
+   
+    ::placeholder{
+        color: var(--black_light);
+    }
+
+    button{
+        background-color: var(--light_blue);
+        color: var(--white_dark);
+        font-size: 1.2rem;
+        /* padding: 1.17rem 1rem; */
+
+    }
+
+    li{
+        color: var(--black);
+        font-size: 1rem;
+        font-family: 'nexa-light';
+    }
+
+
+
+/* ....................footer................ */
+
+footer {
+    padding: 1rem 7rem;
+    background: var(--white);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2.5fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "footer-nav footer-logo "
+        "footer-reserve footer-sites";
+    /* height: 9rem; */
+}
+
+
+
+
+
+}

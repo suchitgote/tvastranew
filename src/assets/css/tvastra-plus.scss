@@ -1,0 +1,632 @@
+:root{
+  --button:rgb(50, 52, 170);
+  --plan-background:rgba(255, 255, 255, 1);
+  --sudo-line:rgba(0, 0, 0,0.1);
+  --price-p:rgb(50, 52, 170);
+  --popular:red;
+  --popular-font:white;
+  --ratebar:rgb(223, 223, 219);
+  --ratebar-value:rgb(50, 52, 170);
+  --user-plan:rgb(195, 213, 240);
+  --que-color:skyblue;
+}
+
+
+h2{
+  margin-bottom: 1rem;
+}
+input {
+  width: auto;
+}
+// ...........plus..................
+.plus{
+  background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/task30-tvastra-plus/tvastraPlus_heroSection.webp");
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  height: 18rem;
+  button{
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    height: 2rem;
+    background-color: var(--button);
+    border: none;
+  }
+  h1{
+    margin-bottom: 1.5rem;
+  }
+}
+//........info.................
+.info{
+  padding-bottom: 0rem;
+  background-image: linear-gradient(rgba(59, 59, 243, 0.1)10% ,rgba(255, 255, 255,0)15%);
+  
+  //......buy-plans.................
+  .buy-plans{
+    background-color: var(--plan-background);
+    margin-top: -9rem;
+    text-align: center;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 8px #888888;
+    h2{
+      position: relative;
+      margin: 0.5rem;
+      &::before{
+        position: absolute;
+        content: "";
+        border-bottom: 1px solid var(--sudo-line) ;
+        width:93%;
+        left: 0.5rem;
+        top: 5.5rem;
+      }
+    }
+    p{
+      margin-bottom: 1rem;
+    }
+    .plan{
+      position: relative;
+      height: 24rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      h3{
+        width: fit-content;
+        margin: 1rem;
+        margin-bottom: 2rem;
+        position: relative;
+        &::before{
+          position: absolute;
+          content: "";
+          border-bottom: 1px solid var(--sudo-line) ;
+          width: 100%;
+          top: 2rem;
+        }
+      }
+      p{
+        margin: 0 3rem;
+        margin-bottom: 0.5rem;
+      }
+      .price{
+        position: absolute;
+        bottom: 1rem;
+        h2{
+          &::before {
+            width: 0;
+          }
+        }
+        p{
+          margin-bottom: 1rem;
+          color: var(--price-p);
+        }
+      }
+    }
+    .advanced{
+      background-image: linear-gradient(rgba(59, 59, 243, 0.1)50% ,rgba(255, 255, 255,0)90%);
+      .popular{
+        background-color: var(--popular);
+        padding: 0.5rem 1rem;
+        border-radius: 1.1rem;
+        font-size: 0.9rem;
+        color: var(--popular-font);;
+        margin-top: -0.9rem;
+        font-family: nexa-light;
+      }
+    }
+  }
+  //.....rateing-box.................
+  .rateing-box{
+    margin-top: 2rem;
+    text-align: center;
+    .star-box{
+      .by-star{
+        h1{
+          color: rgb(50, 52, 170);
+          font-size: 2.5rem;
+          text-align: center;
+        }
+        .star{
+          margin-bottom: 0.5rem;
+          i{
+            color: rgb(50, 52, 170);
+          }
+        }
+        p{
+          color: rgb(50, 52, 170);
+        }
+      }
+      .by-number{
+        margin: 0 2rem;
+        .num-box{
+          display: flex;
+          p{
+            width: 2rem;
+            line-height: 1.2rem;
+          }
+          .ratebar{
+            height: 1rem;
+            background-color: var(--ratebar);
+            width: 93%;
+            border-radius: 0.5rem;
+            .five{
+              background-color: var(--ratebar-value);
+              width: 70%;
+              height: 100%;
+              border-radius: 0.5rem;
+            }
+            .four{
+              background-color: var(--ratebar-value);
+              width: 70%;
+              height: 100%;
+              border-radius: 0.5rem;
+              width: 60%;
+            }
+            .three{
+              background-color: var(--ratebar-value);
+              width: 70%;
+              height: 100%;
+              border-radius: 0.5rem;
+              width: 50%;
+            }
+            .two{
+              background-color: var(--ratebar-value);
+              width: 70%;
+              height: 100%;
+              border-radius: 0.5rem;
+              width: 30%;
+            }
+            .one{
+              background-color: var(--ratebar-value);
+              width: 70%;
+              height: 100%;
+              border-radius: 0.5rem;
+              width: 10%;
+            }
+          }
+        }
+      }
+    }
+    .follower-box{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      .follower{
+        width: 50%;
+        i{
+          color: rgb(50, 52, 170);
+          font-size: 2rem;
+          margin-bottom: 0.5rem;
+          width: auto;
+        }
+        h3{
+          color: rgb(50, 52, 170);
+          margin-bottom: 0.5rem;
+        }
+        p{
+          color: rgb(50, 52, 170);
+        }
+      }
+    }
+  }
+  // ......hospitals-lists..........
+  .hospitals-lists{
+    text-align: center;
+    margin: 2rem 0rem;
+    .hospital-heading{
+      text-align: -webkit-center;
+      p{
+        width: fit-content;
+        font-weight: 900;
+        position: relative;
+        &::before{
+          position: absolute;
+          content: "";
+          width: 100%;
+          border-bottom: 2px solid rgba(0, 0, 0,0.5) ;
+          top: 1.5rem;
+        }
+      }
+    }
+    .hospital-box{
+      .zerofees{
+        .zerofees-content{
+          display: flex;
+          i{
+            width: 3rem;
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .top-hospital{
+        font-family: 'nexa-light';
+        .hospitals{
+          display: grid;
+          grid-template-columns: repeat(2, auto);
+          margin: 1rem 0rem;
+          .hos-logo{
+            padding: 10px;
+            border-bottom: 1px solid black;
+            &:nth-last-child(2):nth-child(odd) {
+              border-bottom: none;
+            }
+            &:last-child{
+              border-bottom: none;
+            }
+            &:nth-child(odd) {
+              border-right: 1px solid black;
+            }
+            img{
+              width: 70%;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+    }
+  }
+  // .......offer-box..........
+  .offer-box{
+    text-align: center;
+    margin: 2rem 0rem;
+    .offer-container{
+      margin: 1rem 0rem;
+      .offer-info{
+        .offer-info-content{
+          display: flex;
+          i{
+            width: 3rem;
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .offer-photo{
+        box-shadow: 1px 1px 10px 1px rgb(133, 102, 102) ;
+        border-radius: 1rem;
+        img{
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+  //.......tests-box...............
+  .tests-box{
+    margin: 2rem 0rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    h5{
+      margin-bottom: 1.5rem;
+      width: 100%;
+      text-align: center;
+    }
+    .profile{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 49%;
+      box-shadow: 2px 2px 5px 1px rgb(230, 217, 217) ;
+      margin-bottom: 0.4rem;
+      .profile-img{
+        margin: 1rem 0rem;
+        width: 3rem;
+      }
+      h4{
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  //.......why..................
+  .why{
+    margin-top: 2rem ;
+    .why-heading{
+      display: flex;
+      margin-bottom: 1rem;
+      align-items: center;
+      h2{
+        margin: 0rem;
+        margin-right: 0.5rem;
+      }
+    }
+    .why-box{
+      box-shadow: 1px 1px 5px 1px rgb(230, 217, 217) ;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      .why-photo-box{
+        display: flex;
+        margin-top: 1rem;
+        .doc-img{
+          width: 3rem;
+          height: 3rem;
+          margin-right: 1rem;
+          img{
+            border-radius: 2rem;
+          }
+        }
+        .why-content{
+          .user{
+            padding: 0.5rem;
+            background-color: var(--user-plan);
+            border-radius: 0.3rem;
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            font-family: nexa-light;
+          }
+        }
+      }
+    }
+  }
+  
+}
+//..........questions-box.............
+.questions-box{
+  .accordian{
+    .accordian-tab{
+      margin-bottom: 1rem ;
+      .accordian-toggle{
+        display: none;
+        &:checked ~ label::after {
+          transform: rotate(180deg);
+        }
+        &:checked ~ .accordian-content{
+          max-height: 100vh;
+          margin-top: 1rem;
+        }  
+      }
+      label{
+        cursor: pointer ;
+        color: var(--que-color);
+        display: block;
+        font-size: 1.1rem;
+        font-family: nexa-bold;
+        &::after {
+          content: "\f078";
+          font: normal normal normal 14px/1 FontAwesome;
+          position: absolute;
+          right: 1rem;
+          transform: rotate(0deg);
+          transition: transform .1s;
+        }
+        &:hover{
+          background-color: whitesmoke;
+        }
+      }
+      .accordian-content{
+        max-height: 0;
+        overflow: hidden;
+        transition: all .1s;
+      }
+    }
+  }
+}
+
+
+/* ...................................... */
+/* ...................................... */
+/* ............tablet.................... */
+/* ...................................... */
+/* ...................................... */
+
+
+@media only screen and ( min-width:768px) {
+
+//........plus...............
+.plus{
+  text-align: start;
+  h1{
+    text-align: start;
+  }
+  p{
+    text-align: start;
+  }
+} 
+//........info................
+.info{
+  //......buy-plans...........
+  .buy-plans{
+    margin-top: -10rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+    h2{
+      width: 100%;
+      &::before {
+        width: 0;
+      }
+    }
+    p{
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    .plan{
+      padding: 0 1rem;
+      width: 28.6%;
+      height: 28rem;
+      p{
+        width: 70%;
+      }
+    }
+  } 
+  //.....rateing-box.........
+  .rateing-box{
+    .star-box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      .by-star{
+        width: 10rem;
+      }
+      .by-number{
+        width: 15rem;
+      }
+    }
+    .follower-box{
+      .follower{
+        width: 25%;
+        margin-top: 1rem;
+      }
+    }
+  }
+  // ......hospitals-lists..
+    .hospitals-lists{
+      .hospital-box{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        .zerofees{
+          width: 50%;
+          .zerofees-content{
+            p{
+              text-align: start;
+              margin-left: 1rem;
+            }
+          }
+        }
+      }
+  }
+  // .......offer-box.......
+  .offer-box{
+    margin-top: 4rem;
+    .offer-container{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3rem;
+        flex-direction: row-reverse;
+        .offer-info{
+          width: 50%;
+          .offer-info-content{
+            p{
+              text-align: start;
+              margin-left: 1rem;
+            }
+          }
+        }
+        .offer-photo{
+          width: 45%;
+          height: 14rem;
+        }
+      }
+      .order{
+        flex-direction: row;
+      }
+  }
+  //.......tests-box.........
+  .tests-box{
+    h5{
+      text-align: start;
+    }
+  }
+  //.....why............
+  .why{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .why-heading {
+      width: 100%;
+    }
+    .why-box {
+      width: 45%;
+    }
+  }
+}
+
+  .questions-box{
+    .accordian{
+      .accordian-tab{
+        label{
+          &::after {
+            right: 3rem;
+          }
+        }
+      }
+    }
+  }
+
+
+}
+/* ...................................... */
+/* ...................................... */
+/* ............decstop.................... */
+/* ...................................... */
+/* ...................................... */
+
+
+@media only screen and ( min-width:1023px) {
+
+p{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+//..............plus............... 
+.plus{
+  height: 30rem;
+  button {
+      margin-top: 5rem;
+  }
+}
+//........info.................
+.info{
+  //......buy-plans...........
+  .buy-plans{
+    margin-top: -13rem;
+  }
+  //.....rateing-box..........
+  .rateing-box{
+      .star-box{
+        .by-number{
+          .num-box{
+            p{
+              width: 2rem;
+              margin-bottom: 1rem;
+            }
+          }
+        }
+      }
+  }
+  // .......offer-box..........
+  .offer-box{
+    .offer-container{
+      .offer-info{
+        width: 70%;
+        h2{
+          text-align: start;
+        }
+      }
+      .offer-photo{
+        width: 25%;
+      }
+    }
+  }
+  //.......tests-box.........
+  .tests-box{
+      .profile{
+        width: 21%;
+        align-items: flex-start;
+        padding: 1rem;
+        p{
+          text-align: start;
+        }
+      }
+  }
+  //.....why...........
+  .why {
+      .why-box {
+        width: 30%;
+      }
+  }
+
+}
+.questions-box{
+  .accordian{
+    .accordian-tab{
+      label{
+        &::after {
+          right: 8rem;
+        }
+      }
+    }
+  }
+}
+
+}

@@ -1,0 +1,156 @@
+/* ........footer.......................... */
+footer {
+  text-align: center;
+  background: #05000e;
+  padding: 1rem;
+}
+
+footer .footer-logo {
+  text-align: -webkit-center;
+  margin-bottom: 1rem;
+}
+
+footer .footer-logo .logoimg {
+  width: 50%;
+}
+
+footer .footer-heading {
+  display: none;
+}
+
+footer .footer-heading h3 {
+  color: white;
+  margin: 1rem;
+}
+
+footer .footer-nav ul li {
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1rem;
+}
+
+footer .footer-nav ul li a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+footer .footer-nav ul .contact {
+  display: none;
+}
+
+footer .footer-sites i {
+  width: 0.2rem;
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+footer .footer-sites-word {
+  display: none;
+}
+
+footer .footer-sites-word ul li {
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1rem;
+}
+
+footer .footer-sites-word ul li a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+footer .footer-reserve {
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1rem;
+  font-size: 0.9rem;
+}
+
+/* .............footer..end............................................... */
+/* ....................................................*/
+/* ................................................... */
+/* ............tablet................................... */
+/* .................................................... */
+/* .................................................. */
+@media only screen and (min-width: 768px) {
+  /* .............footer................................................. */
+  footer {
+    padding: 1rem 2rem;
+    border-bottom: 0.5rem solid #2d2bbd;
+    background: white;
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-grid-columns: 2.5fr 1fr;
+        grid-template-columns: 2.5fr 1fr;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "footer-nav footer-logo " "footer-reserve footer-sites";
+  }
+  footer .footer-logo {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: footer-logo;
+    text-align: -webkit-right;
+    margin-bottom: 0rem;
+  }
+  footer .footer-logo .logoimg {
+    width: 11rem;
+  }
+  footer .footer-nav {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: footer-nav;
+    height: 1rem;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+  }
+  footer .footer-nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  footer .footer-nav ul li {
+    margin-top: 0rem;
+    margin-right: 1rem;
+    font-size: 0.9rem;
+  }
+  footer .footer-nav ul li a {
+    text-decoration: none;
+    color: #05000e;
+  }
+  footer .footer-sites {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: footer-sites;
+    text-align: end;
+  }
+  footer .footer-sites i {
+    color: #05000e;
+  }
+  footer .footer-reserve {
+    color: #05000e;
+    font-family: nexa-light;
+    font-size: 0.9rem;
+    padding-bottom: 0rem;
+    text-align: left;
+  }
+  /* .............footer...end.............................................. */
+}
+
+/* ....................................................*/
+/* ................................................... */
+/* ............decstop................................... */
+/* .................................................... */
+/* .................................................. */
+@media only screen and (min-width: 1024px) {
+  /* ....................footer................ */
+  footer {
+    padding: 2rem 7rem;
+  }
+}
+/*# sourceMappingURL=footer.css.map */

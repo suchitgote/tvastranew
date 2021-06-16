@@ -1,0 +1,327 @@
+// @import url(theme.css);
+
+section {
+
+    background-color: #f0f0f0;
+    #doctor-box {
+        background-color: var(--white);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        h1 {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #5e5e5e;
+            color: rgb(9, 116, 187);
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+            margin-bottom: 1rem;
+            li {
+            font-size: 0.9rem;
+            
+            i {
+                margin-right: 1rem;
+                color: rgb(9, 116, 187);
+            }
+            a {
+                color: rgb(9, 116, 187);
+                font-weight: bold;
+            }
+            }
+        }
+
+        .date-container{
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            // margin: 0.5rem;
+            grid-area: 3 / 1 / span 1 / span 2;
+            .date-groups{
+                display: flex;
+                height: 2.5rem;
+                .dates{
+                    width: 15rem;
+                    text-align: center;
+                    transition: 0.3s;
+                }
+                .active{
+                    display: block;
+                }
+            }
+            .back-button{
+                position: absolute;
+                cursor: pointer;
+                z-index: 10;
+                left: 0;
+                background: grey;
+                border-radius: 50%;
+                padding: 0.5rem 0.8rem;
+                h4{
+                    color: white;
+                }
+            }
+            .frountbutton{
+                cursor: pointer;
+                position: absolute;
+                z-index: 10;
+                background: grey;
+                border-radius: 50%;
+                padding: 0.5rem 0.8rem;
+                right: 0;
+                h4{
+                    color: white;
+                }
+            }
+
+        }
+
+        .slots{
+            grid-area: 3 / 1 / span 1 / span 2;
+            .bookingtimegroup {
+                display:none;
+                .booking-time{            
+                    display: flex;
+                    // flex-direction: column;
+                    padding: 1rem;
+                    border-bottom: 1px solid rgba(0,0,0,0.2);
+                    .daytime {
+                        margin-right: 1rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 6rem;
+                    }
+                    ul {
+                        flex-wrap: wrap;
+                        display: flex;
+                        width: 100%;
+                        li {
+                            cursor: pointer;
+                            border: 1px solid rgba(0,0,0,0.5);
+                            padding: 0.7rem 1rem;
+                            margin: 0.2rem;
+                            z-index: 1;
+                            width: auto;
+                        }
+                    }
+                }
+                .booking-hospital-name {
+                    text-align: center;
+                    color: rgb(61, 77, 37);   
+                }
+            }
+            .active{
+                display: block;
+            }
+        }
+        #doctor-info{
+            figure {
+                display: flex;
+                align-items: center;
+                column-gap: 1rem;
+                .docimage {
+                    width: 7rem;
+                    height: 7rem;
+                    
+                    padding-bottom: 0.5rem;
+                }
+            }
+        }
+        #hospital-info {
+            figure {
+                display: flex;
+                align-items: center;
+                column-gap: 1rem;
+                .hospimage {
+                    width: 7rem;
+                    height: 7rem;
+                    padding-top: 0.5rem;
+                    border-top: 0.1rem solid #5e5e5e ;
+                }
+            }
+        }
+    }
+
+    .form {
+        background-color: var(--white);
+        padding: 1rem; 
+        h2 {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #5e5e5e;
+            color: rgb(9, 116, 187);
+        }
+        form {
+            h5 {
+                width: 100%;
+                padding-bottom: 0.5rem;
+                padding-top: 0.5rem;
+                color: var(--blackish_blue);
+            }
+            .radbut {
+                width: 100%;
+                input {
+                    width: auto;
+                }
+                label {
+                    font-weight: bold;
+                }
+            }
+            label {
+                width: 100%;
+                color: rgb(9, 116, 187);
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+                font-weight: bold;
+                font-family: 'nexa-bold';
+            }
+            button {
+                width: -webkit-fill-available;
+                margin-top: 1rem;
+            }
+            .showdocdiv{
+                width: 100%;
+                height: 2.5rem;
+                color: var(--button-font);
+                letter-spacing: 0.2rem;
+                font-size: 0.7rem;
+                display: flex;
+                align-items: center;
+                background-color: #222844;
+                justify-content: center ;
+                font-family: 'nexa-light' ;
+            }
+        }
+    }
+    .col2 {
+        // display: none;
+        i{
+            margin-right: 1rem;
+            color: rgb(9, 116, 187);
+        }
+        .patientDetails {
+            form {
+                .row1 {
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                    width: 100%;
+                    .itemContainer{
+                        display: flex;
+                        flex-direction: column;
+                        span{
+                            margin: 0.5rem 0;
+                        }
+                    }
+                }
+                .row2 {
+                    width: 100%;
+                    .itemContainer {
+                        display: flex;
+                        flex-direction: column;
+                        label {
+                            font-size: 1rem;
+                            color : rgb(9, 116, 187);
+                            font-weight: bold;
+                        }
+                        span{
+                            margin: 0.5rem 0;
+                        }
+                    }
+                    .buttons {
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 0.5rem;
+                        padding-bottom: 0.5rem;
+                        padding-top: 0.5rem;
+                        .buttonContainer {
+                            button {
+                                background-color: rgb(9, 116, 187);
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media only screen and (min-width:768px)
+{
+    section {
+        display: flex;
+        column-gap: 1rem;
+        align-items: center;
+        #doctor-box {
+            ul {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                li{
+                    width: 50%;
+                }
+            }
+            .date-container{
+                .date-groups{
+                    .dates{
+                        width: 19rem;
+                    }
+                }
+            }
+            
+            
+        #doctor-info {
+            figure {
+                figcaption {
+                    ul {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+        }
+
+        .reschedule{
+            width: 95%;
+        }
+    }
+}
+@media only screen and (min-width:1024px) {
+    section {
+        justify-content: space-evenly;
+        #doctor-box {
+            ul {
+                li{
+                    width: 100%;
+                }
+            }
+        }
+        .reschedule{
+            width: 70%;
+        }
+        .form{
+            width: 35%;
+        }
+        .col2 {
+            .patientDetails {
+                form {
+                    .row2 {
+                        .buttons {
+                            flex-direction: row;
+                            .buttonContainer {
+                                margin-right: 0.5rem;
+                                button {
+                                    background-color: rgb(9, 116, 187);
+                                    width: auto;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}

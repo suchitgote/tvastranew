@@ -1,0 +1,24 @@
+@import "login.scss";
+
+input[type=number] {
+    height: 45px;
+    width: 45px;
+    font-size: 25px;
+    text-align: center;
+    border: 1px solid white;
+    border-bottom:2px solid skyblue;
+    margin-right: 0.5rem;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+a{
+    text-decoration: none;
+}
+h5{
+    margin: 1rem 0rem;
+    color: skyblue;
+}
+

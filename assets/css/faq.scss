@@ -1,0 +1,58 @@
+@import "doctors_profile.scss";
+
+.all-about-doc{
+    border: none; 
+    padding: 0rem;
+    .text-info{
+        .accordian{
+            .accordian-tab{
+                .accordian-toggle{
+                    &:checked ~ label {
+                      border-top:none ;
+                    }
+                }
+                label{
+                    font-size: 1rem;
+                    border-bottom: none;
+                    font-family: 'nexa-bold';
+                    &::after{
+                        right: 0;
+                    }
+                    i{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width:768px) {
+
+    .top-one {
+        background-position: right;
+    }
+
+    .all-about-doc{
+        grid-template-columns: 1fr;
+        .text-info{
+            .accordian{
+                .accordian-tab{
+                    label{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media only screen and (min-width:1023px) {
+
+    .top-one {
+        height: 12rem;
+    }
+
+}

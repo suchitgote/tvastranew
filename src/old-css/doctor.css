@@ -1,0 +1,802 @@
+
+:root {
+    --doctor-name: rgb(58, 188, 240);
+    --sudo-line: rgb(58, 188, 240);
+    --i: rgb(58, 188, 240);
+    --sort-by: rgb(241, 232, 232);
+}
+
+nav .desktop-nav , .desktop-nav-buttons , #delhi , .filter{
+    display: none;
+}
+
+/* ..........nav........... */
+.nav{
+    .nav-img{
+        img{
+            width: 30%;
+            height: 50%;
+        }
+    }
+    .desktop-nav{
+        display: none;
+    }
+    .desktop-nav-buttons{
+        display: none;
+    }
+}
+/* ..........nav.......... */
+
+
+/* ..........delhi......... */
+#delhi{
+    background-image: linear-gradient(rgba(133,178,196,0.8) ,rgba(43, 120, 151, 0.8)),url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+/* ..........delhi.end.......... */
+
+/* .........sort.......... */
+.sort{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+    select{
+        padding: 0.5rem 0.6rem;
+        font-size: 0.8rem;
+        background-color: var(--sort-by);
+        border: none;
+    }
+
+}
+/* ........sort end........ */
+
+// ...........main................................
+#main{
+    .main{
+        .filter{
+            .filter-bar{
+                h6{
+
+                }
+            }
+            .filter-buttons{
+                .fil-button{
+                    i{
+
+                    }
+                }
+            }
+            .filter-search{
+                .filter-type{
+                    .heading{
+
+                    }
+                    .logos{
+                        .logo-search{
+                            i{
+
+                            }
+                        }
+                        .logo-minus{
+                            i{
+
+                            }
+                        }
+                    }
+                }
+                .filter-check-box{
+                    ul{
+                        li{
+                            input{
+
+                            }
+                        }
+                    }
+                }
+                .filter-show-more{
+                    a{
+
+                    }
+                }
+            }
+        }
+        .doctor-boxs{
+            .doctor-box{
+                .doctor-content{
+                    .doctor-name{
+                        h4{
+
+                        }
+                    }
+                    .doctor-logos{
+                        ul{
+                            li{
+                                .doctor-logo{
+                                    i{
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .doctor-button{
+                        button{
+
+                        }
+                    }
+                }
+                .doctor-photo{
+                    img{
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+.main .doctor-boxs .doctor-box{
+    border: 1px solid black;
+    margin-bottom:0.5rem;
+}
+.main .doctor-boxs .doctor-box .doctor-name{
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 1rem 0rem;
+}
+.main .doctor-boxs .doctor-box .doctor-name::before{
+    position: absolute;
+    content: "";
+    width: 1.5rem;
+    border-top: 2px solid var(--sudo-line);
+}
+.main .doctor-boxs .doctor-box .doctor-name h4{
+    margin-left: 1.8rem;
+    color: var(--doctor-name);
+}
+
+.main .doctor-boxs .doctor-box .doctor-logos ul li{
+    display: flex;
+    align-items: center;
+    line-height: 1.1rem;
+}
+.main .doctor-boxs .doctor-box .doctor-logos ul li i{
+    margin: 0.5rem;
+    text-align: center;
+    color: var(--i);
+}
+.main .doctor-boxs .doctor-box .doctor-button{
+    text-align: center;
+    margin: 0.5rem 0rem;
+}
+
+
+/* ........help............................. */
+.helps{
+    background: rgb(108, 200, 236);
+}
+.help{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}   
+.help h1{
+    color: white;
+}   
+
+.second-button{
+    background-color: var(--sky_blue);
+    border-radius: 0.3rem;
+    color: var(--white_dark);
+    font-family: nexa-light;
+    border-style: none ;
+    padding: 0.6rem 1rem;
+}
+/* ........help...end.......................... */
+
+
+
+/* ........footer............................. */
+
+footer .footer-logo{
+    text-align: -webkit-center;
+    margin-bottom: 1rem;
+}
+footer .footer-logo .logoimg{
+    width: 50%;
+}
+
+footer .footer-nav ul li{
+    color: var(--white_dark);
+    margin-bottom: 1rem;
+}
+footer .footer-nav ul li a{
+    text-decoration: none;
+    color:var(--white_dark);
+}
+footer .footer-sites i{
+    width: 0.2rem;
+    padding: 1rem;
+    color:var(--white_dark);    
+}
+footer .footer-reserve {
+    color: var(--white_dark);
+    letter-spacing: 0.1rem;
+    font-size: 0.9rem;
+}
+
+.footer-heading h3{
+    margin-bottom: 1rem;
+    color: white;
+}
+footer .follow-us , .footer-sites{
+    display: none;
+}
+footer .footer-sites-word ul li {
+    margin-bottom: 1rem;
+}
+footer .footer-sites-word ul li a{
+    color: var(--white_dark);
+    text-decoration: none;
+}
+
+/* .............footer..end............................................... */
+
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................tablet...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+
+
+@media only screen and ( min-width:768px) {
+    
+// ...........main................................
+#main{
+    .main{
+        .filter{
+            .filter-bar{
+                h6{
+
+                }
+            }
+            .filter-buttons{
+                .fil-button{
+                    i{
+
+                    }
+                }
+            }
+            .filter-search{
+                .filter-type{
+                    .heading{
+
+                    }
+                    .logos{
+                        .logo-search{
+                            i{
+
+                            }
+                        }
+                        .logo-minus{
+                            i{
+
+                            }
+                        }
+                    }
+                }
+                .filter-check-box{
+                    ul{
+                        li{
+                            input{
+
+                            }
+                        }
+                    }
+                }
+                .filter-show-more{
+                    a{
+
+                    }
+                }
+            }
+        }
+        .doctor-boxs{
+            .doctor-box{
+                .doctor-content{
+                    .doctor-name{
+                        h4{
+
+                        }
+                    }
+                    .doctor-logos{
+                        ul{
+                            li{
+                                .doctor-logo{
+                                    i{
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .doctor-button{
+                        button{
+
+                        }
+                    }
+                }
+                .doctor-photo{
+                    img{
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+#delhi , .filter{
+    display: block;
+}
+.main .filter .filter-buttons{
+    display: none;
+}   
+//............................................ 
+#delhi {
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    font-family: nexa-light;
+    font-size: 1.4rem;
+    background-color: rgb(41, 189, 235);
+    strong{
+        font-weight:900 ;
+    }
+}
+// ............................................
+
+// ............................................
+.sort{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    .sort-home{
+        display: flex;
+        align-items: center;
+        font-family: nexa-light;
+        font-size: 1.2rem;
+    }
+}
+// ............................................
+
+#main{
+    padding-top: 0rem;
+}
+.main{
+    grid-template-columns: 1fr 3fr;
+    display: grid;
+}
+.filter{
+    margin-right: 1rem;
+}
+.filter-bar {
+    height: 2.5rem;
+    background-color: rgb(217, 221, 223);
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}  
+.filter-type{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0rem;
+}
+.filter-type .heading {
+    font-family: 'nexa-light';
+    font-size: 1rem;
+}
+.logos{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+}
+.logo-search i{
+    color: rgb(41, 189, 235);;
+}
+.logo-minus i{
+    color: rgba(0, 0, 0,0.5);
+}
+
+.filter .filter-check-box ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+}
+.filter .filter-check-box ul li input{
+    width: auto;
+    margin-right: 1rem;
+}
+.filter .filter-check-box{
+    margin-bottom: 1rem;
+}
+
+.main .filter .filter-search .filter-show-more{
+    position: relative;
+    margin-bottom: 2rem;
+}
+.main .filter .filter-search .filter-show-more::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0,0.2);
+    top:  2rem;
+    left: 0rem;
+}
+.main .filter .filter-search .filter-show-more a{
+    text-decoration-line: none;
+    font-family: nexa-light;
+}
+hr{
+    margin-top: 1rem;
+}
+
+.doctor-box{
+    border: 1px solid;
+    display: grid;
+    grid-template-columns:  2fr 1fr;
+    grid-template-areas: 
+    "doctor-content doctor-photo" ;
+    margin-bottom: 0.5rem;
+}
+
+
+.doctor-name{
+    grid-area: grid-name;
+}
+.doctor-logos{
+    grid-area: doctor-logos;
+    margin-left: 1.8rem;
+    height: 8.5rem;
+}
+.doctor-box .doctor-logos ul{
+    /* height: 100%; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.main .doctor-boxs .doctor-box .doctor-logos ul li {
+    margin-bottom: 0.2rem;
+    /* line-height: 1.2rem; */
+}
+.main .doctor-boxs .doctor-box .doctor-button {
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+}
+.doctor-button{
+    grid-area: doctor-button;
+    display: flex;
+    margin-left: 2.3rem;
+}
+.doctor-photo{
+    grid-area: doctor-photo;
+    background-color: rgb(41, 36, 36);
+    /* height: 17rem; */
+}
+
+
+/* .............footer................................................. */
+ /* footer nav */
+ footer .footer-nav{
+    grid-area: footer-nav;
+    height: 1rem;
+    flex-direction: row;
+    justify-content: start;
+}
+footer ul{
+    display: flex;
+}
+footer .footer-nav ul li{
+    margin-bottom: 0rem;
+    margin-right: 1rem;
+}
+footer .footer-nav ul li a {
+    text-decoration: none;
+    color: rgba(0, 0, 0,1);
+}
+
+ /* footer logo */
+footer .footer-logo{
+    grid-area: footer-logo;
+    text-align: -webkit-right;
+    margin-bottom: 0rem;
+}
+footer .footer-logo .logoimg {
+    width: 11rem;
+}
+
+ /* footer sites */
+footer .footer-sites{
+    grid-area: footer-sites;
+    text-align: end;
+}
+footer .footer-sites i{
+    color: var(--black); 
+} 
+
+ /* footer reserve */
+footer .footer-reserve {
+    color: var(--black);
+    padding-bottom: 0rem;
+    text-align: left;
+} 
+
+.footer-sites{
+    display: block;
+}
+.footer-heading , .footer-sites-word{
+    display: none;
+}
+
+/* .............footer...end.............................................. */
+
+
+
+
+
+
+
+
+}
+
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................decstop...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+
+@media only screen and ( min-width:1024px){
+// ...........main................................
+#main{
+    .main{
+        .filter{
+            .filter-bar{
+                h6{
+
+                }
+            }
+            .filter-buttons{
+                .fil-button{
+                    i{
+
+                    }
+                }
+            }
+            .filter-search{
+                .filter-type{
+                    .heading{
+
+                    }
+                    .logos{
+                        .logo-search{
+                            i{
+
+                            }
+                        }
+                        .logo-minus{
+                            i{
+
+                            }
+                        }
+                    }
+                }
+                .filter-check-box{
+                    ul{
+                        li{
+                            input{
+
+                            }
+                        }
+                    }
+                }
+                .filter-show-more{
+                    a{
+
+                    }
+                }
+            }
+        }
+        .doctor-boxs{
+            .doctor-box{
+                .doctor-content{
+                    .doctor-name{
+                        h4{
+
+                        }
+                    }
+                    .doctor-logos{
+                        ul{
+                            li{
+                                .doctor-logo{
+                                    i{
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .doctor-button{
+                        button{
+
+                        }
+                    }
+                }
+                .doctor-photo{
+                    img{
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+    // nav .desktop-nav , .desktop-nav-buttons , 
+    .main .filter .filter-buttons{
+        display: block;
+    }
+
+ /* .................nav............ */
+ .nav{
+    .nav-img{
+        img{
+           width: 10rem;
+       }
+   }
+   .nav-i{
+       display: none;
+   }
+   .desktop-nav{
+       display: flex;
+       ul{
+           display: flex;
+           margin-top: 0rem;
+           li{
+               margin-right: 2rem;
+           }
+       }
+   }
+   .desktop-nav-buttons{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 2.5rem;
+       .dnlogin{
+           font-size: 0.9rem;
+           height: 85%;
+           display: flex;
+           align-items: center;
+           padding: 0rem 1.4rem;
+           border: 1px solid ;
+           border-radius: 0.21rem; 
+           margin-right: 0.3rem;
+       }
+       .quote-button{
+           font-size: 0.8rem;
+           padding: 0rem 1.5rem;
+           background: var(--black);
+           color: var(--white);
+           border: 1px solid var(--black);
+           border-radius: 0.21rem;  
+           height: 92%;
+           font-size: 0.9rem;
+           
+       }
+   }
+}
+/* ......................nav..end.......... */
+
+// ....................................................
+.sort {
+    padding: 1.5rem 7rem;
+}
+// ....................................................
+.filter{
+    margin-right: 2rem;
+}    
+  
+.main .filter .filter-buttons{
+    margin: 1rem 0rem;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--white_dark);
+}
+.fil-button {
+    display: flex;
+    border: 0.02rem solid black;
+    margin: 0.1rem;
+    padding: 0.5rem 0rem;
+    padding-left: 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.7rem;
+    font-family: 'nexa-light';
+}
+.fil-button i{
+margin-left: 0.5rem;
+}
+
+.main .filter .filter-search{
+    margin-left: 1rem;
+}
+.logo-minus{
+    margin-left: 1rem;
+}
+
+.main .doctor-boxs .doctor-box .doctor-button button{
+    padding: 0.5rem 1rem;
+}
+
+.main .doctor-boxs .doctor-box .doctor-name::before {
+    width: 2rem;
+}
+.main .doctor-boxs .doctor-box .doctor-name h4 {
+    margin-left: 2.5rem;
+}
+
+.doctor-box{
+    grid-template-columns:  3fr 1fr;
+}
+.doctor-box .doctor-logos ul{
+    grid-column-gap: 3rem;
+}
+
+
+/* ........help......................... */
+
+.helps{
+    display: flex;
+    align-items: center;
+    height: 7rem;
+}
+.help{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.helps .help p{
+    margin: 0rem;
+} 
+.second-button{
+    border-radius: 0.4rem;
+    padding: 0rem 3rem;
+    height: 5rem;
+}
+
+/* ........help..end....................... */
+
+
+
+
+
+
+
+
+
+}

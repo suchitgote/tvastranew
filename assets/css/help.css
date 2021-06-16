@@ -1,0 +1,72 @@
+/* ........help............................. */
+.helps {
+  background: #9cc0da;
+}
+
+.helps .help {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.helps .help .content h1 {
+  color: white;
+}
+
+.helps .help .second-button {
+  background-color: #3c79be;
+  border-radius: 0.3rem;
+  color: white;
+  font-family: nexa-light;
+  border-style: none;
+  padding: 0.6rem 1rem;
+}
+
+/* ........help..end....................... */
+/* ....................................................*/
+/* ................................................... */
+/* ............decstop................................... */
+/* .................................................... */
+/* .................................................. */
+@media only screen and (min-width: 1024px) {
+  /* ........help......................... */
+  .helps {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 6rem;
+  }
+  .helps .help {
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .helps .help .content p {
+    margin: 0rem;
+  }
+  .helps .help .second-button {
+    border-radius: 0.4rem;
+    padding: 0rem 3rem;
+    height: 4rem;
+  }
+  /* ........help..end....................... */
+}
+/*# sourceMappingURL=help.css.map */

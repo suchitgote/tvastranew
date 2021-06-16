@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <style>
+    .nav.desktop-nav-buttons{
+      display: none;
+    }
+  </style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/demo_getdata.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    
+  
+    <h2><a href="demo_postdata"> demo_postdata </a></h2>
+
+    <table>
+      <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>password</th>
+        <th>gender</th>
+        <th>data</th>
+        <th>number</th>        
+        <th>city</th>
+        <th>state</th>
+        <th>country</th>
+        <th>doctor </th>
+        
+
+      </tr>
+<% for(var i=0; i < users.length; i++ ){ %>
+      <tr>
+        <td><%= users[i].name %></td>
+        <td><%= users[i].email %></td>
+        <th><%= users[i].password %> </th>
+        <td><%= users[i].gender %></td>
+        <th><%= users[i].data %> </th>
+        <td><%= users[i].number %></td>
+        <td><%= users[i].city %></td>
+        <td><%= users[i].state %></td>
+        <th><%= users[i].country %> </th>
+        <td><%= users[i].doctor %></td>
+      </tr>
+<% } %>
+    </table>
+    
+
+</body>
+</html>                                            

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Input Tags</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.css" />
+    </head>
+    <body>
+        <% if(tagss){ %>
+            <h2> <%= tagss.tag %>  </h2>
+        <% } %>
+    <!-- form -->
+        <form action="/tags" method="POST">
+            <input name='input1' value=' <%= tagss.tag %>'>
+            <input name='input2' value=''>
+            <input type="submit">
+        </form>
+        <!-- script -->
+            <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.min.js"></script>
+            <script>    
+                var input1 = document.querySelector('input[name=input1]');
+                new Tagify(input1)
+
+                var input2 = document.querySelector('input[name=input2]');
+                new Tagify(input2)
+            </script>
+    </body>
+</html>
+
+ <!--     
+https://tvastra-project.herokuapp.com/login
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.css" />
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify@3.1.0/dist/tagify.min.js"></script>
+
+var tagify = new Tagify(input, {
+originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
+});
+-->

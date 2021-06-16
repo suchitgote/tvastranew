@@ -1,0 +1,36 @@
+@import "doctors_profile.scss";
+
+.all-about-doc{
+    .text-info{
+        .name-info{
+            .address{
+                // background-color: blanchedalmond;
+                ul{
+                    li{
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        margin-bottom: 0.5rem;
+                        i{
+                            padding-right: 0.5rem;
+                        }
+                        p{
+                            margin-bottom: 0;
+                            text-align: start;
+                        }
+                    }
+                }
+            }
+            p{
+                text-align: start;
+            }
+        }
+        .accordian{
+            .accordian-tab{
+                label{
+                    border-bottom: none;     
+               }
+            }
+        }
+    }
+}

@@ -1,0 +1,108 @@
+@import "login.scss"; 
+
+
+// ........main.................................
+.main{
+    .login-box{
+        .form{
+            form{
+                #user{
+                    select{
+                        margin-bottom: 0.5rem;
+                    }
+                    input[type="date"]{
+                        color: rgba(0, 0, 0,0.6);
+                        padding-right: 0;
+                        background: white;
+                    }
+                    .password_box{
+                         position: relative;
+                         width: -webkit-fill-available;
+                         i{
+                            color: $eye;
+                             position: absolute;
+                             right: 0.5rem;
+                             top: 0.5rem;
+                         }
+                    }               
+                    .city-button{
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        input{
+                            width: 50%;
+                        }
+                        .b{
+                            margin-right: 0.5rem;
+                        }
+                    }
+                    .isdoctor{
+                        display: flex;
+                        justify-content: center;
+                        input{
+                            width: 1rem;
+                            margin-bottom: 0.5rem;
+                        }
+                    }
+                }               
+                #doctor_div{
+                    p{margin-bottom: 0.5rem;}
+                    input{
+                        margin-bottom: 0.5rem;
+                        padding: 0.7rem 1rem;
+                    }
+                    input::placeholder{
+                        font-size: 1rem;
+                    }
+                    .files{    
+                        .label{
+                            font-family: nexa-light;
+                            font-size: 0.9rem;
+                            text-align: start;
+                            margin-left: 1rem;
+                            margin-top: 1rem;
+                        }
+                        input{
+                            width: max-content;
+                            border: none;
+                            margin: 0.5rem 0;
+                        }
+                    }
+                    .tagify{
+                        width: 100%;
+                        margin-bottom: 0.5rem;
+                    }
+                    .tagify__input:empty::before {
+                        left: 0.5rem;
+                        font-family: nexa-light;
+                    }    
+                }
+            }
+        }
+    }
+}
+
+
+    
+
+@media only screen and ( min-width:768px) {
+    .main{
+        .login-box{
+            .form{
+                form{
+                    #doctor_div{
+                        .files{    
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            .label{
+                                margin-top: 0;
+                                margin-left: 0;
+                            }
+                        }
+                    }    
+                }
+            }
+        }
+    }
+}

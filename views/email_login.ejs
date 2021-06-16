@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/email-login.css">
+
+    <title>email-login</title>
+</head>
+<body>
+ 
+    <!-- /include nav -->
+    <%- include('include/_nav') %>
+    <!-- include nav-->
+         
+         <% if(data.err) { %>
+            <div class="alert" id="err">
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                <div class="alert_content">
+                    <h4>failuar</h4>
+                    <p> <strong> <%= data.err %> </strong> </p>
+                </div>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            </div>
+        <% } %>
+            
+        <% if(data.succ) { %>
+            <div class="alert" id="succ">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <div class="alert_content">
+                    <h4>success</h4>
+                    <p> <strong> <%= data.succ %> </strong> </p>
+                </div>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            </div>
+        <% } %>
+
+<div class="main">
+
+    <div class="login-box">
+
+        <div class="login">
+            <h2>Email Login</h2>
+        </div>
+
+        <div class="form">
+            <form action="/emaillogin" method="POST" id="email_login_form">
+                <div id="user">
+                    <input type="text" class="a"  placeholder="Enter Email Address" name="email" required>              
+                    <div class="password_box">
+                        <input type="password" class="a" id="myInput" placeholder="Enter Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" > 
+                        <!-- // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"> -->
+                     
+                        <i class="fa fa-eye-slash" id="password_eye" aria-hidden="true" onclick="myFunction()" ></i> 
+                    </div>
+                    <div class="forgot">
+                        <a href="/phone_login"  id="login_with_otp">
+                            <h5>Login with OTP</h5>  
+                        </a>
+                        <input type="submit" value=" Forgot Password " formaction="/forgot_password" id="forgot_password" >                  
+                    </div>
+                   <button> LOGIN <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+
+                </div>
+            
+            </form>
+        </div>
+    
+        <div class="signup">
+             Not Registerd? <a href="signup"> Sign Up</a> 
+        </div>
+    </div>
+
+    <div class="reserved">
+        <h6> All right reserved Tvastra 2020 </h6>
+    </div>
+
+</div>
+
+    
+    
+<script>
+
+    function sidebar(){
+        var sidebar = document.querySelector("#sidebar");
+        if( sidebar.style.display == "block" ){
+            sidebar.style.display = "none" ;
+        }else{
+            sidebar.style.display = "block"
+        }
+    } 
+
+    function popupremove() {
+        var h = document.querySelector(".alert");
+        setTimeout(function(){ h.style.display = "none" }, 700);
+    }
+    popupremove();   
+
+ function myFunction() {
+     var x = document.getElementById("myInput");
+     var password_eye = document.getElementById("password_eye");
+     
+     if (x.type === "password") {
+         x.type = "text";
+        password_eye.style.color = "rgb(81, 81, 175)"
+      } else {
+          x.type = "password";
+          password_eye.style.color = "rgba(0,0,0,0.2)"
+        }
+}    
+    
+    var timer = 3;
+    var downloadTimer = setInterval(function(){
+      if(timer <= 0){
+        clearInterval(downloadTimer);
+        document.getElementById("succ").style.display = "none";
+      }
+      timer -= 1;
+    }, 1000);
+
+    var timerr = 3;
+    var downloadTimer = setInterval(function(){
+      if(timerr <= 0){
+        clearInterval(downloadTimer);
+        document.getElementById("err").style.display = "none";
+      }
+      timerr -= 1;
+    }, 1000);
+
+</script>
+
+
+</body>
+</html>

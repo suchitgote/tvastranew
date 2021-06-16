@@ -1,0 +1,639 @@
+$li-active:skyblue;
+$li-active-border:rgb(3, 3, 63);
+$search-bg : rgb(156, 174, 223);
+
+$doctor_bg:rgb(18, 16, 37);
+$doctor_h1:white;
+$doctor_p:white;
+$doctor_name_bg: white;
+$doctor_name_h3: rgb(22, 125, 221);
+$doctor-sudo:rgb(22, 125, 221);
+$doctor-name:rgb(22, 125, 221);
+$treatment_gra1:rgba(0,0,0,0);
+$treatment_gra2:rgba(17, 10, 26,0.9);
+$service_bg:rgb(227, 230, 231);
+$service_box:rgba(248, 247, 247, 01);
+
+$green :green;
+
+
+.alert {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    top: 6rem;
+    z-index: 1;
+    align-items: center;
+    border-left: 0.2rem solid $green;
+    i{
+        font-size: 1.5rem;
+        color: $green;
+    }
+    .alert_content{
+        margin-left: 1rem;
+        h4{
+            color: $green;
+        }
+        p{
+            color: $green;
+            margin-bottom: 0;
+        }
+    }
+    .closebtn {
+      margin-left: 15px;
+      font-weight: bold;
+      float: right;
+      color: $green;
+      font-size: 2rem;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    &:hover {
+      color: black;
+    }
+  }
+  
+
+p{
+    font-size: 1rem;
+}
+
+/* ........search............................. */
+.search{
+    background-color: $search-bg;
+    .searchbox {
+        form{
+            .location{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                background-color: var(--white);
+                margin-bottom: 0.5rem;
+                margin-right: 0.1rem;
+                height: 2.52rem;
+                i{
+                   margin: 0.5rem;
+                }
+                input::placeholder{
+                    padding-left: 0rem;
+                }
+                .input1{
+                    padding-left: 0rem;
+                }
+                img{
+                    width: 1rem;
+                    margin: 0.5rem;
+                }
+            }
+            input{
+                height: 1.52rem;   
+                border: none;
+            }
+            .primary-button{
+                width: 40%;
+                margin-top: 1rem;
+                height: 2rem;
+            }
+        }
+    }
+}
+/* ........search.end...................... */
+
+/* ........working......................... */
+.working-steps{
+    .step{
+        ul{
+            li{
+                height: 3rem;
+                border: 0.1rem solid var(--black_light);
+                margin-top: 0.5rem;
+                border-radius: 0.5rem ;
+                background-color: var(--white_dark);
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                h3{
+                   // color: rgba(7, 7, 7,0.5);
+                    span{
+                        padding: 0.5rem;
+                        margin-left: 0.2rem;
+                        // color: $li-active;
+                    }
+                }
+            }
+            .w-img{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .wcontent{
+                    // text-align: -webkit-center;
+                    .img{
+                        width: 95%;
+                        margin: 1rem auto;
+                    }
+                    h3{
+                        text-align:center;
+                        margin-bottom: 01rem;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+
+    }
+}
+/* ........working..end..................... */
+
+/* ........doctor........................... */
+.doctor{    
+    background-color: $doctor_bg;
+    h1{
+        color: $doctor_h1;
+    }
+    p{
+        color: $doctor_p;
+        margin-bottom: 0.5rem;
+    }
+    .mySlides{
+        display: flex;
+        flex-wrap: wrap;
+        .doctor-box{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 1rem;
+            float: left;
+            .doctor-image{
+                width: 100%;
+                height: 22rem;
+            }
+            .doctor-name{
+                width: 100%;
+                background-color: $doctor_name_bg;
+                padding: 1rem 0rem;
+                border-bottom: 0.2rem solid $doctor-name;
+                .sudo{
+                    &::before{
+                        position: absolute;
+                        top: 0.46rem;
+                        content: "";
+                        width: 1.5rem;
+                        border-bottom: 2px solid $doctor-sudo;
+                    }
+                    position: relative;
+                    h3{
+                        color: $doctor_name_h3;
+                        margin-left: 1.75rem;
+                        margin-bottom: 0.5rem;
+                    }
+                    ul{
+                        li{
+                            margin-left: 1.75rem;
+                            margin-bottom: 0.3rem;
+                            text-align: start;
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}   
+/* Fading animation */
+.fade {
+    animation: fade 01s forwards;
+    transform: translateX(100%);
+  }
+@keyframes fade {
+  100%{ transform: translateX(0%)}
+  }
+/* ........doctor end....................... */
+
+/* ........treatment........................ */
+.Treatment{
+    .doc{
+        .docs{
+            .doc-c{
+                .grid-box{
+                    height: 20rem;
+                    width: 100%;
+                    margin-top: 1rem;
+                    position: relative;
+                    .linear-g{
+                        background-image: linear-gradient($treatment_gra1 0%,$treatment_gra2 57%);
+                        position: absolute;
+                        width: 100%;
+                        height: 40%;
+                        bottom: 0%;
+                    }
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                    .name{
+                        position: absolute;
+                        bottom: 6%;
+                        left: 6%;
+                        font-size: 0.75rem;
+                        font-family: nexa-light;
+                        color: var(--white);
+                        text-align: left;
+                        h5{
+                            margin-bottom: 0.3rem;
+                            letter-spacing: 0.02rem;
+                            font-size: 1rem;
+                            font-family: 'nexa-bold';
+                            color: var(--white);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* ........treatment..end................... */
+
+/* ........service.......................... */
+.services{
+    padding-bottom: 2rem;
+    background-color: $service_bg;
+    display: flex;
+    flex-wrap: wrap; 
+    .box{
+        background-color: $service_box;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 47%;
+        margin: 0.2rem;
+        img{
+            width: 50%;
+        }
+        h3{
+            font-size: 0.81rem;
+            margin-bottom: 0.7rem; 
+            padding-top: 0rem;
+        }
+    }
+}
+/* ........servic end....................... */
+
+
+
+/* .............................................................. */
+/* .............................................................. */
+/*                          tablate                                 */
+/* .............................................................. */
+/* .............................................................. */
+
+
+@media only screen and ( min-width:768px) {
+
+    p{
+        font-size: 1.01rem;
+    }
+
+// .............search.......................... 
+.search{
+    .searchbox{
+        form{
+            flex-direction: row;
+            .location{
+                width: 60%;
+                margin-bottom: 0rem;
+            }
+            .primary-button{
+                margin-top: 0rem;
+                height: 2.5rem;
+            }
+        }
+    }
+}
+// .............search..end........................ 
+
+/* .............working................................................. */
+.working-steps{
+    .step{
+        ul{
+            display: grid;
+            grid-template-columns: 1fr 1fr ;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+            li{
+                width: 90%;
+                height: 3.5rem;
+                margin-top: 1rem;
+                h3{
+                    span{
+                        padding: 0.7rem;
+                    }
+                }
+            }
+            .w-img{
+                grid-column-start: 2;
+                grid-column-end: 3;
+                grid-row-start: 1;
+                grid-row-end: 8;
+                .img{
+                    margin: 1.5rem 0rem;
+                    img{
+                        padding: 0rem;
+                    }
+                }
+                h3{
+                    margin-bottom: 1.5rem;
+                }
+            }
+        }
+    }
+}
+/* .............working..end............................................... */
+
+/* .............doctor................................................. */
+.doctor{    
+    flex-wrap: wrap;
+    flex-direction: row;
+    .mySlides{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        .doctor-box{
+            width: 47.5%;
+            margin: 0.5rem;
+            .doctor-name{
+                height: 5rem;
+                .sudo{
+                    &::before {
+                        top: 0.6rem;
+                    }
+                    h3{
+                        margin-bottom: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}  
+/* .............doctor..end............................................... */
+
+/* .............treatment................................................. */
+.Treatment{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    .doc{
+        .docs{
+            .doc-c{
+                width: 47.5%;
+                margin: 0.5rem 0.5rem;
+                float: left;
+                .grid-box{
+                    margin: 0rem;
+                }
+            }
+        }
+    }
+}
+/* .............treatment...end.............................................. */
+
+/* .............service................................................. */
+.services{
+    // justify-content: center;
+    .content{
+        p{
+            margin: 1rem 3rem;
+        }
+    }
+    .box{
+        width: 31%;
+        margin: 0.5rem;
+        img{
+            width: 40%;
+        }
+        h3{
+            margin-bottom: 1rem;
+        }
+    }
+}
+/* .............service...end.............................................. */
+
+}
+
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................decstop...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+
+
+
+@media only screen and ( min-width:1024px){
+
+p{
+   font-size: 1.2rem;
+}
+
+/* ........search.......................... */
+.search{
+    background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/img1.jpg");
+    background-image:no-repeat;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    height: 24rem;
+    display: flex;
+    align-items: center;
+    .searchbox{
+        p{
+            width: 65%;
+        }
+        form{
+            width: 80%;
+            .location{
+                height: 4rem;
+                i{
+                    margin: 1.3rem;
+                    font-size: 1.5rem;
+                }
+                img{
+                    margin:  1.3rem;
+                    width:  1.3rem;     
+                }
+            }
+            input{
+                height: 3rem;   
+                &::placeholder{
+                    font-size: 01rem;
+                }
+            }
+            .primary-button{
+                height: 4rem;
+            }
+        }
+    }
+}
+/* ........search end....................... */
+
+/* ........work............................. */
+.working-steps{
+    .step{
+        ul{
+            li{
+                height: 8rem;
+                width: 80%;
+                margin-top: 0.5rem;
+                h3{
+                    span{
+                        margin: 2rem;
+                        font-size: 2rem;
+                    }
+                }
+            }
+            .w-img{
+                .wcontent{
+                    margin-left: auto;
+                    width: 95%;
+                    .img{
+                        margin: 2rem auto;
+                        width: 100%; 
+                    }
+                    h3{
+                        font-size: 1.5rem;
+                    }
+                    p{
+                        text-align: center;
+                        margin: 0rem 3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+/* ........work..end........................ */
+
+
+/* ............doctor........................ */
+.doctor{    
+   // background-color: $doctor_bg;
+    h1{
+        margin-bottom: 2rem;
+    }
+    p{
+        margin-bottom: 2rem;
+    }
+    .mySlides{
+        justify-content: space-between;
+        .doctor-box{
+            width: 24.5%;
+            margin: 0rem;
+            .doctor-name{
+                height: 5.5rem;
+            }
+        }
+    }
+    .dots{
+        margin-top: 2rem;
+        .dot{
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin-right: 0.5rem;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+    }
+}
+/* ............doctor..end................... */
+  
+/*......treatment.......................  */
+.Treatment{
+    justify-content: flex-start;
+    .doc{
+        .docs{
+            display: grid;
+            height: 50rem;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(10,1fr) ;
+            .doc-c{
+                margin: 0.3rem;
+                width: auto;
+                .grid-box{
+                    height: 100%;
+                }
+            }
+            #ta{
+                grid-area: 1 / 1 / span 3 / span 1;
+                margin-left: 0;
+            }
+            #tb{
+                grid-area: 1 / 2 / span 5 / span 1;
+            }
+            #tc{
+                grid-area: 1 / 3 / span 4 / span 1;
+                margin-right: 0;
+            }
+            #td{
+                grid-area: 4 / 1 / span 8 / span 1;
+                margin-left: 0;
+            }
+            #te{
+                grid-area: 6 / 2 / span 5 /  3;
+            }
+            #tf{
+                grid-area: 5 / 3 / span 6 / span 1;
+                margin-right: 0;
+            }
+        }
+    }
+    .dotss{
+        margin-top: 2rem;
+        .dott{
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin-right: 0.5rem;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            &:hover {
+                background-color: #ddc6c6;
+            }
+        }
+    }
+}
+/*......treatment.end......................  */
+
+/* .......service.................. */
+.services{
+    justify-content:space-between;
+
+    .content{
+        margin-bottom: 2rem;
+        p{
+            margin:0rem;
+        }
+    }
+    .box{
+        height: 12rem;
+        width: 16.5%;
+        margin: 0rem;
+        border-radius: 0rem;
+        img{
+            width: 40%;
+            height: 40%;
+        }
+    }
+}
+/* .......service.end................. */
+
+
+}

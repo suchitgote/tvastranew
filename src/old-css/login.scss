@@ -1,0 +1,259 @@
+
+:root{
+    --heading:rgb(81, 81, 175);
+    --placeholder: rgba(0,0,0,0.2);
+    --input-border:  rgba(0,0,0,0.2);
+    --background:rgb(171, 171, 221);
+    --form-background:white;
+    --i:rgba(223, 215, 215, 0.87);
+    --button-font:white;
+}
+
+
+
+/* ..........nav........... */
+.nav{
+    .nav-img{
+        img{
+            width: 30%;
+            height: 50%;
+        }
+    }
+    .desktop-nav{
+        display: none;
+    }
+    .desktop-nav-buttons{
+        display: none;
+    }
+}
+/* ..........nav.......... */
+
+
+// ........main.................................
+.main{
+    .login-box{
+        .login{
+            h2{
+
+            }
+        }
+        .form{
+            form{
+                .location{
+                    input{
+
+                    }
+                    span{
+                        i{
+
+                        }
+                    }
+                }
+            }
+        }
+        .signup{
+            a{
+
+            }
+        }
+    }
+    .reserved{
+        h6{
+            
+        }
+    }
+}
+
+.main{
+    background: var(--background);
+    height: 86.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 1rem;
+}
+
+.login{
+    text-align: center;
+    background: var(--form-background);
+    margin-bottom: 0.05rem;
+    padding: 1rem 0rem;
+}
+.login h2{
+    color: var(--heading);
+}
+.login-box{
+    width: 100%;
+}
+
+.form{
+    background:  var(--form-background);
+    padding: 1rem;
+    text-align: center;
+}
+.form .location{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    height: 3rem;
+    border: 1px solid rgba(0, 0, 0,.2);
+    
+}
+
+.form .location span{
+    font-size: 0.8rem;
+    margin-right: 1.2rem;
+}
+.form .location span i{
+    color: var(--i);
+    font-size: 1rem;
+}
+.form input{
+    height: 3rem;
+    box-sizing: border-box;
+}
+.form .a{
+    border: 1px solid  var(--input-border);
+    margin-bottom: 0.5rem;
+}
+.form  button{
+    width: 100%;
+    height: 2.5rem;
+    position: relative;
+    color: var(--button-font);
+    letter-spacing: 0.2rem;
+    font-size: 0.7rem;
+}
+input{
+    padding: 0rem;
+    outline: none;
+}
+button span{
+    position: absolute;
+    right: 1.2rem;
+}
+button span i{
+    color: var(--button-font);;
+}
+.signup{
+    background: var(--form-background);
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-family: 'nexa-light';
+}
+.signup a{
+    text-decoration: none;
+    font-weight: 900;
+}
+.reserved{
+    text-align: center;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 0.5rem;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+
+    /* .............nav................................................. */
+
+    .desktop-nav{
+        display: none;
+    }
+    .desktop-nav-buttons{
+        display: none;
+    }
+
+  .search .searchbox form{
+    flex-direction: row;
+    }
+    .search .location{
+        width: 60%;
+        margin-bottom: 0rem;
+    }
+  
+    .primary-button{
+        margin-top: 0rem;
+    }
+/* .............nav..end............................................... */
+
+.login-box{
+    width: 60%;
+}
+.main {
+    background: rgb(171, 171, 221);
+    height: 83.7vh;
+}
+
+}
+
+
+@media only screen and (min-width: 1024px){
+  
+/* .................nav............ */
+.nav{
+    .nav-img{
+        img{
+           width: 10rem;
+       }
+   }
+   .nav-i{
+       display: none;
+   }
+   .desktop-nav{
+       display: flex;
+       ul{
+           display: flex;
+           margin-top: 0rem;
+           li{
+               margin-right: 2rem;
+           }
+       }
+   }
+   .desktop-nav-buttons{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 2.5rem;
+       .dnlogin{
+           font-size: 0.9rem;
+           height: 85%;
+           display: flex;
+           align-items: center;
+           padding: 0rem 1.4rem;
+           border: 1px solid ;
+           border-radius: 0.21rem; 
+           margin-right: 0.3rem;
+       }
+       .quote-button{
+           font-size: 0.8rem;
+           padding: 0rem 1.5rem;
+           background: var(--black);
+           color: var(--white);
+           border: 1px solid var(--black);
+           border-radius: 0.21rem;  
+           height: 92%;
+           font-size: 0.9rem;
+           
+       }
+   }
+}
+/* ......................nav..end.......... */
+
+.login-box{
+    width: 40%;
+}
+input{
+    box-sizing: border-box;
+    padding: 0rem;
+}
+button{
+    padding: 0rem;
+}
+
+}

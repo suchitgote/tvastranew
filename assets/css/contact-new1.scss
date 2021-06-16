@@ -1,0 +1,180 @@
+
+:root{
+    --heading:white;
+    --placeholder: rgba(0,0,0,0.2);
+    --input-border:  rgba(0,0,0,0.2);
+    --i:rgb(22, 125, 221);
+    --button:rgb(22, 125, 221);
+    --form-background:rgb(147, 190, 222);
+}
+$sudo-line: rgba(0,0,0,0.2);
+$ipbtn:white;
+// ..........home..............
+.home{
+    background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/contactUs.png");
+    background-position: bottom;
+    background-size: cover;
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 0.8rem;
+    font-family: nexa-light;
+    .headings{
+        h1{
+            color: var(--heading);
+        }
+        p{
+            color: var(--heading);
+        }
+    }
+}
+// .........map................
+#map{
+    height: 15rem;
+    iframe{
+        width: 100%;
+        height: 100%;
+    }
+}
+// .........contact..................
+.contact{
+    .contact-number{
+        padding: 0rem 1rem;
+        .email{
+            display: flex;
+            align-items: center;
+            margin-bottom: 01rem;
+            font-family: 'nexa-light';
+            font-size: 0.7rem;
+            line-height: 1.2rem;
+            .logo{
+                margin: 0.5rem;
+                margin-right: 1rem;
+                i{
+                    font-size: 1.5rem;
+                    color: var(--i);
+                }
+            }
+        }
+    }
+    .contact-form{
+        padding: 1rem;
+        background-color: var(--form-background);
+        text-align: end;
+        form{
+            align-items: flex-end;
+            .input-box{
+                margin-bottom: 0.5rem;
+                .three-input{
+                    input{
+                        margin-bottom: 0.5rem;
+                    }
+                }
+                textarea{
+                    &::placeholder{
+                        padding-top:0.5rem;
+                    }
+                }
+            }
+            input[type="button"]{
+                width: 7rem;
+                background-color: var(--button);
+                color: $ipbtn;
+            }
+        }
+    }
+}
+
+/* .................................................*/
+/* ................................................ */
+/* ............tablet.............................. */
+/* ................................................ */
+/* ................................................ */
+
+@media only screen and (min-width: 768px){
+
+// ..................map.........................
+#map {
+        height: 20rem;
+        padding-top: 1.5rem;
+}
+// .........contact..................
+.contact{
+    .contact-number{
+        padding: 0rem 2rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    .contact-form{
+        padding: 1rem 2rem;
+        form{
+            .input-box{
+                display: flex;
+                width: 100%;
+                .three-input{
+                    width: 100%;
+                    margin-right: 0.5rem;
+                }
+                textarea{
+                    height: 7.3rem;
+                    &::placeholder{
+                        padding-top:3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+}
+
+
+/* .................................................*/
+/* ................................................ */
+/* ............decstop.............................. */
+/* ................................................ */
+/* ................................................ */
+
+@media only screen and (min-width: 1023px) {
+
+
+//.............home.............
+.home{
+       align-items: flex-start;
+}
+// .............contact..........
+.contact{
+    padding: 0rem 7rem;
+    display: flex;
+    position: relative;
+    margin-bottom: 1.5rem;
+    &::before{
+        content: "";
+        border-bottom: 1px solid $sudo-line;
+        width: 100%;
+        bottom: -1.5rem;
+        left: 0;
+        position: absolute;
+    }
+    .contact-number{
+        padding: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 25%;
+    }
+    .contact-form{
+        width: 75%;
+        form{
+            input[type="button"]{
+                width: 8rem;
+            }
+        }
+    }
+}
+
+
+}

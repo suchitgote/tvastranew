@@ -1,0 +1,164 @@
+
+$footer-bg:#05000e;
+$footer-bg-tab:white;
+$footer-text-tab:#05000e;
+$footer-heading:white;
+$footer-bottom-bor:rgb(22, 125, 221);
+$footer-text:rgba(255, 255, 255,0.7);
+$nav_hover:rgb(240, 228, 228);
+$box_shadow:rgba(0,0,0,0.2);
+
+/* ........footer.......................... */
+footer{
+    text-align: center;
+    background: $footer-bg;
+    padding: 1rem;
+    .footer-logo{
+        text-align: -webkit-center;
+        margin-bottom: 1rem;
+        .logoimg{
+            width: 50%;
+        }
+    }
+    .footer-heading{
+        display: none;
+        h3{
+            color: $footer-heading;
+            margin: 1rem;
+        }
+    }
+    .footer-nav{
+        ul{
+            li{
+                color: $footer-text;
+                margin-top: 1rem;
+                a{
+                    text-decoration: none;
+                    color: $footer-text;
+                }
+            }
+           
+        }
+    }
+    .footer-sites{
+        i{
+            width: 0.2rem;
+            padding: 1rem;
+            color: $footer-text;
+        }
+    }
+    .footer-sites-word{
+        display: none;
+        ul{
+            li{
+                color: $footer-text;
+                margin-top: 1rem;
+                a{
+                    text-decoration: none;
+                    color: $footer-text;
+                }
+            }
+        }
+    }
+    .footer-reserve{
+        // margin-top: 1rem;
+        color: $footer-text;
+        letter-spacing: 0.1rem;
+        font-size: 0.9rem;
+
+    }
+}
+/* .............footer..end............................................... */
+
+
+
+/* ....................................................*/
+/* ................................................... */
+/* ............tablet................................... */
+/* .................................................... */
+/* .................................................. */
+
+
+@media only screen and ( min-width:768px){
+
+
+/* .............footer................................................. */
+footer{
+    padding:1rem 2rem ;
+    border-bottom: .5rem solid $footer-bottom-bor;
+    background: $footer-bg-tab;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2.5fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "footer-nav footer-logo "
+        "footer-reserve footer-sites";
+    .footer-logo{
+        grid-area: footer-logo;
+        text-align: -webkit-right;
+        margin-bottom: 0rem;
+        .logoimg{
+            width: 11rem;
+        }
+    }
+    .footer-nav{
+        grid-area: footer-nav;
+        height: 1rem;
+        flex-direction: row;
+        justify-content: start;
+        ul{
+            display: flex;
+            a{
+                text-decoration: none;
+                li{
+                    color: $footer-text-tab;
+                   margin-top: 0rem;
+                   padding: 0.5rem 0rem;
+                   padding-right: 1rem;
+                   font-size: 0.9rem;
+                   &:hover{
+                      // background-color: $nav_hover;
+                       box-shadow: 2px 4px 8px 3px $box_shadow;
+                   }
+                }
+            }
+        }
+    }
+    .footer-sites{
+        grid-area: footer-sites;
+        text-align: end;
+        i{
+            color: $footer-text-tab ; 
+        }
+    }
+    .footer-reserve{
+        color:  $footer-text-tab;
+        font-family: nexa-light;
+        font-size: 0.9rem;
+        padding-bottom: 0rem;
+        text-align: left;
+    }
+}
+/* .............footer...end.............................................. */
+
+
+}
+
+/* ....................................................*/
+/* ................................................... */
+/* ............decstop................................... */
+/* .................................................... */
+/* .................................................. */
+
+@media only screen and ( min-width:1024px){
+    
+
+/* ....................footer................ */
+
+footer {
+    padding: 2rem 7rem;
+}
+
+
+}

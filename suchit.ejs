@@ -1,0 +1,707 @@
+
+/*
+
+var startingtime="10:00 AM";
+var totime="01:09 PM";
+var interval= 15;
+console.log("starting time=", startingtime);
+console.log("totime time=", totime);
+
+console.log("interval time=", interval);
+
+
+var sts = startingtime.slice(0,2);
+var stss = parseInt(sts);
+var aps= startingtime.slice(6,8)
+if(aps=="PM" && stss != 12){ 
+    stss = stss + 12;  
+}
+console.log("stss=",stss  )
+
+
+
+var et = totime.slice(0,2);
+var ets = parseInt(et);
+var ap= totime.slice(6,8)
+if(ap=="PM" && ets != 12){ 
+    ets = ets + 12;  
+}
+console.log("ets=",ets)
+
+
+
+var smin = startingtime.slice(3,5);
+var smin = parseInt(smin);
+var hsmin = stss*60 ;
+var tsmin = hsmin  + smin ;
+console.log("hsmin=",hsmin  )
+console.log("smin=",smin  )
+console.log("tsmin=",tsmin  )
+
+var emin = totime.slice(3,5);
+var emin = parseInt(emin);
+var hemin = ets*60 ;
+var temin = hemin  + emin ;
+console.log("hemin=",hemin  )
+console.log("emin=",emin  )
+console.log("temin=",temin  )
+
+
+
+
+
+var noslots = ( temin - tsmin )  / interval ;
+console.log(`noslots = ( ${temin} - ${tsmin} ) / ${interval} =`,( temin - tsmin) / interval)
+
+noslots =parseInt (noslots.toFixed(0))
+console.log("noslots=",noslots)
+
+var slots = [];
+for (i=0; i < noslots; i++)
+{
+    console.log("i=",i)
+
+    var hour = startingtime.slice(0,2);
+    console.log("hour=", hour)
+    var min = startingtime.slice(3,5);
+    var ampm= startingtime.slice(6,8);
+    var hours = parseInt(hour);
+
+    console.log("hours=",hours)
+    if(ampm=="PM" && hours != 12)
+    {
+        hours = hours + 12;
+    }
+    var mins = parseInt(min);
+    console.log("mins =",mins)
+
+    var sum = interval + mins;
+
+    if(interval==60){
+        hours = hours + 1;
+        sum = sum - 60;
+    }else if((sum/60) >= 1) {
+        hours = hours + 1 ;
+        sum = sum - 60;
+    }
+    else if (sum==60) {
+        hours = hours + 1;
+        sum = sum - 60;
+    }
+    var result ;
+    if(hours >= 12) {
+        hours = hours - 12 ;
+        if(sum < 10){
+            result = "0" + `${hours}` + ":" + `0${sum}` + " " + "PM";
+        }else{
+            result = "0" + `${hours}` + ":" + `${sum}` + " " + "PM";
+        }
+    }else {
+        if(hours == 10 || hours == 11){
+            if(sum < 10){
+                result = `${hours}` + ":" + `0${sum}` + " " + "AM";
+            }else{
+                result = `${hours}` + ":" + `${sum}` + " " + "AM";
+            }
+        }else{
+            if(sum < 10){
+                result ="0" + `${hours}` + ":" + `0${sum}` + " " + "AM";
+            }else{
+                result ="0" + `${hours}` + ":" + `${sum}` + " " + "AM";
+            }
+        }
+    }
+    console.log("result=", result);
+    if(i == (noslots - 1)){
+        if(startingtime.slice(0,2) == "00"){
+            var replace3 = startingtime.replace("00","12");
+            slots.push(`${replace3} - ${totime} `)
+        }else{
+            slots.push(`${startingtime} - ${totime} `)
+        }
+    }else{
+        if(startingtime.slice(0,2) == "00"){
+            var replace = startingtime.replace("00","12");
+            if(result.slice(0,2) == "00"){
+                var replace1 = result.replace("00","12");
+                slots.push(`${replace} - ${replace1}`)
+            }else{
+                slots.push(`${replace} - ${result}`)
+            }
+        }else if(result.slice(0,2) == "00"){
+            var replace2 = result.replace("00","12");
+            slots.push(`${startingtime} - ${replace2}`)
+        }else{
+            slots.push(`${startingtime} - ${result}`)
+        }
+    }
+    startingtime = result;
+    console.log("new starting time=", startingtime)
+
+}
+
+console.log("slots = ",slots);
+
+
+var emtarr = [];
+for(var k = 0 ; k < slots.length ; k++ ){
+    emtarr.push({
+        id:k,
+        schedule_time:slots[k],
+        checkbox:true
+    })
+}
+
+console.log("emtarr =",emtarr);
+
+*/
+
+/*
+
+var days = [["1m"],["2t"],["3w"],["4th"],["5f"],["6sa"]]
+
+// var d = new Date();
+// var n = d.getDay()
+// console.log("n = ",n); 
+n = 3;
+var newdays = [];
+for(var x = 0 ; x < days.length ; x++){
+
+    if(n == 0 || n == 7){
+            console.log("x,n = ",x,n)
+            newdays.push([])
+            console.log("newdays = ",newdays)
+        n++ ;
+    }
+    if(n > days.length){
+        console.log("x,n = ",x,n)
+        newdays.push(days[n - (days.length + 1 + 1)])
+        console.log("newdays = ",newdays)
+        n++ ;
+    }else{
+        console.log("x,n = ",x,n)
+        newdays.push(days[n-1])
+        console.log("newdays = ",newdays)
+        n++ ;
+    }
+}
+
+console.log("newdays = ",newdays)
+*/
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>doctor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/doctor.css">
+
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
+
+</head>
+
+<body>
+
+
+    <!-- include nav-->
+    <%- include('include/_nav') %>
+        <!-- /include nav -->
+
+        <section id="delhi">
+            <div>
+                Cardiak surgen in <strong> <u> Delhi</u> </strong>
+            </div>
+        </section>
+
+        <!--.........sort ..........-->
+        <div class="sort">
+            <div class="sort-home"> Home / Doctor List </div>
+            <select id="" name="">
+                <option value="volvo">sort by</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi">Audi</option>
+            </select>
+        </div>
+        <!--.........sort end..........-->
+
+        <!--.........main..........-->
+
+        <section id="main">
+            <div class="main">
+                <div class="filter">
+                    <div class="filter-bar">
+                        <h5> Filter By </h5>
+                    </div>
+                    <form action="">
+                        <div class="filter-buttons">
+                            <div class="fil-button">
+                                <div> DLF Cyber city </div>
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div class="fil-button">
+                                <div>multy organ transplant </div>
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div class="fil-button">
+                                <div>apolo hospital </div>
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div class="fil-button">
+                                <div>30+ </div>
+                                <i class="fa fa-times"></i>
+                            </div>
+                        </div>
+
+                        <div class="filter-search">
+                            <div class="filter-type">
+                                <div class="heading"> Location </div>
+                                <div class="logos">
+                                    <div class="logo-search"> <i class="fas fa-search searchicon"></i> </div>
+                                    <div class="logo-minus"> <i class="fa fa-minus"></i></div>
+                                </div>
+                            </div>
+                            <div class="filter-check-box">
+                                <ul>
+                                    <li> <input type="checkbox"> DLF Cyber city </li>
+                                    <li> <input type="checkbox"> Dwaraka </li>
+                                    <li> <input type="checkbox"> Lajpat Nagar </li>
+                                    <li> <input type="checkbox"> Palam Vihar </li>
+                                    <li> <input type="checkbox"> Punjabi Baag </li>
+                                    <li> <input type="checkbox"> Pusa Road </li>
+                                </ul>
+                            </div>
+                            <div class="filter-show-more"><a href="#">+ show more</a></div>
+
+                        </div>
+
+                        <div class="filter-search">
+                            <div class="filter-type">
+                                <div class="heading"> Treatment </div>
+                                <div class="logos">
+                                    <div class="logo-search"> <i class="fas fa-search searchicon"></i> </div>
+                                    <div class="logo-minus"> <i class="fa fa-minus"></i></div>
+                                </div>
+                            </div>
+                            <div class="filter-check-box">
+                                <ul>
+                                    <li> <input type="checkbox"> Multi Organ Transplant</li>
+                                    <li> <input type="checkbox"> Orthopedic Surgurey </li>
+                                    <li> <input type="checkbox"> Infertility Treatment </li>
+                                    <li> <input type="checkbox"> Dentistry </li>
+                                    <li> <input type="checkbox"> Cardiology </li>
+                                    <li> <input type="checkbox"> cancer </li>
+                                </ul>
+                            </div>
+                            <div class="filter-show-more"><a href="#">+ show more</a></div>
+
+                        </div>
+
+                        <div class="filter-search">
+                            <div class="filter-type">
+                                <div class="heading"> Hospital </div>
+                                <div class="logos">
+                                    <div class="logo-search"> <i class="fas fa-search searchicon"></i> </div>
+                                    <div class="logo-minus"> <i class="fa fa-minus"></i></div>
+                                </div>
+                            </div>
+                            <div class="filter-check-box">
+                                <ul>
+                                    <li> <input type="checkbox">Apollo Hospital </li>
+                                    <li> <input type="checkbox"> Manipal North </li>
+                                    <li> <input type="checkbox"> Side Hospital </li>
+                                    <li> <input type="checkbox"> Northstar </li>
+                                    <li> <input type="checkbox"> AIMS </li>
+                                    <li> <input type="checkbox"> Fortis Hospital </li>
+                                </ul>
+                            </div>
+                            <div class="filter-show-more"><a href="#">+ show more</a></div>
+
+                        </div>
+
+                        <div class="filter-search">
+                            <div class="filter-type">
+                                <div class="heading"> Year of experience </div>
+                                <div class="logos">
+                                    <div class="logo-search"> <i class="fas fa-search searchicon"></i> </div>
+                                    <div class="logo-minus"> <i class="fa fa-minus"></i></div>
+                                </div>
+                            </div>
+                            <div class="filter-check-box">
+                                <ul>
+                                    <li> <input type="checkbox"> 30+ </li>
+                                    <li> <input type="checkbox"> 20+ </li>
+                                    <li> <input type="checkbox"> 25+ </li>
+                                    <li> <input type="checkbox"> 15+ </li>
+                                    <li> <input type="checkbox"> 10+ </li>
+                                    <li> <input type="checkbox"> 5+ </li>
+                                </ul>
+                            </div>
+                            <div class="filter-show-more"><a href="#">+ show more</a></div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="doctor-boxs">
+                    <% for(var i=0 ; i < data.doctors.length ; i++) {%>
+                        <div class="doctor-box">
+                            <div class="doctor-content">
+
+                                <div class="doctor-name">
+                                    <h4>
+                                        <%= data.doctors[i].name %>
+                                    </h4>
+                                </div>
+
+                                <div class="doctor-logos">
+                                    <ul>
+                                        <li>
+                                            <div class="doctor-logo"><i class="fas fa-certificate"></i></div>
+                                            <%= data.doctors[i].specification %>
+                                        </li>
+                                        <li>
+                                            <div class="doctor-logo"><i class="fas fa-hospital"></i></div>
+                                            <%= data.doctors[i].qualification %>
+                                        </li>
+                                        <li>
+                                            <div class="doctor-logo"><i class="fas fa-clock"></i></div>
+                                            <%= data.doctors[i].experience %>
+                                        </li>
+                                        <li>
+                                            <div class="doctor-logo"><i class="fa fa-map-marker"></i></div>
+                                            <%= data.doctors[i].hospital %>
+                                        </li>
+                                        <li>
+                                            <div class="doctor-logo"> <i class="fas fa-clock"></i></div>
+                                            <%= data.doctors[i].colony %>
+                                                <%= data.doctors[i].city %>
+                                                    <%= data.doctors[i].state %>
+                                        </li>
+                                        <li>
+                                            <div class="doctor-logo"> <i class="fas fa-clock"></i></div>
+                                            <%= data.doctors[i].fees %>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="doctor-button">
+                                    <button class="bookapointment" onclick="myFunction(`<%= i %>`)"> book an apointment
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div class="doctor-photo">
+                                <a href="doctor_profile">
+                                    <img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg"
+                                        alt="">
+                                </a>
+                            </div>
+                            
+                            <%
+                            var summ = 0 ;
+                             for(var kk = 0 ; kk < data.doctors[i].schedule.length ; kk++) { 
+                                for( var ll = 0 ; ll < data.doctors[i].schedule[kk].length ; ll++ ){
+                                    var totalslot = data.doctors[i].schedule[kk][ll].slots.length ;
+                                    summ = summ + totalslot ;
+                                    console.log(`........${kk}..summ = `,summ)
+                                }
+                            }
+                            if( summ > 0){ %>
+                            <div class="date-container">
+
+                                <div class="back-button">
+                                    <h4> < </h4>
+                                </div>
+
+                                <div class="date-groups">
+
+                                    <% for(var k = 0 ; k < data.doctors[i].schedule.length ; k++) { 
+                                        var inc = 0 + k;
+                                        var currentDate = new Date(new Date(). getTime() + 24 * 60 * 60 * 1000 * inc);
+                                        var abc = String(currentDate) ;
+                                        var newcurrentDate = abc.slice(0,15)
+                                        %>
+                                    <div class="dates" value=""  >
+                                        <% if(k == 0){ %>
+                                            <h4> Today </h4>
+                                        <% }else if(k == 1) { %>
+                                            <h4> tommorow </h4>
+                                        <% }else{ %>
+                                            <h4> <%= newcurrentDate %> </h4>
+                                        <% } %>
+
+                                        <%  if( data.doctors[i].schedule[k].length > 0 ){ 
+                                            var sum = 0 ;
+                                            for( var l = 0 ; l < data.doctors[i].schedule[k].length ; l++ ){
+                                                var totalslots = data.doctors[i].schedule[k][l].slots.length ;
+                                                 sum = sum + totalslots ;
+                                                 console.log(`........${k}..sum = `,sum)
+                                            }
+                                            %>
+                                            <h5> <%= sum %> Slots Available</h5>
+                                            <% }else{ %>
+                                                <h5>0 Slots Available</h5>
+                                                <% } %>
+                                    </div>
+                                    <% } %>
+                
+                                </div>
+
+                                <div class="frountbutton">
+                                    <h4> > </h4>
+                                </div>
+                            </div>
+                            
+                                <% }else{ %>
+                                    <div class="swiper-container">
+                                        <h4> pls creatae shedule </h4>
+                                    </div>
+                                <% } %>
+
+                            <div class="slots">
+                                <% for(var j = 0 ; j < data.doctors[i].schedule.length ; j++) {   %>
+                                    <div class="bookingtimegroup">
+                                        <% if(data.doctors[i].schedule[j].length > 0) { %>
+                                            <% for(var m = 0; m < data.doctors[i].schedule[j].length ; m++ ) { %>
+                                                <div class="booking-time">
+                                                    <div class="daytime">
+                                                        <h5> Morning: </h5> 
+                                                    </div>
+                                                        <ul>
+                                                            <% for(var n = 0; n < data.doctors[i].schedule[j][m].slots.length ; n++ ) { 
+                                                               var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
+                                                                if( apmp == "AM") { %>
+                                                                    <li
+                                                                        onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">
+                                                                        <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
+                                                                    </li>
+                                                            <% } } %> 
+                                                        </ul>
+                                                    </div>
+                                                    <div class="booking-time">
+                                                        <div class="daytime">
+                                                            <h5> afternoon: </h5> 
+                                                        </div>
+                                                        <ul>
+                                                            <% for(var n = 0; n < data.doctors[i].schedule[j][m].slots.length ; n++ ) { 
+                                                                var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
+                                                                var fore = parseInt(data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,2))
+
+                                                                 if( (apmp == "PM" && fore < 4) || fore == 12 ) { %>
+                                                                     <li
+                                                                         onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">
+                                                                         <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
+                                                                     </li>
+                                                             <% } } %> 
+                                                        </ul>
+                                                    </div>
+                                                    <div class="booking-time">
+                                                        <div class="daytime">
+                                                            <h5> Evening: </h5>  
+                                                        </div>
+                                                        <ul>
+                                                            <% for(var n = 0; n < data.doctors[i].schedule[j][m].slots.length ; n++ ) { 
+                                                                var apmp = data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(6,8)
+                                                                var fore = parseInt(data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,2)) ;
+                                                                
+                                                                 if( apmp == "PM" && fore >= 4 && fore != 12)  { %>
+                                                                     <li
+                                                                         onclick="window.location.href='/bookAppointment/?scheduleId=5fa27d204c59e51ba4e9eb42&amp;slotId=5fa27d204c59e51ba4e9eb43&amp;date=Sat May 01 2021 11:55:33 GMT+0000 (Coordinated Universal Time)'">
+                                                                         <%= data.doctors[i].schedule[j][m].slots[n].schedule_time.slice(0,8) %>
+                                                                     </li>
+                                                             <% } } %> 
+                                                        </ul> 
+                                                    </div> 
+                                                <div class="booking-hospital-name">
+                                                    <h4> <%= data.doctors[i].schedule[j][m].hospital + m %></h4>
+                                                </div>
+                                            <% } %> 
+                                        <% }else{ %>
+                                            <h4> No slots Available </h4>
+                                        <% } %>    
+                                    </div> 
+                                <% } %>
+                            </div>
+
+                         
+
+                        </div>
+                        
+
+                    <% } %>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- include help-->
+        <%- include('include/_help') %>
+            <!-- /include help -->
+
+            <!-- include _footer-->
+            <%- include('include/_footer') %>
+                <!-- /include _footer -->
+
+
+
+                <script>    
+                ( function toggle_Schedules(){
+                    const datecontainer = document.getElementsByClassName("date-container");
+                    console.log("datecontainer = ",datecontainer)
+
+                    const frountbutton = document.getElementsByClassName("frountbutton");
+                    console.log("frountbutton = ",frountbutton)
+
+                    const backbutton = document.getElementsByClassName("back-button");
+                    console.log("backbutton = ",backbutton)
+
+                    for (let ii = 0; ii < datecontainer.length; ii++) {
+                        frountbutton[ii].addEventListener("click", e => {
+                            var xx = datecontainer[ii].getElementsByClassName("dates")[0].getAttribute("value") ;
+                                console.log("xx",xx);
+                            var xxx = parseInt(xx)
+                                console.log("parseInt xx",xxx);
+                            if((xx == "") || (xx == NaN)){
+                                xxx = 0 ;
+                                    console.log("xxx = ",xxx)
+                            }
+                            var s = xxx + 1; 
+                            console.log("s = ",s)
+                            if(s <= 3){
+                                console.log("yes");
+                            }else{
+                                console.log("no");
+                            }
+                            if(s <= 4){
+                                const dates = datecontainer[ii].getElementsByClassName("dates");
+                                for (let jj = 0; jj < dates.length; jj++) {
+                                    dates[jj].style.transform += "translateX(-100%)";
+                                   
+                                    dates[jj].setAttribute("value" , `${s}`);
+                                      
+                                   console.log("uv",datecontainer[ii].getElementsByClassName("dates")[0].getAttribute("value"))
+                                }
+                                var xx = datecontainer[ii].getElementsByClassName("dates")[0].style.transform ;
+                                console.log("xx f1= ",xx)
+                               
+                            }
+                        }); 
+                    }
+                    for (let iii = 0; iii < datecontainer.length; iii++) {
+                        backbutton[iii].addEventListener("click", ee => {
+                            var ss = datecontainer[iii].getElementsByClassName("dates")[0].getAttribute("value") ;
+                            console.log("ss = ",ss)
+                            var sss = parseInt(ss)
+                            console.log("sss = ",sss)
+                            if(ss == ""){
+                                var ssss = 0;
+                            }else{
+                                
+                                var ssss = sss - 1;
+                            }
+
+                            console.log("ssss = ",ssss)
+
+                            if((ss == "") || (ss == 0)){
+                                console.log("no")
+                            }
+
+                            if(!((ss == "") || (ss == 0))){
+                                const datess = datecontainer[iii].getElementsByClassName("dates");
+                                for (let j = 0; j < datess.length; j++) {
+                                    datess[j].style.transform += "translateX(100%)";
+                                    datess[j].setAttribute("value" , `${ssss}`);
+                                }
+                                 var sssss = datecontainer[iii].getElementsByClassName("dates")[0].style.transform ;
+                                 console.log("xxx f2= ",sssss)
+                            }
+                        });
+                    }
+                })();
+                </script>
+
+                <script>
+                    function neww() {
+                        var slide = document.getElementsByClassName("date-container");
+                        for (var m = 0; m < slide.length; m++) {
+                            slide[m].style.height = "0";
+                        }
+                    }
+                    neww();
+                    var slideIndexx;
+
+                    function myFunction(slideIndexx) {
+                        showSlidesss(slideIndexx);
+                    }
+                    function showSlidesss(slideIndexx) {
+                        
+                        console.log(" slideIndexx ",slideIndexx)
+                        var s = document.getElementsByClassName("date-container");
+                        var doc = document.getElementsByClassName("doctor-box");
+                        var bt = doc[slideIndexx].getElementsByClassName("bookingtimegroup");
+                        
+
+                        if (s[slideIndexx].style.height == "auto") {
+                            s[slideIndexx].style.height = "0";
+                            s[slideIndexx].style.margin = "0";
+
+                            for(var j = 0 ; j< bt.length ;j++){
+                                bt[j].classList.remove("active");
+                            }
+
+                        } else {
+                            s[slideIndexx].style.height = "auto";
+                            s[slideIndexx].style.margin = "1rem 0.5rem";
+
+                        }
+                    }
+                </script>
+
+                <script>
+                    (function toggle_Schedules_And_Slots () {
+                        const booking = document.getElementsByClassName("doctor-box");
+                        for (let i = 0; i < booking.length; i++) {
+                            const bookingDateBtn = booking[i].getElementsByClassName("dates");
+                            const timesGroup = booking[i].getElementsByClassName("bookingtimegroup");
+                            for (let j = 0; j < bookingDateBtn.length; j++) {
+                                bookingDateBtn[j].addEventListener("click", e => {
+                                    for (a = 0; a < timesGroup.length; a++) {
+                                        timesGroup[a].classList.remove("active");
+                                        bookingDateBtn[a].classList.remove("active");
+                                    } 
+                                    timesGroup[j].classList.add("active");
+                                    bookingDateBtn[j].classList.add("active");
+                                  //  booking[i].style.maxHeight = booking[i].scrollHeight + "px";
+                                });
+                            }
+                        }
+                    
+                    
+                    })();
+                </script>
+
+           
+
+</body>
+
+</html>

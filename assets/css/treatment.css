@@ -1,0 +1,463 @@
+:root {
+  --heading:white;
+  --i-background:rgba(147, 190, 222,0.5);
+  --sudo:rgb(22, 125, 221);
+  --service-backrround: rgb(147, 190, 222);
+  --gradient:rgb(22, 125, 221);
+  --more-service:white;
+  --crousal-button-background:white;
+}
+
+.home {
+  height: 10rem;
+  background-image: -webkit-gradient(linear, left top, right top, from(var(--gradient)), to(rgba(133, 178, 196, 0))), url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/dentist_hero_image.jpg");
+  background-image: linear-gradient(to right, var(--gradient), rgba(133, 178, 196, 0)), url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/dentist_hero_image.jpg");
+  background-position: top;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: nexa-light;
+}
+
+.home .home-contect {
+  text-align: center;
+}
+
+.home .home-contect h1 {
+  color: var(--heading);
+  margin-bottom: 1rem;
+}
+
+.home .home-contect p {
+  margin: 0;
+  color: var(--heading);
+}
+
+.info .vaccination .pashant h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.info .vaccination .pashant .doctor-box .doctor-img {
+  height: 15rem;
+  background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/dentist.jpg");
+  background-position: left;
+  background-size: cover;
+  margin-bottom: 1rem;
+}
+
+.info .vaccination .pashant .doctor-box .about {
+  font-family: 'nexa-light';
+  font-size: 0.9rem;
+  line-height: 1rem;
+}
+
+.info .vaccination .pashant .doctor-box .about h4 {
+  margin-bottom: 1rem;
+}
+
+.info .vaccination .pashant .doctor-box .about ul {
+  margin: 1rem;
+  list-style: disc;
+}
+
+.info .vaccination .pashant .doctor-box .about ul li {
+  margin-bottom: 0.5rem;
+}
+
+.info .vaccination .disorders {
+  margin-top: 2rem;
+}
+
+.info .vaccination .disorders .disorders-box {
+  text-align: -webkit-center;
+  line-height: 1rem;
+  font-family: 'nexa-light';
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.info .vaccination .disorders .disorders-box .logo-box {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--i-background);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+
+.info .vaccination .disorders .disorders-box .logo-box i {
+  font-size: 2rem;
+  width: 57%;
+}
+
+.info .vaccination .disorders .disorders-box h4 {
+  margin-bottom: 0.5rem;
+}
+
+.info .boxs .service-box {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.info .boxs .service-box::before {
+  position: absolute;
+  content: "";
+  border-top: 3px solid var(--sudo);
+  width: 1.3rem;
+  left: 0rem;
+  margin-top: 0.5rem;
+}
+
+.info .boxs .service-box h4 {
+  margin-bottom: 1rem;
+}
+
+.info .boxs .service-box ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 01rem;
+  position: relative;
+}
+
+.info .boxs .service-box ul li::before {
+  position: absolute;
+  content: "";
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 1.3rem;
+  width: 100%;
+}
+
+.info .boxs .service-box ul li .list-heading {
+  font-weight: 900;
+}
+
+.info .boxs .shedule-box {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.info .boxs .shedule-box::before {
+  position: absolute;
+  content: "";
+  border-top: 3px solid var(--sudo);
+  width: 1.3rem;
+  left: 0rem;
+  margin-top: 0.5rem;
+}
+
+.info .boxs .shedule-box h4 {
+  margin-bottom: 1rem;
+}
+
+.info .boxs .shedule-box ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 01rem;
+  position: relative;
+}
+
+.info .boxs .shedule-box ul li::before {
+  position: absolute;
+  content: "";
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 1.3rem;
+  width: 100%;
+}
+
+.info .boxs .shedule-box ul li .list-heading {
+  font-weight: 900;
+}
+
+.services {
+  background-color: var(--service-backrround);
+}
+
+.services .arrow-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+
+.services .arrow-box h2 {
+  color: var(--more-service);
+  margin-bottom: 1rem;
+}
+
+.services .arrow-box .arrow-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.services .arrow-box .arrow-button .arrow {
+  padding: 0.5rem;
+  background-color: var(--crousal-button-background);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.services .arrow-box .arrow-button .arrow i {
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.services .desices {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.services .desices .desices-box {
+  width: 100%;
+  position: relative;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 17rem;
+}
+
+.services .desices .desices-box::before {
+  position: absolute;
+  content: "";
+  border-top: 3px solid var(--sudo);
+  width: 1rem;
+  bottom: 2rem;
+  z-index: 1;
+}
+
+.services .desices .desices-box .paitiont-img {
+  position: absolute;
+  height: 100%;
+}
+
+.services .desices .desices-box .paitiont-img img {
+  border-radius: 0.5rem;
+}
+
+.services .desices .desices-box .h3 {
+  position: absolute;
+  bottom: 0;
+  padding: 1.5rem 0rem;
+  background-color: var(--crousal-button-background);
+  width: 100%;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.services .desices .desices-box .h3 h3 {
+  margin-left: 1.5rem;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation: fade 01s forwards;
+          animation: fade 01s forwards;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+@-webkit-keyframes fade {
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@keyframes fade {
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+footer .footer-nav ul .Other-services {
+  display: none;
+}
+
+footer .footer-nav ul .contact {
+  display: block;
+}
+
+/* .............................................................. */
+/* .............................................................. */
+/*                          tablate                                 */
+/* .............................................................. */
+/* .............................................................. */
+@media only screen and (min-width: 768px) {
+  .info .vaccination .pashant h2 {
+    text-align: start;
+  }
+  .info .vaccination .pashant .doctor-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .info .vaccination .pashant .doctor-box .doctor-img {
+    width: 100%;
+  }
+  .info .vaccination .pashant .doctor-box .about {
+    margin-left: 1rem;
+  }
+  .info .vaccination .disorders {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .info .vaccination .disorders .disorders-box {
+    width: 32%;
+  }
+  .info .boxs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .info .boxs .service-box {
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+    width: 50%;
+  }
+  .info .boxs .service-box ul li ::before {
+    margin-top: 1.2rem;
+  }
+  .info .boxs .shedule-box {
+    margin-left: 0.5rem;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 50%;
+  }
+  .info .boxs .shedule-box ul li ::before {
+    margin-top: 1.2rem;
+  }
+  .services .arrow-box {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .services .arrow-box h2 {
+    margin-bottom: 0;
+  }
+  .services .desices {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .services .desices .desices-box {
+    width: 32.5%;
+  }
+  .services .desices .desices-box::before {
+    bottom: 2.1rem;
+  }
+}
+
+/* .............................................................. */
+/* .............................................................. */
+/*                          decstop                                 */
+/* .............................................................. */
+/* .............................................................. */
+@media only screen and (min-width: 1023px) {
+  .home {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    height: 13rem;
+  }
+  .info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .info .vaccination {
+    width: 72%;
+    margin-right: 1rem;
+  }
+  .info .vaccination .disorders {
+    margin-top: 2rem;
+  }
+  .info .vaccination .disorders .disorders-box {
+    margin-bottom: 0;
+  }
+  .info .boxs {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .info .boxs .service-box {
+    width: 17rem;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .info .boxs .service-box ::before {
+    margin-top: 0.7rem;
+  }
+  .info .boxs .shedule-box {
+    width: 17rem;
+  }
+  .info .boxs .shedule-box ::before {
+    margin-top: 0.7rem;
+  }
+  .services .desices .desices-box::before {
+    bottom: 2.3rem;
+    width: 1.3rem;
+  }
+}
+/*# sourceMappingURL=treatment.css.map */

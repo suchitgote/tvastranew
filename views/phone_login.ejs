@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/new-theme.css">
+    <link rel="stylesheet" href="css/phone_login.css">
+
+    <title>phone-login</title>
+</head>
+<body>
+
+<!-- include nav-->
+<%- include('include/_nav') %>
+<!-- /include nav -->
+
+<% if(data.err) { %>
+    <div class="alert">
+        <i class="fa fa-times-circle" aria-hidden="true"></i>
+        <div class="alert_content">
+            <h4>failuar</h4>
+            <p> <strong> <%= data.err %> </strong> </p>
+        </div>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    </div>
+  <% } %>
+
+
+<div class="main">
+
+    <div class="login-box">
+
+        <div class="login">
+            <h2>Phone Login</h2>
+        </div>
+
+        <div class="form">
+            <form action="/phone_login" method="POST">
+                <input type="text" class="a"  placeholder="Enter phone number" name="number" required>
+                <div class="forgot">
+                    <a href="/email_login">
+                        <h5>Login with password</h5>  
+                    </a>
+                </div>
+                <button type="submit"> LOGIN <span> <i class="fa fa-arrow-right" aria-hidden="true"></i> </span></button>
+            </form>
+        </div>
+    
+        <div class="signup">
+             Not Registerd? <a href="signup"> Sign Up</a> 
+        </div>
+    </div>
+
+    <div class="reserved">
+        <h6> All right reserved Tvastra 2020 </h6>
+    </div>
+
+</div>
+
+    
+</body>
+</html>

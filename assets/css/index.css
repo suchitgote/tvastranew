@@ -1,0 +1,706 @@
+.alert {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  position: absolute;
+  right: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 6rem;
+  z-index: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-left: 0.2rem solid green;
+}
+
+.alert i {
+  font-size: 1.5rem;
+  color: green;
+}
+
+.alert .alert_content {
+  margin-left: 1rem;
+}
+
+.alert .alert_content h4 {
+  color: green;
+}
+
+.alert .alert_content p {
+  color: green;
+  margin-bottom: 0;
+}
+
+.alert .closebtn {
+  margin-left: 15px;
+  font-weight: bold;
+  float: right;
+  color: green;
+  font-size: 2rem;
+  line-height: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.alert:hover {
+  color: black;
+}
+
+p {
+  font-size: 1rem;
+}
+
+/* ........search............................. */
+.search {
+  background-color: #9caedf;
+}
+
+.search .searchbox form .location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background-color: var(--white);
+  margin-bottom: 0.5rem;
+  margin-right: 0.1rem;
+  height: 2.52rem;
+}
+
+.search .searchbox form .location i {
+  margin: 0.5rem;
+}
+
+.search .searchbox form .location input::-webkit-input-placeholder {
+  padding-left: 0rem;
+}
+
+.search .searchbox form .location input:-ms-input-placeholder {
+  padding-left: 0rem;
+}
+
+.search .searchbox form .location input::-ms-input-placeholder {
+  padding-left: 0rem;
+}
+
+.search .searchbox form .location input::placeholder {
+  padding-left: 0rem;
+}
+
+.search .searchbox form .location .input1 {
+  padding-left: 0rem;
+}
+
+.search .searchbox form .location img {
+  width: 1rem;
+  margin: 0.5rem;
+}
+
+.search .searchbox form input {
+  height: 1.52rem;
+  border: none;
+}
+
+.search .searchbox form .primary-button {
+  width: 40%;
+  margin-top: 1rem;
+  height: 2rem;
+}
+
+/* ........search.end...................... */
+/* ........working......................... */
+.working-steps .step ul li {
+  height: 3rem;
+  border: 0.1rem solid var(--black_light);
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--white_dark);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.working-steps .step ul li h3 span {
+  padding: 0.5rem;
+  margin-left: 0.2rem;
+}
+
+.working-steps .step ul .w-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.working-steps .step ul .w-img .wcontent .img {
+  width: 95%;
+  margin: 1rem auto;
+}
+
+.working-steps .step ul .w-img .wcontent h3 {
+  text-align: center;
+  margin-bottom: 01rem;
+  font-size: 1.2rem;
+}
+
+/* ........working..end..................... */
+/* ........doctor........................... */
+.doctor {
+  background-color: #121025;
+}
+
+.doctor h1 {
+  color: white;
+}
+
+.doctor p {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.doctor .mySlides {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.doctor .mySlides .doctor-box {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 1rem;
+  float: left;
+}
+
+.doctor .mySlides .doctor-box .doctor-image {
+  width: 100%;
+  height: 22rem;
+}
+
+.doctor .mySlides .doctor-box .doctor-name {
+  width: 100%;
+  background-color: white;
+  padding: 1rem 0rem;
+  border-bottom: 0.2rem solid #167ddd;
+}
+
+.doctor .mySlides .doctor-box .doctor-name .sudo {
+  position: relative;
+}
+
+.doctor .mySlides .doctor-box .doctor-name .sudo::before {
+  position: absolute;
+  top: 0.46rem;
+  content: "";
+  width: 1.5rem;
+  border-bottom: 2px solid #167ddd;
+}
+
+.doctor .mySlides .doctor-box .doctor-name .sudo h3 {
+  color: #167ddd;
+  margin-left: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.doctor .mySlides .doctor-box .doctor-name .sudo ul li {
+  margin-left: 1.75rem;
+  margin-bottom: 0.3rem;
+  text-align: start;
+  font-size: 0.9rem;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation: fade 01s forwards;
+          animation: fade 01s forwards;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+@-webkit-keyframes fade {
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@keyframes fade {
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+/* ........doctor end....................... */
+/* ........treatment........................ */
+.Treatment .doc .docs .doc-c .grid-box {
+  height: 20rem;
+  width: 100%;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.Treatment .doc .docs .doc-c .grid-box .linear-g {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(57%, rgba(17, 10, 26, 0.9)));
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(17, 10, 26, 0.9) 57%);
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  bottom: 0%;
+}
+
+.Treatment .doc .docs .doc-c .grid-box img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Treatment .doc .docs .doc-c .grid-box .name {
+  position: absolute;
+  bottom: 6%;
+  left: 6%;
+  font-size: 0.75rem;
+  font-family: nexa-light;
+  color: var(--white);
+  text-align: left;
+}
+
+.Treatment .doc .docs .doc-c .grid-box .name h5 {
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.02rem;
+  font-size: 1rem;
+  font-family: 'nexa-bold';
+  color: var(--white);
+}
+
+/* ........treatment..end................... */
+/* ........service.......................... */
+.services {
+  padding-bottom: 2rem;
+  background-color: #e3e6e7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.services .box {
+  background-color: #f8f7f7;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 47%;
+  margin: 0.2rem;
+}
+
+.services .box img {
+  width: 50%;
+}
+
+.services .box h3 {
+  font-size: 0.81rem;
+  margin-bottom: 0.7rem;
+  padding-top: 0rem;
+}
+
+/* ........servic end....................... */
+/* .............................................................. */
+/* .............................................................. */
+/*                          tablate                                 */
+/* .............................................................. */
+/* .............................................................. */
+@media only screen and (min-width: 768px) {
+  p {
+    font-size: 1.01rem;
+  }
+  .search .searchbox form {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .search .searchbox form .location {
+    width: 60%;
+    margin-bottom: 0rem;
+  }
+  .search .searchbox form .primary-button {
+    margin-top: 0rem;
+    height: 2.5rem;
+  }
+  /* .............working................................................. */
+  .working-steps .step ul {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+  .working-steps .step ul li {
+    width: 90%;
+    height: 3.5rem;
+    margin-top: 1rem;
+  }
+  .working-steps .step ul li h3 span {
+    padding: 0.7rem;
+  }
+  .working-steps .step ul .w-img {
+    -ms-grid-column: 2;
+        grid-column-start: 2;
+    grid-column-end: 3;
+    -ms-grid-row: 1;
+        grid-row-start: 1;
+    grid-row-end: 8;
+  }
+  .working-steps .step ul .w-img .img {
+    margin: 1.5rem 0rem;
+  }
+  .working-steps .step ul .w-img .img img {
+    padding: 0rem;
+  }
+  .working-steps .step ul .w-img h3 {
+    margin-bottom: 1.5rem;
+  }
+  /* .............working..end............................................... */
+  /* .............doctor................................................. */
+  .doctor {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .doctor .mySlides {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .doctor .mySlides .doctor-box {
+    width: 47.5%;
+    margin: 0.5rem;
+  }
+  .doctor .mySlides .doctor-box .doctor-name {
+    height: 5rem;
+  }
+  .doctor .mySlides .doctor-box .doctor-name .sudo::before {
+    top: 0.6rem;
+  }
+  .doctor .mySlides .doctor-box .doctor-name .sudo h3 {
+    margin-bottom: 0.5rem;
+  }
+  /* .............doctor..end............................................... */
+  /* .............treatment................................................. */
+  .Treatment {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .Treatment .doc .docs .doc-c {
+    width: 47.5%;
+    margin: 0.5rem 0.5rem;
+    float: left;
+  }
+  .Treatment .doc .docs .doc-c .grid-box {
+    margin: 0rem;
+  }
+  /* .............treatment...end.............................................. */
+  /* .............service................................................. */
+  .services .content p {
+    margin: 1rem 3rem;
+  }
+  .services .box {
+    width: 31%;
+    margin: 0.5rem;
+  }
+  .services .box img {
+    width: 40%;
+  }
+  .services .box h3 {
+    margin-bottom: 1rem;
+  }
+  /* .............service...end.............................................. */
+}
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................decstop...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+@media only screen and (min-width: 1024px) {
+  p {
+    font-size: 1.2rem;
+  }
+  /* ........search.......................... */
+  .search {
+    background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/img1.jpg");
+    background-image: no-repeat;
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+    height: 24rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .search .searchbox p {
+    width: 65%;
+  }
+  .search .searchbox form {
+    width: 80%;
+  }
+  .search .searchbox form .location {
+    height: 4rem;
+  }
+  .search .searchbox form .location i {
+    margin: 1.3rem;
+    font-size: 1.5rem;
+  }
+  .search .searchbox form .location img {
+    margin: 1.3rem;
+    width: 1.3rem;
+  }
+  .search .searchbox form input {
+    height: 3rem;
+  }
+  .search .searchbox form input::-webkit-input-placeholder {
+    font-size: 01rem;
+  }
+  .search .searchbox form input:-ms-input-placeholder {
+    font-size: 01rem;
+  }
+  .search .searchbox form input::-ms-input-placeholder {
+    font-size: 01rem;
+  }
+  .search .searchbox form input::placeholder {
+    font-size: 01rem;
+  }
+  .search .searchbox form .primary-button {
+    height: 4rem;
+  }
+  /* ........search end....................... */
+  /* ........work............................. */
+  .working-steps .step ul li {
+    height: 8rem;
+    width: 80%;
+    margin-top: 0.5rem;
+  }
+  .working-steps .step ul li h3 span {
+    margin: 2rem;
+    font-size: 2rem;
+  }
+  .working-steps .step ul .w-img .wcontent {
+    margin-left: auto;
+    width: 95%;
+  }
+  .working-steps .step ul .w-img .wcontent .img {
+    margin: 2rem auto;
+    width: 100%;
+  }
+  .working-steps .step ul .w-img .wcontent h3 {
+    font-size: 1.5rem;
+  }
+  .working-steps .step ul .w-img .wcontent p {
+    text-align: center;
+    margin: 0rem 3rem;
+  }
+  /* ........work..end........................ */
+  /* ............doctor........................ */
+  .doctor h1 {
+    margin-bottom: 2rem;
+  }
+  .doctor p {
+    margin-bottom: 2rem;
+  }
+  .doctor .mySlides {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .doctor .mySlides .doctor-box {
+    width: 24.5%;
+    margin: 0rem;
+  }
+  .doctor .mySlides .doctor-box .doctor-name {
+    height: 5.5rem;
+  }
+  .doctor .dots {
+    margin-top: 2rem;
+  }
+  .doctor .dots .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    display: inline-block;
+    -webkit-transition: background-color 0.6s ease;
+    transition: background-color 0.6s ease;
+  }
+  /* ............doctor..end................... */
+  /*......treatment.......................  */
+  .Treatment {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .Treatment .doc .docs {
+    display: -ms-grid;
+    display: grid;
+    height: 50rem;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: (1fr)[10];
+        grid-template-rows: repeat(10, 1fr);
+  }
+  .Treatment .doc .docs .doc-c {
+    margin: 0.3rem;
+    width: auto;
+  }
+  .Treatment .doc .docs .doc-c .grid-box {
+    height: 100%;
+  }
+  .Treatment .doc .docs #ta {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: 1 / 1 / span 3 / span 1;
+    margin-left: 0;
+  }
+  .Treatment .doc .docs #tb {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 5;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-area: 1 / 2 / span 5 / span 1;
+  }
+  .Treatment .doc .docs #tc {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 4;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    grid-area: 1 / 3 / span 4 / span 1;
+    margin-right: 0;
+  }
+  .Treatment .doc .docs #td {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 8;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: 4 / 1 / span 8 / span 1;
+    margin-left: 0;
+  }
+  .Treatment .doc .docs #te {
+    -ms-grid-row: 6;
+    -ms-grid-row-span: 5;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-area: 6 / 2 / span 5 /  3;
+  }
+  .Treatment .doc .docs #tf {
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 6;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    grid-area: 5 / 3 / span 6 / span 1;
+    margin-right: 0;
+  }
+  .Treatment .dotss {
+    margin-top: 2rem;
+  }
+  .Treatment .dotss .dott {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin-right: 0.5rem;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    -webkit-transition: background-color 0.6s ease;
+    transition: background-color 0.6s ease;
+  }
+  .Treatment .dotss .dott:hover {
+    background-color: #ddc6c6;
+  }
+  /*......treatment.end......................  */
+  /* .......service.................. */
+  .services {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .services .content {
+    margin-bottom: 2rem;
+  }
+  .services .content p {
+    margin: 0rem;
+  }
+  .services .box {
+    height: 12rem;
+    width: 16.5%;
+    margin: 0rem;
+    border-radius: 0rem;
+  }
+  .services .box img {
+    width: 40%;
+    height: 40%;
+  }
+  /* .......service.end................. */
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,67 @@
+
+
+$help-bg:rgb(108, 200, 236);
+$help-h1:white;
+$second-button:rgb(78, 108, 163);
+$second-button-text: white ;
+
+
+/* ........help............................. */
+.helps{
+    background: $help-bg;
+    .help{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .content{
+            h1{
+                color: $help-h1;
+            }   
+        }
+        .second-button{
+            background-color: $second-button;
+            border-radius: 0.3rem;
+            color: $second-button-text;
+            font-family: nexa-light;
+            border-style: none ;
+            padding: 0.6rem 1rem;
+        }
+    }   
+}
+/* ........help..end....................... */
+
+
+/* ....................................................*/
+/* ................................................... */
+/* ............decstop................................... */
+/* .................................................... */
+/* .................................................. */
+
+@media only screen and ( min-width:1024px){
+
+
+/* ........help......................... */
+.helps{
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    .help{
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        .content{
+            p{
+                margin: 0rem;
+            } 
+        }
+        .second-button{
+            border-radius: 0.4rem;
+            padding: 0rem 3rem;
+            height: 5rem;
+        }
+    }
+}
+/* ........help..end....................... */
+
+}

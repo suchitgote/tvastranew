@@ -1,0 +1,651 @@
+:root {
+  --button:rgb(50, 52, 170);
+  --plan-background:rgba(255, 255, 255, 1);
+  --sudo-line:rgba(0, 0, 0,0.1);
+  --price-p:rgb(50, 52, 170);
+  --popular:red;
+  --popular-font:white;
+  --ratebar:rgb(223, 223, 219);
+  --ratebar-value:rgb(50, 52, 170);
+  --user-plan:rgb(195, 213, 240);
+  --que-color:skyblue;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.plus {
+  background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/task30-tvastra-plus/tvastraPlus_heroSection.webp");
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  height: 18rem;
+}
+
+.plus button {
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  height: 2rem;
+  background-color: var(--button);
+  border: none;
+}
+
+.plus h1 {
+  margin-bottom: 1.5rem;
+}
+
+.info {
+  padding-bottom: 0rem;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(5%, rgba(59, 59, 243, 0.1)), color-stop(8%, rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(rgba(59, 59, 243, 0.1) 5%, rgba(255, 255, 255, 0) 8%);
+}
+
+.info .buy-plans {
+  background-color: var(--plan-background);
+  margin-top: -9rem;
+  text-align: center;
+  padding: 0.5rem;
+  -webkit-box-shadow: 1px 1px 8px #888888;
+          box-shadow: 1px 1px 8px #888888;
+}
+
+.info .buy-plans h2 {
+  position: relative;
+  margin: 0.5rem;
+}
+
+.info .buy-plans h2::before {
+  position: absolute;
+  content: "";
+  border-bottom: 1px solid var(--sudo-line);
+  width: 93%;
+  left: 0.5rem;
+  top: 5.5rem;
+}
+
+.info .buy-plans .plan .price h2::before {
+  width: 0;
+}
+
+.info .buy-plans p {
+  margin-bottom: 1rem;
+}
+
+.info .buy-plans .plan {
+  position: relative;
+  height: 24rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  /* padding: 0rem 3rem; */
+  margin-bottom: 1rem;
+}
+
+.info .buy-plans .plan h3 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.info .buy-plans .plan h3::before {
+  position: absolute;
+  content: "";
+  border-bottom: 1px solid var(--sudo-line);
+  width: 100%;
+  top: 2rem;
+}
+
+.info .buy-plans .plan p {
+  margin: 0 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.info .buy-plans .plan .price {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.info .buy-plans .plan .price p {
+  margin-bottom: 1rem;
+  color: var(--price-p);
+}
+
+.info .buy-plans .advanced {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, rgba(59, 59, 243, 0.1)), color-stop(90%, rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(rgba(59, 59, 243, 0.1) 50%, rgba(255, 255, 255, 0) 90%);
+  /* margin-top: 1rem; */
+}
+
+.info .buy-plans .advanced .popular {
+  background-color: var(--popular);
+  padding: 0.2rem 0.5rem;
+  border-radius: 1.1rem;
+  font-size: 0.7rem;
+  color: var(--popular-font);
+  margin-top: -0.6rem;
+  font-family: nexa-light;
+}
+
+.info .rateing-box {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.info .rateing-box .star-box .by-star h1, .star i, .star-box p,
+.info .rateing-box .follower-box .follower i, .follower h3, .follower p {
+  color: #3234aa;
+}
+
+.info .rateing-box .star-box .by-star h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.info .rateing-box .star-box .by-star .star {
+  margin-bottom: 0.5rem;
+}
+
+.info .rateing-box .star-box .by-number {
+  margin: 0 2rem;
+}
+
+.info .rateing-box .star-box .by-number .num-box {
+  display: -webkit-box;
+}
+
+.info .rateing-box .star-box .by-number .num-box p {
+  width: 2rem;
+}
+
+.info .rateing-box .star-box .by-number .num-box .ratebar {
+  height: 1rem;
+  background-color: var(--ratebar);
+  width: 93%;
+  border-radius: 0.5rem;
+}
+
+.info .rateing-box .star-box .by-number .num-box .ratebar .five, .four, .three, .two, .one {
+  background-color: var(--ratebar-value);
+  width: 70%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.info .rateing-box .star-box .by-number .num-box .ratebar .four {
+  width: 60%;
+}
+
+.info .rateing-box .star-box .by-number .num-box .ratebar .three {
+  width: 50%;
+}
+
+.info .rateing-box .star-box .by-number .num-box .ratebar .two {
+  width: 30%;
+}
+
+.info .rateing-box .star-box .by-number .num-box .ratebar .one {
+  width: 10%;
+}
+
+.info .rateing-box .follower-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.info .rateing-box .follower-box .follower {
+  width: 50%;
+}
+
+.info .rateing-box .follower-box .follower i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  width: auto;
+}
+
+.info .rateing-box .follower-box .follower h3 {
+  margin-bottom: 0.5rem;
+}
+
+.info .hospitals-lists {
+  text-align: center;
+  margin: 2rem 0rem;
+}
+
+.info .hospitals-lists .hospital-heading {
+  text-align: -webkit-center;
+}
+
+.info .hospitals-lists .hospital-heading p {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-weight: 900;
+  position: relative;
+}
+
+.info .hospitals-lists .hospital-heading p::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  top: 1.5rem;
+}
+
+.info .hospitals-lists .hospital-box .zerofees .zerofees-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.info .hospitals-lists .hospital-box .zerofees .zerofees-content i {
+  width: 3rem;
+  font-size: 1.5rem;
+}
+
+.info .hospitals-lists .hospital-box .top-hospital {
+  font-family: 'nexa-light';
+}
+
+.hospitals {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  margin: 1rem 0rem;
+}
+
+.hos-logo {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.hos-logo:last-child, .hos-logo:nth-last-child(2):nth-child(odd) {
+  border-bottom: none;
+}
+
+.hos-logo:nth-child(odd) {
+  border-right: 1px solid black;
+}
+
+.hospitals-lists .hospital-box .top-hospital .hospitals .hos-logo img {
+  width: 70%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.info .offer-box {
+  text-align: center;
+  margin: 2rem 0rem;
+}
+
+.info .offer-box .offer-container {
+  margin: 1rem 0rem;
+}
+
+.info .offer-box .offer-container .offer-info .offer-info-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.info .offer-box .offer-container .offer-info .offer-info-content i {
+  width: 3rem;
+  font-size: 1.5rem;
+}
+
+.info .offer-box .offer-container .offer-photo {
+  -webkit-box-shadow: 1px 1px 10px 1px #856666;
+          box-shadow: 1px 1px 10px 1px #856666;
+  border-radius: 1rem;
+}
+
+.info .offer-box .offer-container .offer-photo img {
+  border-radius: 1rem;
+}
+
+.info .tests-box {
+  margin: 2rem 0rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.info .tests-box h5 {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.info .tests-box .profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 49%;
+  -webkit-box-shadow: 2px 2px 5px 1px #e6d9d9;
+          box-shadow: 2px 2px 5px 1px #e6d9d9;
+  margin-bottom: 0.4rem;
+}
+
+.info .tests-box .profile .profile-img {
+  margin: 1rem 0rem;
+  width: 3rem;
+}
+
+.info .tests-box .profile h4 {
+  margin-bottom: 1rem;
+}
+
+.info .why {
+  margin-top: 2rem;
+}
+
+.info .why .why-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.info .why .why-heading h2 {
+  margin: 0rem;
+  margin-right: 0.5rem;
+}
+
+.info .why .why-box {
+  -webkit-box-shadow: 1px 1px 5px 1px #e6d9d9;
+          box-shadow: 1px 1px 5px 1px #e6d9d9;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.info .why .why-box p {
+  text-align: start;
+}
+
+.info .why .why-box .why-photo-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1rem;
+}
+
+.info .why .why-box .why-photo-box .doc-img {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.info .why .why-box .why-photo-box .doc-img img {
+  border-radius: 2rem;
+}
+
+.info .why .why-box .why-photo-box .why-content .user {
+  padding: 0.5rem;
+  background-color: var(--user-plan);
+  border-radius: 0.3rem;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  font-family: nexa-light;
+}
+
+input {
+  width: auto;
+}
+
+.questions-box .accordian-tab {
+  margin-bottom: 1rem;
+}
+
+.questions-box .accordian-tab > .accordian-toggle {
+  display: none;
+}
+
+.questions-box .accordian-tab > label {
+  color: var(--que-color);
+  display: block;
+  font-size: 1.1rem;
+  font-family: nexa-bold;
+}
+
+.questions-box .accordian-tab > label::after {
+  content: "\f078";
+  font: normal normal normal 14px/1 FontAwesome;
+  position: absolute;
+  right: 1rem;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+.questions-box .accordian-tab > .accordian-content {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.questions-box .accordian-tab > .accordian-toggle:checked ~ label::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.questions-box .accordian-tab > .accordian-toggle:checked ~ .accordian-content {
+  max-height: 100vh;
+  /* background-color: aliceblue; */
+  margin-top: 1rem;
+}
+
+/* ...................................... */
+/* ...................................... */
+/* ............tablet.................... */
+/* ...................................... */
+/* ...................................... */
+@media only screen and (min-width: 768px) {
+  .plus {
+    text-align: start;
+  }
+  .plus h1 {
+    text-align: start;
+  }
+  .plus p {
+    text-align: start;
+  }
+  .info .buy-plans {
+    margin-top: -10rem;
+  }
+  .info .buy-plans h2::before {
+    width: 0;
+  }
+  .info .buy-plans {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-bottom: 5rem;
+  }
+  .info .buy-plans h2, .buy-plans p {
+    width: 100%;
+  }
+  .info .buy-plans p {
+    margin-bottom: 2rem;
+  }
+  .info .buy-plans .plan {
+    padding: 0 1rem;
+    width: 28.6%;
+    height: 28rem;
+  }
+  .info .buy-plans .plan p {
+    width: 70%;
+  }
+  .info .rateing-box .star-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 2rem;
+  }
+  .info .rateing-box .star-box .by-star {
+    width: 10rem;
+  }
+  .info .rateing-box .star-box .by-number {
+    width: 15rem;
+  }
+  .info .rateing-box .follower-box .follower {
+    width: 25%;
+    margin-top: 1rem;
+  }
+  .info .hospitals-lists .hospital-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 2rem;
+  }
+  .info .hospitals-lists .hospital-box .zerofees {
+    width: 50%;
+  }
+  .info .hospitals-lists .hospital-box .zerofees .zerofees-content p {
+    text-align: start;
+    margin-left: 1rem;
+  }
+  .info .offer-box {
+    margin-top: 4rem;
+  }
+  .info .offer-box .offer-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 3rem;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  }
+  .info .offer-box .order {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .info .offer-box .offer-container .offer-info {
+    width: 50%;
+  }
+  .info .offer-box .offer-container .offer-photo {
+    width: 45%;
+    height: 14rem;
+  }
+  .info .offer-box .offer-container .offer-info .offer-info-content p {
+    text-align: start;
+    margin-left: 1rem;
+  }
+  .info .tests-box h5 {
+    text-align: start;
+  }
+  .info .why {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .info .why .why-heading {
+    width: 100%;
+  }
+  .info .why .why-box {
+    width: 45%;
+  }
+}
+
+/* ...................................... */
+/* ...................................... */
+/* ............decstop.................... */
+/* ...................................... */
+/* ...................................... */
+@media only screen and (min-width: 1023px) {
+  p {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .plus {
+    height: 30rem;
+  }
+  .plus button {
+    margin-top: 5rem;
+  }
+  .info .buy-plans {
+    margin-top: -13rem;
+  }
+  .info .rateing-box .star-box .by-number .num-box p {
+    width: 2rem;
+    margin-bottom: 1rem;
+  }
+  .info .offer-box .offer-container .offer-photo {
+    width: 25%;
+  }
+  .info .offer-box .offer-container .offer-info {
+    width: 70%;
+  }
+  .info .tests-box .profile {
+    width: 21%;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 1rem;
+  }
+  .info .tests-box .profile p {
+    text-align: start;
+  }
+  .info .why .why-box {
+    width: 30%;
+  }
+}
+/*# sourceMappingURL=tvastra-plus.css.map */

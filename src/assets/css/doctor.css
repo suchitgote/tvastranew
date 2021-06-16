@@ -1,0 +1,368 @@
+:root {
+  --doctor-name: rgb(58, 188, 240);
+  --sudo-line: rgb(58, 188, 240);
+  --i: rgb(58, 188, 240);
+  --sort-by: rgb(241, 232, 232);
+}
+
+/* ..........delhi......... */
+#delhi {
+  display: none;
+}
+
+/* ..........delhi.end.......... */
+/* .........sort.......... */
+.sort {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0rem 1rem;
+}
+
+.sort .sort-home {
+  font-family: 'nexa-light';
+}
+
+.sort select {
+  padding: 0.5rem 0.6rem;
+  font-size: 0.8rem;
+  background-color: var(--sort-by);
+  border: none;
+  font-weight: 600;
+  width: 5.5rem;
+}
+
+/* ........sort end........ */
+#main .main .filter {
+  display: none;
+}
+
+#main .main .doctor-boxs .doctor-box {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  padding: 1rem 0rem;
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-name::before {
+  position: absolute;
+  content: "";
+  width: 1.5rem;
+  border-top: 2px solid var(--sudo-line);
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-name h4 {
+  margin-left: 1.8rem;
+  color: var(--doctor-name);
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 1.1rem;
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul li .doctor-logo i {
+  margin: 0.5rem;
+  text-align: center;
+  color: var(--i);
+}
+
+#main .main .doctor-boxs .doctor-box .doctor-content .doctor-button {
+  text-align: center;
+  margin: 0.5rem 0rem;
+}
+
+footer .footer-heading {
+  display: block;
+}
+
+footer .footer-sites-word {
+  display: block;
+}
+
+footer .footer-sites {
+  display: none;
+}
+
+footer .footer-reserve {
+  margin-top: 1rem;
+}
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................tablet...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+@media only screen and (min-width: 768px) {
+  #delhi {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(133, 178, 196, 0.9)), to(rgba(133, 178, 196, 0.9))), url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png");
+    background-image: linear-gradient(rgba(133, 178, 196, 0.9), rgba(133, 178, 196, 0.9)), url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 10rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-family: nexa-light;
+    font-size: 1.4rem;
+    background-color: #29bdeb;
+  }
+  #delhi strong {
+    font-weight: 900;
+  }
+  .sort {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 1.5rem 2rem;
+  }
+  .sort .sort-home {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-family: nexa-light;
+    font-size: 1.2rem;
+  }
+  #main {
+    padding-top: 0rem;
+  }
+  #main .main {
+    -ms-grid-columns: 1fr 3fr;
+        grid-template-columns: 1fr 3fr;
+    display: -ms-grid;
+    display: grid;
+  }
+  #main .main .filter {
+    display: block;
+    margin-right: 1rem;
+  }
+  #main .main .filter .filter-bar {
+    height: 2.5rem;
+    background-color: #d9dddf;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-left: 1rem;
+  }
+  #main .main .filter form .filter-buttons {
+    display: none;
+  }
+  #main .main .filter form .filter-search .filter-type {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 1rem 0rem;
+  }
+  #main .main .filter form .filter-search .filter-type .heading {
+    font-family: 'nexa-light';
+    font-size: 1.4rem;
+  }
+  #main .main .filter form .filter-search .filter-type .logos {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    font-size: 0.7rem;
+  }
+  #main .main .filter form .filter-search .filter-type .logos .logo-search i {
+    color: #29bdeb;
+  }
+  #main .main .filter form .filter-search .filter-type .logos .logo-minus i {
+    color: rgba(0, 0, 0, 0.5);
+  }
+  #main .main .filter form .filter-search .filter-check-box {
+    margin-bottom: 1rem;
+  }
+  #main .main .filter form .filter-search .filter-check-box ul li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 0.2rem;
+  }
+  #main .main .filter form .filter-search .filter-check-box ul li input {
+    width: auto;
+    margin-right: 1rem;
+  }
+  #main .main .filter form .filter-search .filter-show-more {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  #main .main .filter form .filter-search .filter-show-more::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    top: 2rem;
+    left: 0rem;
+  }
+  #main .main .filter form .filter-search .filter-show-more a {
+    -webkit-text-decoration-line: none;
+            text-decoration-line: none;
+    font-family: nexa-light;
+    color: blue;
+  }
+  #main .main .doctor-boxs .doctor-box {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2fr 1fr;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: "doctor-content doctor-photo";
+    margin-bottom: 0.5rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-name {
+    grid-area: grid-name;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos {
+    grid-area: doctor-logos;
+    margin-left: 1.8rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul li {
+    margin-bottom: 0.2rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-button {
+    margin-bottom: 1rem;
+    margin-left: 2.3rem;
+    text-align: start;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-photo {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: doctor-photo;
+    background-color: #292424;
+  }
+  footer .footer-heading {
+    display: none;
+  }
+  footer .footer-sites-word {
+    display: none;
+  }
+  footer .footer-sites {
+    display: block;
+  }
+}
+
+/* ..................................................................... */
+/* ..................................................................... */
+/* ........................decstop...................................... */
+/* ..................................................................... */
+/* ..................................................................... */
+@media only screen and (min-width: 1024px) {
+  #delhi {
+    height: 12rem;
+    font-size: 2rem;
+  }
+  .sort {
+    padding: 1.5rem 7rem;
+  }
+  #main .main .filter {
+    margin-right: 2rem;
+  }
+  #main .main .filter form {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+  }
+  #main .main .filter form .filter-buttons {
+    display: block;
+    margin: 1rem 0rem;
+    margin-bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    background-color: var(--white_dark);
+  }
+  #main .main .filter form .filter-buttons .fil-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border: 0.02rem solid rgba(0, 0, 0, 0.2);
+    margin: 0.1rem;
+    padding: 0.5rem 0rem;
+    padding-left: 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.7rem;
+    font-family: 'nexa-light';
+  }
+  #main .main .filter form .filter-buttons .fil-button i {
+    margin-left: 0.5rem;
+  }
+  #main .main .filter form .filter-search {
+    margin-left: 1rem;
+  }
+  #main .main .filter form .filter-search .filter-type .logos .logo-minus i {
+    margin-left: 1rem;
+  }
+  #main .main .doctor-boxs .doctor-box {
+    -ms-grid-columns: 3fr 1fr;
+        grid-template-columns: 3fr 1fr;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-name::before {
+    width: 2rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-name h4 {
+    margin-left: 2.5rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-logos ul {
+    grid-column-gap: 3rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-button {
+    margin-top: 3rem;
+  }
+  #main .main .doctor-boxs .doctor-box .doctor-content .doctor-button button {
+    padding: 0.5rem 1rem;
+  }
+}
+/*# sourceMappingURL=doctor.css.map */
