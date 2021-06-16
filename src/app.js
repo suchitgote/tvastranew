@@ -11,7 +11,7 @@ const session = require('express-session');
 const app = express();
 const port = process.env.PORT || 3000 ;
 
-const connectDB = require('./server/database/connection');
+const connectDB = require('../server/database/connection');
 
 // log requests
 app.use(morgan('tiny'));
@@ -42,7 +42,7 @@ app.use(session({
 	}
 }));
 
-app.use('/', require('./server/routes/router'))
+app.use('/', require('../server/routes/router'))
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
